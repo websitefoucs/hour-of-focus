@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+body:has(#size-A:checked) {
+  zoom: 1;
+}
+
+body:has(#size-AA:checked) {
+  zoom: 1.25;
+}
+
+body:has(#size-AAA:checked) {
+  zoom: 1.5;
+}
+body:has(#highlight-links:checked) {
+  a {
+    border-bottom: 0.25rem solid #f00;
+  }
+}
+body:has(#highlight-headers:checked) {
+  h1,
+  h2,
+  h3,
+  h4 {
+    border-bottom: 0.25rem solid #f00;
+  }
+}
+body:has(#stop-animations:checked) {
+  -webkit-filter: grayscale(
+    100%
+  ); /*Older versions of Chrome, Safari, and Opera */
+
+  filter: grayscale(100%);
+}
+
+body:has(#grayscale:checked) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+body:has(#invertContrast:checked) {
+  filter: invert(100%) contrast(120%);
+  --background: #ffffff;
+  --foreground: #000000;
+  img,
+  video {
+    filter: invert(100%);
+  }
+}
+
+h1,
+h3,
+h4,
+h5 {
+  font-weight: 700;
+}
+h1 {
+  font-size: 4.325rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 2.75rem;
+  font-weight: 700;
+}
+h4 {
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+h5 {
+  font-size: var(--text-md);
+  font-weight: 600;
+}
+h6 {
+  font-size: var(--text-normal);
+  font-weight: 700;
+}
+
+.grid-stack {
+  grid-area: 1/1/-1/-1;
+}
+
+.image-border {
+  position: relative;
+  display: block;
+  @apply h-full;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0.5rem;
+    left: -0.5rem;
+
+    width: 0.5rem;
+    height: 100%;
+    display: block;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: -0.5rem;
+    left: -0.5rem;
+
+    width: 100%;
+    height: 0.5rem;
+    display: block;
+  }
+}
+
