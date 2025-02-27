@@ -17,7 +17,7 @@ export default function Article({ image, text, date, link }: ArticleProps) {
         alt="Article image"
         width={560}
         height={104}
-        className="w-fit h-[6.5rem]"
+        className="w-fit h-28 object-cover"
       />
       <p className="text-right text-mainGray-800">{text}</p>
       <p>{date}</p>

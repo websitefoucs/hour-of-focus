@@ -8,6 +8,7 @@ export type TFaq = {
   createBy?: TAuth;
   updateBy?: TAuth;
   createdAt?: string;
+  faqType?: TFaqType;
 };
 
 export type TFaqDto = Omit<TFaq, "createBy" | "updateBy" | "createdAt"> & {
@@ -22,4 +23,7 @@ export type TFaqDocument = Document &
     createBy?: ObjectId;
     updateBy?: ObjectId;
     updateDate?: Date;
+    faqType?: TFaqType;
   };
+export const FAQ_TYPE = ["volunteers", "students"] as const;
+export type TFaqType = (typeof FAQ_TYPE)[number];

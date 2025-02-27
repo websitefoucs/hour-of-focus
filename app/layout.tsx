@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" dir="rtl">
-      <body className={`${open_sans.className}  antialiased  text-normal`}>
+      <body className={`${open_sans.className} max-w-screen  antialiased  text-normal`}>
         {children}
       </body>
     </html>

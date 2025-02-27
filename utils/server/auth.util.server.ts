@@ -55,10 +55,10 @@ const validateAuthSignUpDto = (
   if (passwordError) errors.password = passwordError;
 
   if (!passwordError && passwordConfirm) {
-    const passwordMatch = validationUtil.compareStr(
+    const passwordMatch = validationUtil.compareStr<string>(
       "Password",
       userDto?.password,
-      passwordConfirm
+      [passwordConfirm]
     );
     if (passwordMatch) errors.password = passwordMatch;
   }

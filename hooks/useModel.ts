@@ -43,11 +43,18 @@ export const useModel = (
 
   const checkClickOutside = useCallback(
     (ev: MouseEvent) => {
+      console.log(" ev.target:", ev.target);
+      console.log(" ref.current:", ref.current);
+      console.log((ev.target as Node).nodeName);
+      if ((ev.target as Node).nodeName === "A") {
+        setOpen(false);
+      }
       if (!ev.target) return;
       if (!open) return;
       if (!ref.current) return;
       if (ref.current.contains(ev.target as Node)) return;
 
+      console.log("clicked outside");
       if (callBack) {
         callBack();
         return;

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function WhoWeAre() {
   return (
-    <div className="w-full h-[43.5rem] p-20 flex justify-between  ">
+    <div className="w-full h-[43rem] p-20 flex justify-between  ">
       <ul className=" flex flex-col gap-12  w-[calc(50%-5rem)]">
         {items.map((item, index) => (
           <li key={index}>
@@ -15,13 +15,14 @@ export default function WhoWeAre() {
           </li>
         ))}
       </ul>
-      <div className="image-border h-full aspect-square before:bg-mainGold-500 after:bg-mainGold-500 ">
+      <div className="image-border h-full aspect-square before:bg-mainGold-500 after:bg-mainGold-500 relative object-cover ">
         <Image
+        fill
           src={"/imgs/whoWeAre.svg"}
-          width={489}
-          height={456}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           alt="Who we are"
-          className="object-cover h-full w-full "
+          className="object-cover "
+          priority
         />
       </div>
     </div>

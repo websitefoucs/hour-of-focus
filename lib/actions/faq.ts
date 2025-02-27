@@ -16,7 +16,6 @@ export async function createFaq(
   let dto;
   try {
     const userId = await authServerUtils.verifyAuth();
-    const collection = await getCollection<TFaqDocument>("faqs");
 
     const data = faqServerUtils.fromDataToDto(formData);
 
@@ -26,11 +25,13 @@ export async function createFaq(
     });
 
     faqServerUtils.validateFaqDtoCreate(dto);
-    const { createBy, question, answer } = dto;
+    const { createBy, question, answer, faqType } = dto;
 
+    const collection = await getCollection<TFaqDocument>("faqs");
     const { acknowledged, insertedId } = await collection.insertOne({
       question,
       answer,
+      faqType,
       createBy: new ObjectId(createBy),
     });
 
@@ -175,6 +176,7 @@ export async function getFaqToEdit(id: string): Promise<TFaqDto> {
         _id: { $toString: "$_id" },
         question: 1,
         answer: 1,
+        faqType:1,
         createBy: {
           $toString: "$createBy",
         },

@@ -18,9 +18,10 @@ export default function Model({ button, model, withOverlay }: Props) {
   const [isOpen, setIsOpen] = useModel(modelRef);
 
   return (
-    <div className="relative" ref={modelRef}>
+    <div className="relative">
       <Button
         {...button.props}
+        className={button.props.className + " " + (isOpen ? "open" : "")}
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
@@ -29,7 +30,11 @@ export default function Model({ button, model, withOverlay }: Props) {
       >
         {button.content}
       </Button>
-      {withOverlay && isOpen && <ModelOverlay>{model}</ModelOverlay>}
+      {withOverlay && isOpen && (
+        <ModelOverlay>
+          <div ref={modelRef}>{model}</div>
+        </ModelOverlay>
+      )}
 
       {!withOverlay && isOpen && <>{model}</>}
     </div>

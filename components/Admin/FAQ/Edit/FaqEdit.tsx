@@ -18,6 +18,7 @@ const initialState: TFormState<TFaqDto> = {
   data: {
     question: "",
     answer: "",
+    faqType: "students",
     createBy: "",
     updateBy: "",
   },
@@ -27,6 +28,9 @@ export default function FaqEdit({ faqToEdit }: FaqEditProps) {
     faqToEdit?._id ? updateFaq : createFaq,
     { ...initialState, data: faqToEdit }
   );
+  console.log(" state:", state)
+
+  const isStudents = state?.data?.faqType === "students";
 
   return (
     <form
@@ -39,34 +43,59 @@ export default function FaqEdit({ faqToEdit }: FaqEditProps) {
         name="createBy"
         defaultValue={state?.data?.createBy}
       />
+      <div className="flex">
+        <Input
+          type="radio"
+          id="students-radio"
+          name="faqType"
+          defaultValue="students"
+          defaultChecked={isStudents}
+          divStyle="flex items-center gap-2 w-full"
+          className="h-full"
+        >
+          <Label htmlFor="students-radio">תלמידים</Label>
+        </Input>
+        <Input
+          type="radio"
+          id="volunteers-radio"
+          name="faqType"
+          defaultValue="volunteers"
+          defaultChecked={!isStudents}
+          divStyle="flex items-center gap-2 w-full"
+          className="h-full"
+        >
+          <Label htmlFor="volunteers-radio">מתנדבים</Label>
+        </Input>
+      </div>
       <TextArea
         name="question"
-        placeholder="Ask a question"
+        placeholder="מה תרצה לשאול"
         id="question-edit"
-        defaultValue={state?.data?.answer}
+        defaultValue={state?.data?.question}
         divStyle="flex flex-col gap-2 bg-inherit h-[calc(35%-1rem)]"
         className="bg-inherit shadow-border rounded p-2 h-[calc(100%-2rem)] resize-none overflow-auto scrollbar-hidden"
       >
-        <Label htmlFor="question-edit">Question</Label>
+        <Label htmlFor="question-edit">שאלה</Label>
         <ErrorLabel htmlFor="question-edit" error={state?.errors?.question} />
       </TextArea>
       <TextArea
         name="answer"
-        placeholder="Answer the question"
+        placeholder="ענה על השאלה"
         id="answer-edit"
-        defaultValue={state?.data?.question}
+        defaultValue={state?.data?.answer}
         divStyle="flex flex-col gap-2 bg-inherit  h-[calc(65%-1rem)]"
         className="bg-inherit shadow-border rounded p-2 h-[calc(100%-2rem)] resize-none overflow-auto scrollbar-hidden"
       >
-        <Label htmlFor="question-edit">Question</Label>
-        <ErrorLabel htmlFor="question-edit" error={state.errors?.question} />
+        <Label htmlFor="question-edit">תשובה</Label>
+        <ErrorLabel htmlFor="question-edit" error={state.errors?.answer} />
       </TextArea>
       <Button
         disabled={isPending}
-        className="shadow-border w-fit px-2 py-1 rounded h-8 self-center"
         type="submit"
+        styleMode="full"
+        styleSize="large"
       >
-        Submit
+        שמור
       </Button>
     </form>
   );

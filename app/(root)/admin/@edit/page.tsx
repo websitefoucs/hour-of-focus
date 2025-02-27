@@ -2,10 +2,7 @@
 //Components
 import FaqEditIndex from "@/components/Admin/FAQ/Edit/FaqEditIndex";
 
-
-
 type SearchParams = Promise<{ [key: string]: string | undefined | "faq" }>;
-
 interface EditPageProps {
   searchParams: SearchParams;
 }

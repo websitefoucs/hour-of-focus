@@ -7,10 +7,9 @@ interface FaqsListProps {
 }
 export default function FaqsList({ faqs }: FaqsListProps) {
   return (
-    <div>
-      <h1>Faqs</h1>
+    <div className="h-full">
       <ItemList
-        listStyle=""
+        listStyle=" grid gap-4 overflow-auto max-h-full"
         items={faqs}
         renderItem={(faq) => <FaqPreview faq={faq} />}
       />

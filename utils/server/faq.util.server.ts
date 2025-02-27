@@ -1,17 +1,20 @@
 import { sanitizeUtil } from "./sanitize.util";
 import { validationUtil } from "../validation.util";
 import { AppError } from "./Error.util.server";
-import { TFaqDto } from "@/types/faq";
+import { FAQ_TYPE, TFaqDto, TFaqType } from "@/types/faq";
 
 const sanitizeFaqDtoCreate = (dto: TFaqDto): TFaqDto => {
   const answer = sanitizeUtil.SanitizedObjectField(dto?.answer) || "";
   const question = sanitizeUtil.SanitizedObjectField(dto?.question) || "";
   const createBy = sanitizeUtil.SanitizedObjectField(dto?.createBy) || "";
+  const faqType = (sanitizeUtil.SanitizedObjectField(dto?.faqType) ||
+    "students") as TFaqType;
 
   return {
     answer,
     question,
     createBy,
+    faqType,
   };
 };
 const validateFaqDtoCreate = (
@@ -50,11 +53,20 @@ const validateFaqDtoCreate = (
   );
   if (createByError) errors.createBy = createByError;
 
+  const faqTypeError = validationUtil.compareStr<TFaqType>(
+    "faqType",
+    userDto?.faqType,
+    FAQ_TYPE
+  );
+
+  if (faqTypeError) errors.faqType = faqTypeError;
+
   if (Object.keys(errors).length > 0) {
     throw AppError.create("Validation Error", 400, true, errors);
   }
   return errors;
 };
+
 const sanitizeFaqDtoUpdate = (dto: TFaqDto): TFaqDto => {
   const updateBy = sanitizeUtil.SanitizedObjectField(dto?.updateBy) || "";
   const _id = sanitizeUtil.SanitizedObjectField(dto?._id) || "";
@@ -95,11 +107,13 @@ const fromDataToDto = (formData: FormData): TFaqDto => {
   const _id = formData.get("_id") as string;
   const createBy = formData.get("createBy") as string;
   const updateBy = formData.get("updateBy") as string;
+  const faqType = formData.get("faqType") as TFaqType;
 
   return {
     question,
     answer,
     _id,
+    faqType,
     createBy,
     updateBy,
   };

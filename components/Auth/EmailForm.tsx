@@ -38,7 +38,7 @@ export default function EmailForm({ isSignUp, headerText }: Props) {
       <legend className="sr-only">{headerText} form fields</legend>
       <form
         action={formAction}
-        className="flex flex-col gap-4 transition-all duration-300 h-fit"
+        className="flex flex-col gap-2 transition-all duration-300 h-fit"
         aria-label={`${headerText} form`}
       >
         {inputs.map((input) => (
@@ -52,10 +52,9 @@ export default function EmailForm({ isSignUp, headerText }: Props) {
               className=" block font-semibold text-sm "
               htmlFor={input.name}
             >
-              {input.name.charAt(0).toLocaleUpperCase() + input.name.slice(1)}
+              {input.placeholder}
             </Label>
             <Label
-            
               className="ps-1.5 block font-semibold text-xs text-red-500"
               htmlFor={input.name}
             >
@@ -65,9 +64,8 @@ export default function EmailForm({ isSignUp, headerText }: Props) {
         ))}
 
         <Button
-          styleMode="none"
-          styleSize="none"
-          className="w-full h-10 text-center bg-accent-light text-text-dark dark:text-text-light p-2 rounded font-semibold text-sm "
+          styleMode="full"
+          styleSize="large"
           type="submit"
           disabled={isPending}
         >
@@ -80,13 +78,13 @@ export default function EmailForm({ isSignUp, headerText }: Props) {
 const LOGIN_INPUTS = [
   {
     type: "email",
-    placeholder: "Email",
+    placeholder: "אימייל",
     name: "email",
     autoComplete: "email",
   },
   {
     type: "password",
-    placeholder: "Password",
+    placeholder: "סיסמה",
     name: "password",
     autoComplete: "current-password",
   },
@@ -96,13 +94,13 @@ const SIGN_UP_INPUTS = [
   ...LOGIN_INPUTS,
   {
     type: "password",
-    placeholder: "Password",
+    placeholder: "אימות סיסמה",
     name: "password-confirm",
     autoComplete: "confirm-password",
   },
   {
     type: "text",
-    placeholder: "Username",
+    placeholder: "שם משתמש",
     name: "username",
     autoComplete: "username",
   },

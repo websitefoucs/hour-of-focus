@@ -134,12 +134,13 @@ const validateDateStr = (filedName: string, value?: string): string | null => {
   }
   return null;
 };
-const compareStr = (
+const compareStr = <T>(
   filedName: string,
-  str1?: string,
-  str2?: string
+  checkStr?: string,
+  strArr?: readonly T[]
 ): string | null => {
-  if (str1 !== str2) {
+  if (!checkStr || !strArr) return null;
+  if (!strArr.includes(checkStr as T)) {
     return `${filedName} do not match.`;
   }
   return null;

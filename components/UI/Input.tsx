@@ -9,7 +9,7 @@ export default function Input({ divStyle, children, ...props }: Props) {
     ? props.className
     : ` w-full px-3 py-2 h-10
           border  
-          rounded-md bg-inherit
+          rounded-base bg-inherit
           focus:outline-hidden focus:ring-2 
           transition-all duration-200
           disabled:opacity-50 disabled:cursor-not-allowed flex `;

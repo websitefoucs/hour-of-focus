@@ -3,15 +3,25 @@ import LinkCmp from "../UI/LinkCmp";
 
 import NavLinks from "./NavLinks";
 import Image from "next/image";
+import MobileHeader from "./MobileHeader";
 
 export default function Header() {
   return (
-    <header className="flex justify-between items-center h-20 w-full px-32">
-      <Image src="/imgs/logo.svg" alt="logo" width={64} height={64} />
+    <header className="flex justify-between items-center h-20 w-full px-[5%]">
+      <Image
+        src="/imgs/logo.svg"
+        alt="logo"
+        width={64}
+        height={64}
+        priority
+        className="w-16 h-16"
+      />
+
       <NavLinks />
-      <LinkCmp styleMode="full" styleSize="small" href={CONTACT_US}>
+      <LinkCmp styleMode="full" styleSize="small" href={CONTACT_US} className="content-us">
         צור קשר
       </LinkCmp>
+      <MobileHeader/>
     </header>
   );
 }

@@ -6,8 +6,7 @@ export const useScroll = (
 
     const list = ref.current;
     const itemWidth = (list.children[0] as HTMLElement)?.offsetWidth || 0;
-    console.log(ref.current.scrollLeft);
-    console.log(ref.current.offsetLeft);
+
     list.scrollBy({
       left: itemWidth * dir,
       behavior: "smooth",

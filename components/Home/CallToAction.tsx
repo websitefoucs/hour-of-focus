@@ -1,6 +1,6 @@
 import React from "react";
 import LinkCmp from "../UI/LinkCmp";
-import { CLockSvg, GroupSvg, HeartSvg } from "../UI/icons/Icons";
+import { ClockSvg, GroupSvg, HeartSvg } from "../UI/icons/Icons";
 import {
   CONTACT_US,
   LOGISTIC_SIGNUP,
@@ -49,7 +49,7 @@ export default function CallToAction() {
 
 const items = [
   {
-    icon: <CLockSvg />,
+    icon: <ClockSvg />,
     title: "גמישות מלאה",
     text: "התנדבות בזמנים שמתאימים לכם",
   },

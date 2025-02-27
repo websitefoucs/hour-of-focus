@@ -14,15 +14,15 @@ export default async function FaqEditIndex({ id }: FaqEditIndexProps) {
     dto = await getFaqToEdit(id as string);
   }
   return (
-    <section className="p-2 border rounded flex flex-col gap-2 h-full">
+    <section className="p-2 pt-5 border rounded flex flex-col gap-2 h-96">
       <HandleEdit
         action=""
         itemId=""
         itemType=""
-        btnText="Close"
-        className="p-2 shadow-border rounded w-fit"
+        btnText="סגור"
+        className="p-2 shadow-border rounded w-fit mr-auto"
       />
-      <FaqEdit faqToEdit={dto} />;
+      <FaqEdit faqToEdit={dto} />
     </section>
   );
 }

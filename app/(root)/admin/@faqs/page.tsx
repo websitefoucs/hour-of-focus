@@ -1,11 +1,11 @@
-import FaqIndex from "@/components/Admin/FAQ/FaqIndex";
+import FaqAdminIndex from "@/components/Admin/FAQ/FaqAdminIndex";
 import { getAllFaqs } from "@/lib/actions/faq";
 
 export default async function FaqsPage() {
   const faqs = await getAllFaqs();
   return (
     <>
-      <FaqIndex faqs={faqs} />
+      <FaqAdminIndex faqs={faqs} />
     </>
   );
 }

@@ -13,17 +13,14 @@ export default function AuthIndex({ isSignUp }: AuthIndexProps) {
   // };
 
   const authFormText = isSignUp
-    ? { headerText: "Sign-Up", linkText: "Already have an account?" }
-    : { headerText: "Sign-In", linkText: "Don't have an account?" };
+    ? { headerText: "הרשמה", linkText: "כניסה לחשבון" }
+    : { headerText: "כניסה", linkText: "פעם ראשונה?" };
 
   return (
-    <section className="w-full h-full flex justify-center items-center">
-      <div className="p-4 rounded-lg shadow-border w-full max-w-sm min-w-xs self-center flex flex-col gap-4">
+    <section className="w-full h-[calc(100vh-26rem)] flex justify-center items-center">
+      <div className="p-4 rounded-base border h-[calc(100%-.5rem)] border-mainOrange-700 w-full max-w-sm min-w-xs self-center flex flex-col gap-4">
         <header>
           <h1 className="text-2xl font-bold pb-2">{authFormText.headerText}</h1>
-          <p className="text-gray-400 text-sm">
-            Enter your email below to {authFormText.headerText}
-          </p>
         </header>
 
         <EmailForm headerText={authFormText.headerText} isSignUp={!!isSignUp} />
@@ -32,7 +29,7 @@ export default function AuthIndex({ isSignUp }: AuthIndexProps) {
           <p>{authFormText.linkText}</p>
           <FormDisabledLink
             isSignUp={isSignUp}
-            headerText={isSignUp ? "Sign-In" : "Sign-Up"}
+            headerText={authFormText.headerText}
           />
         </div>
       </div>

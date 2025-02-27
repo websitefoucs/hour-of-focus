@@ -8,7 +8,7 @@ export default function NavLinks() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex gap-12 items-center text-mainGray-800">
+    <nav className="flex gap-[1vw] items-center text-mainGray-800 nav-links">
       <NavLink href="/" isHighlighted={pathname === "/"}>
         דף הבית
       </NavLink>
@@ -59,7 +59,7 @@ export default function NavLinks() {
       <NavLink href="materiels" isHighlighted={pathname === "/materiels"}>
         חומרי לימוד למתנדבים
       </NavLink>
-      <NavLink href="faq" isHighlighted={pathname === "/faq"}>
+      <NavLink href="faq" isHighlighted={pathname === "faq"}>
         שאלות ותשובות
       </NavLink>
     </nav>

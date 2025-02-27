@@ -105,6 +105,7 @@ export const signUp = async (
       data: authDto,
     };
   }
+
   redirect("/admin");
 };
 export const signOut = async (): Promise<void> => {
