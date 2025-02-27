@@ -11,14 +11,26 @@ export default function CallToAction() {
       <p>יחד נוכל לעשות שינוי משמעותי בחיי תלמידים רבים</p>
       <div className="flex flex-col gap-6  items-center">
         <div className="flex gap-6">
-          <LinkCmp styleMode="full" styleSize="large" href="">
+          <LinkCmp
+            styleMode="full"
+            styleSize="large"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSexgmdnYK-j88r7RfvfBzYo4veDGzwLMSc7sV5fclp3zJvNJg/viewform"
+          >
             הצטרפו כמורים
           </LinkCmp>
-          <LinkCmp styleMode="coloredBorder" styleSize="large" href="">
+          <LinkCmp
+            styleMode="coloredBorder"
+            styleSize="large"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfYfgh6vICvK5pabQrRHfogT1yV5ZEMRkfkcjexFh7gSDglEw/viewform"
+          >
             הצטרפו לצוות הלוגיסטי
           </LinkCmp>
         </div>
-        <LinkCmp styleMode="borderB" styleSize="long" href="">
+        <LinkCmp
+          styleMode="borderB"
+          styleSize="long"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSf5bbkDHT4Cqpu25HmCzGGaUQo9R9WJvWCAygpF8I2PtCTO7A/viewform"
+        >
           יש לכם שאלות? דברו איתנו ונשמח לסייע
         </LinkCmp>
       </div>
@@ -26,7 +38,7 @@ export default function CallToAction() {
         {items.map((item, index) => (
           <li
             key={index}
-            className="grid justify-items-center text-mainOrange-700"
+            className="grid justify-items-center gap-6 text-mainOrange-700"
           >
             {item.icon}
             <h5 className="text-xmd font-semibold leading-28">{item.title}</h5>

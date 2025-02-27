@@ -10,11 +10,9 @@ export default async function MainLayout({
   return (
     <>
       <AccessibilityIndex />
-      <main className="w-full">
-        <Header />
-        {children}
-        <Footer />
-      </main>
+      <Header />
+      <main className="w-full bg-gradient-to-b from-white-50 to-white-0">{children}</main>
+      <Footer />
     </>
   );
 }

@@ -20,11 +20,11 @@ export default function HomeHero() {
         </p>
 
         <div className="flex flex-col gap-10 items-center py-12  ">
-          <LinkCmp styleMode="full" styleSize="large" href="">
+          <LinkCmp styleMode="full" styleSize="large" href="https://docs.google.com/forms/d/e/1FAIpQLSexgmdnYK-j88r7RfvfBzYo4veDGzwLMSc7sV5fclp3zJvNJg/viewform">
             הצטרפו כמורים
           </LinkCmp>
           <div className="flex gap-8">
-            <LinkCmp styleMode="grayBorder" styleSize="large" href="">
+            <LinkCmp styleMode="grayBorder" styleSize="large" href="https://docs.google.com/forms/d/e/1FAIpQLSfYfgh6vICvK5pabQrRHfogT1yV5ZEMRkfkcjexFh7gSDglEw/viewform">
               <h6 className="leading-21">הצטרפו לצוות הלוגיסטי</h6>
             </LinkCmp>
             <LinkCmp styleMode="grayBorder" styleSize="large" href="">

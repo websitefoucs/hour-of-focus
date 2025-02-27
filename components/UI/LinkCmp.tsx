@@ -3,7 +3,7 @@ import Link, { LinkProps } from "next/link";
 const STYLES = {
   full: {
     style:
-      "bg-mainOrange-700 text-white-0 hover:bg-mainOrange-800 rounded-base flex justify-center items-center",
+      "bg-mainOrange-700 text-white-0 hover:bg-mainOrange-800 rounded-base flex justify-center items-center font-bold",
     loading: "bg-mainOrange-800",
   },
   coloredBorder: {
@@ -21,6 +21,11 @@ const STYLES = {
       "font-bold border-b-2 border-mainOrange-700 text-mainOrange-700 hover:text-mainOrange-800 hover:border-mainOrange-800 flex  justify-center items-center",
     loading: "border-mainOrange-600 text-mainOrange-600",
   },
+  arrow: {
+    style:
+      "font-bold border-b-2 text-normal leading-21 border-mainGray-800 text-mainGray-800 hover:text-mainGray-700 hover:border-mainGray-700 flex  justify-center items-center gap-1 w-fit",
+    loading: "border-mainGray-800 text-mainGray-800",
+  },
   none: {
     style: "",
     loading: "",
@@ -37,7 +42,13 @@ const SIZES = {
 } as const;
 
 interface Props extends LinkProps {
-  styleMode?: "full" | "coloredBorder" | "grayBorder" | "borderB" | "none";
+  styleMode?:
+    | "full"
+    | "coloredBorder"
+    | "grayBorder"
+    | "borderB"
+    | "arrow"
+    | "none";
   styleSize?: "small" | "medium" | "large" | "long" | "none";
   isHighLighted?: boolean;
   children?: React.ReactNode;

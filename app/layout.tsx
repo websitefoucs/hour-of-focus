@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Open_Sans } from "next/font/google";
 
-const openSans = Open_Sans({
+const open_sans = Open_Sans({
   weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-alegreya",
   subsets: ["hebrew"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -20,9 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" dir="rtl">
-      <body
-        className={`${openSans.variable} antialiased  text-normal`}
-      >
+      <body className={`${open_sans.className}  antialiased  text-normal`}>
         {children}
       </body>
     </html>

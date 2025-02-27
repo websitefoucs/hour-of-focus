@@ -10,7 +10,7 @@ export default function Testimonies() {
       </h4>
       <ItemsScroll
         items={testimoniesItems}
-        listStyle="overflow-hidden flex w-[46rem]"
+        listStyle="overflow-hidden flex w-[46rem] mx-24"
         renderItem={(testimony) => <TestimonyItem testimony={testimony} />}
       />
     </div>

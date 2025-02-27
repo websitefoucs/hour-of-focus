@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function WhoWeAre() {
   return (
-    <div className="w-full h-[43.5rem] p-20 flex justify-between bg-gradient-to-b from-white-50 to-[#FFFFFF] ">
+    <div className="w-full h-[43.5rem] p-20 flex justify-between  ">
       <ul className=" flex flex-col gap-12  w-[calc(50%-5rem)]">
         {items.map((item, index) => (
           <li key={index}>
