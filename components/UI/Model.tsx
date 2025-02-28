@@ -11,14 +11,20 @@ interface Props {
   };
   model: React.ReactNode;
   withOverlay?: boolean;
+  containerClassName?: string;
 }
 
-export default function Model({ button, model, withOverlay }: Props) {
+export default function Model({
+  button,
+  model,
+  withOverlay,
+  containerClassName,
+}: Props) {
   const modelRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useModel(modelRef);
 
   return (
-    <div className="relative">
+    <div ref={modelRef} className={"relative " + containerClassName}>
       <Button
         {...button.props}
         className={button.props.className + " " + (isOpen ? "open" : "")}

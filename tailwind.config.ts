@@ -1,3 +1,4 @@
+import { table } from "console";
 import type { Config } from "tailwindcss";
 
 export default {
@@ -45,6 +46,12 @@ export default {
         xl: "4.325rem",
         "2xl": "2.75rem",
       },
+      screens: {
+        medium: { max: "1200px" },
+        mobile: { max: "830px" },
+        "mobile-small": { max: "400px" },
+      },
+
       borderRadius: {
         base: "4px",
       },

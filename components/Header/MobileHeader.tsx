@@ -7,6 +7,7 @@ import NavLinks from "./NavLinks";
 export default function MobileHeader() {
   return (
     <Model
+    containerClassName="hidden mobile:block"
       withOverlay
       button={{
         content: (
@@ -38,7 +39,7 @@ export default function MobileHeader() {
           </svg>
         ),
         props: {
-          className: "hamburger fill-mainOrange-600 w-12 h-12",
+          className: "hamburger fill-mainOrange-600 w-12 h-12 hidden mobile:block",
           "aria-controls": "primary-navigation",
           "aria-expanded": "false",
         },

@@ -63,11 +63,9 @@ export default function LinkCmp({
   className,
   ...props
 }: Props) {
-  const style =
-    className +
-    ` ${STYLES[styleMode].style} ${SIZES[styleSize]} ${
-      isHighLighted ? "font-semibold" : ""
-    } disabled:opacity-50 disabled:cursor-not-allowed`;
+  const style = `${className} ${STYLES[styleMode].style} ${SIZES[styleSize]} ${
+    isHighLighted ? "font-semibold" : ""
+  } disabled:opacity-50 disabled:cursor-not-allowed`;
   return (
     <Link aria-disabled {...props} className={style}>
       {children}

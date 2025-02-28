@@ -6,7 +6,7 @@ import WhoWeAre from "./WhoWeAre";
 
 export default function HomeIndex() {
   return (
-    <section className="w-full flex flex-col gap-20 ">
+    <section className="w-full flex flex-col gap-20 mobile:gap-4">
       <HomeHero />
       <WhoWeAre />
       <Testimonies />

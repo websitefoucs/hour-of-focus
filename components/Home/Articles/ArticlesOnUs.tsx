@@ -4,11 +4,11 @@ import Article from "./Article";
 
 export default function ArticlesOnUs() {
   return (
-    <div className="h-fit py-10 p-20">
-      <h4 className="text-1xl text-mainGray-600 leading-42 pr-24 font-bold font-open-sns">כתבו אלינו </h4>
+    <div className="h-fit w-full py-10 px-20 mobile:p-0 flex flex-col items-center  ">
+      <h4 className="text-1xl text-mainGray-600 leading-42  font-bold font-open-sns">כתבו אלינו </h4>
       <ItemsScroll<{ image: string; text: string; date: string; link: string }>
         items={articles}
-        listStyle="overflow-hidden flex w-[72rem] gap-8 px-4 h-fit py-4"
+        listStyle="overflow-hidden flex w-[72rem] mobile:w-full mobile:grid mobile:grid-flow-row mobile:h-[26rem] gap-8 mobile:gap-0 px-4 mobile:p-0 h-fit py-4"
         renderItem={(article) => <Article {...article} />}
       />
     </div>

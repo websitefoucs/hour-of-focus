@@ -4,13 +4,13 @@ import TestimonyItem from "./TestimonyItem";
 
 export default function Testimonies() {
   return (
-    <div className="p-20 text-center">
+    <div className="p-20 text-center mobile:p-0">
       <h4 className="text-1xl text-mainGray-600 leading-42">
         מה התלמידים שלנו מספרים?
       </h4>
       <ItemsScroll
         items={testimoniesItems}
-        listStyle="overflow-hidden flex w-[46rem] mx-24"
+        listStyle="overflow-hidden flex w-[46rem] mx-24 mobile:w-full mobile:mx-0"
         renderItem={(testimony) => <TestimonyItem testimony={testimony} />}
       />
     </div>

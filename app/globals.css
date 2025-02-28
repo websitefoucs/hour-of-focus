@@ -162,16 +162,6 @@ h6 {
   clip-path: inset(20% 0 20% 0); /* Crops 20% from the top and bottom */
 }
 
-@media (max-width: 50rem) {
-  .nav-links,
-  .content-us {
-    display: none;
-  }
-  .mobile-header {
-    display: block;
-  }
-}
-
 .hamburger {
   & .line {
     transition: y 300ms ease-in 300ms, rotate 300ms ease-in, opacity 0ms 300ms;

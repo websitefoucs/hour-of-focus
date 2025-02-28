@@ -13,7 +13,12 @@ export default function FaqIndex({ type, faqs }: FaqIndexProps) {
     <section>
       <FaqHeroImage />
       <FaqSwitch type={type} />
-      <ItemList items={faqs} renderItem={(faq) => <FaqItem faq={faq} />} />
+      <ItemList
+        items={faqs}
+        renderItem={(faq) => (
+          <FaqItem answer={faq.answer!} question={faq.answer!} _id={faq._id!} />
+        )}
+      />
     </section>
   );
 }

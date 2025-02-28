@@ -20,7 +20,7 @@ export default function ItemsScroll<T>({
   const [scrollBy] = useScroll(listRef);
 
   return (
-    <div className="flex items-center justify-center text-center p-4 ">
+    <div className="flex items-center justify-center text-center p-4 mobile:w-full ">
       <Button onClick={() => scrollBy(1)}>
         <DirectionSvg className="-rotate-90 h-16 w-16" />
       </Button>

@@ -1,8 +1,7 @@
-import React from "react";
 
 export default function Numbers() {
   return (
-    <ul className="flex w-full items-center justify-center gap-36 pb-10">
+    <ul className="flex w-full items-center justify-center gap-36 pb-10 mobile:grid mobile:grid-cols-2 mobile:gap-10">
       {items.map((item, index) => (
         <li key={index}>
           <h4 className="text-lg leading-42">

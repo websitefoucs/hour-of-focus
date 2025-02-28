@@ -14,14 +14,19 @@ export default function Header() {
         width={64}
         height={64}
         priority
-        className="w-16 h-16"
+        className="w-16 h-16" 
       />
 
       <NavLinks />
-      <LinkCmp styleMode="full" styleSize="small" href={CONTACT_US} className="content-us">
+      <LinkCmp
+        styleMode="full"
+        styleSize="small"
+        href={CONTACT_US}
+        className="mobile:hidden"
+      >
         צור קשר
       </LinkCmp>
-      <MobileHeader/>
+      <MobileHeader />
     </header>
   );
 }

@@ -2,26 +2,26 @@ import Image from "next/image";
 
 export default function WhoWeAre() {
   return (
-    <div className="w-full h-[43rem] p-20 flex justify-between  ">
-      <ul className=" flex flex-col gap-12  w-[calc(50%-5rem)]">
+    <div className="w-full px-20 medium:px-10 mobile:px-4 py-20 medium:py-10 flex mobile:flex-col-reverse mobile:h-fit medium:gap-6 mobile:gap-6  justify-around  ">
+      <ul className=" flex flex-col gap-12  w-[calc(50%-5rem)] mobile:w-full">
         {items.map((item, index) => (
           <li key={index}>
-            <h5 className="text-xmd text-mainGray-600 font-semibold leading-28">
+            <h5 className="text-xmd medium:text-normal text-mainGray-600 font-semibold leading-28">
               {item.header}
             </h5>
-            <p className="text-normal leading-30 text-mainGray-800">
+            <p className="text-normal medium:text-[1rem] leading-30 text-mainGray-800">
               {item.text}
             </p>
           </li>
         ))}
       </ul>
-      <div className="image-border h-full aspect-square before:bg-mainGold-500 after:bg-mainGold-500 relative object-cover ">
+      <div className="image-border h-[32rem] medium:h-[26rem] mobile:h-64 mobile:w-[21.8rem] mobile:max-w-[calc(100%-.5rem)]  aspect-square before:bg-mainGold-500 after:bg-mainGold-500 relative">
         <Image
-        fill
+          width={512}
+          height={512}
           src={"/imgs/whoWeAre.svg"}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           alt="Who we are"
-          className="object-cover "
+          className="object-cover h-full "
           priority
         />
       </div>
