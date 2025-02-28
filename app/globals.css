@@ -194,9 +194,37 @@ h6 {
   display: block;
 }
 
-.menu-model{
-  & nav{
+.menu-model {
+  & nav {
     display: grid;
     padding-bottom: 1rem;
   }
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 10s linear infinite;
+}
+.footer-grid {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  justify-items: center;
+  row-gap: 1rem;
+}
+.footer-grid-one {
+  grid-area: 1/1/2/2;
+}
+.footer-grid-two {
+  grid-area: 1/2/2/-1;
+}
+.footer-grid-three {
+  grid-area: 2/1/-1/-1;
 }

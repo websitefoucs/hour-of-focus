@@ -4,15 +4,33 @@ import TestimonyItem from "./TestimonyItem";
 
 export default function Testimonies() {
   return (
-    <div className="px-40 medium:px-20 text-center mobile:px-0 ">
-      <h4 className="text-1xl text-mainGray-600 leading-42">
-        מה התלמידים שלנו מספרים?
-      </h4>
-      <ItemsScroll
-        items={testimoniesItems}
-        renderItem={(testimony) => <TestimonyItem testimony={testimony} />}
-      />
+    // <div className="p-20 text-center mobile:p-0">
+    //   <h4 className="text-1xl text-mainGray-600 leading-42">
+    //     מה התלמידים שלנו מספרים?
+    //   </h4>
+    //   <ItemsScroll
+    //     items={testimoniesItems}
+    //     listStyle="overflow-hidden flex w-full mx-24 mobile:w-full mobile:mx-0"
+    //     renderItem={(testimony) => <TestimonyItem testimony={testimony} />}
+    //   />
+    // </div>
+
+    <div className="overflow-hidden whitespace-nowrap relative w-full  py-4">
+    <div className="animate-scroll flex w-max">
+      {[...Array(2)].map((_, index) => (
+        <div key={index} className="flex gap-8">
+          {testimoniesItems.map((item, i) => (
+            <div
+              key={i}
+              className="text-5xl text-white bg-blue-600 px-6 py-3 rounded-lg shadow-lg"
+            >
+              {item}
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
+  </div>
   );
 }
 

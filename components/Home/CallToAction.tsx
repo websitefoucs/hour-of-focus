@@ -16,7 +16,12 @@ export default function CallToAction() {
       <p>יחד נוכל לעשות שינוי משמעותי בחיי תלמידים רבים</p>
       <div className="flex flex-col gap-6 mobile:gap-2  items-center">
         <div className="flex gap-6 mobile:gap-2">
-          <LinkCmp styleMode="full" styleSize="large" className="mobile:w-fit px-1" href={TEACHERS_SIGNUP}>
+          <LinkCmp
+            styleMode="full"
+            styleSize="large"
+            className="mobile:w-fit px-1"
+            href={TEACHERS_SIGNUP}
+          >
             הצטרפו כמורים
           </LinkCmp>
           <LinkCmp
@@ -28,7 +33,7 @@ export default function CallToAction() {
             הצטרפו לצוות הלוגיסטי
           </LinkCmp>
         </div>
-        <LinkCmp styleMode="borderB" styleSize="long"  href={CONTACT_US}>
+        <LinkCmp styleMode="borderB" styleSize="long" href={CONTACT_US}>
           יש לכם שאלות? דברו איתנו ונשמח לסייע
         </LinkCmp>
       </div>
@@ -39,8 +44,12 @@ export default function CallToAction() {
             className="grid justify-items-center gap-6 mobile:gap-1 text-mainOrange-700"
           >
             {item.icon}
-            <h5 className="text-xmd mobile:text-normal font-semibold leading-28">{item.title}</h5>
-            <p className="leading-30 mobile:text-center mobile:text-sm">{item.text}</p>
+            <h5 className="text-xmd mobile:text-normal font-semibold leading-28">
+              {item.title}
+            </h5>
+            <p className="leading-30 mobile:text-center mobile:text-sm">
+              {item.text}
+            </p>
           </li>
         ))}
       </ul>

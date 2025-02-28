@@ -1,9 +1,17 @@
 interface TestimonyItemProps {
   testimony: string;
+  isFading?: boolean;
 }
-export default function TestimonyItem({ testimony }: TestimonyItemProps) {
+export default function TestimonyItem({
+  testimony,
+  isFading,
+}: TestimonyItemProps) {
   return (
-    <li className=" text-xmd mobile:text-sm font-normal leading-40 min-w-[46rem] max-w-[46rem] max-h-[13rem] mobile:max-w-full mobile:min-w-full mobile:h-32 mobile:leading-5 flex justify-center items-center">
+    <li
+      className={`text-xmd mobile:text-normal font-normal leading-40  h-[13rem] mobile:h-32 mobile:leading-7 flex justify-center items-center transition-opacity duration-300 ${
+        isFading ? "opacity-0" : "opacity-100"
+      }`}
+    >
       {testimony}
     </li>
   );

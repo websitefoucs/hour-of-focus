@@ -8,16 +8,26 @@ interface ArticleProps {
   text: string;
   date: string;
   link: string;
+  isFading?: boolean;
 }
-export default function Article({ image, text, date, link }: ArticleProps) {
+export default function Article({
+  image,
+  text,
+  date,
+  link,
+  isFading,
+}: ArticleProps) {
   return (
-    <li className="w-[35rem] overflow-hidden mobile:w-full h-[26rem] mobile:min-h-full  flex flex-col items-start mobile:justify-center mobile:items-center border-t-8 border-t-mainGold-500 px-4 pt-4 pb-8  justify-between shadow-[0px_3px_6px_0px_#00000026] rounded-base">
+    <li
+      className={`w-[35rem] overflow-hidden mobile:w-full h-[26rem] flex flex-col items-start mobile:items-center border-t-8 border-t-mainGold-500 px-4 pt-4 pb-8  justify-between shadow-[0px_3px_6px_0px_#00000026] rounded-base transition-opacity duration-300
+       ${isFading ? "opacity-0" : "opacity-100"}`}
+    >
       <Image
         src={image}
         alt="Article image"
         width={560}
         height={104}
-        className="w-10 mobile:max-w-full h-28 mobile:h-10 object-cover"
+        className="max-w-full w-fit h-28  self-start "
       />
       <p className="text-right text-mainGray-800">{text}</p>
       <p>{date}</p>

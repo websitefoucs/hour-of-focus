@@ -5,7 +5,7 @@ import { CONTACT_US } from "@/constants/links";
 
 export default function Details() {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 footer-grid-one">
       <h6 className="pb-2"> שעה של פוקוס © </h6>
       <LinkCmp
         styleMode="none"
