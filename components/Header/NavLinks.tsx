@@ -6,7 +6,6 @@ import { DirectionSvg } from "../UI/icons/Icons";
 
 export default function NavLinks() {
   const pathname = usePathname();
-  console.log(" pathname:", pathname)
 
   return (
     <nav className="flex gap-[1vw] items-center text-mainGray-800 nav-links mobile:hidden">

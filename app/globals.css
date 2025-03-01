@@ -114,52 +114,55 @@ h6 {
   }
 }
 
+/* 
+
+
+ */
+/* FAQ section styling */
+
+/* Layout for FAQ question labels - creates a grid with content and icon areas */
 .faq-label {
-  display: grid;
   grid-template-columns: 1fr 1.5rem;
+  @apply grid w-full justify-between items-center h-full;
 }
 
+/* Styling for the plus/minus toggle icons in FAQs */
 .plus,
 .minus {
-  grid-area: 1/2/-1/-1;
-  opacity: 1;
-  transition: all 500ms;
-  z-index: 1;
+  grid-area: 1/2/-1/-1; /* Position icons in the second column */
+  @apply stroke-mainGray-800 fill-mainGray-800 w-6 h-6 opacity-100 z-[1] transition-all duration-200 ease-out;
 }
 
-.faq-checkbox:checked + .faq-label .plus {
-  opacity: 0;
-  z-index: -1;
+/* Hide plus icon when FAQ item is expanded (radio checked) */
+.faq-radio:checked + .faq-label .plus {
+  @apply opacity-0 z-[-1];
 }
 
-.faq-checkbox:not(:checked) + .faq-label .minus {
-  opacity: 0;
-  z-index: -1;
+/* Hide minus icon when FAQ item is collapsed (radio not checked) */
+.faq-radio:not(:checked) + .faq-label .minus {
+  @apply opacity-0 z-[-1];
 }
 
-.faq-answer {
-  display: grid;
-  grid-template-rows: 0fr;
-  /* padding-top: 0; */
-  transition: grid-template-rows 500ms ease-out;
-  > div {
-    overflow: hidden;
-  }
-}
-.faq-item {
-  gap: 0;
-  transition: all 500ms ease-out;
-}
-.faq-item:has(.faq-checkbox:checked) {
-  gap: 1.5rem;
+/* When FAQ item is selected, expand the answer area */
+.faq-radio:checked + .faq-label {
+  height: auto;
+  gap:1rem;
   & .faq-answer {
     grid-template-rows: 1fr;
   }
 }
+
+/* Default collapsed state for FAQ answers with smooth transition effect */
+.faq-answer {
+  grid-template-rows: 0fr;
+  @apply grid transition-all duration-200 ease-out;
+}
+
 .clipped-image {
-  width: 100%;
-  height: auto;
-  clip-path: inset(20% 0 20% 0); /* Crops 20% from the top and bottom */
+  /* clip-path: inset(15% 0 30% 0); */
+  margin: -300px 0px 0px 0px;
+
+  
 }
 
 .hamburger {

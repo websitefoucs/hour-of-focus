@@ -1,5 +1,5 @@
 import FaqIndex from "@/components/Faq/FaqIndex";
-import { getAllFaqs } from "@/lib/actions/faq";
+import { getFaqs } from "@/lib/actions/faq";
 import { TFaqType } from "@/types/faq";
 import { Metadata } from "next";
 import { cache } from "react";
@@ -13,7 +13,7 @@ interface FaqPageProps {
 export async function generateStaticParams() {
   return [{ type: "students" }];
 }
-const getFaqs = cache(getAllFaqs);
+const cacheGetFaqs = cache(getFaqs);
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: `FAQs Page - Updated ${new Date().getFullYear()}`,
@@ -22,7 +22,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function FaqsPage({ params }: FaqPageProps) {
-  const faqs = await getFaqs();
+
   const { type } = await params;
+  const faqs = await cacheGetFaqs({ faqType: type, isFull: false });
+  
   return <FaqIndex type={type} faqs={faqs} />;
 }

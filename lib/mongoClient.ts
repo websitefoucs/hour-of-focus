@@ -1,6 +1,6 @@
 import "server-only";
 
-import { Document, MongoClient } from "mongodb";
+import { Document, MongoClient, ObjectId } from "mongodb";
 
 if (!process.env.MONGODB_URI) {
   throw new Error('Invalid/Missing environment variable: "MONGODB_URI"');
@@ -37,6 +37,10 @@ export const connectDB = async () => {
 
 export const closeDB = async () => {
   await mongoClient.close();
+};
+
+export const isValidObjectId = (id: string): boolean => {
+  return ObjectId.isValid(id);
 };
 
 export const getCollection = async <T extends Document>(

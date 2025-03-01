@@ -26,6 +26,10 @@ const STYLES = {
       "font-bold border-b-2 text-normal leading-21 border-mainGray-800 text-mainGray-800 hover:text-mainGray-700 hover:border-mainGray-700 flex  justify-center items-center gap-1 w-fit",
     loading: "border-mainGray-800 text-mainGray-800",
   },
+  center: {
+    style: "flex justify-center items-center",
+    loading: "",
+  },
   none: {
     style: "",
     loading: "",
@@ -48,6 +52,7 @@ interface Props extends LinkProps {
     | "grayBorder"
     | "borderB"
     | "arrow"
+    | "center"
     | "none";
   styleSize?: "small" | "medium" | "large" | "long" | "none";
   isHighLighted?: boolean;

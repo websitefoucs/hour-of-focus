@@ -1,13 +1,17 @@
 "use server";
-import { TFaq, TFaqDocument, TFaqDto } from "@/types/faq";
+//Next
+import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
+//DB
 import { ObjectId } from "mongodb";
+import { getCollection, isValidObjectId } from "@/lib/mongoClient";
+//Types
+import { TFaq, TFaqDocument, TFaqDto, TFaqFilter } from "@/types/faq";
+import { TFormState } from "@/types/app.type";
+//Utils
 import { AppError } from "@/utils/server/Error.util.server";
-import { getCollection } from "@/lib/mongoClient";
 import { authServerUtils } from "@/utils/server/auth.util.server";
 import { faqServerUtils } from "@/utils/server/faq.util.server";
-import { revalidatePath } from "next/cache";
-import { TFormState } from "@/types/app.type";
-import { redirect } from "next/navigation";
 
 export async function createFaq(
   prevState: TFormState<TFaqDto>,
@@ -100,68 +104,88 @@ export async function updateFaq(
   redirect("/admin");
 }
 
-export async function getAllFaqs(filter?: { _id: string }): Promise<TFaq[]> {
+export async function getFaqs(filter: TFaqFilter): Promise<TFaq[]> {
   try {
     const pipeline = [];
 
-    if (filter?._id) {
-      pipeline.push({ $match: { _id: new ObjectId(filter._id) } });
+    const { faqType = "students", _id, isFull = false } = filter;
+
+    pipeline.push({ $match: { faqType } });
+
+    if (_id && isValidObjectId(_id)) {
+      pipeline.push({ $match: { _id: new ObjectId(_id) } });
     }
-    pipeline.push({
-      $lookup: {
-        from: "users",
-        localField: "createBy",
-        foreignField: "_id",
-        as: "createBy",
-      },
-    });
 
-    pipeline.push({
-      $unwind: {
-        path: "$createBy",
-        preserveNullAndEmptyArrays: true,
-      },
-    });
-
-    pipeline.push({
-      $lookup: {
-        from: "users",
-        localField: "updatedBy",
-        foreignField: "_id",
-        as: "updatedBy",
-      },
-    });
-
-    pipeline.push({
-      $unwind: {
-        path: "$updatedBy",
-        preserveNullAndEmptyArrays: true,
-      },
-    });
-
-    pipeline.push({
-      $project: {
-        _id: { $toString: "$_id" },
-        question: 1,
-        answer: 1,
-        createBy: {
-          _id: { $toString: "$createBy._id" },
-          username: 1,
+    if (isFull) {
+      pipeline.push({
+        $lookup: {
+          from: "users",
+          localField: "createBy",
+          foreignField: "_id",
+          as: "createBy",
         },
-        updatedBy: 1,
-        createdAt: {
-          $dateToString: {
-            date: { $toDate: "$_id" },
-            format: "%Y-%m-%d %H:%M:%S",
+      });
+
+      pipeline.push({
+        $unwind: {
+          path: "$createBy",
+          preserveNullAndEmptyArrays: true,
+        },
+      });
+
+      pipeline.push({
+        $lookup: {
+          from: "users",
+          localField: "updatedBy",
+          foreignField: "_id",
+          as: "updatedBy",
+        },
+      });
+
+      pipeline.push({
+        $unwind: {
+          path: "$updatedBy",
+          preserveNullAndEmptyArrays: true,
+        },
+      });
+
+      pipeline.push({
+        $project: {
+          _id: { $toString: "$_id" },
+          question: 1,
+          answer: 1,
+          createBy: {
+            _id: { $toString: "$createBy._id" },
+            username: 1,
           },
+          updatedBy: {
+            _id: { $toString: "$createBy._id" },
+            username: 1,
+          },
+          createdAt: {
+            $dateToString: {
+              date: { $toDate: "$_id" },
+              format: "%Y-%m-%d %H:%M:%S",
+            },
+          },
+          faqType: 1,
+          updateAt: 1,
         },
-        updateAt: 1,
-      },
-    });
+      });
+    } else {
+      pipeline.push({
+        $project: {
+          _id: { $toString: "$_id" },
+          question: 1,
+          answer: 1,
+          faqType: 1,
+        },
+      });
+    }
     const collection = await getCollection<TFaqDocument>("faqs");
     return collection.aggregate(pipeline).toArray() || [];
   } catch (error) {
-    AppError.create(`Failed to get all FAQs -> ${error}`);
+    AppError.create(`Failed to get FAQs -> ${error}`);
     return [];
   }
 }
@@ -176,7 +200,7 @@ export async function getFaqToEdit(id: string): Promise<TFaqDto> {
         _id: { $toString: "$_id" },
         question: 1,
         answer: 1,
-        faqType:1,
+        faqType: 1,
         createBy: {
           $toString: "$createBy",
         },

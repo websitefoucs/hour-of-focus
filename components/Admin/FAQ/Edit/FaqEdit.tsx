@@ -28,7 +28,6 @@ export default function FaqEdit({ faqToEdit }: FaqEditProps) {
     faqToEdit?._id ? updateFaq : createFaq,
     { ...initialState, data: faqToEdit }
   );
-  console.log(" state:", state)
 
   const isStudents = state?.data?.faqType === "students";
 

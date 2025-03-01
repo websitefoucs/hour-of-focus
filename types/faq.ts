@@ -25,5 +25,12 @@ export type TFaqDocument = Document &
     updateDate?: Date;
     faqType?: TFaqType;
   };
+
 export const FAQ_TYPE = ["volunteers", "students"] as const;
 export type TFaqType = (typeof FAQ_TYPE)[number];
+
+export type TFaqFilter = {
+  faqType?: TFaqType;
+  _id?: string;
+  isFull?: boolean;
+};

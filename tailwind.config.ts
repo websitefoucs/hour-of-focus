@@ -32,9 +32,8 @@ export default {
           700: "#292929",
           800: "#454545",
         },
-        imageOverlay: " rgba(90, 90, 90, 0.6)",
-        // background: "var(--background)",
-        // foreground: "var(--foreground)",
+        imageOverlay: "rgba(90, 90, 90, 0.75)",
+       
       },
       fontSize: {
         "1xl": "2.25rem",
