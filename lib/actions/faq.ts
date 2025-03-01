@@ -44,6 +44,7 @@ export async function createFaq(
     }
 
     revalidatePath("/admin/@faqs");
+    revalidatePath(`/faqs/${faqType}`);
   } catch (error) {
     const err = AppError.handleResponse(error);
     return {
@@ -73,7 +74,7 @@ export async function updateFaq(
 
     faqServerUtils.validateFaqDtoUpdate(dto);
 
-    const { updateBy, _id } = dto;
+    const { updateBy, _id, faqType } = dto;
     const collection = await getCollection<TFaqDocument>("faqs");
     const { modifiedCount } = await collection.updateOne(
       { _id: new ObjectId(_id) },
@@ -93,6 +94,7 @@ export async function updateFaq(
     }
 
     revalidatePath("/admin/@faqs");
+    revalidatePath(`/faqs/${faqType}`);
   } catch (error) {
     const err = AppError.handleResponse(error);
     return {
@@ -106,12 +108,13 @@ export async function updateFaq(
 
 export async function getFaqs(filter: TFaqFilter): Promise<TFaq[]> {
   try {
-    console.log(" filter:", filter);
     const pipeline = [];
 
-    const { faqType = "students", _id, isFull = false } = filter;
+    const { faqType, _id, isFull = false } = filter;
 
-    pipeline.push({ $match: { faqType } });
+    if (faqType) {
+      pipeline.push({ $match: { faqType } });
+    }
 
     if (_id && isValidObjectId(_id)) {
       pipeline.push({ $match: { _id: new ObjectId(_id) } });
@@ -184,15 +187,10 @@ export async function getFaqs(filter: TFaqFilter): Promise<TFaq[]> {
       });
     }
     const collection = await getCollection<TFaqDocument>("faqs");
-    console.log(" collection:", collection);
-    const faqs = collection.aggregate(pipeline).toArray() || [];
-    if (!faqs) {
-      throw AppError.create("Failed to get FAQs");
-    }
-    return faqs;
+    return collection.aggregate(pipeline).toArray() || [];
   } catch (error) {
-    console.log(" error:", error);
-    throw AppError.create(`Failed to get FAQs -> ${error}`);
+    AppError.create(`Failed to get FAQs -> ${error}`);
+    return [];
   }
 }
 
