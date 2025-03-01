@@ -2,12 +2,14 @@ import FaqIndex from "@/components/Faq/FaqIndex";
 import { getFaqs } from "@/lib/actions/faq";
 import { TFaqType } from "@/types/faq";
 import { Metadata } from "next";
-
+export const dynamic = "force-static"
 type Params = Promise<{ type: TFaqType }>;
 
 interface FaqPageProps {
   params: Params;
 }
+
+
 
 export async function generateStaticParams() {
   return [{ type: "students" }];
