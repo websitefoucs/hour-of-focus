@@ -18,6 +18,7 @@
  * @example
  * const [open, setOpen] = useModel(ref, () => console.info("Clicked outside the target element"));
  */
+import { useRouter } from "next/navigation";
 import {
   Dispatch,
   SetStateAction,
@@ -33,6 +34,7 @@ export const useModel = (
   callBack?: null | (() => void)
 ): [boolean, Dispatch<SetStateAction<boolean>>] => {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
   const eventListenerRef = useRef<{
     click: (ev: MouseEvent) => void;
     keydown: (ev: KeyboardEvent) => void;
@@ -43,22 +45,31 @@ export const useModel = (
 
   const checkClickOutside = useCallback(
     (ev: MouseEvent) => {
-     
-      if ((ev.target as Node).nodeName === "A") {
-        setOpen(false);
-      }
-      if (!ev.target) return;
-      if (!open) return;
-      if (!ref.current) return;
-      if (ref.current.contains(ev.target as Node)) return;
+      const target = ev.target as HTMLElement;
 
+      // If clicking a link, delay modal closing until navigation starts
+      if (target.closest("a")) {
+        ev.preventDefault(); // Prevent default anchor behavior
+        const href = target.closest("a")?.getAttribute("href"); // Get link URL
+
+        if (href) {
+          router.push(href); // Navigate programmatically
+        }
+
+        setTimeout(() => setOpen(false), 100); // Delay modal close slightly
+        return;
+      }
+
+      // Handle normal outside clicks
+      if (!target || !open || !ref.current || ref.current.contains(target))
+        return;
       if (callBack) {
         callBack();
         return;
       }
       setOpen(false);
     },
-    [open, ref, callBack]
+    [open, ref, callBack, router]
   );
 
   const checkKeyPress = useCallback((ev: KeyboardEvent) => {
