@@ -7,11 +7,12 @@ interface FaqProps {
 export default function FaqSwitch({ type }: FaqProps) {
   const isVolunteers = type === "volunteers";
   return (
-    <nav className="bg-white-100 py-2 px-6 rounded-base h-fit flex items-center">
+    <nav className="bg-white-100 py-2 px-6 rounded-base h-fit flex mobile:flex-col mobile:px-1 mobile:max-w-60 items-center">
       <LinkCmp
         styleMode={!isVolunteers ? "full" : "center"}
         styleSize="large"
         href="/faq/students"
+        className=""
       >
         <h6>לתלמידים והורים</h6>
       </LinkCmp>

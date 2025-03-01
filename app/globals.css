@@ -115,8 +115,6 @@ h6 {
 }
 
 /* 
-
-
  */
 /* FAQ section styling */
 
@@ -146,7 +144,7 @@ h6 {
 /* When FAQ item is selected, expand the answer area */
 .faq-radio:checked + .faq-label {
   height: auto;
-  gap:1rem;
+  gap: 1rem;
   & .faq-answer {
     grid-template-rows: 1fr;
   }
@@ -158,11 +156,11 @@ h6 {
   @apply grid transition-all duration-200 ease-out;
 }
 
+
+
 .clipped-image {
   /* clip-path: inset(15% 0 30% 0); */
   margin: -300px 0px 0px 0px;
-
-  
 }
 
 .hamburger {
