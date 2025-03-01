@@ -10,9 +10,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
-      url: baseUrl + "/faq",
+      url: baseUrl + "/faq/volunteers",
       lastModified: new Date().toISOString(),
-      priority: 0.5,
+      priority: 0.8,
+    },
+    {
+      url: baseUrl + "/faq/students",
+      lastModified: new Date().toISOString(),
+      priority: 0.8,
     },
   ];
 }
