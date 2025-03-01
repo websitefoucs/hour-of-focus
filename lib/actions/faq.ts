@@ -106,7 +106,7 @@ export async function updateFaq(
 
 export async function getFaqs(filter: TFaqFilter): Promise<TFaq[]> {
   try {
-    console.log(" filter:", filter)
+    console.log(" filter:", filter);
     const pipeline = [];
 
     const { faqType = "students", _id, isFull = false } = filter;
@@ -184,12 +184,15 @@ export async function getFaqs(filter: TFaqFilter): Promise<TFaq[]> {
       });
     }
     const collection = await getCollection<TFaqDocument>("faqs");
-    console.log(" collection:", collection)
-    return collection.aggregate(pipeline).toArray() || [];
+    console.log(" collection:", collection);
+    const faqs = collection.aggregate(pipeline).toArray() || [];
+    if (!faqs) {
+      throw AppError.create("Failed to get FAQs");
+    }
+    return faqs;
   } catch (error) {
-    console.log(" error:", error)
-    AppError.create(`Failed to get FAQs -> ${error}`);
-    return [];
+    console.log(" error:", error);
+    throw AppError.create(`Failed to get FAQs -> ${error}`);
   }
 }
 
