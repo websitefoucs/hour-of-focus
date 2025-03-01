@@ -17,7 +17,13 @@ export default function Details() {
       </LinkCmp>
       <span className="flex gap-2 items-center">
         <EnvelopSvg className="w-[1.125rem] h-[1.125rem]" />
-        <p className="text-sm leading-[23.8px]">0focushour0@gmail.com</p>
+
+        <a
+          className="text-sm leading-[23.8px]"
+          href="mailto:0focushour0@gmail.com"
+        >
+          0focushour0@gmail.com
+        </a>
       </span>
       <LinkCmp
         href={"/accessibility"}
