@@ -1,9 +1,9 @@
 import { GINGER_KID } from "@/constants/images";
 import Image from "next/image";
 import React from "react";
-import ImageOverlay from "../../UI/ImageOverlay";
+import ImageOverlay from "./ImageOverlay";
 
-export default function FaqHeroImage() {
+export default function HeroImage() {
   return (
     <ImageOverlay className="relative w-full h-[13rem] overflow-hidden grid-stack">
       <Image
