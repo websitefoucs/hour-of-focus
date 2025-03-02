@@ -8,7 +8,12 @@ export const AccessibilitySvg = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <g filter="url(#filter0_d_296_497)">
-        <rect width="54" height="54" transform="translate(5 3)" fill="white" />
+        <rect
+          width="54"
+          height="54"
+          transform="translate(5 3)"
+          fill="mainWhite"
+        />
         <path
           d="M36.8 34H35.8C36 34.6 36 35.4 36 36C36 40.4 32.4 44 28 44C23.6 44 20 40.4 20 36C20 31.8 23.2 28.4 27.4 28L27 26C21.8 26.8 18 30.8 18 36C18 41.6 22.4 46 28 46C32.8 46 36.8 42.6 37.8 38.2L36.8 34Z"
           fill="#1717B8"
@@ -265,7 +270,7 @@ export const ScreenReader = () => {
 
 export const FacebookSvg = ({ className }: { className?: string }) => {
   return (
-    <svg viewBox="0 0 24 24" className={className + "  fill-white-0"}>
+    <svg viewBox="0 0 24 24" className={className + "  fill-mainWhite-0"}>
       <g>
         <path d="M12 2.03998C6.5 2.03998 2 6.52998 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.84998C10.44 7.33998 11.93 5.95998 14.22 5.95998C15.31 5.95998 16.45 6.14998 16.45 6.14998V8.61998H15.19C13.95 8.61998 13.56 9.38998 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C15.9164 21.5878 18.0622 20.3855 19.6099 18.57C21.1576 16.7546 22.0054 14.4456 22 12.06C22 6.52998 17.5 2.03998 12 2.03998Z"></path>{" "}
       </g>
@@ -275,7 +280,7 @@ export const FacebookSvg = ({ className }: { className?: string }) => {
 
 export const LinkedinSvg = ({ className }: { className: string }) => {
   return (
-    <svg viewBox="0 0 22 22" className={className + "   fill-white-0"}>
+    <svg viewBox="0 0 22 22" className={className + "   fill-mainWhite-0"}>
       <g id="SVGRepo_iconCarrier">
         <path d="M19,3a2,2,0,0,1,2,2V19a2,2,0,0,1-2,2H5a2,2,0,0,1-2-2V5A2,2,0,0,1,5,3H19m-.5,15.5V13.2a3.26,3.26,0,0,0-3.26-3.26h0a2.9,2.9,0,0,0-2.32,1.3V10.13H10.13V18.5h2.79V13.57a1.4,1.4,0,1,1,2.79,0V18.5H18.5M6.88,8.56A1.68,1.68,0,0,0,8.56,6.88h0a1.69,1.69,0,1,0-3.37,0h0A1.69,1.69,0,0,0,6.88,8.56M8.27,18.5V10.13H5.5V18.5Z"></path>{" "}
       </g>
@@ -294,7 +299,7 @@ export const EnvelopSvg = ({ className }: { className?: string }) => {
     >
       <path
         d="M3.66666 3.33331H12.3333C12.8638 3.33331 13.3725 3.54403 13.7475 3.9191C14.1226 4.29417 14.3333 4.80288 14.3333 5.33331V11.3333C14.3333 11.8637 14.1226 12.3725 13.7475 12.7475C13.3725 13.1226 12.8638 13.3333 12.3333 13.3333H3.66666C3.13623 13.3333 2.62752 13.1226 2.25245 12.7475C1.87737 12.3725 1.66666 11.8637 1.66666 11.3333V5.33331C1.66666 4.80288 1.87737 4.29417 2.25245 3.9191C2.62752 3.54403 3.13623 3.33331 3.66666 3.33331ZM3.66666 3.99998C3.33333 3.99998 3.03999 4.11331 2.81333 4.31331L7.99999 7.66665L13.1867 4.31331C12.96 4.11331 12.6667 3.99998 12.3333 3.99998H3.66666ZM7.99999 8.47331L2.41999 4.85331C2.36666 4.99998 2.33333 5.16665 2.33333 5.33331V11.3333C2.33333 11.6869 2.4738 12.0261 2.72385 12.2761C2.9739 12.5262 3.31304 12.6666 3.66666 12.6666H12.3333C12.6869 12.6666 13.0261 12.5262 13.2761 12.2761C13.5262 12.0261 13.6667 11.6869 13.6667 11.3333V5.33331C13.6667 5.16665 13.6333 4.99998 13.58 4.85331L7.99999 8.47331Z"
-        fill="white"
+        fill="mainWhite"
       />
     </svg>
   );
@@ -377,7 +382,7 @@ export const GroupSvg = () => {
           <rect
             width="54"
             height="54"
-            fill="white"
+            fill="mainWhite"
             transform="translate(0.333313)"
           />
         </clipPath>
@@ -457,7 +462,7 @@ export const ApproveSvg = () => {
           d="M13.0867 20.2L24.3867 8.9C24.6534 8.63333 24.9645 8.5 25.32 8.5C25.6756 8.5 25.9867 8.63333 26.2534 8.9C26.52 9.16667 26.6534 9.48356 26.6534 9.85067C26.6534 10.2178 26.52 10.5342 26.2534 10.8L14.02 23.0667C13.7534 23.3333 13.4423 23.4667 13.0867 23.4667C12.7312 23.4667 12.42 23.3333 12.1534 23.0667L6.42005 17.3333C6.15338 17.0667 6.02538 16.7502 6.03605 16.384C6.04671 16.0178 6.18582 15.7009 6.45338 15.4333C6.72093 15.1658 7.03782 15.0324 7.40405 15.0333C7.77027 15.0342 8.08671 15.1676 8.35338 15.4333L13.0867 20.2Z"
           fill="#CF4A0D"
         />
-        <mask id="path-2-inside-1_325_2893" fill="white">
+        <mask id="path-2-inside-1_325_2893" fill="mainWhite">
           <path d="M21.4476 6.88132C18.959 5.36332 16.0211 4.75517 13.1344 5.16048C10.2477 5.56579 7.59087 6.95948 5.61655 9.10408C3.64223 11.2487 2.4726 14.0115 2.30695 16.9218C2.14131 19.8321 2.98989 22.7098 4.70812 25.0646C6.42635 27.4194 8.9079 29.1055 11.73 29.8358C14.552 30.566 17.54 30.2951 20.1847 29.0693C22.8295 27.8435 24.9673 25.7386 26.2341 23.1132C27.5009 20.4878 27.8181 17.5044 27.1318 14.6714L25.8094 14.9917C26.4216 17.5188 26.1386 20.18 25.0087 22.5219C23.8787 24.8638 21.9717 26.7414 19.6126 27.8348C17.2534 28.9283 14.5881 29.1699 12.0708 28.5185C9.5535 27.8671 7.33993 26.3631 5.80725 24.2626C4.27457 22.1621 3.51762 19.5952 3.66538 16.9991C3.81314 14.4031 4.85646 11.9386 6.61758 10.0256C8.37869 8.11261 10.7486 6.86943 13.3236 6.50789C15.8986 6.14635 18.5192 6.68883 20.7391 8.04289L21.4476 6.88132Z" />
         </mask>
         <path
@@ -472,7 +477,7 @@ export const ApproveSvg = () => {
           <rect
             width="32"
             height="32"
-            fill="white"
+            fill="mainWhite"
             transform="translate(0.353394)"
           />
         </clipPath>
@@ -496,13 +501,13 @@ export const Hamburder = () => {
     <button className="relative group">
       <div className="relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all bg-slate-700 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
         <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
-          <div className="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-x-10"></div>
-          <div className="bg-white h-[2px] w-7 rounded transform transition-all duration-300 group-focus:translate-x-10 delay-75"></div>
-          <div className="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-x-10 delay-150"></div>
+          <div className="bg-mainWhite h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-x-10"></div>
+          <div className="bg-mainWhite h-[2px] w-7 rounded transform transition-all duration-300 group-focus:translate-x-10 delay-75"></div>
+          <div className="bg-mainWhite h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-x-10 delay-150"></div>
 
           <div className="absolute items-center justify-between transform transition-all duration-500 top-2.5 -translate-x-10 group-focus:translate-x-0 flex w-0 group-focus:w-12">
-            <div className="absolute bg-white h-[2px] w-5 transform transition-all duration-500 rotate-0 delay-300 group-focus:rotate-45"></div>
-            <div className="absolute bg-white h-[2px] w-5 transform transition-all duration-500 -rotate-0 delay-300 group-focus:-rotate-45"></div>
+            <div className="absolute bg-mainWhite h-[2px] w-5 transform transition-all duration-500 rotate-0 delay-300 group-focus:rotate-45"></div>
+            <div className="absolute bg-mainWhite h-[2px] w-5 transform transition-all duration-500 -rotate-0 delay-300 group-focus:-rotate-45"></div>
           </div>
         </div>
       </div>

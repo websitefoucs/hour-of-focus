@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { CONTACT_US } from "@/constants/links";
 import LinkCmp from "../UI/LinkCmp";
 import Model from "../UI/Model";
@@ -7,7 +7,7 @@ import NavLinks from "./NavLinks";
 export default function MobileHeader() {
   return (
     <Model
-    containerClassName="hidden mobile:block"
+      containerClassName="hidden mobile:block"
       withOverlay
       button={{
         content: (
@@ -39,13 +39,14 @@ export default function MobileHeader() {
           </svg>
         ),
         props: {
-          className: "hamburger fill-mainOrange-600 w-12 h-12 hidden mobile:block",
+          className:
+            "hamburger fill-mainOrange-600 w-12 h-12 hidden mobile:block",
           "aria-controls": "primary-navigation",
           "aria-expanded": "false",
         },
       }}
       model={
-        <div className="bg-white-0 p-4 top-20 rounded-l-base absolute right-4 grid menu-model z-50">
+        <div className="bg-mainWhite-0 p-4 top-20 rounded-l-base absolute right-4 grid menu-model z-50">
           <NavLinks />
           <LinkCmp
             styleMode="full"

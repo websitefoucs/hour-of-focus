@@ -1,4 +1,3 @@
-import { table } from "console";
 import type { Config } from "tailwindcss";
 
 export default {
@@ -10,7 +9,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        white: {
+        mainWhite: {
           0: "#ffffff",
           50: "#fff7ed",
           100: "#ffeed5",
@@ -32,18 +31,18 @@ export default {
           700: "#292929",
           800: "#454545",
         },
-        imageOverlay: "rgba(90, 90, 90, 0.75)",
-       
+        imageOverlay: {
+          75: "rgba(90, 90, 90, 0.75)",
+          60: "rgba(90, 90, 90, 0.6)",
+        },
       },
       fontSize: {
-        "1xl": "2.25rem",
-        lg: "2rem",
-        xmd: "1.5rem",
-        md: "1.25rem",
-        normal: "1.125rem",
-        sm: "0.875rem",
-        xl: "4.325rem",
-        "2xl": "2.75rem",
+        14: "0.875rem",
+        18: "1.125rem",
+        20: "1.25rem",
+        24: "1.5rem",
+        36: "2.25rem",
+        44: "2.75rem",
       },
       screens: {
         medium: { max: "1200px" },
@@ -54,20 +53,19 @@ export default {
       borderRadius: {
         base: "4px",
       },
-      boxShadow: {
-        border: "0 0 0 1px rgba(0, 0, 0, 0.2)",
-      },
+
       lineHeight: {
         21: "1.35rem",
+        23: "1.4875rem",
         28: "1.8rem",
         30: "1.9125rem",
         34: "2.125rem",
         40: "2.55rem",
         42: "2.625rem",
+        52: "3.3rem",
       },
     },
   },
-  safelist: ["text-xs", "text-sm", "text-base", "text-lg", "text-xl"],
   plugins: [
     function ({
       addVariant,

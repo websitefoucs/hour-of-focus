@@ -11,7 +11,7 @@ export default async function MainLayout({
     <>
       <AccessibilityIndex />
       <Header />
-      <main className="w-full h-full bg-gradient-to-b from-white-50 to-white-0">{children}</main>
+      <main className="w-full h-full bg-gradient-to-b ">{children}</main>
       <Footer />
     </>
   );

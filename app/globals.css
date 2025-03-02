@@ -2,19 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-}
-
+/*
+* Accessibility settings 
+ */
 body:has(#size-A:checked) {
   zoom: 1;
 }
-
 body:has(#size-AA:checked) {
   zoom: 1.25;
 }
-
 body:has(#size-AAA:checked) {
   zoom: 1.5;
 }
@@ -38,7 +34,6 @@ body:has(#stop-animations:checked) {
 
   filter: grayscale(100%);
 }
-
 body:has(#grayscale:checked) {
   * {
     animation: none !important;
@@ -54,35 +49,28 @@ body:has(#invertContrast:checked) {
     filter: invert(100%);
   }
 }
-
-h1,
-h3,
-h4,
-h5 {
-  font-weight: 700;
-}
+/*
+* Global styles
+ */
 h1 {
-  font-size: 4.325rem;
-  font-weight: 700;
+  @apply text-44 font-bold;
 }
-
 h3 {
-  font-size: 2.75rem;
-  font-weight: 700;
+  @apply text-44 font-bold text-mainGray-800 leading-52;
 }
 h4 {
-  font-size: var(--text-lg);
-  font-weight: 700;
+  @apply text-36 font-bold text-mainGray-600 leading-42;
 }
 h5 {
-  font-size: var(--text-md);
-  font-weight: 600;
+  @apply text-24 text-mainGray-600 font-semibold leading-28;
 }
 h6 {
-  font-size: var(--text-normal);
-  font-weight: 700;
+  @apply text-18 font-bold leading-21;
 }
 
+/*
+* Global utility classes
+ */
 .grid-stack {
   grid-area: 1/1/-1/-1;
 }
@@ -101,12 +89,14 @@ h6 {
     width: 0.5rem;
     height: 100%;
     display: block;
+    border-bottom-left-radius: 100vh;
   }
   &:after {
     content: "";
     position: absolute;
     bottom: -0.5rem;
     left: -0.5rem;
+    border-bottom-left-radius: 100vh;
 
     width: 100%;
     height: 0.5rem;
@@ -115,9 +105,8 @@ h6 {
 }
 
 /* 
+ * FAQ section styling
  */
-/* FAQ section styling */
-
 /* Layout for FAQ question labels - creates a grid with content and icon areas */
 .faq-label {
   grid-template-columns: 1fr 1.5rem;
@@ -156,12 +145,6 @@ h6 {
   @apply grid transition-all duration-200 ease-out;
 }
 
-
-
-.clipped-image {
-  /* clip-path: inset(15% 0 30% 0); */
-  margin: -300px 0px 0px 0px;
-}
 
 .hamburger {
   & .line {
@@ -202,18 +185,6 @@ h6 {
   }
 }
 
-@keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-scroll {
-  animation: scroll 10s linear infinite;
-}
 .footer-grid {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;

@@ -5,7 +5,7 @@ import TestimonyItem from "./TestimonyItem";
 export default function Testimonies() {
   return (
     <div className="px-40 medium:px-20 text-center mobile:px-0 ">
-      <h4 className="text-1xl text-mainGray-600 leading-42">
+      <h4 className="">
         מה התלמידים שלנו מספרים?
       </h4>
       <ItemsScroll

@@ -5,8 +5,8 @@ import Article from "./Article";
 export default function ArticlesOnUs() {
   return (
     <div className="h-fit w-full py-10 px-20 mobile:p-0 flex flex-col items-center  ">
-      <h4 className="text-1xl text-mainGray-600 leading-42  font-bold font-open-sns">
-        כתבו אלינו{" "}
+      <h4 className="">
+        כתבו אלינו
       </h4>
       <ItemsScroll<{ image: string; text: string; date: string; link: string }>
         items={articles}

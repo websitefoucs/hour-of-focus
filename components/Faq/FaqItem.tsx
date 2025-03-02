@@ -15,15 +15,15 @@ export default function FaqItem({ question, answer, _id }: FaqItemProps) {
       name="faq"
       hidden
       className="faq-radio "
-      divStyle="w-full min-h-20 hover:cursor-pointer h-auto grid gap-0 transition-all duration-200 bg-white-0 shadow-[0px_4px_10px_0px_#00000026] rounded-base p-4 border-t-[0.375rem] border-mainGold-500 "
+      divStyle="w-full min-h-20 hover:cursor-pointer h-auto grid gap-0 transition-all duration-200 bg-mainWhite-0 shadow-[0px_4px_10px_0px_#00000026] rounded-base p-4 border-t-[0.375rem] border-mainGold-500 "
     >
       <Label htmlFor={_id} className="faq-label hover:cursor-pointer">
-        <h6 className=" text-mainGray-800 break-all">{question}</h6>
+        <h6 className=" text-mainGray-800">{question}</h6>
         <PlusSvg className="  plus" />
         <MinusSvg className="minus " />
         <div className={`faq-answer`}>
           <div className="overflow-hidden">
-            <p className="text-mainGray-800 break-all">{answer}</p>
+            <p className="text-mainGray-800">{answer}</p>
           </div>
         </div>
       </Label>

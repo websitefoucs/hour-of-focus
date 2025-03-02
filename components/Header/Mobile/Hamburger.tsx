@@ -14,7 +14,7 @@ export default function Hamburger() {
       <Label
         aria-controls="primary-navigation"
         htmlFor="menu-toggle"
-        className="hamburger  fill-mainOrange-600"
+        className="hamburger fill-mainOrange-600"
         aria-expanded="false"
       >
         <svg className="hamburger" viewBox="0 0 100 100">

@@ -1,7 +1,7 @@
 const STYLES = {
   full: {
     style:
-      "bg-mainOrange-700 text-white-0 hover:bg-mainOrange-800 rounded-base",
+      "bg-mainOrange-700 text-mainWhite-0 hover:bg-mainOrange-800 rounded-base",
     loading: "bg-mainOrange-800",
   },
   coloredBorder: {
@@ -11,7 +11,7 @@ const STYLES = {
   },
   grayBorder: {
     style:
-      "bg-inherit shadow-border shadow-white-0 text-white-0 hover:shadow-mainGray-600 text-mainGray-600",
+      "bg-inherit shadow-border shadow-mainWhite-0 text-mainWhite-0 hover:shadow-mainGray-600 text-mainGray-600",
     loading: "shadow-mainGray-800 text-mainGray-800",
   },
   redirect: {

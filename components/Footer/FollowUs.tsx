@@ -16,7 +16,7 @@ export default function FollowUs() {
         </nav>
       </div>
 
-      <div className="text-sm flex flex-col items-center mt-auto">
+      <div className="text-14 flex flex-col items-center mt-auto">
         <div className="flex items-center w-full">
           <p className="w-[9rem]">{`עוצב ע"י BY.Creations`}</p>
           <div className="flex gap-1">

@@ -4,11 +4,11 @@ export default function Numbers() {
     <ul className="flex w-full items-center justify-center gap-36 pb-10 mobile:grid mobile:grid-cols-2 mobile:gap-10">
       {items.map((item, index) => (
         <li key={index}>
-          <h4 className="text-lg leading-42">
-            <span>{item.number}</span>
+          <h4 className="">
+            <span className="text-mainWhite-0">{item.number}</span>
             <span className=" text-mainGold-400">{item.symbol}</span>
           </h4>
-          <p className="text-md leading-34 font-normal">{item.text}</p>
+          <p className="text-20 leading-34 font-normal">{item.text}</p>
         </li>
       ))}
     </ul>

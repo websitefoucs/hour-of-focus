@@ -3,7 +3,7 @@ import ItemList from "../UI/ItemList";
 
 export default function WhoWeAre() {
   return (
-    <div className="w-full px-20 medium:px-10 mobile:px-4 py-20 medium:py-10 flex mobile:flex-col-reverse mobile:h-fit medium:gap-6 mobile:gap-6 justify-around  ">
+    <div className="w-full px-20 medium:px-10 mobile:px-4 py-20 medium:py-10 flex mobile:flex-col-reverse mobile:h-fit medium:gap-6 mobile:gap-6 justify-around">
       <ItemList<{ header: string; text: string; _id: undefined }>
         listStyle=" flex flex-col gap-12 w-[calc(50%-5rem)] mobile:w-full"
         items={items}
@@ -56,9 +56,7 @@ const items = [
 const WhoWeAreItem = ({ header, text }: { header: string; text: string }) => {
   return (
     <li>
-      <h5 className="text-xmd medium:text-normal text-mainGray-600 font-semibold leading-28">
-        {header}
-      </h5>
+      <h5 className="medium:text-normal">{header}</h5>
       <p className="text-normal medium:text-[1rem] leading-30 text-mainGray-800">
         {text}
       </p>

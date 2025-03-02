@@ -11,24 +11,18 @@ export default function Details() {
         styleMode="none"
         styleSize="none"
         href={CONTACT_US}
-        className="text-sm leading-[23.8px]"
+        className="text-14 leading-23"
       >
         צור קשר
       </LinkCmp>
       <span className="flex gap-2 items-center">
-        <EnvelopSvg className="w-[1.125rem] h-[1.125rem]" />
+        <EnvelopSvg className="w-[1.125rem] h-[1.125rem]  fill-white" />
 
-        <a
-          className="text-sm leading-[23.8px]"
-          href="mailto:0focushour0@gmail.com"
-        >
+        <a className="text-14 leading-23" href="mailto:0focushour0@gmail.com">
           0focushour0@gmail.com
         </a>
       </span>
-      <LinkCmp
-        href={"/accessibility"}
-        className="text-sm leading-[23.8px]  underline"
-      >
+      <LinkCmp href={"/accessibility"} className="text-14 leading-23 underline">
         הצהרת נגישות
       </LinkCmp>
     </div>

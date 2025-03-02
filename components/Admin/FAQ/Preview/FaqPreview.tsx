@@ -16,7 +16,7 @@ export default function FaqPreview({ faq }: FaqPreviewProps) {
         _id={_id || ""}
       />
 
-      <div className="bg-white-0">
+      <div className="bg-mainWhite-0">
         <span>
           <p className="text-sm">{createBy?.username}</p>
           <p className="text-sm">{new Date(createdAt!).toLocaleDateString()}</p>
