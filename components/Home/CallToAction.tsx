@@ -1,6 +1,4 @@
-import React from "react";
 import LinkCmp from "../UI/LinkCmp";
-import { ClockSvg, GroupSvg, HeartSvg } from "../UI/icons/Icons";
 import {
   CONTACT_US,
   LOGISTIC_SIGNUP,
@@ -42,4 +40,3 @@ export default function CallToAction() {
     </div>
   );
 }
-
