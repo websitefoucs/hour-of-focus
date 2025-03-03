@@ -13,6 +13,6 @@ export default async function EditPage({ searchParams }: EditPageProps) {
     case "faq":
       return <FaqEditIndex id={id} />;
     default:
-      return <div></div>;
+      return <div>edit</div>;
   }
 }

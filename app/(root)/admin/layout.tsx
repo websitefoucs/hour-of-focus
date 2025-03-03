@@ -1,12 +1,16 @@
+import DashboardNav from "@/components/Admin/Dashboard/DashboardNav";
+
 interface Props {
-  faqs: React.ReactNode;
   edit: React.ReactNode;
+  children: React.ReactNode;
 }
-export default function AdminLayout({ faqs, edit }: Props) {
+export default function AdminLayout({  children }: Props) {
   return (
-    <section className="grid grid-cols-2 grid-rows-2 w-full min-h-screen gap-4 p-4 ">
-      {faqs}
-      {edit}
+    <section className="w-full min-h-screen p-4 flex flex-col items-center">
+      <DashboardNav />
+      <div className="flex">
+        {children}
+      </div>
     </section>
   );
 }
