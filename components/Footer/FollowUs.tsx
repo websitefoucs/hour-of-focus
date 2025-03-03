@@ -1,4 +1,4 @@
-import { FacebookSvg, GitSvg, LinkedinSvg } from "../UI/icons/Icons";
+import { FacebookSvg, GitSvg, GlobeSvg, LinkedinSvg } from "../UI/icons/Icons";
 import LinkCmp from "../UI/LinkCmp";
 
 export default function FollowUs() {
@@ -21,10 +21,7 @@ export default function FollowUs() {
           <p className="w-[9rem]">{`עוצב ע"י BY.Creations`}</p>
           <div className="flex gap-1">
             <LinkCmp href={"https://batelyr224.wixsite.com/batelyuster"}>
-              <FacebookSvg className="w-4 h-4" />
-            </LinkCmp>
-            <LinkCmp href={"https://batelyr224.wixsite.com/batelyuster"}>
-              <LinkedinSvg className="w-4 h-4" />
+              <GlobeSvg className="w-4 h-4 fill-mainWhite-0" />
             </LinkCmp>
           </div>
         </div>
