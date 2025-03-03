@@ -5,13 +5,13 @@
 /*
 * Accessibility settings 
  */
-body:has(#size-A:checked) {
+body:has(.zoom-1) {
   zoom: 1;
 }
-body:has(#size-AA:checked) {
+body:has(.zoom-2) {
   zoom: 1.25;
 }
-body:has(#size-AAA:checked) {
+body:has(.zoom-3) {
   zoom: 1.5;
 }
 body:has(#highlight-links:checked) {
@@ -28,17 +28,17 @@ body:has(#highlight-headers:checked) {
   }
 }
 body:has(#stop-animations:checked) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+body:has(.grayscale:checked) {
   -webkit-filter: grayscale(
     100%
   ); /*Older versions of Chrome, Safari, and Opera */
 
   filter: grayscale(100%);
-}
-body:has(#grayscale:checked) {
-  * {
-    animation: none !important;
-    transition: none !important;
-  }
 }
 body:has(#invertContrast:checked) {
   filter: invert(100%) contrast(120%);
@@ -206,5 +206,11 @@ h6 {
   grid-template-rows: auto auto;
   & svg {
     grid-area: 1/1/-1/2;
+  }
+}
+
+.accessibility-container:has(.open) {
+  .open {
+    left: 14rem;
   }
 }

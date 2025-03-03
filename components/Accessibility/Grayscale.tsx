@@ -1,17 +1,21 @@
 import React from "react";
 import Input from "../UI/Input";
 import Label from "../UI/Label";
+import { GrayScaleSvg } from "../UI/icons/Icons";
 
 export default function Grayscale() {
   return (
     <Input
       type="checkbox"
-      id="grayscale"
       name="grayscale"
+      id="grayscale"
       hidden
-      className="hidden"
+      className="hidden grayscale"
     >
-      <Label htmlFor="grayscale">גווני אפור</Label>
+      <Label htmlFor="grayscale" className="flex gap-2 items-center">
+        <GrayScaleSvg />
+        <p className="text-mainGray-800">גווני אפור</p>
+      </Label>
     </Input>
   );
 }
