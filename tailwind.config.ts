@@ -25,6 +25,7 @@ export default {
           500: "#dba80e",
         },
         mainGray: {
+          300: "#e7e7e7",
           400: "#888888",
           500: "#6d6d6d",
           600: "#5d5d5d",
