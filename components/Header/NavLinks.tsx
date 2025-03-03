@@ -56,7 +56,7 @@ export default function NavLinks() {
           }}
         ></Model>
       </div>
-      <NavLink href="materiels" isHighlighted={pathname === "/materiels"}>
+      <NavLink href="/materials" isHighlighted={pathname === "/materials"}>
         חומרי לימוד למתנדבים
       </NavLink>
       <NavLink
