@@ -4,51 +4,56 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 //DB
 import { ObjectId } from "mongodb";
-import { getCollection, isValidObjectId } from "@/lib/mongoClient";
+import { getCollection } from "@/lib/mongoClient";
 //Types
-import { TFaq, TFaqDocument, TFaqDto, TFaqFilter } from "@/types/faq";
 import { TFormState } from "@/types/app.type";
+import {
+  TMaterials,
+  TMaterialsDocument,
+  TMaterialsDto,
+  TMaterialsFilter,
+} from "@/types/materials.type";
 //Utils
+import { materialsServerUtils } from "@/utils/server/materials.server";
 import { AppError } from "@/utils/server/Error.util.server";
 import { authServerUtils } from "@/utils/server/auth.util.server";
-import { faqServerUtils } from "@/utils/server/faq.util.server";
 
-export async function createFaq(
-  prevState: TFormState<TFaqDto>,
+export async function createMaterial(
+  prevState: TFormState<TMaterialsDto>,
   formData: FormData
-): Promise<TFormState<TFaqDto>> {
+): Promise<TFormState<TMaterialsDto>> {
   let dto;
   try {
     const userId = await authServerUtils.verifyAuth();
 
-    const data = faqServerUtils.fromDataToDto(formData);
+    const data = materialsServerUtils.fromDataToDto(formData);
 
-    dto = faqServerUtils.sanitizeFaqDtoCreate({
+    dto = materialsServerUtils.sanitizeMaterialsDtoCreate({
       ...data,
       createBy: userId,
     });
 
-    faqServerUtils.validateFaqDtoCreate(dto);
-    const { createBy, question, answer, faqType } = dto;
+    materialsServerUtils.validateMaterialsDtoCreate(dto);
+    const { createBy, imgPath, link, subject } = dto;
 
-    const collection = await getCollection<TFaqDocument>("faqs");
+    const collection = await getCollection<TMaterialsDocument>("materials");
     const { acknowledged, insertedId } = await collection.insertOne({
-      question,
-      answer,
-      faqType,
+      subject,
+      link,
+      imgPath,
       createBy: new ObjectId(createBy),
     });
 
     if (!acknowledged || !insertedId) {
-      throw AppError.create("Failed to create FAQ");
+      throw AppError.create("Failed to create Material");
     }
 
-    revalidatePath("/admin/@faqs");
-    revalidatePath(`/faqs/${faqType}`);
+    revalidatePath("/admin/@materials");
+    revalidatePath(`/materials`);
   } catch (error) {
     const err = AppError.handleResponse(error);
     return {
-      errors: err.errors as Record<keyof TFaqDto, string>,
+      errors: err.errors as Record<keyof TMaterialsDto, string>,
       message: err.message,
       data: dto,
     };
@@ -57,48 +62,50 @@ export async function createFaq(
   redirect("/admin");
 }
 
-export async function updateFaq(
-  prevState: TFormState<TFaqDto>,
+export async function updateMaterial(
+  prevState: TFormState<TMaterialsDto>,
   formData: FormData
-): Promise<TFormState<TFaqDto>> {
+): Promise<TFormState<TMaterialsDto>> {
   let dto;
   try {
     const userId = await authServerUtils.verifyAuth();
 
-    const data = faqServerUtils.fromDataToDto(formData);
+    const data = materialsServerUtils.fromDataToDto(formData);
 
-    dto = faqServerUtils.sanitizeFaqDtoUpdate({
+    dto = materialsServerUtils.sanitizeMaterialsDtoUpdate({
       ...data,
       updateBy: userId,
     });
 
-    faqServerUtils.validateFaqDtoUpdate(dto);
+    materialsServerUtils.validateMaterialsDtoUpdate(dto);
+    const { createBy, imgPath, link, subject, updateBy, _id } = dto;
 
-    const { updateBy, _id, faqType } = dto;
-    const collection = await getCollection<TFaqDocument>("faqs");
+    const collection = await getCollection<TMaterialsDocument>("materials");
     const { modifiedCount } = await collection.updateOne(
       { _id: new ObjectId(_id) },
       {
         $set: {
-          ...dto,
+          subject,
+          link,
+          imgPath,
           _id: new ObjectId(_id),
           updateBy: new ObjectId(updateBy),
-          createBy: new ObjectId(dto.createBy),
+          createBy: new ObjectId(createBy),
           updateDate: new Date(),
         },
       }
     );
 
     if (!modifiedCount) {
-      throw AppError.create("Failed to update FAQ");
+      throw AppError.create("Failed to update Materials");
     }
 
-    revalidatePath("/admin/@faqs");
-    revalidatePath(`/faqs/${faqType}`);
+    revalidatePath("/admin/@materials");
+    revalidatePath(`/materials`);
   } catch (error) {
     const err = AppError.handleResponse(error);
     return {
-      errors: err.errors as Record<keyof TFaqDto, string>,
+      errors: err.errors as Record<keyof TMaterialsDto, string>,
       message: err.message,
       data: dto,
     };
@@ -106,19 +113,13 @@ export async function updateFaq(
   redirect("/admin");
 }
 
-export async function getFaqs(filter: TFaqFilter): Promise<TFaq[]> {
+export async function getMaterials(
+  filter: TMaterialsFilter
+): Promise<TMaterials[]> {
   try {
     const pipeline = [];
 
-    const { faqType, _id, isFull = false } = filter;
-
-    if (faqType) {
-      pipeline.push({ $match: { faqType } });
-    }
-
-    if (_id && isValidObjectId(_id)) {
-      pipeline.push({ $match: { _id: new ObjectId(_id) } });
-    }
+    const { isFull } = filter;
 
     if (isFull) {
       pipeline.push({
@@ -156,8 +157,9 @@ export async function getFaqs(filter: TFaqFilter): Promise<TFaq[]> {
       pipeline.push({
         $project: {
           _id: { $toString: "$_id" },
-          question: 1,
-          answer: 1,
+          imgPath: 1,
+          link: 1,
+          subject: 1,
           createBy: {
             _id: { $toString: "$createBy._id" },
             username: 1,
@@ -172,44 +174,50 @@ export async function getFaqs(filter: TFaqFilter): Promise<TFaq[]> {
               format: "%Y-%m-%d %H:%M:%S",
             },
           },
-          faqType: 1,
-          updateAt: 1,
+          updateAt: {
+            $dateToString: {
+              date: { $toDate: "$updateAt" },
+              format: "%Y-%m-%d %H:%M:%S",
+            },
+          },
         },
       });
     } else {
       pipeline.push({
         $project: {
           _id: { $toString: "$_id" },
-          question: 1,
-          answer: 1,
-          faqType: 1,
+          imgPath: 1,
+          link: 1,
+          subject: 1,
         },
       });
     }
-    const collection = await getCollection<TFaqDocument>("faqs");
-    return (await collection.aggregate(pipeline).toArray()) || [];
+    const collection = await getCollection<TMaterialsDocument>("materials");
+    return (await collection.aggregate<TMaterials>(pipeline).toArray()) || [];
   } catch (error) {
-    AppError.create(`Failed to get FAQs -> ${error}`);
+    AppError.create(`Failed to get Materials -> ${error}`);
     return [];
   }
 }
 
-export async function getFaqToEdit(id: string): Promise<TFaqDto> {
+export async function getMaterialToEdit(id: string): Promise<TMaterialsDto> {
   try {
-    const collection = await getCollection<TFaqDocument>("faqs");
+    const collection = await getCollection<TMaterialsDocument>("materials");
     const pipeline = [];
     pipeline.push({ $match: { _id: new ObjectId(id) } });
     pipeline.push({
       $project: {
         _id: { $toString: "$_id" },
-        question: 1,
-        answer: 1,
-        faqType: 1,
+        imgPath: 1,
+        link: 1,
+        subject: 1,
         createBy: {
-          $toString: "$createBy",
+          _id: { $toString: "$createBy._id" },
+          username: 1,
         },
         updatedBy: {
-          $toString: "$createBy",
+          _id: { $toString: "$createBy._id" },
+          username: 1,
         },
         createdAt: {
           $dateToString: {
@@ -217,32 +225,38 @@ export async function getFaqToEdit(id: string): Promise<TFaqDto> {
             format: "%Y-%m-%d %H:%M:%S",
           },
         },
-        updateAt: 1,
+        updateAt: {
+          $dateToString: {
+            date: { $toDate: "$updateAt" },
+            format: "%Y-%m-%d %H:%M:%S",
+          },
+        },
       },
     });
-    const dto = await collection.aggregate<TFaqDto>(pipeline).next();
+    const dto = await collection.aggregate<TMaterialsDto>(pipeline).next();
+
     if (!dto) {
-      throw AppError.create("FAQ not found");
+      throw AppError.create("Material not found");
     }
 
     return dto;
   } catch (error) {
-    throw AppError.create(`Failed to get FAQ by ID -> ${error}`);
+    throw AppError.create(`Failed to get Materials by ID -> ${error}`);
   }
 }
 
-export async function deleteFaq(id: string) {
+export async function deleteMaterial(id: string) {
   try {
-    const collection = await getCollection<TFaqDocument>("faqs");
+    const collection = await getCollection<TMaterialsDocument>("materials");
     const { acknowledged } = await collection.deleteOne({
       _id: new ObjectId(id),
     });
     if (!acknowledged) {
-      throw AppError.create("Failed to delete FAQ");
+      throw AppError.create("Failed to delete Materials");
     }
 
     return acknowledged;
   } catch (error) {
-    throw AppError.create(`Failed to delete FAQ -> ${error}`);
+    throw AppError.create(`Failed to delete Materials -> ${error}`);
   }
 }
