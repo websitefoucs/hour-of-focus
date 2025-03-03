@@ -2,7 +2,7 @@ import { ClockSvg, GroupSvg, HeartSvg } from "./icons/Icons";
 
 export default function HighlightsList() {
   return (
-    <ul className="flex mobile:flex-wrap justify-around  mobile:gap-4 w-full">
+    <ul className="flex mobile:flex-wrap justify-around mobile:gap-4 w-full">
       {items.map((item, index) => (
         <li
           key={index}
@@ -23,17 +23,17 @@ export default function HighlightsList() {
 
 const items = [
   {
-    icon: <ClockSvg />,
+    icon: <ClockSvg className="w-14 h-14 fill-mainWhite-0" />,
     title: "גמישות מלאה",
     text: "התנדבות בזמנים שמתאימים לכם",
   },
   {
-    icon: <GroupSvg />,
+    icon: <GroupSvg className="w-14 h-14 fill-mainOrange-700" />,
     title: "ליווי אישי",
     text: "צוות תומך לאורך כל הדרך",
   },
   {
-    icon: <HeartSvg />,
+    icon: <HeartSvg className="w-14 h-14 stroke-mainOrange-700 fill-mainWhite-0"  />,
     title: "השפעה אמיתית",
     text: "תרומה משמעותית למפונים",
   },

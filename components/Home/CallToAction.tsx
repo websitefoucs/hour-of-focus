@@ -6,6 +6,7 @@ import {
   LOGISTIC_SIGNUP,
   TEACHERS_SIGNUP,
 } from "@/constants/links";
+import HighlightsList from "../UI/HighlightsList";
 
 export default function CallToAction() {
   return (
@@ -37,40 +38,8 @@ export default function CallToAction() {
           יש לכם שאלות? דברו איתנו ונשמח לסייע
         </LinkCmp>
       </div>
-      <ul className="flex justify-between content-between mobile:flex-wrap mobile:justify-center mobile:gap-4 w-full pt-10">
-        {items.map((item, index) => (
-          <li
-            key={index}
-            className="grid justify-items-center gap-4 mobile:gap-1 text-mainOrange-700"
-          >
-            {item.icon}
-            <h5 className="mobile:text-normal  text-mainOrange-700">{item.title}</h5>
-            <p className="leading-30 mobile:text-center mobile:text-14">
-              {item.text}
-            </p>
-          </li>
-        ))}
-      </ul>
+      <HighlightsList />
     </div>
   );
 }
 
-const items = [
-  {
-    icon: <ClockSvg className="w-14 h-14 fill-mainWhite-0" />,
-    title: "גמישות מלאה",
-    text: "התנדבות בזמנים שמתאימים לכם",
-  },
-  {
-    icon: <GroupSvg className="w-14 h-14 fill-mainOrange-700" />,
-    title: "ליווי אישי",
-    text: "צוות תומך לאורך כל הדרך",
-  },
-  {
-    icon: (
-      <HeartSvg className="w-14 h-14 stroke-mainOrange-700 fill-mainWhite-0" />
-    ),
-    title: "השפעה אמיתית",
-    text: "תרומה משמעותית למפונים",
-  },
-];
