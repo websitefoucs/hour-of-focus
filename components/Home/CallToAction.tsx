@@ -41,10 +41,10 @@ export default function CallToAction() {
         {items.map((item, index) => (
           <li
             key={index}
-            className="grid justify-items-center gap-6 mobile:gap-1 text-mainOrange-700"
+            className="grid justify-items-center gap-4 mobile:gap-1 text-mainOrange-700"
           >
             {item.icon}
-            <h5 className="mobile:text-normal">{item.title}</h5>
+            <h5 className="mobile:text-normal  text-mainOrange-700">{item.title}</h5>
             <p className="leading-30 mobile:text-center mobile:text-14">
               {item.text}
             </p>
@@ -57,17 +57,19 @@ export default function CallToAction() {
 
 const items = [
   {
-    icon: <ClockSvg />,
+    icon: <ClockSvg className="w-14 h-14 fill-mainWhite-0" />,
     title: "גמישות מלאה",
     text: "התנדבות בזמנים שמתאימים לכם",
   },
   {
-    icon: <GroupSvg />,
+    icon: <GroupSvg className="w-14 h-14 fill-mainOrange-700" />,
     title: "ליווי אישי",
     text: "צוות תומך לאורך כל הדרך",
   },
   {
-    icon: <HeartSvg />,
+    icon: (
+      <HeartSvg className="w-14 h-14 stroke-mainOrange-700 fill-mainWhite-0" />
+    ),
     title: "השפעה אמיתית",
     text: "תרומה משמעותית למפונים",
   },
