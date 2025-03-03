@@ -11,14 +11,14 @@ export default function AboutJoinUs() {
       </p>
       <nav className="flex gap-8">
         <LinkCmp
-          styleMode="grayBorder"
+          styleMode="whiteBorder"
           styleSize="large"
           href="/explain/students"
         >
           מידע נוסף לתלמידים
         </LinkCmp>
         <LinkCmp
-          styleMode="grayBorder"
+          styleMode="whiteBorder"
           styleSize="large"
           href="/explain/volunteers"
         >

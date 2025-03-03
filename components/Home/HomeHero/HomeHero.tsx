@@ -35,7 +35,7 @@ export default function HomeHero() {
           </LinkCmp>
           <div className="flex gap-8 medium:gap-4 mobile:gap-2 mobile-small:flex-col">
             <LinkCmp
-              styleMode="grayBorder"
+              styleMode="whiteBorder"
               styleSize="large"
               href={LOGISTIC_SIGNUP}
               className="mobile:w-fit mobile:px-1 mobile-small:w-60"
@@ -43,7 +43,7 @@ export default function HomeHero() {
               <h6 className="leading-21">הצטרפו לצוות הלוגיסטי</h6>
             </LinkCmp>
             <LinkCmp
-              styleMode="grayBorder"
+              styleMode="whiteBorder"
               styleSize="large"
               href=""
               className="mobile:w-fit mobile:px-1 mobile-small:w-60"
