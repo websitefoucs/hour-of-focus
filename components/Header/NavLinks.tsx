@@ -22,13 +22,13 @@ export default function NavLinks() {
           model={
             <div className="absolute right-3/4 top-8 bg-mainWhite-0 p-4 rounded-base flex flex-col gap-2 shadow-border z-50">
               <NavLink
-                href="explain/volunteers"
+                href="/explain/volunteers"
                 isHighlighted={pathname === "/explain/volunteers"}
               >
                 מתנדבים
               </NavLink>
               <NavLink
-                href="explain/students"
+                href="/explain/students"
                 isHighlighted={pathname === "/explain/students"}
               >
                 תלמידים

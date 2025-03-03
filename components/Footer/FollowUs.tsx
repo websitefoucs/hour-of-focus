@@ -20,10 +20,10 @@ export default function FollowUs() {
         <div className="flex items-center w-full">
           <p className="w-[9rem]">{`עוצב ע"י BY.Creations`}</p>
           <div className="flex gap-1">
-            <LinkCmp href={"/facebook"}>
+            <LinkCmp href={"https://batelyr224.wixsite.com/batelyuster"}>
               <FacebookSvg className="w-4 h-4" />
             </LinkCmp>
-            <LinkCmp href={"/linkedin"}>
+            <LinkCmp href={"https://batelyr224.wixsite.com/batelyuster"}>
               <LinkedinSvg className="w-4 h-4" />
             </LinkCmp>
           </div>

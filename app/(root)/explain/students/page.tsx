@@ -1,7 +1,6 @@
-import React from 'react'
+import ExplainStudentsIndex from "@/components/Explain/Students/ExplainStudentsIndex";
+import React from "react";
 
 export default function ExplainStudentsPage() {
-  return (
-    <div>page</div>
-  )
+  return <ExplainStudentsIndex />;
 }
