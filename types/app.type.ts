@@ -6,4 +6,7 @@ export type TFormState<T> = {
   data?: T;
 };
 
+export type TEntity = {
+  _id?: string;
+};
 

@@ -32,7 +32,6 @@ export async function createMaterial(
       ...data,
       createBy: userId,
     });
-    console.log(" dto:", dto)
 
     materialsServerUtils.validateMaterialsDtoCreate(dto);
     const { createBy, imgPath, link, subject } = dto;

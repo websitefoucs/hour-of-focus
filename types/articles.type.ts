@@ -3,9 +3,9 @@ import { TAuth } from "./auth.type";
 
 export type TArticle = {
   _id?: string;
-  publishDate: string;
   link: string;
   preview: string;
+  publishDate: string;
   publishPlace: string;
   createBy?: TAuth;
   updateBy?: TAuth;
@@ -24,11 +24,10 @@ export type TArticleDto = Omit<
 export type TArticleDocument = Document &
   Omit<
     TArticle,
-    "_id" | "createBy" | "updateBy" | "createdAt" | "publishDate"
+    "_id" | "createBy" | "updateBy" | "createdAt" 
   > & {
     _id?: ObjectId;
     createBy?: ObjectId;
     updateBy?: ObjectId;
     updateAt?: Date;
-    publishDate?: Date;
   };

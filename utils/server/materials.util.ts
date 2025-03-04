@@ -19,11 +19,9 @@ const sanitizeMaterialsDtoCreate = (dto: TMaterialDto): TMaterialDto => {
 const validateMaterialsDtoCreate = (
   dto: TMaterialDto
 ): Record<keyof TMaterialDto, string> => {
-  console.log(" dto:", dto);
   const errors: Record<string, string> = {};
 
   const imgPath = validationUtil.validateExistence("imgPath", dto?.imgPath);
-  console.log(" imgPath:", imgPath);
   if (imgPath) errors.imgPath = imgPath;
 
   const linkErrorLength = validationUtil.validateStrLength(

@@ -7,7 +7,7 @@ export type TTestimony = {
   createBy?: TAuth;
   updateBy?: TAuth;
   updateAt?: string;
-  createdAt?: string;
+  createAt?: string;
 };
 
 export type TTestimonyDto = Omit<

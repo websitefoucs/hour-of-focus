@@ -9,12 +9,14 @@ const sanitizeArticleDtoCreate = (dto: TArticleDto): TArticleDto => {
   const publishDate = sanitizeUtil.SanitizedObjectField(dto?.publishDate) || "";
   const publishPlace =
     sanitizeUtil.SanitizedObjectField(dto?.publishPlace) || "";
+  const createBy = sanitizeUtil.SanitizedObjectField(dto?.createBy) || "";
 
   return {
     link,
     preview,
     publishDate,
     publishPlace,
+    createBy,
   };
 };
 const validateArticleDtoCreate = (
@@ -44,6 +46,18 @@ const validateArticleDtoCreate = (
     dto?.publishPlace
   );
   if (publishPlaceErrorLength) errors.publishPlace = publishPlaceErrorLength;
+  const publishDateError = validationUtil.validateExistence(
+    "publishDate",
+    dto?.publishDate
+  );
+  if (publishDateError) errors.publishDate = publishDateError;
+
+  const publishDateErrorLength = validationUtil.validateStrLength(
+    "publishDate",
+    2,
+    dto?.publishDate
+  );
+  if (publishDateErrorLength) errors.publishDate = publishDateErrorLength;
 
   const previewError = validationUtil.validateExistence(
     "preview",

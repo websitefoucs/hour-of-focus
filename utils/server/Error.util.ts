@@ -33,7 +33,14 @@ export class AppError extends Error {
     isOperational: boolean = true,
     validationErrors?: Record<string, string>
   ): AppError {
-    return new AppError(message, statusCode, isOperational, validationErrors);
+    const newError = new AppError(
+      message,
+      statusCode,
+      isOperational,
+      validationErrors
+    );
+    console.error(newError);
+    return newError;
   }
 
   public static handleResponse(error: unknown) {

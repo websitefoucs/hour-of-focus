@@ -1,4 +1,4 @@
-import ArticlesOnUs from "./Articles/ArticlesOnUs";
+import ArticlesOnUs from "./Articles/ArticlesList";
 import CallToAction from "./CallToAction";
 import HomeHero from "./HomeHero/HomeHero";
 import Testimonies from "./Testimonies/Testimonies";

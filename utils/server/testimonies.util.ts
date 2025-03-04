@@ -13,6 +13,7 @@ const sanitizeTestimonyDtoCreate = (dto: TTestimonyDto): TTestimonyDto => {
 const validateTestimonyDtoCreate = (
   dto: TTestimonyDto
 ): Record<keyof TTestimonyDto, string> => {
+  console.log(" dto:", dto)
   const errors: Record<string, string> = {};
 
   const textError = validationUtil.validateExistence("text", dto?.text);

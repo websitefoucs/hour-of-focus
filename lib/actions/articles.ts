@@ -11,6 +11,7 @@ import { TArticle, TArticleDocument, TArticleDto } from "@/types/articles.type";
 import { AppError } from "@/utils/server/Error.util";
 import { authServerUtils } from "@/utils/server/auth.util";
 import { ArticlesServerUtils } from "@/utils/server/articles.util";
+import { redirect } from "next/navigation";
 
 export async function createArticle(
   prevState: TFormState<TArticleDto>,
@@ -35,7 +36,7 @@ export async function createArticle(
       preview,
       link,
       publishPlace,
-      publishDate: new Date(publishDate),
+      publishDate,
       createBy: new ObjectId(createBy),
     });
 
@@ -43,13 +44,8 @@ export async function createArticle(
       throw AppError.create("Failed to create Article");
     }
 
-    revalidatePath("/admin/@articles");
-    revalidatePath(`/@articles`);
-
-    return {
-      message: "Article created successfully",
-      data: dto,
-    };
+    revalidatePath("/admin/articles");
+    revalidatePath(`/`);
   } catch (error) {
     const err = AppError.handleResponse(error);
     return {
@@ -58,6 +54,7 @@ export async function createArticle(
       data: dto,
     };
   }
+  redirect("/admin/articles");
 }
 
 export async function updateArticle(
@@ -94,7 +91,7 @@ export async function updateArticle(
           preview,
           link,
           publishPlace,
-          publishDate: new Date(publishDate),
+          publishDate,
           _id: new ObjectId(_id),
           updateBy: new ObjectId(updateBy),
           createBy: new ObjectId(createBy),
@@ -107,9 +104,8 @@ export async function updateArticle(
       throw AppError.create("Failed to update Article");
     }
 
-    revalidatePath("/admin/@articles");
-    revalidatePath(`/@articles`);
-
+    revalidatePath("/admin/articles");
+    revalidatePath(`/`);
     return { data: dto, message: "Article updated successfully" };
   } catch (error) {
     const err = AppError.handleResponse(error);
@@ -119,6 +115,8 @@ export async function updateArticle(
       data: dto,
     };
   }
+
+  redirect("/admin/articles");
 }
 
 export async function getArticles(isFull?: boolean): Promise<TArticle[]> {
@@ -164,12 +162,7 @@ export async function getArticles(isFull?: boolean): Promise<TArticle[]> {
           preview: 1,
           link: 1,
           publishPlace: 1,
-          publishDate: {
-            $dateToString: {
-              date: { $toDate: "$publishDate" },
-              format: "%Y-%m-%d %H:%M:%S",
-            },
-          },
+          publishDate: 1,
           createBy: {
             _id: { $toString: "$createBy._id" },
             username: 1,
@@ -210,7 +203,8 @@ export async function getArticles(isFull?: boolean): Promise<TArticle[]> {
     }
 
     const collection = await getCollection<TArticleDocument>("articles");
-    return (await collection.aggregate<TArticle>(pipeline).toArray()) || [];
+    const articles = await collection.aggregate<TArticle>(pipeline).toArray();
+    return articles||[];
   } catch (error) {
     AppError.create(`Failed to get Articles -> ${error}`);
     return [];
@@ -310,9 +304,8 @@ export async function deleteArticle(id: string) {
       throw AppError.create("Failed to delete Article");
     }
 
-    revalidatePath("/admin/@articles");
-    revalidatePath(`/@articles`);
-    return acknowledged;
+    revalidatePath("/admin/articles");
+    revalidatePath(`/`);
   } catch (error) {
     throw AppError.create(`Failed to delete Article -> ${error}`);
   }

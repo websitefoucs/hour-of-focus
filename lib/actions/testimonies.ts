@@ -1,6 +1,7 @@
 "use server";
 //Next
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 //DB
 import { ObjectId } from "mongodb";
 import { getCollection } from "@/lib/mongoClient";
@@ -44,13 +45,8 @@ export async function createTestimony(
       throw AppError.create("Failed to create Testimony");
     }
 
-    revalidatePath("/admin/@testimonies");
-    revalidatePath(`/@testimonies`);
-
-    return {
-      message: "Testimony created successfully",
-      data: dto,
-    };
+    revalidatePath("/admin/testimonies");
+    revalidatePath(`/`);
   } catch (error) {
     const err = AppError.handleResponse(error);
     return {
@@ -59,6 +55,8 @@ export async function createTestimony(
       data: dto,
     };
   }
+
+  redirect("/admin/testimonies");
 }
 
 export async function updateTestimony(
@@ -98,10 +96,8 @@ export async function updateTestimony(
       throw AppError.create("Failed to update Testimony");
     }
 
-    revalidatePath("/admin/@testimonies");
-    revalidatePath(`/@testimonies`);
-
-    return { data: dto, message: "Testimony updated successfully" };
+    revalidatePath("/admin/testimonies");
+    revalidatePath(`/`);
   } catch (error) {
     const err = AppError.handleResponse(error);
     return {
@@ -110,6 +106,7 @@ export async function updateTestimony(
       data: dto,
     };
   }
+  redirect("/admin/testimonies");
 }
 
 export async function getTestimonies(isFull?: boolean): Promise<TTestimony[]> {
@@ -161,7 +158,7 @@ export async function getTestimonies(isFull?: boolean): Promise<TTestimony[]> {
             _id: { $toString: "$createBy._id" },
             username: 1,
           },
-          createdAt: {
+          createAt: {
             $dateToString: {
               date: { $toDate: "$_id" },
               format: "%Y-%m-%d %H:%M:%S",
@@ -267,7 +264,7 @@ export async function getTestimony(id: string): Promise<TTestimonyDocument> {
   }
 }
 
-export async function deletetestimonies(id: string) {
+export async function deleteTestimony(id: string) {
   try {
     const collection = await getCollection<TTestimonyDocument>("testimonies");
     const { acknowledged } = await collection.deleteOne({
@@ -277,9 +274,8 @@ export async function deletetestimonies(id: string) {
       throw AppError.create("Failed to delete Testimony");
     }
 
-    revalidatePath("/admin/@testimonies");
-    revalidatePath(`/@testimonies`);
-    return acknowledged;
+    revalidatePath("/admin/testimonies");
+    revalidatePath(`/`);
   } catch (error) {
     throw AppError.create(`Failed to delete Testimony -> ${error}`);
   }
