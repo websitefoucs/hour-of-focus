@@ -1,6 +1,6 @@
 import ItemList from "@/components/UI/ItemList";
 import FaqPreview from "../Preview/FaqPreview";
-import { TFaq } from "@/types/faq";
+import { TFaq } from "@/types/faqs";
 
 interface FaqsListProps {
   faqs: TFaq[];

@@ -4,9 +4,9 @@ import ErrorLabel from "@/components/UI/ErrorLabel";
 import Input from "@/components/UI/Input";
 import Label from "@/components/UI/Label";
 import TextArea from "@/components/UI/TextArea";
-import { createFaq, updateFaq } from "@/lib/actions/faq";
+import { createFaq, updateFaq } from "@/lib/actions/faqs";
 import { TFormState } from "@/types/app.type";
-import { TFaqDto } from "@/types/faq";
+import { TFaqDto } from "@/types/faqs";
 import { useActionState } from "react";
 
 interface FaqEditProps {
@@ -28,13 +28,14 @@ export default function FaqEdit({ faqToEdit }: FaqEditProps) {
     faqToEdit?._id ? updateFaq : createFaq,
     { ...initialState, data: faqToEdit }
   );
+  console.log(" state:", state)
 
   const isStudents = state?.data?.faqType === "students";
 
   return (
     <form
       action={fromAction}
-      className="p-2 border rounded flex flex-col gap-2 h-full"
+      className="p-4 border rounded flex flex-col gap-2 h-full bg-mainWhite-50"
     >
       <Input type="hidden" name="_id" defaultValue={state?.data?._id} />
       <Input
@@ -72,7 +73,7 @@ export default function FaqEdit({ faqToEdit }: FaqEditProps) {
         id="question-edit"
         defaultValue={state?.data?.question}
         divStyle="flex flex-col gap-2 bg-inherit h-[calc(35%-1rem)]"
-        className="bg-inherit shadow-border rounded p-2 h-[calc(100%-2rem)] resize-none overflow-auto scrollbar-hidden"
+        className="bg-inherit border rounded p-2 h-[calc(100%-2rem)] resize-none overflow-auto scrollbar-hidden"
       >
         <Label htmlFor="question-edit">שאלה</Label>
         <ErrorLabel htmlFor="question-edit" error={state?.errors?.question} />
@@ -83,7 +84,7 @@ export default function FaqEdit({ faqToEdit }: FaqEditProps) {
         id="answer-edit"
         defaultValue={state?.data?.answer}
         divStyle="flex flex-col gap-2 bg-inherit  h-[calc(65%-1rem)]"
-        className="bg-inherit shadow-border rounded p-2 h-[calc(100%-2rem)] resize-none overflow-auto scrollbar-hidden"
+        className="bg-inherit border rounded p-2 h-[calc(100%-2rem)] resize-none overflow-auto scrollbar-hidden"
       >
         <Label htmlFor="question-edit">תשובה</Label>
         <ErrorLabel htmlFor="question-edit" error={state.errors?.answer} />

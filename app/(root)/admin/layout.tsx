@@ -5,9 +5,9 @@ interface Props {
 }
 export default function AdminLayout({ children }: Props) {
   return (
-    <section className="w-full min-h-screen p-4 flex flex-col items-center">
+    <section className="w-full min-h-screen p-8 px-16 gap-8 flex flex-col items-center">
       <DashboardNav />
-      <div className="flex">{children}</div>
+      {children}
     </section>
   );
 }

@@ -2,8 +2,9 @@ import { jwtVerify, SignJWT } from "jose";
 import { cookies } from "next/headers";
 import { sanitizeUtil } from "./sanitize.util";
 import { validationUtil } from "../validation.util";
-import { AppError } from "./Error.util.server";
+import { AppError } from "./Error.util";
 import { TAuthDto, TJWTPayload } from "@/types/auth.type";
+import { isValidObjectId } from "@/lib/mongoClient";
 
 const formDataToDto = (
   formData: FormData
@@ -107,6 +108,13 @@ const verifyAuth = async () => {
   const decodedToken = await decodeToken(token);
   const userId = decodedToken?.userId;
   if (!userId) {
+    throw AppError.create("Unauthorized", 401, true, {
+      message: "Unauthorized",
+    });
+  }
+
+  const validObjectId = isValidObjectId(userId);
+  if (!validObjectId) {
     throw AppError.create("Unauthorized", 401, true, {
       message: "Unauthorized",
     });

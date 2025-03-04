@@ -1,11 +1,7 @@
-import FaqAdminIndex from "@/components/Admin/FAQ/FaqAdminIndex";
-import { getFaqs } from "@/lib/actions/faq";
+import FaqAdminIndex from "@/components/Admin/AdminFaqs/FaqAdminIndex";
+import { getFaqs } from "@/lib/actions/faqs";
 
 export default async function FaqsPage() {
-  const faqs = await getFaqs({});
-  return (
-    <>
-      <FaqAdminIndex faqs={faqs} />
-    </>
-  );
+  const faqs = await getFaqs({ isFull: true });
+  return <FaqAdminIndex faqs={faqs} />;
 }

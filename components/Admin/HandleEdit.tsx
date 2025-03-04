@@ -1,23 +1,28 @@
-import Form, { FormProps } from "next/form";
-import Input from "../UI/Input";
-import Button from "../UI/Button";
+import React, { ComponentType } from "react";
+import Model from "../UI/Model";
 
-interface HandleEditProps extends FormProps {
-  itemId: string;
-  itemType: "faq" | "";
-  btnText: string;
+interface HandleEditProps<T extends { _id?: string }> {
+  item: T;
+  EditCmp: ComponentType<{ item: T }>;
 }
-export default function HandleEdit({
-  itemId,
-  itemType,
-  btnText,
-  ...props
-}: HandleEditProps) {
+export default function HandleEdit<T extends { _id?: string }>({
+  item,
+  EditCmp,
+}: HandleEditProps<T>) {
+  const { _id } = item;
+
+  const btnText = _id ? "ערוך" : "הוסף";
   return (
-    <Form {...props}>
-      <Input name="id" hidden className="hidden" defaultValue={itemId} />
-      <Input name="type" hidden className="hidden" defaultValue={itemType} />
-      <Button type="submit">{btnText}</Button>
-    </Form>
+    <Model
+      withOverlay
+      button={{
+        props: {
+          className:
+            "bg-inherit border-2 w-20 border-mainOrange-700 text-mainOrange-700 hover:shadow-mainOrange-800 hover:text-mainOrange-800 rounded-base flex  justify-center items-center",
+        },
+        content: btnText,
+      }}
+      model={<EditCmp item={item} />}
+    ></Model>
   );
 }

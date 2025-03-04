@@ -1,33 +1,34 @@
 import { Document, ObjectId } from "mongodb";
 import { TAuth } from "./auth.type";
 
-export type TMaterial = {
+export type TArticle = {
   _id?: string;
-  imgPath?: string;
+  publishDate: string;
   link: string;
-  subject: string;
+  preview: string;
+  publishPlace: string;
   createBy?: TAuth;
   updateBy?: TAuth;
-  updatedAt?: string;
+  updateAt?: string;
   createdAt?: string;
 };
 
-export type TMaterialDto = Omit<
-  TMaterial,
+export type TArticleDto = Omit<
+  TArticle,
   "createBy" | "updateBy" | "createdAt"
 > & {
   createBy?: string;
   updateBy?: string;
 };
 
-export type TMaterialDocument = Document &
-  Omit<TMaterial, "_id" | "createBy" | "updateBy" | "createdAt"> & {
+export type TArticleDocument = Document &
+  Omit<
+    TArticle,
+    "_id" | "createBy" | "updateBy" | "createdAt" | "publishDate"
+  > & {
     _id?: ObjectId;
     createBy?: ObjectId;
     updateBy?: ObjectId;
-    updatedAt?: Date;
+    updateAt?: Date;
+    publishDate?: Date;
   };
-
-export type TMaterialFilter = {
-  isFull?: boolean;
-};

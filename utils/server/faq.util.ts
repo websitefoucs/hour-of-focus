@@ -1,7 +1,7 @@
 import { sanitizeUtil } from "./sanitize.util";
 import { validationUtil } from "../validation.util";
-import { AppError } from "./Error.util.server";
-import { FAQ_TYPE, TFaqDto, TFaqType } from "@/types/faq";
+import { AppError } from "./Error.util";
+import { FAQ_TYPE, TFaqDto, TFaqType } from "@/types/faqs";
 
 const sanitizeFaqDtoCreate = (dto: TFaqDto): TFaqDto => {
   const answer = sanitizeUtil.SanitizedObjectField(dto?.answer) || "";

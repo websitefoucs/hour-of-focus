@@ -1,6 +1,5 @@
 "use server";
 //Next
-import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 //DB
 import { ObjectId } from "mongodb";
@@ -8,87 +7,85 @@ import { getCollection } from "@/lib/mongoClient";
 //Types
 import { TFormState } from "@/types/app.type";
 import {
-  TMaterial,
-  TMaterialDocument,
-  TMaterialDto,
-  TMaterialFilter,
-} from "@/types/materials.type";
+  TTestimony,
+  TTestimonyDocument,
+  TTestimonyDto,
+} from "@/types/testimonies.type";
 //Utils
-import { materialsServerUtils } from "@/utils/server/materials.util";
 import { AppError } from "@/utils/server/Error.util";
 import { authServerUtils } from "@/utils/server/auth.util";
+import { TestimoniesServerUtils } from "@/utils/server/testimonies.util";
 
-export async function createMaterial(
-  prevState: TFormState<TMaterialDto>,
+export async function createTestimony(
+  prevState: TFormState<TTestimonyDto>,
   formData: FormData
-): Promise<TFormState<TMaterialDto>> {
+): Promise<TFormState<TTestimonyDto>> {
   let dto;
   try {
     const userId = await authServerUtils.verifyAuth();
 
-    const data = materialsServerUtils.fromDataToDto(formData);
+    const data = TestimoniesServerUtils.fromDataToDto(formData);
 
-    dto = materialsServerUtils.sanitizeMaterialsDtoCreate({
+    dto = TestimoniesServerUtils.sanitizeTestimonyDtoCreate({
       ...data,
       createBy: userId,
     });
-    console.log(" dto:", dto)
 
-    materialsServerUtils.validateMaterialsDtoCreate(dto);
-    const { createBy, imgPath, link, subject } = dto;
+    TestimoniesServerUtils.validateTestimonyDtoCreate(dto);
+    const { createBy, text } = dto;
 
-    const collection = await getCollection<TMaterialDocument>("materials");
+    const collection = await getCollection<TTestimonyDocument>("testimonies");
     const { acknowledged, insertedId } = await collection.insertOne({
-      subject,
-      link,
-      imgPath,
+      text,
       createBy: new ObjectId(createBy),
     });
 
     if (!acknowledged || !insertedId) {
-      throw AppError.create("Failed to create Material");
+      throw AppError.create("Failed to create Testimony");
     }
 
-    revalidatePath("/admin/materials");
-    revalidatePath(`/materials`);
+    revalidatePath("/admin/@testimonies");
+    revalidatePath(`/@testimonies`);
+
+    return {
+      message: "Testimony created successfully",
+      data: dto,
+    };
   } catch (error) {
     const err = AppError.handleResponse(error);
     return {
-      errors: err.errors as Record<keyof TMaterialDto, string>,
+      errors: err.errors as Record<keyof TTestimonyDto, string>,
       message: err.message,
       data: dto,
     };
   }
-
-  redirect("/admin/materials");
 }
 
-export async function updateMaterial(
-  prevState: TFormState<TMaterialDto>,
+export async function updateTestimony(
+  prevState: TFormState<TTestimonyDto>,
   formData: FormData
-): Promise<TFormState<TMaterialDto>> {
+): Promise<TFormState<TTestimonyDto>> {
   let dto;
   try {
     const userId = await authServerUtils.verifyAuth();
 
-    const data = materialsServerUtils.fromDataToDto(formData);
+    const data = TestimoniesServerUtils.fromDataToDto(formData);
 
-    dto = materialsServerUtils.sanitizeMaterialsDtoUpdate({
+    dto = TestimoniesServerUtils.sanitizeTestimonyDtoUpdate({
       ...data,
       updateBy: userId,
     });
 
-    materialsServerUtils.validateMaterialsDtoUpdate(dto);
-    const { createBy, imgPath, link, subject, updateBy, _id } = dto;
+    TestimoniesServerUtils.validateTestimonyDtoUpdate(dto);
+    const { createBy, text, _id, updateBy } = dto;
 
-    const collection = await getCollection<TMaterialDocument>("materials");
+    const collection = await getCollection<TTestimonyDocument>("testimonies");
     const { modifiedCount } = await collection.updateOne(
       { _id: new ObjectId(_id) },
       {
         $set: {
-          subject,
-          link,
-          imgPath,
+          text,
+
           _id: new ObjectId(_id),
           updateBy: new ObjectId(updateBy),
           createBy: new ObjectId(createBy),
@@ -98,29 +95,26 @@ export async function updateMaterial(
     );
 
     if (!modifiedCount) {
-      throw AppError.create("Failed to update Materials");
+      throw AppError.create("Failed to update Testimony");
     }
 
-    revalidatePath("/admin/@materials");
-    revalidatePath(`/materials`);
+    revalidatePath("/admin/@testimonies");
+    revalidatePath(`/@testimonies`);
+
+    return { data: dto, message: "Testimony updated successfully" };
   } catch (error) {
     const err = AppError.handleResponse(error);
     return {
-      errors: err.errors as Record<keyof TMaterialDto, string>,
+      errors: err.errors as Record<keyof TTestimonyDto, string>,
       message: err.message,
       data: dto,
     };
   }
-  redirect("/admin/materials");
 }
 
-export async function getMaterials(
-  filter: TMaterialFilter
-): Promise<TMaterial[]> {
+export async function getTestimonies(isFull?: boolean): Promise<TTestimony[]> {
   try {
     const pipeline = [];
-
-    const { isFull } = filter;
 
     if (isFull) {
       pipeline.push({
@@ -158,9 +152,7 @@ export async function getMaterials(
       pipeline.push({
         $project: {
           _id: { $toString: "$_id" },
-          imgPath: 1,
-          link: 1,
-          subject: 1,
+          text: 1,
           createBy: {
             _id: { $toString: "$createBy._id" },
             username: 1,
@@ -187,31 +179,60 @@ export async function getMaterials(
       pipeline.push({
         $project: {
           _id: { $toString: "$_id" },
-          imgPath: 1,
-          link: 1,
-          subject: 1,
+          text: 1,
         },
       });
     }
-    const collection = await getCollection<TMaterialDocument>("materials");
-    return (await collection.aggregate<TMaterial>(pipeline).toArray()) || [];
+
+    const collection = await getCollection<TTestimonyDocument>("testimonies");
+    return (await collection.aggregate<TTestimony>(pipeline).toArray()) || [];
   } catch (error) {
-    AppError.create(`Failed to get Materials -> ${error}`);
+    AppError.create(`Failed to get Testimony -> ${error}`);
     return [];
   }
 }
 
-export async function getMaterialToEdit(id: string): Promise<TMaterialDto> {
+export async function getTestimony(id: string): Promise<TTestimonyDocument> {
   try {
-    const collection = await getCollection<TMaterialDocument>("materials");
+    const collection = await getCollection<TTestimonyDocument>("testimonies");
     const pipeline = [];
     pipeline.push({ $match: { _id: new ObjectId(id) } });
     pipeline.push({
+      $lookup: {
+        from: "users",
+        localField: "createBy",
+        foreignField: "_id",
+        as: "createBy",
+      },
+    });
+
+    pipeline.push({
+      $unwind: {
+        path: "$createBy",
+        preserveNullAndEmptyArrays: true,
+      },
+    });
+
+    pipeline.push({
+      $lookup: {
+        from: "users",
+        localField: "updatedBy",
+        foreignField: "_id",
+        as: "updatedBy",
+      },
+    });
+
+    pipeline.push({
+      $unwind: {
+        path: "$updatedBy",
+        preserveNullAndEmptyArrays: true,
+      },
+    });
+
+    pipeline.push({
       $project: {
         _id: { $toString: "$_id" },
-        imgPath: 1,
-        link: 1,
-        subject: 1,
+        text: 1,
         createBy: {
           _id: { $toString: "$createBy._id" },
           username: 1,
@@ -234,32 +255,32 @@ export async function getMaterialToEdit(id: string): Promise<TMaterialDto> {
         },
       },
     });
-    const dto = await collection.aggregate<TMaterialDto>(pipeline).next();
+    const dto = await collection.aggregate<TTestimonyDocument>(pipeline).next();
 
     if (!dto) {
-      throw AppError.create("Material not found");
+      throw AppError.create("Testimony not found");
     }
 
     return dto;
   } catch (error) {
-    throw AppError.create(`Failed to get Materials by ID -> ${error}`);
+    throw AppError.create(`Failed to get Testimony by ID -> ${error}`);
   }
 }
 
-export async function deleteMaterial(id: string) {
+export async function deletetestimonies(id: string) {
   try {
-    await authServerUtils.verifyAuth();
-    const collection = await getCollection<TMaterialDocument>("materials");
+    const collection = await getCollection<TTestimonyDocument>("testimonies");
     const { acknowledged } = await collection.deleteOne({
       _id: new ObjectId(id),
     });
     if (!acknowledged) {
-      throw AppError.create("Failed to delete Materials");
+      throw AppError.create("Failed to delete Testimony");
     }
-  } catch (error) {
-    throw AppError.create(`Failed to delete Materials -> ${error}`);
-  }
 
-  revalidatePath("/admin/@materials");
-  revalidatePath(`/materials`);
+    revalidatePath("/admin/@testimonies");
+    revalidatePath(`/@testimonies`);
+    return acknowledged;
+  } catch (error) {
+    throw AppError.create(`Failed to delete Testimony -> ${error}`);
+  }
 }

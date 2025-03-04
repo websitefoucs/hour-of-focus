@@ -1,4 +1,4 @@
-import { TFaqType } from "@/types/faq";
+import { TFaqType } from "@/types/faqs";
 import LinkCmp from "../UI/LinkCmp";
 
 interface FaqProps {

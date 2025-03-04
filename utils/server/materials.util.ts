@@ -1,25 +1,29 @@
 import { sanitizeUtil } from "./sanitize.util";
 import { validationUtil } from "../validation.util";
-import { AppError } from "./Error.util.server";
-import { TMaterialsDto } from "@/types/materials.type";
+import { AppError } from "./Error.util";
+import { TMaterialDto } from "@/types/materials.type";
 
-const sanitizeMaterialsDtoCreate = (dto: TMaterialsDto): TMaterialsDto => {
+const sanitizeMaterialsDtoCreate = (dto: TMaterialDto): TMaterialDto => {
   const imgPath = sanitizeUtil.SanitizedObjectField(dto?.imgPath) || "";
   const link = sanitizeUtil.SanitizedObjectField(dto?.link) || "";
   const subject = sanitizeUtil.SanitizedObjectField(dto?.subject) || "";
+  const createBy = sanitizeUtil.SanitizedObjectField(dto?.createBy) || "";
 
   return {
     imgPath,
     link,
     subject,
+    createBy,
   };
 };
 const validateMaterialsDtoCreate = (
-  dto: TMaterialsDto
-): Record<keyof TMaterialsDto, string> => {
+  dto: TMaterialDto
+): Record<keyof TMaterialDto, string> => {
+  console.log(" dto:", dto);
   const errors: Record<string, string> = {};
 
   const imgPath = validationUtil.validateExistence("imgPath", dto?.imgPath);
+  console.log(" imgPath:", imgPath);
   if (imgPath) errors.imgPath = imgPath;
 
   const linkErrorLength = validationUtil.validateStrLength(
@@ -27,7 +31,7 @@ const validateMaterialsDtoCreate = (
     2,
     dto?.link
   );
-  if (linkErrorLength) errors.answer = linkErrorLength;
+  if (linkErrorLength) errors.link = linkErrorLength;
 
   const subjectError = validationUtil.validateExistence(
     "subject",
@@ -40,7 +44,7 @@ const validateMaterialsDtoCreate = (
     dto?.subject
   );
 
-  if (subjectErrorLength) errors.question = subjectErrorLength;
+  if (subjectErrorLength) errors.subject = subjectErrorLength;
 
   const createByError = validationUtil.validateExistence(
     "createBy",
@@ -54,7 +58,7 @@ const validateMaterialsDtoCreate = (
   return errors;
 };
 
-const sanitizeMaterialsDtoUpdate = (dto: TMaterialsDto): TMaterialsDto => {
+const sanitizeMaterialsDtoUpdate = (dto: TMaterialDto): TMaterialDto => {
   const updateBy = sanitizeUtil.SanitizedObjectField(dto?.updateBy) || "";
   const _id = sanitizeUtil.SanitizedObjectField(dto?._id) || "";
 
@@ -66,8 +70,8 @@ const sanitizeMaterialsDtoUpdate = (dto: TMaterialsDto): TMaterialsDto => {
 };
 
 const validateMaterialsDtoUpdate = (
-  dto: TMaterialsDto
-): Record<keyof TMaterialsDto, string> => {
+  dto: TMaterialDto
+): Record<keyof TMaterialDto, string> => {
   const errors: Record<string, string> = {};
 
   validateMaterialsDtoCreate(dto);
@@ -89,7 +93,7 @@ const validateMaterialsDtoUpdate = (
   return errors;
 };
 
-const fromDataToDto = (formData: FormData): TMaterialsDto => {
+const fromDataToDto = (formData: FormData): TMaterialDto => {
   const imgPath = formData.get("imgPath") as string;
   const link = formData.get("link") as string;
   const _id = formData.get("_id") as string;
@@ -107,7 +111,7 @@ const fromDataToDto = (formData: FormData): TMaterialsDto => {
   };
 };
 
-const getEmpty = (): TMaterialsDto => {
+const getEmpty = (): TMaterialDto => {
   return {
     imgPath: "",
     link: "",

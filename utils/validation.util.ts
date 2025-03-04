@@ -45,7 +45,7 @@ const validateExistence = (
   filedName: string,
   value: unknown
 ): string | null => {
-  if (value === null || value === undefined) {
+  if (value === null || value === undefined || value === "") {
     return `${filedName} is required.`;
   }
   return null;

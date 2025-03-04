@@ -1,17 +1,17 @@
-import { TMaterials } from "@/types/materials.type";
+import { TMaterial } from "@/types/materials.type";
 import Image from "next/image";
 import LinkCmp from "../UI/LinkCmp";
 import { ArrowSvg } from "../UI/icons/Icons";
 
 interface MaterialItemProps {
-  material: TMaterials;
+  material: TMaterial;
 }
 export default function MaterialItem({ material }: MaterialItemProps) {
   const { imgPath, subject, link } = material;
 
   const text = `מאגר חומרי לימוד - ${subject}`;
   return (
-    <li className="flex flex-col gap-2 h-80 border-t-8 border-mainGold-500 rounded-base shadow-[0px_4px_8px_#00000026]">
+    <>
       <Image
         src={imgPath || ""}
         alt={subject}
@@ -26,6 +26,6 @@ export default function MaterialItem({ material }: MaterialItemProps) {
           <ArrowSvg />
         </LinkCmp>
       </div>
-    </li>
+    </>
   );
 }

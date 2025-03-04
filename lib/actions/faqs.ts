@@ -6,12 +6,12 @@ import { revalidatePath } from "next/cache";
 import { ObjectId } from "mongodb";
 import { getCollection, isValidObjectId } from "@/lib/mongoClient";
 //Types
-import { TFaq, TFaqDocument, TFaqDto, TFaqFilter } from "@/types/faq";
+import { TFaq, TFaqDocument, TFaqDto, TFaqFilter } from "@/types/faqs";
 import { TFormState } from "@/types/app.type";
 //Utils
-import { AppError } from "@/utils/server/Error.util.server";
-import { authServerUtils } from "@/utils/server/auth.util.server";
-import { faqServerUtils } from "@/utils/server/faq.util.server";
+import { AppError } from "@/utils/server/Error.util";
+import { authServerUtils } from "@/utils/server/auth.util";
+import { faqServerUtils } from "@/utils/server/faq.util";
 
 export async function createFaq(
   prevState: TFormState<TFaqDto>,
@@ -54,7 +54,7 @@ export async function createFaq(
     };
   }
 
-  redirect("/admin");
+  redirect("/admin/faqs");
 }
 
 export async function updateFaq(
@@ -93,7 +93,7 @@ export async function updateFaq(
       throw AppError.create("Failed to update FAQ");
     }
 
-    revalidatePath("/admin/@faqs");
+    revalidatePath("/admin/faqs");
     revalidatePath(`/faqs/${faqType}`);
   } catch (error) {
     const err = AppError.handleResponse(error);
@@ -103,7 +103,7 @@ export async function updateFaq(
       data: dto,
     };
   }
-  redirect("/admin");
+  redirect("/admin/faqs");
 }
 
 export async function getFaqs(filter: TFaqFilter): Promise<TFaq[]> {
@@ -231,8 +231,10 @@ export async function getFaqToEdit(id: string): Promise<TFaqDto> {
   }
 }
 
-export async function deleteFaq(id: string) {
+export async function deleteFaq(id: string, type?: string) {
   try {
+    await authServerUtils.verifyAuth();
+
     const collection = await getCollection<TFaqDocument>("faqs");
     const { acknowledged } = await collection.deleteOne({
       _id: new ObjectId(id),
@@ -240,9 +242,9 @@ export async function deleteFaq(id: string) {
     if (!acknowledged) {
       throw AppError.create("Failed to delete FAQ");
     }
-
-    return acknowledged;
   } catch (error) {
     throw AppError.create(`Failed to delete FAQ -> ${error}`);
   }
+  revalidatePath("/admin/faqs");
+  revalidatePath(`/faqs/${type}`);
 }

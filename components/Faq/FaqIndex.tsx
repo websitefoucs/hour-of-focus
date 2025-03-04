@@ -1,4 +1,4 @@
-import { TFaq } from "@/types/faq";
+import { TFaq } from "@/types/faqs";
 import ItemList from "../UI/ItemList";
 import FaqItem from "./FaqItem";
 import FaqSwitch from "./FaqSwitch";

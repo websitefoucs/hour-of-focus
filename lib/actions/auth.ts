@@ -1,11 +1,11 @@
 "use server";
 import { TAuth, TUserDocument, TAuthDto } from "@/types/auth.type";
 import { getCollection } from "../../lib/mongoClient";
-import { AppError } from "@/utils/server/Error.util.server";
+import { AppError } from "@/utils/server/Error.util";
 import bcrypt from "bcrypt";
 import { cookies } from "next/headers";
 import { ObjectId } from "mongodb";
-import { authServerUtils } from "@/utils/server/auth.util.server";
+import { authServerUtils } from "@/utils/server/auth.util";
 import { redirect } from "next/navigation";
 import { TFormState } from "@/types/app.type";
 
