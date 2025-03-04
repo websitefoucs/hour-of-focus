@@ -29,11 +29,11 @@ export default function HomeHero() {
           מחברים בין תלמידים למתנדבים לשעה שבועית של למידה ממוקדת
         </p>
 
-        <nav className="flex flex-col gap-10 medium:gap-4 mobile:gap-2 items-center py-12 medium:py-4 ">
+        <nav className="flex flex-col gap-10 medium:gap-4  items-center py-12 medium:py-4 ">
           <LinkCmp styleMode="full" styleSize="large" href={TEACHERS_SIGNUP}>
             הצטרפו כמורים
           </LinkCmp>
-          <div className="flex gap-8 medium:gap-4 mobile:gap-2 mobile-small:flex-col">
+          <div className="flex gap-8 medium:gap-4  mobile-small:flex-col">
             <LinkCmp
               styleMode="whiteBorder"
               styleSize="large"

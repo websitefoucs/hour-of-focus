@@ -5,7 +5,7 @@ export default function FollowUs() {
   return (
     <div className="w-56 flex flex-col footer-grid-three mobile:w-full mobile:flex-row mobile:justify-around mobile:justify-items-center">
       <div>
-        <h6 className="pb-2">עקבו אחרינו</h6>
+        <h6 className="pb-6">עקבו אחרינו</h6>
         <nav className="flex items-center gap-4 ">
           <LinkCmp href={"/linkedin"}>
             <LinkedinSvg className="w-6 h-6" />

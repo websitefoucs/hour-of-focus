@@ -20,7 +20,7 @@ export default function Header() {
       <NavLinks />
       <LinkCmp
         styleMode="full"
-        styleSize="small"
+        styleSize="large"
         href={CONTACT_US}
         className="mobile:hidden"
       >

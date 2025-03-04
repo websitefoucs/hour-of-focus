@@ -46,7 +46,7 @@ export default function MobileHeader() {
         },
       }}
       model={
-        <div className="bg-mainWhite-0 p-4 top-20 rounded-l-base absolute right-4 grid menu-model z-50">
+        <div className="bg-mainWhite-0 p-4 top-20 rounded-l-base absolute right-0 grid menu-model z-50">
           <NavLinks />
           <LinkCmp
             styleMode="full"

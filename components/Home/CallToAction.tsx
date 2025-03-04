@@ -13,8 +13,8 @@ export default function CallToAction() {
         הצטרפו עכשיו למשפחת המתנדבים שלנו
       </h3>
       <p>יחד נוכל לעשות שינוי משמעותי בחיי תלמידים רבים</p>
-      <div className="flex flex-col gap-6 mobile:gap-2 items-center pb-4">
-        <div className="flex gap-6 mobile:gap-2">
+      <div className="flex flex-col gap-6 mobile:gap-4 items-center pb-4">
+        <div className="flex gap-6 mobile:gap-4">
           <LinkCmp
             styleMode="full"
             styleSize="large"

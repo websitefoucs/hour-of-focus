@@ -32,9 +32,9 @@ export default function ItemsScroll<T>({
   };
 
   return (
-    <div className="flex items-center justify-between text-center p-4 mobile:w-full">
+    <div className="flex items-center justify-between text-center p-4 mobile:w-full z-50">
       <Button onClick={() => onClick(-1)}>
-        <DirectionSvg className="-rotate-90 h-16 w-16 mobile:h-10 mobile:w-10" />
+        <DirectionSvg className="-rotate-90 h-16 w-16 mobile:h-10 mobile:w-10 bg-inherit" />
       </Button>
 
       <div
@@ -46,7 +46,7 @@ export default function ItemsScroll<T>({
       </div>
 
       <Button onClick={() => onClick(1)}>
-        <DirectionSvg className="rotate-90 h-16 w-16 mobile:h-10 mobile:w-10" />
+        <DirectionSvg className="rotate-90 h-16 w-16 mobile:h-10 mobile:w-10 bg-inherit" />
       </Button>
     </div>
   );
