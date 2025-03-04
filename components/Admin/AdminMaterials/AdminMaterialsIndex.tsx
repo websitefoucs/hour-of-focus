@@ -1,7 +1,7 @@
 import { TMaterial } from "@/types/materials.type";
 import HandleEdit from "../HandleEdit";
 import { materialsServerUtils } from "@/utils/server/materials.util";
-import AdminMaterialsEdit from "./AdminMaterialsEdit";
+import AdminMaterialEdit from "./AdminMaterialEdit";
 import AdminMaterialsList from "./AdminMaterialsList";
 
 interface AdminMaterialsIndexProps {
@@ -16,7 +16,7 @@ export default function AdminMaterialsIndex({
         <h3 className="">חומרי לימוד למתנדבים</h3>
         <HandleEdit
           item={materialsServerUtils.getEmpty()}
-          EditCmp={({ item }) => <AdminMaterialsEdit materialToEdit={item} />}
+          EditCmp={({ item }) => <AdminMaterialEdit materialToEdit={item} />}
         />
       </div>
       <AdminMaterialsList materials={materials} />

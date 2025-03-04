@@ -23,7 +23,7 @@ const initialState: TFormState<TFaqDto> = {
     updateBy: "",
   },
 };
-export default function FaqEdit({ faqToEdit }: FaqEditProps) {
+export default function AdminFaqEdit({ faqToEdit }: FaqEditProps) {
   const [state, fromAction, isPending] = useActionState(
     faqToEdit?._id ? updateFaq : createFaq,
     { ...initialState, data: faqToEdit }

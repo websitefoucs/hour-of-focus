@@ -24,7 +24,7 @@ const initialState: TFormState<TMaterialDto> = {
     updateBy: "",
   },
 };
-export default function AdminMaterialsEdit({
+export default function AdminMaterialEdit({
   materialToEdit,
 }: AdminMaterialsEditProps) {
   const [state, fromAction, isPending] = useActionState(

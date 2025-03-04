@@ -1,14 +1,14 @@
 import { TFaq } from "@/types/faqs";
-import HandleEdit from "../../HandleEdit";
 import FaqItem from "@/components/Faq/FaqItem";
-import FaqEdit from "../Edit/FaqEdit";
 import DeleteBtn from "@/components/UI/DeleteBtn";
 import { deleteFaq } from "@/lib/actions/faqs";
+import HandleEdit from "../HandleEdit";
+import AdminFaqEdit from "./AdminFaqEdit";
 
 interface FaqPreviewProps {
   faq: TFaq;
 }
-export default function FaqPreview({ faq }: FaqPreviewProps) {
+export default function AdminFaqPreview({ faq }: FaqPreviewProps) {
   const { question, answer, createBy, createdAt, _id } = faq;
 
   return (
@@ -27,7 +27,7 @@ export default function FaqPreview({ faq }: FaqPreviewProps) {
         <HandleEdit
           item={faq}
           EditCmp={({ item }) => (
-            <FaqEdit
+            <AdminFaqEdit
               faqToEdit={{
                 ...item,
                 createBy: item?.createBy?._id,

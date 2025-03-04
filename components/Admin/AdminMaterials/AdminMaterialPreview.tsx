@@ -1,14 +1,14 @@
 import MaterialItem from "@/components/Materials/MaterialItem";
 import { TMaterial } from "@/types/materials.type";
 import HandleEdit from "../HandleEdit";
-import AdminMaterialsEdit from "./AdminMaterialsEdit";
+import AdminMaterialsEdit from "./AdminMaterialEdit";
 import DeleteBtn from "@/components/UI/DeleteBtn";
 import { deleteMaterial } from "@/lib/actions/materials";
 
 interface AdminMaterialsPreviewProps {
   material: TMaterial;
 }
-export default function AdminMaterialsPreview({
+export default function AdminMaterialPreview({
   material,
 }: AdminMaterialsPreviewProps) {
   const { imgPath, subject, link, createBy, createdAt, _id } = material;

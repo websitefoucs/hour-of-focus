@@ -1,4 +1,4 @@
-import FaqAdminIndex from "@/components/Admin/AdminFaqs/FaqAdminIndex";
+import FaqAdminIndex from "@/components/Admin/AdminFaqs/AdminFaqsIndex";
 import { getFaqs } from "@/lib/actions/faqs";
 
 export default async function FaqsPage() {
