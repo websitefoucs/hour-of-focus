@@ -1,30 +1,20 @@
 "use client";
 import ItemsScroll from "@/components/UI/ItemsScroll";
 import TestimonyItem from "./TestimonyItem";
+import { TTestimony } from "@/types/testimonies.type";
 
-export default function Testimonies() {
+interface TestimoniesProps {
+  testimonies: TTestimony[];
+}
+
+export default function Testimonies({ testimonies }: TestimoniesProps) {
   return (
-    <div className="px-40 medium:px-20 text-center mobile:px-0 ">
-      <h4 className="">
-        מה התלמידים שלנו מספרים?
-      </h4>
+    <div className="px-40 medium:px-20 text-center mobile:px-0 home-layout-testimonies">
+      <h4 className="">מה התלמידים שלנו מספרים?</h4>
       <ItemsScroll
-        items={testimoniesItems}
-        renderItem={(testimony) => <TestimonyItem testimony={testimony} />}
+        items={testimonies}
+        renderItem={(testimony) => <TestimonyItem testimony={testimony.text} />}
       />
     </div>
   );
 }
-
-const testimoniesItems = [
-  `“לא האמנתי כמה שהמתנדבים בפרויקט הזה ישפיעו על חיינו. הבן שלי התחיל להאמין בעצמו במתמטיקה, וזה שינה הכל! תודה מכל הלב ”`,
-  `“התרגשנו מאוד מהמסירות של המורה המתנדב שלנו. גם בתקופות לחוצות, הוא תמיד מצא זמן להיות שם בשבילנו!”`,
-  `“רק רצינו להגיד תודה ענקית! הפרויקט הזה לא רק שעזר לבן שלנו בלימודים, הוא גם נתן לו מוטיבציה להצליח ולהתקדם.”`,
-  `“הלמידה עם המתנדב הייתה חוויה מדהימה! השיעורים היו קבועים ומסודרים, והבן שלי פשוט התחיל ליהנות מלימודים בפעם הראשונה בחייו.”`,
-  `“בזכות התמיכה וההשקעה של הצוות שלכם, בתי הצליחה במבחן בצורה מדהימה. תודה על הכל!”`,
-  `“אני לא מאמינה איזו השפעה חיובית הייתה לפרויקט הזה על המשפחה שלנו. הילד שלי כבר לא חושש ממתמטיקה, להפך – הוא אפילו מחכה לשיעורים!”`,
-  `“שירות מדהים, תודה על הזכות להשתתף בפרויקט הזה. אנחנו אסירי תודה לכל מי שלוקח חלק בזה!”`,
-  `“לא רק שהבן שלי השתפר בלימודים, הוא גם רכש ביטחון עצמי וזה הדבר הכי חשוב. תודה שאתם כאן!”`,
-  `“למדנו כל כך הרבה בזכותכם. לא רק על המקצועות, אלא גם על חשיבות הנתינה והעזרה לאחרים. הפרויקט הזה מדהים!”`,
-  `“הבן שלי עלה להקבצה א׳ במתמטיקה בזכותכם! תודה על המסירות, האכפתיות והאהבה שאתם משקיעים.”`,
-];

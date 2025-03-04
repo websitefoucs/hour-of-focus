@@ -3,7 +3,7 @@ import ItemList from "../UI/ItemList";
 
 export default function WhoWeAre() {
   return (
-    <div className="w-full px-20 medium:px-10 mobile:px-4 py-20 medium:py-10 flex mobile:flex-col-reverse mobile:h-fit medium:gap-6 mobile:gap-6 justify-around">
+    <div className="w-full px-20 medium:px-10 mobile:px-4 py-20 medium:py-10 flex mobile:flex-col-reverse mobile:h-fit medium:gap-6 mobile:gap-6 justify-around home-layout-who-we-are">
       <ItemList<{ header: string; text: string; _id: undefined }>
         listStyle=" flex flex-col gap-12 w-[calc(50%-5rem)] mobile:w-full"
         items={items}

@@ -1,17 +1,13 @@
-import ArticlesOnUs from "./Articles/ArticlesList";
 import CallToAction from "./CallToAction";
 import HomeHero from "./HomeHero/HomeHero";
-import Testimonies from "./Testimonies/Testimonies";
 import WhoWeAre from "./WhoWeAre";
 
 export default function HomeIndex() {
   return (
-    <section className="w-full flex flex-col gap-20 mobile:gap-4">
+    <>
       <HomeHero />
       <WhoWeAre />
-      <Testimonies />
       <CallToAction />
-      <ArticlesOnUs />
-    </section>
+    </>
   );
 }

@@ -106,7 +106,6 @@ export async function updateArticle(
 
     revalidatePath("/admin/articles");
     revalidatePath(`/`);
-    return { data: dto, message: "Article updated successfully" };
   } catch (error) {
     const err = AppError.handleResponse(error);
     return {
@@ -143,15 +142,15 @@ export async function getArticles(isFull?: boolean): Promise<TArticle[]> {
       pipeline.push({
         $lookup: {
           from: "users",
-          localField: "updatedBy",
+          localField: "updateBy",
           foreignField: "_id",
-          as: "updatedBy",
+          as: "updateBy",
         },
       });
 
       pipeline.push({
         $unwind: {
-          path: "$updatedBy",
+          path: "$updateBy",
           preserveNullAndEmptyArrays: true,
         },
       });
@@ -167,11 +166,11 @@ export async function getArticles(isFull?: boolean): Promise<TArticle[]> {
             _id: { $toString: "$createBy._id" },
             username: 1,
           },
-          updatedBy: {
+          updateBy: {
             _id: { $toString: "$createBy._id" },
             username: 1,
           },
-          createdAt: {
+          createAt: {
             $dateToString: {
               date: { $toDate: "$_id" },
               format: "%Y-%m-%d %H:%M:%S",
@@ -192,19 +191,14 @@ export async function getArticles(isFull?: boolean): Promise<TArticle[]> {
           preview: 1,
           link: 1,
           publishPlace: 1,
-          publishDate: {
-            $dateToString: {
-              date: { $toDate: "$publishDate" },
-              format: "%Y-%m-%d %H:%M:%S",
-            },
-          },
+          publishDate: 1,
         },
       });
     }
 
     const collection = await getCollection<TArticleDocument>("articles");
     const articles = await collection.aggregate<TArticle>(pipeline).toArray();
-    return articles||[];
+    return articles || [];
   } catch (error) {
     AppError.create(`Failed to get Articles -> ${error}`);
     return [];

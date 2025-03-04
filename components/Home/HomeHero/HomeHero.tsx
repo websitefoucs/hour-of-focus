@@ -7,7 +7,7 @@ import { GINGER_KID } from "@/constants/images";
 
 export default function HomeHero() {
   return (
-    <div className="w-full grid grid-cols-1 grid-rows-1">
+    <div className="w-full grid grid-cols-1 grid-rows-1 home-layout-hero">
       <ImageOverlay>
         <Image
           fill

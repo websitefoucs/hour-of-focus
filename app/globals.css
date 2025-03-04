@@ -214,3 +214,24 @@ h6 {
     left: 14rem;
   }
 }
+
+.home-layout {
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(auto-fill, minmax(0, 1fr));
+}
+
+.home-layout-hero {
+  grid-area: 1/1/2/-1;
+}
+.home-layout-who-we-are {
+  grid-area: 2/1/3/-1;
+}
+.home-layout-testimonies {
+  grid-area: 3/1/4/-1;
+}
+.home-layout-call-top-action {
+  grid-area: 4/1/5/-1;
+}
+.home-layout-articles {
+  grid-area: 5/1/6/-1;
+}

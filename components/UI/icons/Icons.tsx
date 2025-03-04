@@ -78,7 +78,7 @@ export const GrayScaleSvg = () => {
 export const InvertContrastSvg = () => {
   return (
     <svg className="w-4 h-4 fill-white " viewBox="0 0 12 12">
-      <g clip-path="url(#clip0_296_522)">
+      <g clipPath="url(#clip0_296_522)">
         <path
           d="M6 10.875C8.69239 10.875 10.875 8.69239 10.875 6C10.875 3.30761 8.69239 1.125 6 1.125C3.30761 1.125 1.125 3.30761 1.125 6C1.125 8.69239 3.30761 10.875 6 10.875Z"
           stroke="#454545"
