@@ -22,7 +22,7 @@ export default function AboutJoinUs() {
           styleSize="large"
           href="/explain/volunteers"
         >
-          מידע נוסף לתלמידים
+          מידע נוסף למתנדבים
         </LinkCmp>
       </nav>
     </div>
