@@ -47,8 +47,8 @@ export default {
         44: "2.75rem",
       },
       screens: {
-        medium: { max: "1200px" },
-        mobile: { max: "830px" },
+        medium: { max: "1250px" },
+        mobile: { max: "850px" },
         "mobile-small": { max: "400px" },
       },
 

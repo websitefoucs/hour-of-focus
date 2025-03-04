@@ -8,7 +8,7 @@ export default function NavLinks() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex gap-10 items-center text-mainGray-800 nav-links mobile:hidden text-18">
+    <nav className="flex gap-10 medium:gap-4 items-center text-mainGray-800 nav-links mobile:hidden text-18">
       <NavLink href="/" isHighlighted={pathname === "/"}>
         דף הבית
       </NavLink>
@@ -20,7 +20,7 @@ export default function NavLinks() {
         <Model
           withOverlay={false}
           model={
-            <div className="absolute right-3/4 top-8 bg-mainWhite-0 p-4 rounded-base flex flex-col gap-2 shadow-border z-50">
+            <div className="absolute right-3/4 top-6 bg-mainWhite-0 p-4 rounded-base flex flex-col gap-2 shadow-border z-50 shadow-sm border">
               <NavLink
                 href="/explain/volunteers"
                 isHighlighted={pathname === "/explain/volunteers"}

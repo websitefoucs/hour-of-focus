@@ -13,7 +13,7 @@ export default function HomeHero() {
           fill
           src={GINGER_KID}
           alt="Home main image"
-          className="object-cover max-w-screen h-full"
+          className="object-cover h-full"
           priority
         />
       </ImageOverlay>

@@ -22,7 +22,7 @@ export default function Header() {
         styleMode="full"
         styleSize="large"
         href={CONTACT_US}
-        className="mobile:hidden"
+        className="mobile:hidden medium:w-32"
       >
         צור קשר
       </LinkCmp>

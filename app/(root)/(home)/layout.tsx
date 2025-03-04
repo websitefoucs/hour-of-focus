@@ -12,7 +12,7 @@ export default function HomeLayout({
   articles,
 }: Readonly<HomeLayoutProps>) {
   return (
-    <section className="w-full justify-items-center grid gap-20 mobile:gap-10 home-layout">
+    <section className="max-w-full justify-items-center grid gap-20 mobile:gap-10 home-layout">
       {children}
       {testimonies}
       {articles}
