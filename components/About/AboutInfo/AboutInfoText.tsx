@@ -4,9 +4,9 @@ interface AboutInfoTextProps {
 }
 export default function AboutInfoText({ header, text }: AboutInfoTextProps) {
   return (
-    <article className="flex flex-col justify-center gap-4 h-full">
-      <h5 className="">{header}</h5>
-      <p className="text-mainGray-800 text-18 leading-30">{text}</p>
+    <article className="flex mobile:inline flex-col justify-center gap-4 mobile:gap-1 h-full mobile:h-fit">
+      <h5 className="text-18">{header}</h5>
+      <p className="text-mainGray-800 text-16 leading-30 mobile:leading-6">{text}</p>
     </article>
   );
 }

@@ -9,7 +9,7 @@ import LinkCmp from "../UI/LinkCmp";
 
 export default function FollowUs() {
   return (
-    <div className="w-56 flex flex-col footer-grid-three mobile:w-full mobile:flex-row mobile:justify-around mobile:justify-items-center">
+    <div className="w-56 flex flex-col footer-grid-three mobile:w-full mobile:flex-row mobile:justify-between mobile:pr-2 mobile:pl-6 mobile:justify-items-center">
       <div>
         <h6 className="pb-6">עקבו אחרינו</h6>
         <nav className="flex items-center gap-4 ">
@@ -20,7 +20,7 @@ export default function FollowUs() {
             <FacebookSvg className="w-6 h-6" />
           </LinkCmp>
           <LinkCmp href={"/instagram"}>
-            <InstagramSvg className="w-6 h-6" />
+            <InstagramSvg className="w-6 h-6 fill-mainWhite-0" />
           </LinkCmp>
         </nav>
       </div>

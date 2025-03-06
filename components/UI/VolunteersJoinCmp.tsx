@@ -9,18 +9,16 @@ import {
 export default function VolunteersJoinCmp({ isHome }: { isHome?: boolean }) {
   return (
     <div className="flex flex-col gap-12">
-      <article>
+      <article className="flex flex-col gap-4 items-center">
         {isHome ? (
           <>
             <h3 className="text-center px-36 mobile:px-0">
               הצטרפו עכשיו למשפחת המתנדבים שלנו
             </h3>
-            <p>יחד נוכל לעשות שינוי משמעותי בחיי תלמידים רבים</p>
+            <p className="text-mainGray-500 text-20">יחד נוכל לעשות שינוי משמעותי בחיי תלמידים רבים</p>
           </>
         ) : (
-          <h3 className="text-center px-36 mobile:px-0">
-            רוצים להתנדב?
-          </h3>
+          <h3 className="text-center px-36 mobile:px-0">רוצים להתנדב?</h3>
         )}
       </article>
 
@@ -46,7 +44,7 @@ export default function VolunteersJoinCmp({ isHome }: { isHome?: boolean }) {
         <LinkCmp
           styleMode="arrow"
           styleSize="long"
-          className="text-mainGray-800"
+          className={`${isHome ? "text-mainOrange-700 border-mainOrange-700 hover:text-mainOrange-800 hover:border-mainOrange-800" : "text-mainGray-800"}`}
           href={CONTACT_US}
         >
           יש לכם שאלות? דברו איתנו ונשמח לסייע

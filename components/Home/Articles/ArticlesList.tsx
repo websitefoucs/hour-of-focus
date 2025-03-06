@@ -10,7 +10,7 @@ interface ArticleItemProps{
 export default function ArticlesList( {articles}:ArticleItemProps) {
   return (
     <div className="h-fit w-full py-10 px-20 mobile:p-0 flex flex-col items-center home-layout-articles">
-      <h4 className="">כתבו אלינו</h4>
+      <h4 className="">כתבו עלינו</h4>
       <ItemsScroll<{
         publishPlace: string;
         preview: string;

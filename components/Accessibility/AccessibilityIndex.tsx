@@ -29,10 +29,11 @@ export default function AccessibilityIndex() {
       button={{
         props: {
           className:
-            "p-2 fixed top-96 left-0 bg-mainWhite-0 accessibility-button z-50",
+            "p-2 fixed top-96 left-0 bg-mainWhite-0 accessibility-button z-50 shadow-[0px_2px_4px_1px_#00000026]",
         },
         content: <AccessibilitySvg />,
       }}
     ></Model>
   );
 }
+
