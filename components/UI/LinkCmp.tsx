@@ -23,7 +23,7 @@ export const STYLES = {
   },
   coloredBorder: {
     style:
-      "bg-inherit border-2 border-mainOrange-700 text-mainOrange-700 hover:shadow-mainOrange-800 hover:text-mainOrange-800 rounded-base flex  justify-center items-center",
+      "bg-inherit border-2 border-mainOrange-700 text-mainOrange-700 hover:border-mainOrange-800 hover:text-mainOrange-800 rounded-base flex  justify-center items-center",
     loading: "shadow-mainOrange-600 text-mainOrange-600",
   },
   whiteBorder: {

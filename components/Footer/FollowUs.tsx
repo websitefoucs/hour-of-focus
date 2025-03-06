@@ -1,4 +1,10 @@
-import { FacebookSvg, GitSvg, GlobeSvg, LinkedinSvg } from "../UI/icons/Icons";
+import {
+  FacebookSvg,
+  GitSvg,
+  GlobeSvg,
+  InstagramSvg,
+  LinkedinSvg,
+} from "../UI/icons/Icons";
 import LinkCmp from "../UI/LinkCmp";
 
 export default function FollowUs() {
@@ -12,6 +18,9 @@ export default function FollowUs() {
           </LinkCmp>
           <LinkCmp href={"/facebook"}>
             <FacebookSvg className="w-6 h-6" />
+          </LinkCmp>
+          <LinkCmp href={"/instagram"}>
+            <InstagramSvg className="w-6 h-6" />
           </LinkCmp>
         </nav>
       </div>

@@ -55,6 +55,9 @@ export default {
       borderRadius: {
         base: "4px",
       },
+      padding: {
+        base: "7.5rem",
+      },
 
       lineHeight: {
         21: "1.35rem",

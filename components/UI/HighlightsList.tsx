@@ -23,7 +23,7 @@ export default function HighlightsList() {
 
 const items = [
   {
-    icon: <ClockSvg className="w-14 h-14 fill-mainWhite-0" />,
+    icon: <ClockSvg className="w-14 h-14 fill-none" />,
     title: "גמישות מלאה",
     text: "התנדבות בזמנים שמתאימים לכם",
   },
@@ -33,7 +33,7 @@ const items = [
     text: "צוות תומך לאורך כל הדרך",
   },
   {
-    icon: <HeartSvg className="w-14 h-14 stroke-mainOrange-700 fill-mainWhite-0"  />,
+    icon: <HeartSvg className="w-14 h-14 stroke-mainOrange-700 fill-none"  />,
     title: "השפעה אמיתית",
     text: "תרומה משמעותית למפונים",
   },

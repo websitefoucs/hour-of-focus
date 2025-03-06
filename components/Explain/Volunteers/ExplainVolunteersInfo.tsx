@@ -4,7 +4,7 @@ import React from "react";
 
 export default function ExplainVolunteersInfo() {
   return (
-    <div className="px-24 flex justify-around gap-36  w-full ">
+    <div className="flex justify-around gap-12  w-[70vw] self-center ">
       <article className="flex flex-col gap-6">
         <h5>הצטרפו למיזם ׳שעה של פוקוס׳</h5>
 
@@ -15,10 +15,10 @@ export default function ExplainVolunteersInfo() {
         ))}
       </article>
 
-      <div className="image-border before:bg-mainGold-500 after:bg-mainGold-500 relative w-[100%] aspect-square min-w-[30rem] ">
+      <div className="image-border before:bg-mainGold-500 after:bg-mainGold-500 relative min-h-[27rem] aspect-square">
         <Image
-          width={512}
-          height={256}
+          width={480}
+          height={432}
           src={GIRL_STUDY_2}
           alt="people on lawn"
           className="w-full h-full rounded-none"

@@ -20,7 +20,7 @@ export default function HomeHero() {
       <div className="w-full h-full grid-stack z-10 flex flex-col items-center gap-8 text-mainWhite-0 text-center pt-24 medium:pt-10">
         <h5 className="text-mainWhite-0">למען המפונים מהדרום והמצפון</h5>
 
-        <h1 className="">
+        <h1 className="text-[4rem]">
           <span className="font-normal">שעה של </span>
           <span className=" text-mainGold-400">פוקוס</span>
         </h1>
@@ -29,9 +29,9 @@ export default function HomeHero() {
           מחברים בין תלמידים למתנדבים לשעה שבועית של למידה ממוקדת
         </p>
 
-        <nav className="flex flex-col gap-10 medium:gap-4  items-center py-12 medium:py-4 ">
+        <nav className="flex flex-col gap-10 medium:gap-4 items-center py-12 medium:py-4 ">
           <LinkCmp styleMode="full" styleSize="large" href={TEACHERS_SIGNUP}>
-            הצטרפו כמורים
+            <h6>הצטרפו כמורים</h6>
           </LinkCmp>
           <div className="flex gap-8 medium:gap-4  mobile-small:flex-col">
             <LinkCmp

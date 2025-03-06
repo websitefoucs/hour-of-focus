@@ -8,7 +8,7 @@ export default function TestimonyItem({
 }: TestimonyItemProps) {
   return (
     <li
-      className={`text-xmd mobile:text-normal font-normal leading-40  h-[13rem] mobile:h-32 mobile:leading-7 flex justify-center items-center transition-opacity duration-300 ${
+      className={`text-24 mobile:text-16 font-normal leading-40 h-[13rem] mobile:h-32 mobile:leading-7 flex justify-center items-center transition-opacity duration-300 ${
         isFading ? "opacity-0" : "opacity-100"
       }`}
     >

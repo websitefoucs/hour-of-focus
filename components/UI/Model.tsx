@@ -22,6 +22,7 @@ export default function Model({
 }: Props) {
   const modelRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useModel(modelRef);
+  console.log(" isOpen:", isOpen)
 
   return (
     <div ref={modelRef} className={"relative " + containerClassName}>
