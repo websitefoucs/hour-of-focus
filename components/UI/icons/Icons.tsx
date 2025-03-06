@@ -211,6 +211,37 @@ export const GroupSvg = ({ className }: { className?: string }) => {
   );
 };
 
+export const HeaderHighlightSvg = () => {
+  return (
+    <svg viewBox="0 0 24 24" className="fill-none stroke-mainGray-500 h-4 w-4">
+      <g id="SVGRepo_iconCarrier">
+        <path
+          d="M6 3V21M18 12H7M18 3V21M4 21H8M4 3H8M16 21H20M16 3H20"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>
+      </g>
+    </svg>
+  );
+};
+
+export const StopAnimationsSvg = () => {
+  return (
+    <svg viewBox="0 0 24 24" className="fill-none stroke-mainGray-500 h-4 w-4">
+      <g id="Warning / Stop_Sign">
+        <path
+          id="Vector"
+          d="M5.75 5.75L18.25 18.25M12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21Z"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>
+      </g>
+    </svg>
+  );
+};
+
 export const HeartSvg = ({ className }: { className?: string }) => {
   return (
     <svg viewBox="0 0 40 37" className={className}>
@@ -263,7 +294,13 @@ export const DirectionSvg = ({ className }: { className?: string }) => {
 
 export const ApproveSvg = () => {
   return (
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" className="min-w-6 min-h-6 mobile:w-6 mobile:h-6">
+    <svg
+      width="32"
+      height="32"
+      viewBox="0 0 32 32"
+      fill="none"
+      className="min-w-6 min-h-6 mobile:w-6 mobile:h-6"
+    >
       <g clipPath="url(#clip0_181_303)">
         <path
           d="M12.7334 20.2L24.0334 8.9C24.3001 8.63333 24.6112 8.5 24.9667 8.5C25.3223 8.5 25.6334 8.63333 25.9001 8.9C26.1667 9.16667 26.3001 9.48356 26.3001 9.85067C26.3001 10.2178 26.1667 10.5342 25.9001 10.8L13.6667 23.0667C13.4001 23.3333 13.089 23.4667 12.7334 23.4667C12.3779 23.4667 12.0667 23.3333 11.8001 23.0667L6.06674 17.3333C5.80008 17.0667 5.67208 16.7502 5.68274 16.384C5.69341 16.0178 5.83252 15.7009 6.10008 15.4333C6.36763 15.1658 6.68452 15.0324 7.05074 15.0333C7.41697 15.0342 7.73341 15.1676 8.00008 15.4333L12.7334 20.2Z"

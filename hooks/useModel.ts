@@ -51,15 +51,17 @@ export const useModel = (
       if (target.closest("a")) {
         ev.preventDefault(); // Prevent default anchor behavior
         const href = target.closest("a")?.getAttribute("href"); // Get link URL
-
+        
         if (href) {
           router.push(href); // Navigate programmatically
         }
-
+        
         setTimeout(() => setOpen(false), 100); // Delay modal close slightly
         return;
       }
-
+      
+      console.log(" target:", target)
+      console.log(" open:", ref.current)
       // Handle normal outside clicks
       if (!target || !open || !ref.current || ref.current.contains(target))
         return;

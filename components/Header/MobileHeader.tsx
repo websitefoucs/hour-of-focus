@@ -5,6 +5,7 @@ import Model from "../UI/Model";
 import NavLinks from "./NavLinks";
 
 export default function MobileHeader() {
+  console.log("MobileHeader");
   return (
     <Model
       containerClassName="hidden mobile:block"

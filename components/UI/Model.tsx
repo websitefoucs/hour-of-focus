@@ -22,10 +22,13 @@ export default function Model({
 }: Props) {
   const modelRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useModel(modelRef);
-  console.log(" isOpen:", isOpen)
+  console.log(" isOpen:", isOpen);
 
   return (
-    <div ref={modelRef} className={"relative " + containerClassName}>
+    <div
+      ref={!withOverlay ? modelRef : null}
+      className={"relative " + containerClassName}
+    >
       <Button
         {...button.props}
         className={button.props.className + " " + (isOpen ? "open" : "")}
@@ -37,13 +40,14 @@ export default function Model({
       >
         {button.content}
       </Button>
-      {withOverlay && isOpen && (
-        <ModelOverlay>
+
+      {withOverlay ? (
+        <ModelOverlay isOpen={isOpen}>
           <div ref={modelRef}>{model}</div>
         </ModelOverlay>
+      ) : (
+        isOpen && <>{model}</>
       )}
-
-      {!withOverlay && isOpen && <>{model}</>}
     </div>
   );
 }

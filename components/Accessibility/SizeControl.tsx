@@ -24,7 +24,7 @@ export default function FontSizeControl() {
   const zoomClass = `zoom-${zoom}`;
 
   return (
-    <div className={zoomClass + " flex flex-col gap-4"}>
+    <div className={zoomClass + " flex flex-col gap-2"}>
       <Button
         onClick={() => updateFontSize(1)}
         className="flex items-center gap-2 "
