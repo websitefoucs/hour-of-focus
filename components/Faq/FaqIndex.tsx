@@ -10,9 +10,9 @@ interface FaqIndexProps {
 }
 export default function FaqIndex({ type, faqs }: FaqIndexProps) {
   return (
-    <section className="grid w-full items-center justify-items-center gap-24 h-fit">
+    <section className="grid w-full items-center justify-items-center gap-24 mobile:gap-12 h-fit">
       <FaqHero />
-      <div className="grid w-full items-center justify-items-center gap-12 px-16 mobile:px-4 pb-24">
+      <div className="grid w-full items-center justify-items-center gap-12 px-16 mobile:px-4 pb-24 mobile:pb-12">
         <FaqSwitch type={type} />
         <ItemList
           items={faqs}
