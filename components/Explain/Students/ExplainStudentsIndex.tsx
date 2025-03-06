@@ -7,7 +7,7 @@ import ExplainIdeas from "./ExplainIdeas";
 
 export default function ExplainStudentsIndex() {
   return (
-    <section className="flex flex-col h-fit pb-32">
+    <section className="flex flex-col h-fit pb-32 mobile:pb-16">
       <HeroCmp text="הסבר לתלמידים" />
       <ExplainStudentsMiddle />
       <ExplainVolunteersInfo />

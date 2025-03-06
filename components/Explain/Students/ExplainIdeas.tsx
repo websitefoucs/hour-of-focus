@@ -8,14 +8,14 @@ import {
 
 export default function ExplainIdeas() {
   return (
-    <section className="px-20 mb-20">
-      <h5 className="pb-8">רעיונות פשוטים ומשמעותיים</h5>
-      <ul className="grid grid-cols-2 gap-y-8 ">
+    <section className="px-20 mobile:px-2 mb-20">
+      <h5 className="pb-8 mobile:pb-4 mobile:text-center">רעיונות פשוטים ומשמעותיים</h5>
+      <ul className="grid grid-cols-2 mobile:grid-cols-1 gap-y-8 mobile:gap-y-4 ">
         {items.map(({ icon, header, text }, index) => (
           <li key={index} className="grid ideas-layout gap-x-4 gap-y-2">
             {icon}
             <h6 className="text-mainGray-600">{header}</h6>
-            <p>{text}</p>
+            <p className="">{text}</p>
           </li>
         ))}
       </ul>

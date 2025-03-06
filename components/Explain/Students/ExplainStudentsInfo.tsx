@@ -4,9 +4,9 @@ import React from "react";
 
 export default function ExplainVolunteersInfo() {
   return (
-    <div className="px-24 flex justify-around gap-36 w-full py-24">
-      <article className="flex flex-col gap-6">
-        <h5>שיטת המעשים הטובים 🌍💙</h5>
+    <div className="px-24 mobile:px-2 flex mobile:flex-col-reverse justify-around gap-36 mobile:gap-12 w-full py-24 mobile:py-12">
+      <article className="flex flex-col gap-6 mobile:gap-2 mobile:text-center">
+        <h5 className="">שיטת המעשים הטובים 🌍💙</h5>
 
         <p className="text-mainGray-800 leading-30 text-18">
           מעבירים את זה הלאה
@@ -18,7 +18,7 @@ export default function ExplainVolunteersInfo() {
         </p>
       </article>
 
-      <div className="image-border before:bg-mainGold-500 after:bg-mainGold-500 relative  aspect-square min-w-[30rem] max-h-[30rem] ">
+      <div className="image-border before:bg-mainGold-500 after:bg-mainGold-500 relative  aspect-square min-w-[30rem] max-h-[30rem] mobile:min-w-0 mobile:h-64 ml-2 ">
         <Image
           width={512}
           height={256}

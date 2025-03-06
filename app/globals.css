@@ -202,7 +202,7 @@ h6 {
 
 .ideas-layout {
   @apply grid gap-x-4 gap-y-2;
-  grid-template-columns: 3rem 1fr;
+  grid-template-columns: 3.5rem 1fr;
   grid-template-rows: auto auto;
   & svg {
     grid-area: 1/1/-1/2;
@@ -251,6 +251,7 @@ h6 {
   .about-info-mobile {
     @apply grid gap-4 w-[90svw];
   }
+ 
 }
 
 .about-info {
