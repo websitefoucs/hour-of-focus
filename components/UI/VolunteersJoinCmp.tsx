@@ -15,7 +15,9 @@ export default function VolunteersJoinCmp({ isHome }: { isHome?: boolean }) {
             <h3 className="text-center px-36 mobile:px-0">
               הצטרפו עכשיו למשפחת המתנדבים שלנו
             </h3>
-            <p className="text-mainGray-500 text-20">יחד נוכל לעשות שינוי משמעותי בחיי תלמידים רבים</p>
+            <p className="text-mainGray-500 text-20">
+              יחד נוכל לעשות שינוי משמעותי בחיי תלמידים רבים
+            </p>
           </>
         ) : (
           <h3 className="text-center px-36 mobile:px-0">רוצים להתנדב?</h3>
@@ -30,7 +32,7 @@ export default function VolunteersJoinCmp({ isHome }: { isHome?: boolean }) {
             className="mobile:w-fit px-1"
             href={TEACHERS_SIGNUP}
           >
-            הצטרפו כמורים
+            <h6>הצטרפו כמורים</h6>
           </LinkCmp>
           <LinkCmp
             styleMode="coloredBorder"
@@ -38,16 +40,20 @@ export default function VolunteersJoinCmp({ isHome }: { isHome?: boolean }) {
             className="mobile:w-fit px-1 font-bold  "
             href={LOGISTIC_SIGNUP}
           >
-            הצטרפו לצוות הלוגיסטי
+            <h6>הצטרפו לצוות הלוגיסטי</h6>
           </LinkCmp>
         </div>
         <LinkCmp
           styleMode="arrow"
           styleSize="long"
-          className={`${isHome ? "text-mainOrange-700 border-mainOrange-700 hover:text-mainOrange-800 hover:border-mainOrange-800" : "text-mainGray-800"}`}
+          className={`${
+            isHome
+              ? "text-mainOrange-700 border-mainOrange-700 hover:text-mainOrange-800 hover:border-mainOrange-800"
+              : "text-mainGray-800"
+          }`}
           href={CONTACT_US}
         >
-          יש לכם שאלות? דברו איתנו ונשמח לסייע
+          <h6>יש לכם שאלות? דברו איתנו ונשמח לסייע</h6>
         </LinkCmp>
       </nav>
     </div>

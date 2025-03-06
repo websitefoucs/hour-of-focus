@@ -29,9 +29,14 @@ export default function AccessibilityIndex() {
               name={name}
               id={name}
               hidden
-              className={"hidden " + name}
+              className={`hidden ${name}`}
             >
-              <Label htmlFor={name} className={"flex gap-2 items-center hover:cursor-pointer "+name}>
+              <Label
+                htmlFor={name}
+                className={
+                  "flex gap-2 items-center hover:cursor-pointer " + name
+                }
+              >
                 {icon}
                 <p className="text-mainGray-800"> {text}</p>
               </Label>
@@ -44,6 +49,8 @@ export default function AccessibilityIndex() {
         props: {
           className:
             "p-2 fixed top-96 left-0 bg-mainWhite-0  z-50 shadow-[0px_2px_4px_1px_#00000026] ",
+          role: "button",
+          "aria-label": "Open accessibility tools",
         },
         content: <AccessibilitySvg />,
       }}
