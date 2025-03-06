@@ -12,7 +12,15 @@ import { AppError } from "@/utils/server/Error.util";
 import { authServerUtils } from "@/utils/server/auth.util";
 import { ArticlesServerUtils } from "@/utils/server/articles.util";
 import { redirect } from "next/navigation";
-
+/**
+ * Creates a new article based on the provided form data and updates the state.
+ *
+ * @param prevState - The previous state of the form containing article data.
+ * @param formData - The form data containing the new article information.
+ * @returns A promise that resolves to the updated form state.
+ *
+ * @throws Will throw an error if the article creation fails.
+ */
 export async function createArticle(
   prevState: TFormState<TArticleDto>,
   formData: FormData
@@ -56,7 +64,25 @@ export async function createArticle(
   }
   redirect("/admin/articles");
 }
-
+/**
+ * Updates an article with the provided form data.
+ *
+ * @param {TFormState<TArticleDto>} prevState - The previous state of the form.
+ * @param {FormData} formData - The form data containing the updated article information.
+ * @returns {Promise<TFormState<TArticleDto>>} - The updated form state.
+ *
+ * @throws {AppError} - Throws an error if the article update fails.
+ *
+ * The function performs the following steps:
+ * 1. Verifies the user's authentication.
+ * 2. Converts the form data to a DTO (Data Transfer Object).
+ * 3. Sanitizes and validates the DTO.
+ * 4. Updates the article in the database.
+ * 5. Revalidates the necessary paths.
+ * 6. Redirects to the articles admin page.
+ *
+ * If an error occurs during the process, it handles the error and returns the form state with the error messages.
+ */
 export async function updateArticle(
   prevState: TFormState<TArticleDto>,
   formData: FormData
@@ -117,7 +143,19 @@ export async function updateArticle(
 
   redirect("/admin/articles");
 }
-
+/**
+ * Fetches articles from the database with optional full details.
+ *
+ * @param {boolean} [isFull] - If true, fetches full details of the articles including user information.
+ * @returns {Promise<TArticle[]>} - A promise that resolves to an array of articles.
+ *
+ * @throws Will throw an error if the database query fails.
+ *
+ * The function constructs an aggregation pipeline based on the `isFull` parameter.
+ * If `isFull` is true, it includes additional lookup stages to fetch user details
+ * for the `createBy` and `updateBy` fields, and formats the output accordingly.
+ * If `isFull` is false, it only projects basic article fields.
+ */
 export async function getArticles(isFull?: boolean): Promise<TArticle[]> {
   try {
     const pipeline = [];
@@ -204,7 +242,21 @@ export async function getArticles(isFull?: boolean): Promise<TArticle[]> {
     return [];
   }
 }
-
+/**
+ * Retrieves an article by its ID from the database.
+ *
+ * @param {string} id - The ID of the article to retrieve.
+ * @returns {Promise<TArticleDto>} A promise that resolves to the article data transfer object (DTO).
+ * @throws {AppError} If the article is not found or if there is an error during retrieval.
+ *
+ * The function performs the following operations:
+ * - Matches the article by its ID.
+ * - Looks up the user who created the article.
+ * - Unwinds the createBy field to handle arrays.
+ * - Looks up the user who updated the article.
+ * - Unwinds the updatedBy field to handle arrays.
+ * - Projects the necessary fields for the article DTO.
+ */
 export async function getArticle(id: string): Promise<TArticleDto> {
   try {
     const collection = await getCollection<TArticleDocument>("articles");
@@ -287,7 +339,13 @@ export async function getArticle(id: string): Promise<TArticleDto> {
     throw AppError.create(`Failed to get Article by ID -> ${error}`);
   }
 }
-
+/**
+ * Deletes an article by its ID.
+ *
+ * @param {string} id - The ID of the article to delete.
+ * @returns {Promise<void>} - A promise that resolves when the article is deleted.
+ * @throws {AppError} - Throws an error if the deletion fails.
+ */
 export async function deleteArticle(id: string) {
   try {
     const collection = await getCollection<TArticleDocument>("articles");

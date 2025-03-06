@@ -9,6 +9,15 @@ import { authServerUtils } from "@/utils/server/auth.util";
 import { redirect } from "next/navigation";
 import { TFormState } from "@/types/app.type";
 
+/**
+ * Signs in a user with the provided form data.
+ *
+ * @param state - The current form state.
+ * @param formData - The form data containing user credentials.
+ * @returns A promise that resolves to the updated form state.
+ *
+ * @throws Will throw an error if the user is not found or if the credentials are invalid.
+ */
 export const signIn = async (
   state: TFormState<TAuthDto>,
   formData: FormData
@@ -108,6 +117,15 @@ export const signUp = async (
 
   redirect("/admin");
 };
+/**
+ * Signs the user out by clearing the session cookie.
+ *
+ * This function sets the "session" cookie to an empty string and sets its expiration date to the past,
+ * effectively removing it from the client's browser. The cookie is configured to be HTTP-only, secure
+ * (if in production), and have a "lax" same-site policy.
+ *
+ * @throws {AppError} If an error occurs while setting the cookie, an AppError is thrown with a status code of 500.
+ */
 export const signOut = async (): Promise<void> => {
   try {
     const _cookies = await cookies();
@@ -123,6 +141,13 @@ export const signOut = async (): Promise<void> => {
     throw AppError.create(`${error}`, 500, false);
   }
 };
+/**
+ * Retrieves the session user based on the session token stored in cookies.
+ *
+ * @returns {Promise<TAuth | null>} A promise that resolves to the authenticated user object or null if no valid session is found.
+ *
+ * @throws {AppError} If an error occurs during the process, an AppError is created and logged.
+ */
 export const getSessionUser = async (): Promise<TAuth | null> => {
   try {
     const token = (await cookies()).get("session")?.value;
@@ -138,6 +163,10 @@ export const getSessionUser = async (): Promise<TAuth | null> => {
     const user = await userCollection.findOne({
       _id: new ObjectId(payload?.userId),
     });
+
+    if (!user) {
+      return null;
+    }
     return { username: user?.username, _id: user?._id.toString() };
   } catch (error) {
     AppError.create(`${error}`, 500, false);

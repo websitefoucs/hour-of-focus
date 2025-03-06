@@ -8,6 +8,15 @@ interface FormDisabledLinkProps {
   isSignUp?: boolean;
   headerText?: string;
 }
+/**
+ * A component that renders a link which can be disabled based on form status.
+ *
+ * @param {Object} props - The component props.
+ * @param {boolean} props.isSignUp - Determines the link destination. If true, the link points to "sign-in", otherwise to "sign-up".
+ * @param {string} props.headerText - The text to display inside the link.
+ *
+ * @returns {JSX.Element} The rendered link component.
+ */
 export default function FormDisabledLink({
   isSignUp,
   headerText,

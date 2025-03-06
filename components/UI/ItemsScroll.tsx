@@ -1,6 +1,8 @@
 "use client";
 
+//React
 import { useState } from "react";
+//UI
 import Button from "./Button";
 import { DirectionSvg } from "./icons/Icons";
 
@@ -8,7 +10,17 @@ interface ItemsScrollProps<T> {
   items: T[];
   renderItem: (item: T, isFading: boolean) => React.ReactNode;
 }
-
+/**
+ * A generic component that renders a scrollable list of items with fade transition effect.
+ *
+ * @template T - The type of the items in the list.
+ *
+ * @param {ItemsScrollProps<T>} props - The props for the component.
+ * @param {T[]} props.items - The array of items to be rendered.
+ * @param {(item: T, isFading: boolean) => React.ReactNode} props.renderItem - A function that renders an item.
+ *
+ * @returns {JSX.Element} The rendered component.
+ */
 export default function ItemsScroll<T>({
   items,
   renderItem,

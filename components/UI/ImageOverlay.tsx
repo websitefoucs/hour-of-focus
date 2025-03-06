@@ -1,3 +1,16 @@
+/**
+ * ImageOverlay component that wraps its children with an overlay effect.
+ *
+ * @param {React.HTMLAttributes<HTMLDivElement>} props - The properties passed to the component.
+ * @returns {JSX.Element} The rendered ImageOverlay component.
+ *
+ * @example
+ * ```tsx
+ * <ImageOverlay>
+ *   <img src="example.jpg" alt="Example" />
+ * </ImageOverlay>
+ * ```
+ */
 export default function ImageOverlay({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {

@@ -1,6 +1,9 @@
 "use client";
+//Reacr
+import { JSX, useRef } from "react";
+//Hooks
 import { useModel } from "@/hooks/useModel";
-import { useRef } from "react";
+//UI
 import Button from "./Button";
 import ModelOverlay from "./ModelOverlay";
 
@@ -14,12 +17,23 @@ interface Props {
   containerClassName?: string;
 }
 
+/**
+ * Model component that renders a button and a model (modal) with optional overlay.
+ *
+ * @param {Object} props - The properties object.
+ * @param {Object} props.button - The button properties and content.
+ * @param {Object} props.model - The model content to be displayed.
+ * @param {boolean} props.withOverlay - Flag to determine if the model should be displayed with an overlay.
+ * @param {string} props.containerClassName - Additional class names for the container.
+ *
+ * @returns {JSX.Element} The rendered Model component.
+ */
 export default function Model({
   button,
   model,
   withOverlay,
   containerClassName,
-}: Props) {
+}: Props): JSX.Element {
   const modelRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useModel(modelRef);
   console.log(" isOpen:", isOpen);

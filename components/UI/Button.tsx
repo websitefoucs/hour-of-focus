@@ -56,7 +56,19 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
   className?: string;
 }
-
+/**
+ * Button component that renders a customizable button element.
+ *
+ * @param {Object} props - The properties object.
+ * @param {string} [props.styleMode="none"] - The style mode for the button, which determines the button's appearance.
+ * @param {string} [props.styleSize="none"] - The size mode for the button, which determines the button's size.
+ * @param {React.ReactNode} props.children - The content to be displayed inside the button.
+ * @param {string} [props.className] - Additional class names to apply to the button.
+ * @param {boolean} [props.disabled] - If true, the button will be disabled and apply a loading style.
+ * @param {Object} props - Additional properties to be passed to the button element.
+ *
+ * @returns {JSX.Element} The rendered button element.
+ */
 export default function Button({
   styleMode = "none",
   styleSize = "none",

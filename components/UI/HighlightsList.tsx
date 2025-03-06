@@ -1,5 +1,13 @@
 import { ClockSvg, GroupSvg, HeartSvg } from "./icons/Icons";
 
+/**
+ * HighlightsList component renders a list of highlight items.
+ * Each item includes an icon, a title, and a text description.
+ *
+ * @component
+ *
+ * @returns {JSX.Element} A list of highlight items.
+ */
 export default function HighlightsList() {
   return (
     <ul className="flex mobile:flex-wrap justify-around mobile:gap-4 w-full">
@@ -33,7 +41,7 @@ const items = [
     text: "צוות תומך לאורך כל הדרך",
   },
   {
-    icon: <HeartSvg className="w-14 h-14 stroke-mainOrange-700 fill-none"  />,
+    icon: <HeartSvg className="w-14 h-14 stroke-mainOrange-700 fill-none" />,
     title: "השפעה אמיתית",
     text: "תרומה משמעותית למפונים",
   },

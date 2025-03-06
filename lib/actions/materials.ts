@@ -17,7 +17,14 @@ import {
 import { materialsServerUtils } from "@/utils/server/materials.util";
 import { AppError } from "@/utils/server/Error.util";
 import { authServerUtils } from "@/utils/server/auth.util";
-
+/**
+ * Creates a new material and updates the state with the result.
+ *
+ * @param prevState - The previous state of the form.
+ * @param formData - The form data containing material information.
+ * @returns A promise that resolves to the updated form state.
+ * @throws Will throw an error if the material creation fails.
+ */
 export async function createMaterial(
   prevState: TFormState<TMaterialDto>,
   formData: FormData
@@ -61,7 +68,15 @@ export async function createMaterial(
 
   redirect("/admin/materials");
 }
-
+/**
+ * Updates a material document in the database.
+ *
+ * @param prevState - The previous state of the form containing material data.
+ * @param formData - The form data containing updated material information.
+ * @returns A promise that resolves to the updated form state.
+ *
+ * @throws Will throw an error if the material update fails.
+ */
 export async function updateMaterial(
   prevState: TFormState<TMaterialDto>,
   formData: FormData
@@ -112,7 +127,19 @@ export async function updateMaterial(
   }
   redirect("/admin/materials");
 }
-
+/**
+ * Retrieves materials based on the provided filter.
+ *
+ * @param {TMaterialFilter} filter - The filter criteria for retrieving materials.
+ * @returns {Promise<TMaterial[]>} A promise that resolves to an array of materials.
+ *
+ * @throws Will throw an error if the retrieval process fails.
+ *
+ * The function constructs a MongoDB aggregation pipeline based on the filter criteria.
+ * If the `isFull` property of the filter is true, the pipeline includes lookups and projections
+ * to include detailed information about the creators and updaters of the materials.
+ * Otherwise, it only includes basic material information.
+ */
 export async function getMaterials(
   filter: TMaterialFilter
 ): Promise<TMaterial[]> {
@@ -199,7 +226,13 @@ export async function getMaterials(
     return [];
   }
 }
-
+/**
+ * Retrieves a material document by its ID and formats it for editing.
+ *
+ * @param {string} id - The ID of the material to retrieve.
+ * @returns {Promise<TMaterialDto>} A promise that resolves to the material data transfer object (DTO).
+ * @throws {AppError} If the material is not found or if there is an error during retrieval.
+ */
 export async function getMaterialToEdit(id: string): Promise<TMaterialDto> {
   try {
     const collection = await getCollection<TMaterialDocument>("materials");
@@ -244,7 +277,13 @@ export async function getMaterialToEdit(id: string): Promise<TMaterialDto> {
     throw AppError.create(`Failed to get Materials by ID -> ${error}`);
   }
 }
-
+/**
+ * Deletes a material from the database by its ID.
+ *
+ * @param {string} id - The ID of the material to delete.
+ * @throws {AppError} If the deletion fails or an error occurs during the process.
+ * @returns {Promise<void>} A promise that resolves when the material is deleted and paths are revalidated.
+ */
 export async function deleteMaterial(id: string) {
   try {
     await authServerUtils.verifyAuth();

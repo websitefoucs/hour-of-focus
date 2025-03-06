@@ -1,12 +1,25 @@
-import React from "react";
+//Components
 import LinkCmp from "./LinkCmp";
+//Constants
 import {
   CONTACT_US,
   LOGISTIC_SIGNUP,
   TEACHERS_SIGNUP,
 } from "@/constants/links";
 
-export default function VolunteersJoinCmp({ isHome }: { isHome?: boolean }) {
+/**
+ * A React component that renders a section for volunteers to join.
+ *
+ * @param {Object} props - The component props.
+ * @param {boolean} [props.isHome] - A flag to determine if the component is rendered on the home page.
+ *
+ * @returns {JSX.Element} The rendered component.
+ */
+export default function VolunteersJoinCmp({
+  isHome,
+}: {
+  isHome?: boolean;
+}): React.JSX.Element {
   return (
     <div className="flex flex-col gap-12">
       <article className="flex flex-col gap-4 items-center">

@@ -1,3 +1,11 @@
+/**
+ * ModelOverlay component that renders a modal overlay.
+ *
+ * @param {React.ReactNode} children - The content to be displayed inside the modal overlay.
+ * @param {boolean} [isOpen] - Optional boolean to control the visibility of the modal overlay.
+ *
+ * @returns {JSX.Element} The rendered modal overlay component.
+ */
 interface Props {
   children: React.ReactNode;
   isOpen?: boolean;

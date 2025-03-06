@@ -12,7 +12,14 @@ import { TFormState } from "@/types/app.type";
 import { AppError } from "@/utils/server/Error.util";
 import { authServerUtils } from "@/utils/server/auth.util";
 import { faqServerUtils } from "@/utils/server/faq.util";
-
+/**
+ * Creates a new FAQ entry in the database.
+ *
+ * @param prevState - The previous state of the form containing FAQ data.
+ * @param formData - The form data containing the FAQ details.
+ * @returns A promise that resolves to the updated form state.
+ * @throws Will throw an error if the user is not authenticated or if the FAQ creation fails.
+ */
 export async function createFaq(
   prevState: TFormState<TFaqDto>,
   formData: FormData
@@ -20,6 +27,9 @@ export async function createFaq(
   let dto;
   try {
     const userId = await authServerUtils.verifyAuth();
+    if (!userId) {
+      throw AppError.create("Unauthorized action: User ID is required");
+    }
 
     const data = faqServerUtils.fromDataToDto(formData);
 
@@ -56,7 +66,15 @@ export async function createFaq(
 
   redirect("/admin/faqs");
 }
-
+/**
+ * Updates an FAQ entry in the database.
+ *
+ * @param prevState - The previous state of the form containing the FAQ data.
+ * @param formData - The form data containing the updated FAQ information.
+ * @returns A promise that resolves to the updated form state.
+ *
+ * @throws Will throw an error if the FAQ update fails.
+ */
 export async function updateFaq(
   prevState: TFormState<TFaqDto>,
   formData: FormData
@@ -105,7 +123,16 @@ export async function updateFaq(
   }
   redirect("/admin/faqs");
 }
-
+/**
+ * Retrieves FAQs based on the provided filter criteria.
+ *
+ * @param {TFaqFilter} filter - The filter criteria for retrieving FAQs.
+ * @param {string} [filter.faqType] - The type of FAQ to filter by.
+ * @param {string} [filter._id] - The ID of the FAQ to filter by.
+ * @param {boolean} [filter.isFull=false] - Whether to include full details including user information.
+ * @returns {Promise<TFaq[]>} A promise that resolves to an array of FAQs.
+ * @throws Will throw an error if the retrieval process fails.
+ */
 export async function getFaqs(filter: TFaqFilter): Promise<TFaq[]> {
   try {
     const pipeline = [];
@@ -193,7 +220,13 @@ export async function getFaqs(filter: TFaqFilter): Promise<TFaq[]> {
     return [];
   }
 }
-
+/**
+ * Retrieves a FAQ document by its ID and returns it in a DTO format.
+ *
+ * @param {string} id - The ID of the FAQ document to retrieve.
+ * @returns {Promise<TFaqDto>} - A promise that resolves to the FAQ DTO.
+ * @throws {AppError} - Throws an error if the FAQ is not found or if there is a failure in retrieving the FAQ.
+ */
 export async function getFaqToEdit(id: string): Promise<TFaqDto> {
   try {
     const collection = await getCollection<TFaqDocument>("faqs");
@@ -230,7 +263,14 @@ export async function getFaqToEdit(id: string): Promise<TFaqDto> {
     throw AppError.create(`Failed to get FAQ by ID -> ${error}`);
   }
 }
-
+/**
+ * Deletes a FAQ document from the database.
+ *
+ * @param {string} id - The ID of the FAQ document to delete.
+ * @param {string} [type] - The type of the FAQ document, used for revalidation.
+ * @throws {AppError} If the FAQ deletion fails or if authentication fails.
+ * @returns {Promise<void>} A promise that resolves when the FAQ is deleted and paths are revalidated.
+ */
 export async function deleteFaq(id: string, type?: string) {
   try {
     await authServerUtils.verifyAuth();

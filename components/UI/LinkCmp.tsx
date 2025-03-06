@@ -1,4 +1,5 @@
 import Link, { LinkProps } from "next/link";
+import { JSX } from "react";
 
 interface Props extends LinkProps {
   styleMode?:
@@ -60,6 +61,16 @@ export const SIZES = {
   none: "",
 } as const;
 
+/**
+ * A custom Link component that applies various styles based on the provided props.
+ * @param {
+ * @param {string} [props.styleMode] - The style mode to apply. Defaults to "none".
+ * @param {string} [props.styleSize] - The size style to apply. Defaults to "none".
+ * @param {boolean} props.isHighLighted - Whether the link should be highlighted with bold text.
+ * @param {React.ReactNode} props.children - The content to be displayed inside the link.
+ * @param {string} props.className - Additional class names to apply to the link.} props - The props object.
+ * @returns {JSX.Element} The styled Link component.
+ */
 export default function LinkCmp({
   styleMode = "none",
   styleSize = "none",
@@ -67,7 +78,7 @@ export default function LinkCmp({
   children,
   className,
   ...props
-}: Props) {
+}: Props): JSX.Element {
   const style = `${className} ${STYLES[styleMode].style} ${SIZES[styleSize]} ${
     isHighLighted ? "font-bold" : ""
   } disabled:opacity-50 disabled:cursor-not-allowed`;
