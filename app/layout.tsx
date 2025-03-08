@@ -9,8 +9,8 @@ const open_sans = Open_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Hour Of Focus",
-  description: "Hour Of Focus",
+  title: "שעה של פוקוס",
+  description: "מחברים בין ילידי מפונים למורים פרטים",
 };
 
 export default function RootLayout({
@@ -19,8 +19,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" dir="rtl">
-      <body className={`${open_sans.className} max-w-screen  antialiased  text-normal`}>
+    <html lang="he" dir="rtl">
+      <head></head>
+      <body
+        className={`${open_sans.className} max-w-screen  antialiased  text-normal`}
+      >
         {children}
       </body>
     </html>

@@ -1,5 +1,7 @@
 "use client";
+//Components
 import SizeControl from "./SizeControl";
+//UI
 import Model from "../UI/Model";
 import {
   AccessibilitySvg,
@@ -11,17 +13,24 @@ import {
 } from "../UI/icons/Icons";
 import Input from "../UI/Input";
 import Label from "../UI/Label";
+//Hooks
+import { useAccessibility } from "@/hooks/useAccessibility";
+//Types
+import { TAcccibility } from "@/types/app.type";
 
 export default function AccessibilityIndex() {
+  const { accessibility, onZoomChange, onChangeAccessibility } =
+    useAccessibility();
+  const { zoom } = accessibility;
   return (
     <Model
       withOverlay={true}
       model={
-        <div className="bg-mainWhite-0 fixed top-0 left-0 h-screen justify-center flex flex-col p-8 rounded-base z-50 gap-2 slide-in-class ">
+        <div className="bg-mainWhite-0 w-0 fixed top-0 left-0 h-screen justify-center flex flex-col p-8 rounded-base z-50 gap-2 slide-in-class transition-all duration-300">
           <h1 className="text-16 leading-28 pb-4 text-mainGray-800">
             כלי נגישות
           </h1>
-          <SizeControl />
+          <SizeControl zoom={zoom} onZoomChange={onZoomChange} />
           {items.map(({ name, icon, text }, index) => (
             <Input
               key={index}
@@ -29,7 +38,9 @@ export default function AccessibilityIndex() {
               name={name}
               id={name}
               hidden
+              checked={accessibility[name as keyof TAcccibility] === true}
               className={`hidden ${name}`}
+              onChange={() => onChangeAccessibility(name as keyof TAcccibility)}
             >
               <Label
                 htmlFor={name}
@@ -48,7 +59,7 @@ export default function AccessibilityIndex() {
       button={{
         props: {
           className:
-            "p-2 fixed top-96 left-0 bg-mainWhite-0  z-50 shadow-[0px_2px_4px_1px_#00000026] ",
+            "p-2 fixed top-96 left-0 bg-mainWhite-0 z-50 shadow-[0px_2px_4px_1px_#00000026] ",
           role: "button",
           "aria-label": "Open accessibility tools",
         },
@@ -65,7 +76,7 @@ const items = [
     icon: <GrayScaleSvg />,
   },
   {
-    name: "invertContrast",
+    name: "invert-contrast",
     text: "ניגודיות גבוהה",
     icon: <InvertContrastSvg />,
   },

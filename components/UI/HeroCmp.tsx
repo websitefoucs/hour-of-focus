@@ -1,3 +1,4 @@
+import HeroImage from "./HeroImage";
 /**
  * HeroCmp component renders a hero section with an image and a text overlay.
  *
@@ -6,8 +7,6 @@
  *
  * @returns {JSX.Element} The rendered hero component.
  */
-import React from "react";
-import HeroImage from "./HeroImage";
 
 export default function HeroCmp({ text }: { text: string }) {
   return (

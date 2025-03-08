@@ -10,3 +10,11 @@ export type TEntity = {
   _id?: string;
 };
 
+export type TAcccibility = {
+  zoom: number;
+  grayscale: boolean;
+  "invert-contrast": boolean;
+  "highlight-links": boolean;
+  "highlight-headers": boolean;
+  "stop-animations": boolean;
+};

@@ -3,22 +3,24 @@ import Numbers from "./Numbers";
 import { LOGISTIC_SIGNUP, TEACHERS_SIGNUP } from "@/constants/links";
 import ImageOverlay from "@/components/UI/ImageOverlay";
 import Image from "next/image";
-import { GINGER_KID } from "@/constants/images";
+import { GINGER_KID_IMAGE } from "@/constants/images";
 
 export default function HomeHero() {
   return (
-    <div className="w-full grid grid-cols-1 grid-rows-1 home-layout-hero">
+    <div className="w-full grid grid-cols-1 grid-rows-1 home-layout-hero bg-fixed relative ">
       <ImageOverlay>
         <Image
           fill
-          src={GINGER_KID}
+          src={GINGER_KID_IMAGE}
           alt="Home main image"
-          className="object-cover h-full"
+          className="object-cover h-full bg-fixed "
           priority
         />
       </ImageOverlay>
       <div className="w-full h-full grid-stack z-10 flex flex-col items-center gap-8 text-mainWhite-0 text-center pt-24 medium:pt-10">
-        <h5 className="text-mainWhite-0">למען המפונים מהדרום והמצפון</h5>
+        <p className="text-mainWhite-0 text-24 font-semibold leading-28">
+          למען המפונים מהדרום והמצפון
+        </p>
 
         <h1 className="text-[4rem]">
           <span className="font-normal">שעה של </span>
@@ -31,7 +33,7 @@ export default function HomeHero() {
 
         <nav className="flex flex-col gap-10 medium:gap-4 items-center py-12 medium:py-4 ">
           <LinkCmp styleMode="full" styleSize="large" href={TEACHERS_SIGNUP}>
-            <h6>הצטרפו כמורים</h6>
+            הצטרפו כמורים
           </LinkCmp>
           <div className="flex gap-8 medium:gap-4  mobile-small:flex-col">
             <LinkCmp
@@ -40,7 +42,7 @@ export default function HomeHero() {
               href={LOGISTIC_SIGNUP}
               className="mobile:w-fit mobile:px-1 mobile-small:w-60"
             >
-              <h6 className="leading-21">הצטרפו לצוות הלוגיסטי</h6>
+              הצטרפו לצוות הלוגיסטי
             </LinkCmp>
             <LinkCmp
               styleMode="whiteBorder"
@@ -48,7 +50,7 @@ export default function HomeHero() {
               href=""
               className="mobile:w-fit mobile:px-1 mobile-small:w-60"
             >
-              <h6>מידע נוסף לתלמידים</h6>
+              מידע נוסף לתלמידים
             </LinkCmp>
           </div>
         </nav>

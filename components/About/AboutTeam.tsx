@@ -1,3 +1,4 @@
+import { TEAM_ONE_IMAGE, TEAM_TWO_IMAGE } from "@/constants/images";
 import Image from "next/image";
 import React from "react";
 
@@ -28,11 +29,11 @@ export default function AboutTeam() {
 
 const items = [
   {
-    src: "/imgs/team1.svg",
+    src: TEAM_ONE_IMAGE,
     name: "אהד תשובה",
   },
   {
-    src: "/imgs/team2.svg",
+    src: TEAM_TWO_IMAGE,
     name: "שלו שריקי",
   },
 ];

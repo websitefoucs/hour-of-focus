@@ -1,6 +1,5 @@
-import { GIRL_STUDY_2 } from "@/constants/images";
+import { GIRL_PAINTING_IMAGE } from "@/constants/images";
 import Image from "next/image";
-import React from "react";
 
 export default function ExplainVolunteersInfo() {
   return (
@@ -18,13 +17,13 @@ export default function ExplainVolunteersInfo() {
         </p>
       </article>
 
-      <div className="image-border before:bg-mainGold-500 after:bg-mainGold-500 relative  aspect-square min-w-[30rem] max-h-[30rem] mobile:min-w-0 mobile:h-64 ml-2 ">
+      <div className="image-border before:bg-mainGold-500 after:bg-mainGold-500 relative  aspect-square min-w-[30rem] max-h-[25rem] mobile:min-w-0 mobile:h-64 ml-2 ">
         <Image
           width={512}
           height={256}
-          src={GIRL_STUDY_2}
+          src={GIRL_PAINTING_IMAGE}
           alt="people on lawn"
-          className="w-full h-full rounded-none"
+          className="w-full h-full rounded-tl-base rounded-br-base"
         />
       </div>
     </div>

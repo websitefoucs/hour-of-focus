@@ -60,8 +60,6 @@ export const useModel = (
         return;
       }
       
-      console.log(" target:", target)
-      console.log(" open:", ref.current)
       // Handle normal outside clicks
       if (!target || !open || !ref.current || ref.current.contains(target))
         return;

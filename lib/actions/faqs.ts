@@ -229,6 +229,8 @@ export async function getFaqs(filter: TFaqFilter): Promise<TFaq[]> {
  */
 export async function getFaqToEdit(id: string): Promise<TFaqDto> {
   try {
+    await authServerUtils.verifyAuth();
+
     const collection = await getCollection<TFaqDocument>("faqs");
     const pipeline = [];
     pipeline.push({ $match: { _id: new ObjectId(id) } });
@@ -271,7 +273,7 @@ export async function getFaqToEdit(id: string): Promise<TFaqDto> {
  * @throws {AppError} If the FAQ deletion fails or if authentication fails.
  * @returns {Promise<void>} A promise that resolves when the FAQ is deleted and paths are revalidated.
  */
-export async function deleteFaq(id: string, type?: string) {
+export async function deleteFaq(id: string, type?: string): Promise<void> {
   try {
     await authServerUtils.verifyAuth();
 

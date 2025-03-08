@@ -1,5 +1,9 @@
 import React from "react";
 import LinkCmp from "../UI/LinkCmp";
+import {
+  EXPLAIN_STUDENTS_PAGE_LINK,
+  EXPLAIN_VOLUNTEERS_PAGE_LINK,
+} from "@/constants/links";
 
 export default function AboutJoinUs() {
   return (
@@ -13,14 +17,14 @@ export default function AboutJoinUs() {
         <LinkCmp
           styleMode="whiteBorder"
           styleSize="large"
-          href="/explain/students"
+          href={EXPLAIN_STUDENTS_PAGE_LINK}
         >
           מידע נוסף לתלמידים
         </LinkCmp>
         <LinkCmp
           styleMode="whiteBorder"
           styleSize="large"
-          href="/explain/volunteers"
+          href={EXPLAIN_VOLUNTEERS_PAGE_LINK}
         >
           מידע נוסף למתנדבים
         </LinkCmp>

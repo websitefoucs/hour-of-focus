@@ -1,12 +1,11 @@
 "use client";
-//Reacr
+//React
 import { JSX, useRef } from "react";
 //Hooks
 import { useModel } from "@/hooks/useModel";
 //UI
 import Button from "./Button";
 import ModelOverlay from "./ModelOverlay";
-
 interface Props {
   button: {
     props: React.ButtonHTMLAttributes<HTMLButtonElement>;
@@ -16,7 +15,6 @@ interface Props {
   withOverlay?: boolean;
   containerClassName?: string;
 }
-
 /**
  * Model component that renders a button and a model (modal) with optional overlay.
  *
@@ -36,7 +34,6 @@ export default function Model({
 }: Props): JSX.Element {
   const modelRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useModel(modelRef);
-  console.log(" isOpen:", isOpen);
 
   return (
     <div

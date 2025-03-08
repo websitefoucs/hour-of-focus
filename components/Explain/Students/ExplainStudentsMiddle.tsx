@@ -19,7 +19,12 @@ export default function ExplainStudentsMiddle() {
             </li>
           ))}
         </ul>
-        <LinkCmp href={COORDINATOR_SIGNUP} styleMode="full" styleSize="large" className="mobile:w-fit px-2">
+        <LinkCmp
+          href={COORDINATOR_SIGNUP}
+          styleMode="full"
+          styleSize="large"
+          className="mobile:w-fit px-2"
+        >
           טופס רישום לרכזי חינוך
         </LinkCmp>
       </div>

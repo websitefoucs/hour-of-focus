@@ -9,14 +9,21 @@ interface FaqPageProps {
   params: Params;
 }
 
+export const metadata: Metadata = {
+  title: `שאלות נפוצות - עודכן ב:${new Date().getFullYear()}`,
+  description: "שאלות נפוצות",
+  robots: {
+    follow: true,
+    index: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+};
+
 export async function generateStaticParams() {
   return [{ type: "students" }];
-}
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: `FAQs Page - Updated ${new Date().getFullYear()}`,
-    description: "Frequently Asked Questions",
-  };
 }
 
 export default async function FaqsPage({ params }: FaqPageProps) {

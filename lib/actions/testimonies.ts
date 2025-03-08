@@ -123,7 +123,6 @@ export async function updateTestimony(
   }
   redirect("/admin/testimonies");
 }
-
 /**
  * Retrieves testimonies from the database.
  *
@@ -236,6 +235,8 @@ export async function getTestimonies(isFull?: boolean): Promise<TTestimony[]> {
  */
 export async function getTestimony(id: string): Promise<TTestimonyDocument> {
   try {
+    await authServerUtils.verifyAuth();
+
     const collection = await getCollection<TTestimonyDocument>("testimonies");
     const pipeline = [];
     pipeline.push({ $match: { _id: new ObjectId(id) } });
@@ -315,8 +316,10 @@ export async function getTestimony(id: string): Promise<TTestimonyDocument> {
  * @returns {Promise<void>} - A promise that resolves when the testimony is deleted.
  * @throws {AppError} - Throws an error if the deletion fails.
  */
-export async function deleteTestimony(id: string) {
+export async function deleteTestimony(id: string): Promise<void> {
   try {
+    await authServerUtils.verifyAuth();
+
     const collection = await getCollection<TTestimonyDocument>("testimonies");
     const { acknowledged } = await collection.deleteOne({
       _id: new ObjectId(id),

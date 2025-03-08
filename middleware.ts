@@ -6,7 +6,7 @@ export function middleware(request: NextRequest) {
 
   const token = request.cookies.get("session")?.value || "";
 
-  if ((path.startsWith("/api/v1/faq") || path.startsWith("/admin")) && !token) {
+  if (path.startsWith("/admin") && !token) {
     return NextResponse.redirect(new URL("/auth/sign-in", request.url));
   }
 

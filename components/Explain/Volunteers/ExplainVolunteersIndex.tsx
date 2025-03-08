@@ -1,8 +1,7 @@
-import HeroCmp from "@/components/UI/HeroCmp";
-import React from "react";
 import ExplainVolunteersInfo from "./ExplainVolunteersInfo";
 import ExplainVolunteersMiddle from "./ExplainVolunteersMiddle";
 import VolunteersJoinCmp from "@/components/UI/VolunteersJoinCmp";
+import HeroCmp from "@/components/UI/HeroCmp";
 
 export default function ExplainVolunteersIndex() {
   return (

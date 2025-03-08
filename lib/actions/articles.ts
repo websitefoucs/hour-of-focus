@@ -1,6 +1,7 @@
 "use server";
 //Next
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 //DB
 import { ObjectId } from "mongodb";
 import { getCollection } from "@/lib/mongoClient";
@@ -11,7 +12,6 @@ import { TArticle, TArticleDocument, TArticleDto } from "@/types/articles.type";
 import { AppError } from "@/utils/server/Error.util";
 import { authServerUtils } from "@/utils/server/auth.util";
 import { ArticlesServerUtils } from "@/utils/server/articles.util";
-import { redirect } from "next/navigation";
 /**
  * Creates a new article based on the provided form data and updates the state.
  *
@@ -259,6 +259,8 @@ export async function getArticles(isFull?: boolean): Promise<TArticle[]> {
  */
 export async function getArticle(id: string): Promise<TArticleDto> {
   try {
+    await authServerUtils.verifyAuth();
+
     const collection = await getCollection<TArticleDocument>("articles");
     const pipeline = [];
     pipeline.push({ $match: { _id: new ObjectId(id) } });
@@ -346,8 +348,10 @@ export async function getArticle(id: string): Promise<TArticleDto> {
  * @returns {Promise<void>} - A promise that resolves when the article is deleted.
  * @throws {AppError} - Throws an error if the deletion fails.
  */
-export async function deleteArticle(id: string) {
+export async function deleteArticle(id: string): Promise<void> {
   try {
+    await authServerUtils.verifyAuth();
+
     const collection = await getCollection<TArticleDocument>("articles");
     const { acknowledged } = await collection.deleteOne({
       _id: new ObjectId(id),

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import ItemList from "../UI/ItemList";
+import { WHO_WE_ARE_IMAGE } from "@/constants/images";
 
 export default function WhoWeAre() {
   return (
@@ -16,7 +17,7 @@ export default function WhoWeAre() {
         <Image
           width={512}
           height={512}
-          src={"/imgs/whoWeAre.svg"}
+          src={WHO_WE_ARE_IMAGE}
           alt="Who we are"
           className="object-cover h-full "
           priority

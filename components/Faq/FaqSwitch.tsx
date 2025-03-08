@@ -1,5 +1,9 @@
 import { TFaqType } from "@/types/faqs";
 import LinkCmp from "../UI/LinkCmp";
+import {
+  FAQ_STUDENTS_PAGE_LINK,
+  FAQ_VOLUNTEERS_PAGE_LINK,
+} from "@/constants/links";
 
 interface FaqProps {
   type: TFaqType;
@@ -11,7 +15,7 @@ export default function FaqSwitch({ type }: FaqProps) {
       <LinkCmp
         styleMode={!isVolunteers ? "full" : "center"}
         styleSize="large"
-        href="/faq/students"
+        href={FAQ_STUDENTS_PAGE_LINK}
         className=""
       >
         <h6>לתלמידים והורים</h6>
@@ -19,7 +23,7 @@ export default function FaqSwitch({ type }: FaqProps) {
       <LinkCmp
         styleMode={isVolunteers ? "full" : "center"}
         styleSize="large"
-        href="/faq/volunteers"
+        href={FAQ_VOLUNTEERS_PAGE_LINK}
       >
         <h6>למתנדבים</h6>
       </LinkCmp>

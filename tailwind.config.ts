@@ -73,17 +73,6 @@ export default {
   },
   plugins: [
     function ({
-      addVariant,
-    }: {
-      addVariant: (name: string, value: string) => void;
-    }) {
-      addVariant("highlight-links", "body:has(#highlight-links:checked) &");
-      addVariant("highlight-headers", "body:has(#highlight-headers:checked) &");
-      addVariant("stop-animations", "body:has(#stop-animations:checked) &");
-      addVariant("grayscale", "body:has(#grayscale:checked) &");
-      addVariant("invertContrast", "body:has(#invertContrast:checked) &");
-    },
-    function ({
       addUtilities,
     }: {
       addUtilities: (

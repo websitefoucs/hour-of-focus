@@ -1,6 +1,5 @@
 import { GIRL_STUDY_2 } from "@/constants/images";
 import Image from "next/image";
-import React from "react";
 
 export default function ExplainVolunteersInfo() {
   return (

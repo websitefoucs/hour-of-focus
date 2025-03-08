@@ -1,6 +1,6 @@
 import ImageOverlay from "../UI/ImageOverlay";
 import Image from "next/image";
-import { GINGER_KID } from "@/constants/images";
+import { GINGER_KID_IMAGE } from "@/constants/images";
 
 export default function AboutHero() {
   return (
@@ -13,10 +13,11 @@ export default function AboutHero() {
           ומעניק שיעורים פרטיים שבועיים בחינם דרך הזום.
         </article>
       </div>
-      <ImageOverlay className="relative w-full h-full overflow-hidden grid-stack">
+      <ImageOverlay className="">
         <Image
-          src={GINGER_KID}
-          fill
+          src={GINGER_KID_IMAGE}
+          height={368}
+          width={1080}
           alt="Ginger kid in front of a screen"
           className=" w-full h-full object-cover"
         />

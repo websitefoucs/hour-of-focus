@@ -1,39 +1,26 @@
-import { useEffect, useState } from "react";
+import { memo, FC } from "react";
 import Button from "../UI/Button";
 import { ZoomInSvg, ZoomOutSvg } from "../UI/icons/Icons";
 
-export default function FontSizeControl() {
-  const [zoom, setZoom] = useState(1);
-  useEffect(() => {
-    const savedZoom = localStorage.getItem("zoom");
-    if (savedZoom) {
-      setZoom(+savedZoom);
-    }
-  }, []);
+interface FontSizeControlProps {
+  onZoomChange: (zoom: number) => void;
+  zoom: number;
+}
 
-  const updateFontSize = (dir: number) => {
-    setZoom((prev) => {
-      const newZoom = +(prev || 1) + dir;
-      if (newZoom > 3) return prev;
-      if (newZoom < 1) return prev;
-      localStorage.setItem("zoom", newZoom.toString());
-      return newZoom;
-    });
-  };
-
+const FontSizeControl: FC<FontSizeControlProps> = ({ onZoomChange, zoom }) => {
   const zoomClass = `zoom-${zoom}`;
 
   return (
     <div className={zoomClass + " flex flex-col gap-2"}>
       <Button
-        onClick={() => updateFontSize(1)}
+        onClick={() => onZoomChange(1)}
         className="flex items-center gap-2 "
       >
         <ZoomInSvg />
         <p className="text-mainGray-800">הגדל טקסט</p>
       </Button>
       <Button
-        onClick={() => updateFontSize(-1)}
+        onClick={() => onZoomChange(-1)}
         className="flex items-center gap-2 text-mainGray-800"
       >
         <ZoomOutSvg />
@@ -41,4 +28,8 @@ export default function FontSizeControl() {
       </Button>
     </div>
   );
-}
+};
+
+export default memo(FontSizeControl, (prevProps, nextProps) => {
+  return prevProps.zoom === nextProps.zoom;
+});

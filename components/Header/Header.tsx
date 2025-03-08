@@ -4,17 +4,18 @@ import LinkCmp from "../UI/LinkCmp";
 import NavLinks from "./NavLinks";
 import Image from "next/image";
 import MobileHeader from "./MobileHeader";
+import { LOGO } from "@/constants/images";
 
 export default function Header() {
   return (
     <header className="flex justify-between items-center h-20 w-full px-[5%]">
       <Image
-        src="/imgs/logo.svg"
+        src={LOGO}
         alt="logo"
         width={64}
         height={64}
         priority
-        className="w-16 h-16" 
+        className="w-16 h-16"
       />
 
       <NavLinks />

@@ -235,6 +235,8 @@ export async function getMaterials(
  */
 export async function getMaterialToEdit(id: string): Promise<TMaterialDto> {
   try {
+    await authServerUtils.verifyAuth();
+
     const collection = await getCollection<TMaterialDocument>("materials");
     const pipeline = [];
     pipeline.push({ $match: { _id: new ObjectId(id) } });
@@ -284,7 +286,7 @@ export async function getMaterialToEdit(id: string): Promise<TMaterialDto> {
  * @throws {AppError} If the deletion fails or an error occurs during the process.
  * @returns {Promise<void>} A promise that resolves when the material is deleted and paths are revalidated.
  */
-export async function deleteMaterial(id: string) {
+export async function deleteMaterial(id: string): Promise<void> {
   try {
     await authServerUtils.verifyAuth();
     const collection = await getCollection<TMaterialDocument>("materials");

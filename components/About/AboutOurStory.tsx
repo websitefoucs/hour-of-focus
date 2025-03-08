@@ -1,3 +1,4 @@
+import { PEOPLE_ON_LAWN_IMAGE } from "@/constants/images";
 import Image from "next/image";
 import React from "react";
 
@@ -20,9 +21,9 @@ export default function AboutOurStory() {
         <Image
           width={512}
           height={256}
-          src="/imgs/people-on-lawn.png"
+          src={PEOPLE_ON_LAWN_IMAGE}
           alt="people on lawn"
-          className="w-full h-full rounded-none"
+          className="w-full h-full rounded-tl-base rounded-br-base"
         />
       </div>
     </div>

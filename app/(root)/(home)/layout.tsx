@@ -14,7 +14,7 @@ export default function HomeLayout({
   video
 }: Readonly<HomeLayoutProps>) {
   return (
-    <section className="max-w-full justify-items-center grid gap-20 mobile:gap-10 home-layout">
+    <section className="max-w-full justify-items-center grid gap-20 mobile:gap-10 home-layout pb-36 mobile:pb-20">
       {children}
       {video}
       {testimonies}

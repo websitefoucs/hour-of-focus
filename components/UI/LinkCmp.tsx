@@ -19,7 +19,7 @@ interface Props extends LinkProps {
 export const STYLES = {
   full: {
     style:
-      "bg-mainOrange-700 text-mainWhite-0 hover:bg-mainOrange-800 rounded-base flex justify-center items-center font-bold",
+      "bg-mainOrange-700 text-mainWhite-0 hover:bg-mainOrange-800 rounded-base flex justify-center items-center font-bold text-18 font-bold leading-21",
     loading: "bg-mainOrange-800",
   },
   coloredBorder: {
@@ -29,7 +29,7 @@ export const STYLES = {
   },
   whiteBorder: {
     style:
-      "border-2 bg-inherit border-mainWhite-0 text-mainWhite-0 hover:border-mainGray-300  hover:text-mainGray-300 rounded-base flex justify-center items-center",
+      "border-2 bg-inherit border-mainWhite-0 text-mainWhite-0 hover:border-mainGray-300  hover:text-mainGray-300 rounded-base flex justify-center items-center text-18 font-bold leading-21",
     loading: "shadow-mainGray-800 text-mainGray-800",
   },
   borderB: {
@@ -81,7 +81,7 @@ export default function LinkCmp({
 }: Props): JSX.Element {
   const style = `${className} ${STYLES[styleMode].style} ${SIZES[styleSize]} ${
     isHighLighted ? "font-bold" : ""
-  } disabled:opacity-50 disabled:cursor-not-allowed`;
+  } disabled:opacity-50 disabled:cursor-not-allowed hover:cursor-pointer`;
   return (
     <Link aria-disabled {...props} className={style}>
       {children}

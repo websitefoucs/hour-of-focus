@@ -1,4 +1,9 @@
 import {
+  FACEBOOK_LINK,
+  INSTAGRAM_LINK,
+  LINKEDIN_LINK,
+} from "@/constants/links";
+import {
   FacebookSvg,
   GitSvg,
   GlobeSvg,
@@ -13,13 +18,13 @@ export default function FollowUs() {
       <div>
         <h6 className="pb-6">עקבו אחרינו</h6>
         <nav className="flex items-center gap-4 ">
-          <LinkCmp href={"/linkedin"}>
+          <LinkCmp href={LINKEDIN_LINK}>
             <LinkedinSvg className="w-8 h-8" />
           </LinkCmp>
-          <LinkCmp href={"/facebook"}>
+          <LinkCmp href={FACEBOOK_LINK}>
             <FacebookSvg className="w-8 h-8" />
           </LinkCmp>
-          <LinkCmp href={"/instagram"}>
+          <LinkCmp href={INSTAGRAM_LINK}>
             <InstagramSvg className="w-8 h-8 fill-mainWhite-0" />
           </LinkCmp>
         </nav>

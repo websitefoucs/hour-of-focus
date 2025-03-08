@@ -1,5 +1,11 @@
 "use client";
 import LinkCmp from "@/components/UI/LinkCmp";
+import {
+  ADMIN_ARTICLES_PAGE_LINK,
+  ADMIN_FAQS_PAGE_LINK,
+  ADMIN_MATERIALS_PAGE_LINK,
+  ADMIN_TESTIMONIES_PAGE_LINK,
+} from "@/constants/links";
 import { usePathname } from "next/navigation";
 import React from "react";
 
@@ -7,10 +13,10 @@ export default function DashboardNav() {
   const pathname = usePathname();
 
   const navLinks = [
-    { href: "/admin/faqs", label: "שאלות ותשובות" },
-    { href: "/admin/materials", label: "חומרי לימוד" },
-    { href: "/admin/articles", label: "כתבות" },
-    { href: "/admin/testimonies", label: "המלצות" },
+    { href: ADMIN_FAQS_PAGE_LINK, label: "שאלות ותשובות" },
+    { href: ADMIN_MATERIALS_PAGE_LINK, label: "חומרי לימוד" },
+    { href: ADMIN_ARTICLES_PAGE_LINK, label: "כתבות" },
+    { href: ADMIN_TESTIMONIES_PAGE_LINK, label: "המלצות" },
   ];
 
   return (

@@ -31,7 +31,6 @@ export default function AdminMaterialEdit({
     materialToEdit?._id ? updateMaterial : createMaterial,
     { ...initialState, data: materialToEdit }
   );
-  console.log(" state:", state)
 
   return (
     <form
