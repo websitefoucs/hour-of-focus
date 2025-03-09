@@ -17,6 +17,7 @@ export default function DashboardNav() {
     { href: ADMIN_MATERIALS_PAGE_LINK, label: "חומרי לימוד" },
     { href: ADMIN_ARTICLES_PAGE_LINK, label: "כתבות" },
     { href: ADMIN_TESTIMONIES_PAGE_LINK, label: "המלצות" },
+    { href: "/admin/test", label: "aaa" },
   ];
 
   return (

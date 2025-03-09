@@ -6,6 +6,7 @@ const open_sans = Open_Sans({
   weight: ["300", "400", "500", "600", "700", "800"],
   subsets: ["hebrew"],
   display: "swap",
+  variable: "--font-open-sans",
 });
 
 export const metadata: Metadata = {
@@ -22,7 +23,7 @@ export default function RootLayout({
     <html lang="he" dir="rtl">
       <head></head>
       <body
-        className={`${open_sans.className} max-w-screen  antialiased  text-normal`}
+        className={`${open_sans.className} max-w-screen  antialiased  text-normal text-right`}
       >
         {children}
       </body>

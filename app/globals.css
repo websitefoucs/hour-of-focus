@@ -3,6 +3,27 @@
 @tailwind utilities;
 
 /*
+* For text editor to work properly
+* TODO -- Add a better way to handle this
+*/
+/* body > *,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+a {
+  text-align: right !important;
+} */
+
+.ql-editor {
+  font-family: "Open_sans";
+  text-align: right !important;
+}
+/*
 * Accessibility settings 
  */
 body:has(.zoom-1) {
@@ -281,3 +302,23 @@ h6 {
   height: 100vh;
 }
 
+.controls {
+  display: flex;
+  border: 1px solid #ccc;
+  border-top: 0;
+  padding: 10px;
+}
+
+.controls-right {
+  margin-left: auto;
+}
+
+.state {
+  margin: 10px 0;
+  font-family: monospace;
+}
+
+.state-title {
+  color: #999;
+  text-transform: uppercase;
+}
