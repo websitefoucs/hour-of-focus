@@ -39,7 +39,7 @@ const items = [
   {
     _id: undefined,
 
-    header: "מה המטרה שלנו",
+    header: "מה המטרה שלנו?",
     text: `הפרויקט פועל מתוך רוח של ערבות הדדית, במטרה להעניק תמיכה חינוכית ולימודית לתלמידים המפונים, לסייע בנחיתה רכה לאלו שכבר חזרו לבתיהם, ולאפשר לכל תלמיד שעה של פוקוס 💙.`,
   },
   {
