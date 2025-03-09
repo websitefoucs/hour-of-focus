@@ -20,8 +20,14 @@ a {
 } */
 
 .ql-editor {
-  font-family: "Open_sans";
+  font-family: "Open sans";
   text-align: right !important;
+  font-size: 1rem;
+}
+.ql-toolbar{
+ text-align: left !important;
+ display: flex;
+
 }
 /*
 * Accessibility settings 

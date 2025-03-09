@@ -46,7 +46,7 @@ export const useModel = (
   const checkClickOutside = useCallback(
     (ev: MouseEvent) => {
       const target = ev.target as HTMLElement;
-
+      
       // If clicking a link, delay modal closing until navigation starts
       if (target.closest("a")) {
         ev.preventDefault(); // Prevent default anchor behavior
@@ -54,15 +54,17 @@ export const useModel = (
         
         if (href) {
           router.push(href); // Navigate programmatically
+          setTimeout(() => setOpen(false), 100); // Delay modal close slightly
+          return;
         }
         
-        setTimeout(() => setOpen(false), 100); // Delay modal close slightly
-        return;
       }
+      console.log("Clicked outside the target element");
       
       // Handle normal outside clicks
       if (!target || !open || !ref.current || ref.current.contains(target))
         return;
+
       if (callBack) {
         callBack();
         return;

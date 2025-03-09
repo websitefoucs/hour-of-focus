@@ -1,5 +1,6 @@
 import { Document, ObjectId } from "mongodb";
 import { TAuth } from "./auth.type";
+import { Op } from "quill";
 
 export type TTestimony = {
   _id?: string;
@@ -8,6 +9,7 @@ export type TTestimony = {
   updateBy?: TAuth;
   updateAt?: string;
   createAt?: string;
+  op?: Op[];
 };
 
 export type TTestimonyDto = Omit<
