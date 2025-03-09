@@ -1,68 +1,47 @@
 "use client";
-import Model from "../UI/Model";
 import { usePathname } from "next/navigation";
 import NavLink from "./NavLinkItem";
-import { DirectionSvg } from "../UI/icons/Icons";
+import RegularExplainNavLink from "./Regular/RegularExplainNavLink";
+import {
+  ABOUT_PAGE_LINK,
+  FAQ_STUDENTS_PAGE_LINK,
+  FAQ_VOLUNTEERS_PAGE_LINK,
+  HOME_PAGE_LINK,
+  MATERIALS_PAGE_LINK,
+} from "@/constants/links";
+import MobileExplainNavLink from "./Mobile/MobileExplainNavLink";
 
 export default function NavLinks() {
   const pathname = usePathname();
 
   return (
     <nav className="flex gap-10 medium:gap-4 items-center text-mainGray-800 nav-links mobile:hidden text-18">
-      <NavLink href="/" isHighlighted={pathname === "/"}>
+      <NavLink
+        href={HOME_PAGE_LINK}
+        isHighlighted={pathname === HOME_PAGE_LINK}
+      >
         דף הבית
       </NavLink>
-      <NavLink href="/about" isHighlighted={pathname === "/about"}>
+      <NavLink
+        href={ABOUT_PAGE_LINK}
+        isHighlighted={pathname === ABOUT_PAGE_LINK}
+      >
         אודות
       </NavLink>
 
-      <div>
-        <Model
-          withOverlay={false}
-          model={
-            <div className="absolute right-3/4 top-6 bg-mainWhite-0 p-4 rounded-base flex flex-col gap-2 shadow-border z-50 shadow-sm border">
-              <NavLink
-                href="/explain/volunteers"
-                isHighlighted={pathname === "/explain/volunteers"}
-              >
-                מתנדבים
-              </NavLink>
-              <NavLink
-                href="/explain/students"
-                isHighlighted={pathname === "/explain/students"}
-              >
-                תלמידים
-              </NavLink>
-            </div>
-          }
-          button={{
-            props: {
-              className: "flex items-center gap-1",
-            },
-            content: (
-              <>
-                <p
-                  className={
-                    pathname.includes("explain")
-                      ? "font-semibold"
-                      : "font-normal"
-                  }
-                >
-                  הסברים
-                </p>
-                <DirectionSvg className="w-4 h-4" />
-              </>
-            ),
-          }}
-        ></Model>
-      </div>
-      <NavLink href="/materials" isHighlighted={pathname === "/materials"}>
+      <RegularExplainNavLink pathname={pathname} />
+      <MobileExplainNavLink pathname={pathname} />
+      <NavLink
+        href={MATERIALS_PAGE_LINK}
+        isHighlighted={pathname === MATERIALS_PAGE_LINK}
+      >
         חומרי לימוד למתנדבים
       </NavLink>
       <NavLink
-        href="/faq/students"
+        href={FAQ_STUDENTS_PAGE_LINK}
         isHighlighted={
-          pathname === "/faq/students" || pathname === "/faq/volunteers"
+          pathname === FAQ_STUDENTS_PAGE_LINK ||
+          pathname === FAQ_VOLUNTEERS_PAGE_LINK
         }
       >
         שאלות ותשובות

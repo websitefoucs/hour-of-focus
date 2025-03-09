@@ -13,7 +13,7 @@ export default function WhoWeAre() {
         )}
       />
 
-      <div className="image-border h-[32rem] medium:h-[26rem] mobile:h-64 mobile:w-[21.8rem] mobile:max-w-[calc(100%-.5rem)] aspect-square before:bg-mainGold-500 after:bg-mainGold-500 relative">
+      <div className="image-border h-[32rem] medium:h-[26rem] mobile:h-64 mobile:w-[calc(100%-.25rem)]  aspect-square before:bg-mainGold-500 after:bg-mainGold-500 relative">
         <Image
           width={512}
           height={512}

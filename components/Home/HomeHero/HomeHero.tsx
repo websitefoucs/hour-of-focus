@@ -7,13 +7,14 @@ import { GINGER_KID_IMAGE } from "@/constants/images";
 
 export default function HomeHero() {
   return (
-    <div className="w-full grid grid-cols-1 grid-rows-1 home-layout-hero bg-fixed relative ">
+    <div className="w-full grid grid-cols-1 grid-rows-1 home-layout-hero relative ">
       <ImageOverlay>
         <Image
-          fill
+          width={1080}
+          height={1080}
           src={GINGER_KID_IMAGE}
           alt="Home main image"
-          className="object-cover h-full bg-fixed "
+          className="object-cover w-full h-full  "
           priority
         />
       </ImageOverlay>
