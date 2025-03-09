@@ -36,12 +36,12 @@ export default function HomeHero() {
           <LinkCmp styleMode="full" styleSize="large" href={TEACHERS_SIGNUP}>
             הצטרפו כמורים
           </LinkCmp>
-          <div className="flex gap-8 medium:gap-4  mobile-small:flex-col">
+          <div className="flex gap-8 medium:gap-4 mobile-small:flex-col">
             <LinkCmp
               styleMode="whiteBorder"
               styleSize="large"
               href={LOGISTIC_SIGNUP}
-              className="mobile:w-fit mobile:px-1 mobile-small:w-60"
+              className=""
             >
               הצטרפו לצוות הלוגיסטי
             </LinkCmp>
@@ -49,7 +49,7 @@ export default function HomeHero() {
               styleMode="whiteBorder"
               styleSize="large"
               href=""
-              className="mobile:w-fit mobile:px-1 mobile-small:w-60"
+              className=""
             >
               מידע נוסף לתלמידים
             </LinkCmp>
