@@ -32,8 +32,8 @@ const items = [
     _id: undefined,
     header: "מי אנחנו?",
     text: `
-    .אנחנו קבוצה של סטודנטים, מילואימניקים, מורים, עובדים בהייטק, ועוד
-    רבים המתנדבים לסייע לאחינו המפונים מהדרום והצפון
+    אנחנו קבוצה של סטודנטים, מילואימניקים, מורים, עובדים בהייטק, ועוד
+    רבים המתנדבים לסייע לאחינו המפונים מהדרום והצפון.
  `,
   },
   {
@@ -48,14 +48,14 @@ const items = [
     header: "איך זה עובד",
     text: `
     אנחנו נתאם חיבור בין המתנדבים לתלמידים, ונקצה לכל תלמיד מורה פרטי
-    שיספק לו שיעור פרטי אונליין במשך שעה אחת בשבוע, בנושא אחד שיבחר.`,
+    שיספק לו שיעור פרטי אונליין במשך שעה אחת בשבוע, בנושא אחד שיבחר`,
   },
 ];
 
 const WhoWeAreItem = ({ header, text }: { header: string; text: string }) => {
   return (
     <li>
-      <h5 className="medium:text-normal">{header}</h5>
+      <h5 className="medium:text-normal pb-3">{header}</h5>
       <p className="text-normal medium:text-[1rem] leading-30 text-mainGray-800">
         {text}
       </p>

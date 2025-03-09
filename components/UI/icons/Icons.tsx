@@ -363,7 +363,7 @@ export const ApproveSvg = () => {
 export const GitSvg = () => {
   return (
     <svg
-      className="w-8 h-8 invert"
+      className="w-8 h-8 invert mobile:w-4 mobile:h-4"
       viewBox="0 0 48 48"
       aria-label="Git-Hub icon"
     >
