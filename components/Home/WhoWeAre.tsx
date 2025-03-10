@@ -13,13 +13,13 @@ export default function WhoWeAre() {
         )}
       />
 
-      <div className="image-border h-[32rem] medium:h-[26rem] mobile:h-64 mobile:w-[calc(100%-.25rem)]  aspect-square before:bg-mainGold-500 after:bg-mainGold-500 relative">
+      <div className="image-border h-[32rem] medium:h-[26rem] medium:place-self-center mobile:h-64 mobile:w-[23rem] mobile:self-center  mobile-small:w-[calc(100%-.25rem)]  before:bg-mainGold-500 after:bg-mainGold-500 relative">
         <Image
           width={512}
           height={512}
           src={WHO_WE_ARE_IMAGE}
           alt="Who we are"
-          className="object-cover h-full "
+          className="object-cover h-full w-full"
           priority
         />
       </div>

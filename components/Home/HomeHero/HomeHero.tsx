@@ -36,7 +36,7 @@ export default function HomeHero() {
           <LinkCmp styleMode="full" styleSize="large" href={TEACHERS_SIGNUP}>
             הצטרפו כמורים
           </LinkCmp>
-          <div className="flex gap-8 medium:gap-4 mobile-small:flex-col">
+          <div className="flex gap-8 medium:gap-4 mobile:flex-col">
             <LinkCmp
               styleMode="whiteBorder"
               styleSize="large"

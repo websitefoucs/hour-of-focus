@@ -12,7 +12,7 @@ export default function AboutInfoImage({
   borderColors,
   isBorderRight,
 }: AboutInfoImageProps) {
-  const style = `image-border before:bg-${borderColors} after:bg-${borderColors} mobile:float-left relative h-[30rem] w-full mobile:h-fit mobile:w-1/2 mobile:mt-[28.8px] ${
+  const style = `image-border before:bg-${borderColors} after:bg-${borderColors} relative h-[30rem] w-full mobile:h-fit ${
     isBorderRight
       ? "before:-right-2 before:rounded-br-full after:-right-2 after:rounded-br-full"
       : ""
