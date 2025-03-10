@@ -1,4 +1,7 @@
 import {
+  BATEL_WEBSITE,
+  ERAN_GIT,
+  ERAN_LINKEDIN,
   FACEBOOK_LINK,
   INSTAGRAM_LINK,
   LINKEDIN_LINK,
@@ -30,11 +33,11 @@ export default function FollowUs() {
         </nav>
       </div>
 
-      <div className="text-14 flex flex-col gap-2 items-center mt-auto self-center ">
-        <div className="flex items-center w-full">
+      <div className="text-14 flex flex-col gap-2 items-center  mt-auto self-center ">
+        <div className="flex items-center w-full justify-center">
           <p className="w-[9rem]">{`עוצב ע"י BY.Creations`}</p>
           <div className="flex gap-1">
-            <LinkCmp href={"https://batelyr224.wixsite.com/batelyuster"}>
+            <LinkCmp href={BATEL_WEBSITE}>
               <GlobeSvg className="w-7 h-7 mobile:w-4 mobile:h-4 fill-mainWhite-0" />
             </LinkCmp>
           </div>
@@ -42,10 +45,10 @@ export default function FollowUs() {
         <div className="flex items-center w-full">
           <p className="w-[9rem]">{`נבנה ע"י Eran Michaeli`}</p>
           <div className="flex gap-1">
-            <LinkCmp href={"https://github.com/P4t4m8n"}>
+            <LinkCmp href={ERAN_GIT}>
               <GitSvg />
             </LinkCmp>
-            <LinkCmp href={"https://www.linkedin.com/in/michaelieran/"}>
+            <LinkCmp href={ERAN_LINKEDIN}>
               <LinkedinSvg className="w-8 h-8 mobile:w-4 mobile:h-4" />
             </LinkCmp>
           </div>
