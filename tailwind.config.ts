@@ -13,6 +13,7 @@ export default {
           0: "#ffffff",
           50: "#fff7ed",
           100: "#ffeed5",
+          150: "#f6f6f6f6",
         },
         mainOrange: {
           600: "#ea5d0c",

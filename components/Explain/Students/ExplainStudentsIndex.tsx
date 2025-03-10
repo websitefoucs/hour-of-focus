@@ -5,6 +5,7 @@ import VolunteersJoinCmp from "@/components/UI/VolunteersJoinCmp";
 import ExplainVolunteersInfo from "./ExplainStudentsInfo";
 import ExplainStudentsMiddle from "./ExplainStudentsMiddle";
 import ExplainIdeas from "./ExplainIdeas";
+import ExplainStudentsCharities from "./ExplainStudentsCharities";
 
 export default function ExplainStudentsIndex() {
   return (
@@ -13,6 +14,7 @@ export default function ExplainStudentsIndex() {
       <ExplainStudentsMiddle />
       <ExplainVolunteersInfo />
       <ExplainIdeas />
+      <ExplainStudentsCharities />
       <VolunteersJoinCmp />
     </section>
   );
