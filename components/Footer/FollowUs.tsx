@@ -33,8 +33,8 @@ export default function FollowUs() {
         </nav>
       </div>
 
-      <div className="text-14 flex flex-col gap-2 items-center  mt-auto self-center ">
-        <div className="flex items-center w-full justify-center">
+      <div className="text-14 flex flex-col gap-2 items-center mt-auto self-center ">
+        <div className="flex items-center w-full mobile:justify-center">
           <p className="w-[9rem]">{`עוצב ע"י BY.Creations`}</p>
           <div className="flex gap-1">
             <LinkCmp href={BATEL_WEBSITE}>

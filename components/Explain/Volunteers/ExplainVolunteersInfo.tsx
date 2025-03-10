@@ -1,4 +1,4 @@
-import { GIRL_STUDY_2 } from "@/constants/images";
+import { GIRL_STUDY_TWO_IMAGE } from "@/constants/images";
 import Image from "next/image";
 
 export default function ExplainVolunteersInfo() {
@@ -18,7 +18,7 @@ export default function ExplainVolunteersInfo() {
         <Image
           width={480}
           height={432}
-          src={GIRL_STUDY_2}
+          src={GIRL_STUDY_TWO_IMAGE}
           alt="people on lawn"
           className="w-full h-full rounded-none"
         />

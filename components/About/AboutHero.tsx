@@ -20,6 +20,7 @@ export default function AboutHero() {
           width={1080}
           alt="Ginger kid in front of a screen"
           className=" w-full h-full object-cover"
+          priority
         />
       </ImageOverlay>
     </div>
