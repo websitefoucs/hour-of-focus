@@ -329,11 +329,10 @@ export const DirectionSvg = ({ className }: { className?: string }) => {
 export const ApproveSvg = () => {
   return (
     <svg
-      width="32"
-      height="32"
+  
       viewBox="0 0 32 32"
       fill="none"
-      className="min-w-6 min-h-6 mobile:w-6 mobile:h-6"
+      className="w-8 h-8"
       aria-label="Approve icon"
     >
       <g clipPath="url(#clip0_181_303)">

@@ -31,17 +31,21 @@ export default function HighlightsList() {
 
 const items = [
   {
-    icon: <ClockSvg className="w-14 h-14 fill-none" />,
+    icon: <ClockSvg className="w-14 h-14 mobile:w-12 mobile:h-12 fill-none" />,
     title: "גמישות מלאה",
     text: "התנדבות בזמנים שמתאימים לכם",
   },
   {
-    icon: <GroupSvg className="w-14 h-14 fill-mainOrange-700" />,
+    icon: (
+      <GroupSvg className="w-14 h-14  mobile:w-12 mobile:h-12 fill-mainOrange-700" />
+    ),
     title: "ליווי אישי",
     text: "צוות תומך לאורך כל הדרך",
   },
   {
-    icon: <HeartSvg className="w-14 h-14 stroke-mainOrange-700 fill-none" />,
+    icon: (
+      <HeartSvg className="w-14 h-14  mobile:w-12 mobile:h-12 stroke-mainOrange-700 fill-none" />
+    ),
     title: "השפעה אמיתית",
     text: "תרומה משמעותית למפונים",
   },
