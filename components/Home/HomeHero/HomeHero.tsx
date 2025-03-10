@@ -7,13 +7,14 @@ import { GINGER_KID_IMAGE } from "@/constants/images";
 
 export default function HomeHero() {
   return (
-    <div className="w-full grid grid-cols-1 grid-rows-1 home-layout-hero bg-fixed relative ">
+    <div className="w-full grid grid-cols-1 grid-rows-1 home-layout-hero relative ">
       <ImageOverlay>
         <Image
-          fill
+          width={1080}
+          height={1080}
           src={GINGER_KID_IMAGE}
           alt="Home main image"
-          className="object-cover h-full bg-fixed "
+          className="object-cover w-full h-full  "
           priority
         />
       </ImageOverlay>
@@ -35,12 +36,12 @@ export default function HomeHero() {
           <LinkCmp styleMode="full" styleSize="large" href={TEACHERS_SIGNUP}>
             הצטרפו כמורים
           </LinkCmp>
-          <div className="flex gap-8 medium:gap-4  mobile-small:flex-col">
+          <div className="flex gap-8 medium:gap-4 mobile-small:flex-col">
             <LinkCmp
               styleMode="whiteBorder"
               styleSize="large"
               href={LOGISTIC_SIGNUP}
-              className="mobile:w-fit mobile:px-1 mobile-small:w-60"
+              className=""
             >
               הצטרפו לצוות הלוגיסטי
             </LinkCmp>
@@ -48,7 +49,7 @@ export default function HomeHero() {
               styleMode="whiteBorder"
               styleSize="large"
               href=""
-              className="mobile:w-fit mobile:px-1 mobile-small:w-60"
+              className=""
             >
               מידע נוסף לתלמידים
             </LinkCmp>

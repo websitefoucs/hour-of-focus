@@ -6,7 +6,7 @@ import { LOGO } from "@/constants/images";
 
 export default function Footer() {
   return (
-    <footer className="w-full h-[21rem] py-16 bg-mainOrange-700 flex justify-around text-mainWhite-0 mobile:grid footer-grid mobile-small:px-2">
+    <footer className="w-full h-[21rem] mobile:h-[26rem] py-16 mobile:py-8 bg-mainOrange-700 flex justify-around text-mainWhite-0 mobile:grid footer-grid mobile-small:px-2">
       <Details />
       <FollowUs />
 
@@ -15,7 +15,7 @@ export default function Footer() {
         alt="logo"
         width={160}
         height={160}
-        className="w-40 object-cover h-40 brightness-0 invert footer-grid-two mobile-small:w-30 mobile-small:h-30 mobile-small:object-fill"
+        className="w-40 mobile:w-28 h-40 mobile:h-28 object-cover brightness-0 invert footer-grid-two mobile:justify-self-end"
         priority
       />
     </footer>

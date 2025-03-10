@@ -21,15 +21,15 @@ export default function VolunteersJoinCmp({
   isHome?: boolean;
 }): React.JSX.Element {
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-20">
       <article className="flex flex-col gap-4 items-center">
         {isHome ? (
           <>
-            <h3 className="text-center px-36 mobile:px-0">
+            <h3 className="text-center px-36 mobile:px-2">
               הצטרפו עכשיו למשפחת המתנדבים שלנו
             </h3>
-            <p className="text-mainGray-500 text-20">
-              יחד נוכל לעשות שינוי משמעותי בחיי תלמידים רבים
+            <p className="text-mainGray-500 text-20 mobile:text-18 text-center mobile:px-2">
+              יחד נוכל לעשות שינוי משמעותי בחיי תלמידים 
             </p>
           </>
         ) : (
@@ -37,25 +37,24 @@ export default function VolunteersJoinCmp({
         )}
       </article>
 
-      <nav className="flex flex-col gap-12 mobile:gap-2 items-center">
-        <div className="flex gap-6 mobile:gap-2">
-          <LinkCmp
-            styleMode="full"
-            styleSize="large"
-            className="mobile:w-fit px-1"
-            href={TEACHERS_SIGNUP}
-          >
-            <h6>הצטרפו כמורים</h6>
-          </LinkCmp>
-          <LinkCmp
-            styleMode="coloredBorder"
-            styleSize="large"
-            className="mobile:w-fit px-1 font-bold  "
-            href={LOGISTIC_SIGNUP}
-          >
-            <h6>הצטרפו לצוות הלוגיסטי</h6>
-          </LinkCmp>
-        </div>
+      <nav className="grid grid-cols-2 mobile:grid-cols-1 grid-rows-2 mobile:grid-rows-3 gap-6  justify-items-center items-center">
+        <LinkCmp
+          styleMode="full"
+          styleSize="large"
+          className="justify-self-end mobile:justify-self-auto"
+          href={TEACHERS_SIGNUP}
+        >
+          הצטרפו כמורים
+        </LinkCmp>
+        <LinkCmp
+          styleMode="coloredBorder"
+          styleSize="large"
+          className="font-bold justify-self-start mobile:justify-self-auto "
+          href={LOGISTIC_SIGNUP}
+        >
+          הצטרפו לצוות הלוגיסטי
+        </LinkCmp>
+
         <LinkCmp
           styleMode="arrow"
           styleSize="long"
@@ -63,10 +62,10 @@ export default function VolunteersJoinCmp({
             isHome
               ? "text-mainOrange-700 border-mainOrange-700 hover:text-mainOrange-800 hover:border-mainOrange-800"
               : "text-mainGray-800"
-          }`}
+          } col-span-2 mobile:col-span-1 `}
           href={CONTACT_US}
         >
-          <h6>יש לכם שאלות? דברו איתנו ונשמח לסייע</h6>
+          יש לכם שאלות? דברו איתנו ונשמח לסייע
         </LinkCmp>
       </nav>
     </div>

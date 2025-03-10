@@ -18,6 +18,10 @@ export const FAQ_VOLUNTEERS_PAGE_LINK = "/faq/volunteers";
 
 export const ACCESSIBILITY_PAGE_LINK = "/accessibility";
 
+export const ABOUT_PAGE_LINK = "/about";
+export const MATERIALS_PAGE_LINK = "/materials";
+export const HOME_PAGE_LINK = "/";
+
 export const FACEBOOK_LINK = "https://www.facebook.com/0focushour0";
 export const INSTAGRAM_LINK = "https://www.instagram.com/0focushour0";
 export const LINKEDIN_LINK = "https://www.linkedin.com/company/0focushour0";

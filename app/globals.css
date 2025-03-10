@@ -219,10 +219,15 @@ h6 {
 .open:has(.nav-links, .content-us) {
   display: block;
 }
+.explain-mobile:has(.open) {
+  height: 8rem;
+}
 
 .menu-model {
   & nav {
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     padding-bottom: 1rem;
   }
 }
@@ -307,7 +312,6 @@ h6 {
   width: 14rem;
   height: 100vh;
 }
-
 .controls {
   display: flex;
   border: 1px solid #ccc;

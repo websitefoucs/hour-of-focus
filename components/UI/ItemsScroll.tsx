@@ -44,7 +44,7 @@ export default function ItemsScroll<T>({
   };
 
   return (
-    <div className="flex items-center justify-between text-center p-4 w-full">
+    <div className="flex items-center justify-between text-center  w-full">
       <Button onClick={() => onClick(-1)} aria-label="previous item">
         <DirectionSvg className="-rotate-90 h-16 w-16 mobile:h-10 mobile:w-10 bg-inherit" />
       </Button>
