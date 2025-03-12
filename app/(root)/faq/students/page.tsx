@@ -1,6 +1,11 @@
+//Components
 import FaqIndex from "@/components/Faq/FaqIndex";
+//Actions
 import { getFaqs } from "@/lib/actions/faqs";
+//Types
 import { Metadata } from "next";
+//React
+import { cache } from "react";
 
 export const metadata: Metadata = {
   title: `שאלות נפוצות - עודכן ב:${new Date().getFullYear()}`,
@@ -14,9 +19,10 @@ export const metadata: Metadata = {
     },
   },
 };
+const cachedGetFaqs = cache(getFaqs);
 
 export default async function FaqsPage() {
-  const faqs = await getFaqs({ faqType: "students", isFull: false });
+  const faqs = await cachedGetFaqs({ faqType: "students", isFull: false });
 
   return <FaqIndex type={"students"} faqs={faqs} />;
 }
