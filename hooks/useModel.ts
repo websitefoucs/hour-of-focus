@@ -59,7 +59,6 @@ export const useModel = (
         }
         
       }
-      console.log("Clicked outside the target element");
       
       // Handle normal outside clicks
       if (!target || !open || !ref.current || ref.current.contains(target))

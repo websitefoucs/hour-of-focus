@@ -1,3 +1,5 @@
+import { JSX } from "react";
+
 interface Props extends React.LabelHTMLAttributes<HTMLLabelElement> {
   error?: string;
 }
@@ -10,10 +12,10 @@ interface Props extends React.LabelHTMLAttributes<HTMLLabelElement> {
  *
  * @returns {JSX.Element} The rendered ErrorLabel component.
  */
-export default function ErrorLabel({ error, ...props }: Props) {
+export default function ErrorLabel({ error, ...props }: Props): JSX.Element {
   return (
     <label {...props}>
-      {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+      {error && <p className="text-red-500 text-14 my-1">{error}</p>}
     </label>
   );
 }

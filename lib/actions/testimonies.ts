@@ -36,32 +36,32 @@ export async function createTestimony(
     if (quillOps) {
       try {
         parsedOps = JSON.parse(quillOps as string); // Parse JSON safely
-        console.log(" parsedOps:", parsedOps)
+        console.log(" parsedOps:", parsedOps);
       } catch (error) {
         console.error("Error parsing Quill Delta:", error);
       }
     }
-    // const userId = await authServerUtils.verifyAuth();
+    const userId = await authServerUtils.verifyAuth();
 
-    // const data = TestimoniesServerUtils.fromDataToDto(formData);
+    const data = TestimoniesServerUtils.fromDataToDto(formData);
 
-    // dto = TestimoniesServerUtils.sanitizeTestimonyDtoCreate({
-    //   ...data,
-    //   createBy: userId,
-    // });
+    dto = TestimoniesServerUtils.sanitizeTestimonyDtoCreate({
+      ...data,
+      createBy: userId,
+    });
 
-    // TestimoniesServerUtils.validateTestimonyDtoCreate(dto);
-    // const { createBy, text } = dto;
+    TestimoniesServerUtils.validateTestimonyDtoCreate(dto);
+    const { createBy, text } = dto;
 
-    // const collection = await getCollection<TTestimonyDocument>("testimonies");
-    // const { acknowledged, insertedId } = await collection.insertOne({
-    //   text,
-    //   createBy: new ObjectId(createBy),
-    // });
+    const collection = await getCollection<TTestimonyDocument>("testimonies");
+    const { acknowledged, insertedId } = await collection.insertOne({
+      text,
+      createBy: new ObjectId(createBy),
+    });
 
-    // if (!acknowledged || !insertedId) {
-    //   throw AppError.create("Failed to create Testimony");
-    // }
+    if (!acknowledged || !insertedId) {
+      throw AppError.create("Failed to create Testimony");
+    }
 
     revalidatePath("/admin/testimonies");
     revalidatePath(`/@testimonies`);
@@ -74,7 +74,7 @@ export async function createTestimony(
     };
   }
 
-  // redirect("/admin/testimonies");
+  redirect("/admin/testimonies");
 }
 /**
  * Updates a testimony with the provided form data.

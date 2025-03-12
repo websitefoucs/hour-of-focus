@@ -1,7 +1,7 @@
-import ErrorLabel from "@/components/UI/ErrorLabel";
+// import ErrorLabel from "@/components/UI/ErrorLabel";
 import Input from "@/components/UI/Input";
-import Label from "@/components/UI/Label";
-import TextArea from "@/components/UI/TextArea";
+// import Label from "@/components/UI/Label";
+// import TextArea from "@/components/UI/TextArea";
 import { TValidationError } from "@/types/app.type";
 import { TTestimonyDto } from "@/types/testimonies.type";
 import dynamic from "next/dynamic";
@@ -17,7 +17,7 @@ interface AdminTestimoniesInputsProps {
   data?: TTestimonyDto;
 }
 export default function AdminTestimoniesInputs({
-  errors,
+  // errors,
   data,
   quillRef,
 }: AdminTestimoniesInputsProps) {

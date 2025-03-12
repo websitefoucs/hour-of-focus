@@ -3,13 +3,11 @@ import { Document, ObjectId } from "mongodb";
 
 export type TAuth = {
   _id?: string;
-  username?: string;
   password?: string;
   email?: string;
 };
 export type TAuthDto = {
   password: string;
-  username?: string;
   email?: string;
 };
 

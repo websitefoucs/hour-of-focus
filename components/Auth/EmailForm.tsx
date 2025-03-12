@@ -11,13 +11,13 @@ import Input from "../UI/Input";
 import Label from "../UI/Label";
 import Button from "../UI/Button";
 import Loader from "../UI/Loader";
+import ErrorLabel from "../UI/ErrorLabel";
 
 const initialState: TFormState<TAuthDto> = {
   errors: null,
   message: "",
   data: {
     email: "",
-    username: "",
     password: "",
   },
 };
@@ -33,7 +33,7 @@ export default function EmailForm() {
       <legend className="sr-only">{"טופס הרשמה"}</legend>
       <form
         action={formAction}
-        className="flex flex-col gap-2 transition-all duration-300 h-fit"
+        className="flex flex-col gap-2"
         aria-label={"טופס הרשמה"}
       >
         {inputs.map((input) => (
@@ -49,12 +49,11 @@ export default function EmailForm() {
             >
               {input.placeholder}
             </Label>
-            <Label
+            <ErrorLabel
               className="ps-1.5 block font-semibold text-xs text-red-500"
               htmlFor={input.name}
-            >
-              {state.errors?.[input.name as keyof TAuthDto]}
-            </Label>
+              error={state.errors?.[input.name as keyof TAuthDto]}
+            />
           </Input>
         ))}
 

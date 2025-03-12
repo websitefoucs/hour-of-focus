@@ -9,7 +9,7 @@ interface FaqPreviewProps {
   faq: TFaq;
 }
 export default function AdminFaqPreview({ faq }: FaqPreviewProps) {
-  const { question, answer, createBy, createdAt, _id } = faq;
+  const { question, answer, createdAt, _id } = faq;
 
   return (
     <li className="flex gap-2">
@@ -21,7 +21,6 @@ export default function AdminFaqPreview({ faq }: FaqPreviewProps) {
 
       <div className="flex flex-col gap-2">
         <span className="border rounded-base w-20 text-center py-1">
-          <p className="text-sm">{createBy?.username}</p>
           <p className="text-sm">{new Date(createdAt!).toLocaleDateString()}</p>
         </span>
         <HandleEdit

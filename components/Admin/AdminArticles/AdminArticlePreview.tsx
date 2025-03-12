@@ -11,7 +11,7 @@ interface AdminArticlePreviewProps {
 export default function AdminArticlePreview({
   article,
 }: AdminArticlePreviewProps) {
-  const { publishDate, link, preview, publishPlace, createBy, createdAt, _id } =
+  const { publishDate, link, preview, publishPlace, createdAt, _id } =
     article;
 
   return (
@@ -25,7 +25,6 @@ export default function AdminArticlePreview({
         />
         <li className="flex  gap-2 items-center p-4">
           <span className="border rounded-base  text-center py-1 px-2 gap-2 flex">
-            <p className="text-sm">{createBy?.username}</p>
             <p className="text-sm">
               {new Date(createdAt!).toLocaleDateString()}
             </p>

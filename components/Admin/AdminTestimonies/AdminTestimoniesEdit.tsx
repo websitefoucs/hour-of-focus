@@ -6,10 +6,10 @@ import { useActionState, useRef } from "react";
 import AdminTestimoniesInputs from "./AdminTestimoniesInputs";
 import Button from "@/components/UI/Button";
 import Quill from "quill";
-import dynamic from "next/dynamic";
-const Editor = dynamic(() => import("@/components/TextEditor/Editor"), {
-  ssr: false,
-});
+// import dynamic from "next/dynamic";
+// const Editor = dynamic(() => import("@/components/TextEditor/Editor"), {
+//   ssr: false,
+// });
 
 interface AdminTestimoniesEditProps {
   testimonyToEdit: TTestimonyDto;
@@ -32,7 +32,6 @@ export default function AdminTestimoniesEdit({
   const quillRef = useRef<Quill | null>(null);
   
   const handleSubmit = async (e: FormData) => {
-    console.log("e:", e);
     if (!quillRef.current) return;
 
     const delta = quillRef.current.getContents(); // Get Quill Delta
