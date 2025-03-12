@@ -25,8 +25,8 @@ const formDataToDto = (
   return { dto: { email, password }, passwordConfirm };
 };
 const sanitizeAuthDto = (dto: TAuthDto): TAuthDto => {
-  const password = sanitizeUtil.SanitizedObjectField(dto?.password) || "";
-  const email = sanitizeUtil.SanitizedObjectField(dto?.email) || "";
+  const password = sanitizeUtil.sanitizedObjectField(dto?.password) || "";
+  const email = sanitizeUtil.sanitizedObjectField(dto?.email) || "";
 
   return {
     password,

@@ -1,7 +1,17 @@
-import { TTextBlock } from "@/types/app.type";
+//React
 import React, { JSX } from "react";
+//Types
+import { TTextBlock } from "@/types/app.type";
 
-const parseQuillDelta = (delta: TTextBlock[]) => {
+/**
+ * Parses a Quill Delta object into React components.
+ *
+ * @param {TTextBlock[]} delta - The Quill Delta object to parse.
+ *
+ * @returns {React.ReactNode} The parsed React components.
+ */
+const parseQuillDelta = (delta?: TTextBlock[]) => {
+  if (!delta) return null;
   return delta.map((block, index) => {
     let content: React.ReactNode = block.insert;
 
@@ -35,6 +45,6 @@ const parseQuillDelta = (delta: TTextBlock[]) => {
   });
 };
 
-export const RichTextRender = ({ delta }: { delta: TTextBlock[] }) => {
+export const RichTextRender = ({ delta }: { delta?: TTextBlock[] }) => {
   return <>{parseQuillDelta(delta)}</>;
 };

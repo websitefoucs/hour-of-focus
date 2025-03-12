@@ -4,12 +4,12 @@ import { AppError } from "./Error.util";
 import { TArticleDto } from "@/types/articles.type";
 
 const sanitizeArticleDtoCreate = (dto: TArticleDto): TArticleDto => {
-  const preview = sanitizeUtil.SanitizedObjectField(dto?.preview) || "";
-  const link = sanitizeUtil.SanitizedObjectField(dto?.link) || "";
-  const publishDate = sanitizeUtil.SanitizedObjectField(dto?.publishDate) || "";
+  const preview = sanitizeUtil.sanitizedObjectField(dto?.preview) || "";
+  const link = sanitizeUtil.sanitizedObjectField(dto?.link) || "";
+  const publishDate = sanitizeUtil.sanitizedObjectField(dto?.publishDate) || "";
   const publishPlace =
-    sanitizeUtil.SanitizedObjectField(dto?.publishPlace) || "";
-  const createBy = sanitizeUtil.SanitizedObjectField(dto?.createBy) || "";
+    sanitizeUtil.sanitizedObjectField(dto?.publishPlace) || "";
+  const createBy = sanitizeUtil.sanitizedObjectField(dto?.createBy) || "";
 
   return {
     link,
@@ -85,8 +85,8 @@ const validateArticleDtoCreate = (
 };
 
 const sanitizeArticleDtoUpdate = (dto: TArticleDto): TArticleDto => {
-  const updateBy = sanitizeUtil.SanitizedObjectField(dto?.updateBy) || "";
-  const _id = sanitizeUtil.SanitizedObjectField(dto?._id) || "";
+  const updateBy = sanitizeUtil.sanitizedObjectField(dto?.updateBy) || "";
+  const _id = sanitizeUtil.sanitizedObjectField(dto?._id) || "";
 
   return {
     ...sanitizeArticleDtoCreate(dto),

@@ -17,13 +17,7 @@ export default function FaqIndex({ type, faqs }: FaqIndexProps) {
         <ItemList
           items={faqs}
           listStyle="grid gap-6"
-          renderItem={(faq) => (
-            <FaqItem
-              answer={faq.answer || ""}
-              question={faq.question || ""}
-              _id={faq._id || ""}
-            />
-          )}
+          renderItem={(faq) => <FaqItem {...faq} />}
         />
       </div>
     </section>

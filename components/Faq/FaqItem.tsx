@@ -7,9 +7,9 @@ import { MinusSvg, PlusSvg } from "../UI/icons/Icons";
 import { RichTextRender } from "../UI/RichTextRender";
 
 interface FaqItemProps {
-  _id: string;
-  deltaQuestion: TTextBlock[];
-  deltaAnswer: TTextBlock[];
+  _id?: string;
+  deltaQuestion?: TTextBlock[];
+  deltaAnswer?: TTextBlock[];
 }
 /**
  * FaqItem server component renders a FAQ item with a question and answer.

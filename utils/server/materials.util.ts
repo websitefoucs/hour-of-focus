@@ -4,10 +4,10 @@ import { AppError } from "./Error.util";
 import { TMaterialDto } from "@/types/materials.type";
 
 const sanitizeMaterialsDtoCreate = (dto: TMaterialDto): TMaterialDto => {
-  const imgPath = sanitizeUtil.SanitizedObjectField(dto?.imgPath) || "";
-  const link = sanitizeUtil.SanitizedObjectField(dto?.link) || "";
-  const subject = sanitizeUtil.SanitizedObjectField(dto?.subject) || "";
-  const createBy = sanitizeUtil.SanitizedObjectField(dto?.createBy) || "";
+  const imgPath = sanitizeUtil.sanitizedObjectField(dto?.imgPath) || "";
+  const link = sanitizeUtil.sanitizedObjectField(dto?.link) || "";
+  const subject = sanitizeUtil.sanitizedObjectField(dto?.subject) || "";
+  const createBy = sanitizeUtil.sanitizedObjectField(dto?.createBy) || "";
 
   return {
     imgPath,
@@ -57,8 +57,8 @@ const validateMaterialsDtoCreate = (
 };
 
 const sanitizeMaterialsDtoUpdate = (dto: TMaterialDto): TMaterialDto => {
-  const updateBy = sanitizeUtil.SanitizedObjectField(dto?.updateBy) || "";
-  const _id = sanitizeUtil.SanitizedObjectField(dto?._id) || "";
+  const updateBy = sanitizeUtil.sanitizedObjectField(dto?.updateBy) || "";
+  const _id = sanitizeUtil.sanitizedObjectField(dto?._id) || "";
 
   return {
     ...sanitizeMaterialsDtoCreate(dto),
