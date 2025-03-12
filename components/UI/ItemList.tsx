@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 
-interface Props<T extends { _id?: string }> {
+interface Props<T extends { _id?: string | undefined }> {
   items: T[];
   renderItem: (item: T, idx?: number) => React.ReactNode;
   listStyle?: string;

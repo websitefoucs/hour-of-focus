@@ -43,3 +43,4 @@ logs/backend.log
 
 .vercel
 .qodo/history.sqlite
+.qodo

@@ -13,13 +13,13 @@ export default function AboutHero() {
           ומעניק שיעורים פרטיים שבועיים בחינם דרך הזום.
         </article>
       </div>
-      <ImageOverlay className="">
+      <ImageOverlay className=" blur-lg">
         <Image
           src={GINGER_KID_IMAGE}
           height={368}
           width={1080}
           alt="Ginger kid in front of a screen"
-          className=" w-full h-full object-cover"
+          className=" w-full h-full object-cover blur-[5px]"
           priority
         />
       </ImageOverlay>

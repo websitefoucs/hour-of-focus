@@ -12,7 +12,7 @@ export default function TestimonyItem({
         isFading ? "opacity-0" : "opacity-100"
       }`}
     >
-      <p className="truncate text-wrap w-full">{testimony}</p>
+      <p className="truncate text-wrap w-full px-2">{testimony}</p>
     </article>
   );
 }
