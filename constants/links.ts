@@ -32,8 +32,10 @@ export const ADMIN_TESTIMONIES_PAGE_LINK = "/admin/testimonies";
 
 //Social media links
 export const FACEBOOK_LINK = "https://www.facebook.com/0focushour0";
-export const INSTAGRAM_LINK = "https://www.instagram.com/0focushour0";
-export const LINKEDIN_LINK = "https://www.linkedin.com/company/0focushour0";
+export const INSTAGRAM_LINK =
+  "https://www.instagram.com/hour_of_focus?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==";
+export const LINKEDIN_LINK =
+  "https://www.linkedin.com/company/%D7%A9%D7%A2%D7%94-%D7%A9%D7%9C-%D7%A4%D7%95%D7%A7%D7%95%D7%A1/posts/?feedView=all";
 
 //Creators links
 export const BATEL_WEBSITE = "https://batelyr224.wixsite.com/batelyuster";
