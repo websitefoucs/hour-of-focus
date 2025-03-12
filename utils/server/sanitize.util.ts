@@ -6,7 +6,7 @@ import sanitizeHtml from "sanitize-html";
  * @param fieldName The name of the form field to sanitize.
  * @returns The sanitized string.
  */
-const SanitizedFormField = (formData: FormData, fieldName: string): string => {
+const sanitizedFormField = (formData: FormData, fieldName: string): string => {
   return sanitizeHtml(formData.get(fieldName)?.toString() || "");
 };
 /**
@@ -14,10 +14,10 @@ const SanitizedFormField = (formData: FormData, fieldName: string): string => {
  * @param value The value to sanitize.
  * @returns The sanitized string or null if no value is provided.
  */
-const SanitizedObjectField = (
+const sanitizedObjectField = (
   value?: string | null | number
-): string | null => {
-  if (!value) return null;
+): string  => {
+  if (!value) return "";
   return sanitizeHtml(value.toString());
 };
 /**
@@ -25,23 +25,14 @@ const SanitizedObjectField = (
  * @param value The boolean value to sanitize.
  * @returns True if value is truthy, otherwise false.
  */
-const SanitizedBoolean = (value?: boolean): boolean => {
-  return value || false;
+const sanitizedBoolean = (value?: unknown): boolean => {
+  return !sanitizeHtml(value?.toString() || "")
+    .toLowerCase()
+    .includes("false");
 };
-/**
- * Provides sanitization utilities for various data types.
- */
+
 export const sanitizeUtil = {
-  /**
-   * Cleans HTML from a FormData field.
-   */
-  SanitizedFormField,
-  /**
-   * Cleans HTML from an object field.
-   */
-  SanitizedObjectField,
-  /**
-   * Converts a value to a boolean.
-   */
-  SanitizedBoolean,
+  sanitizedFormField,
+  sanitizedObjectField,
+  sanitizedBoolean,
 };

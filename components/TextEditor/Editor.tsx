@@ -1,14 +1,15 @@
 "use client";
-import Quill, { Delta } from "quill";
+import { TTextBlock } from "@/types/app.type";
+import Quill from "quill";
 import React, { forwardRef, useEffect, useRef } from "react";
 
 interface EditorProps {
-  defaultValue?: Delta;
+  delta?: TTextBlock[];
 }
 
-const Editor = forwardRef<Quill, EditorProps>(({ defaultValue }, ref) => {
+const Editor = forwardRef<Quill, EditorProps>(({ delta }, ref) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const defaultValueRef = useRef(defaultValue);
+  const deltaRef = useRef(delta);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -27,9 +28,9 @@ const Editor = forwardRef<Quill, EditorProps>(({ defaultValue }, ref) => {
       placeholder: "הקלד כאן...",
       modules: {
         toolbar: [
-          [{ 'size': [] }],
+          [{ size: [] }],
           ["bold", "italic", "underline"],
-          [{ 'color': [] }],
+          [{ color: [] }],
           ["link"],
         ],
       },
@@ -37,8 +38,8 @@ const Editor = forwardRef<Quill, EditorProps>(({ defaultValue }, ref) => {
 
     ref.current = quill;
 
-    if (defaultValueRef.current) {
-      quill.setContents(defaultValueRef.current);
+    if (deltaRef.current) {
+      quill.setContents(deltaRef.current);
     }
 
     const toolbar = container.querySelector(".ql-toolbar");

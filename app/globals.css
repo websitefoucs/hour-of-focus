@@ -24,10 +24,9 @@ a {
   text-align: right !important;
   font-size: 1rem;
 }
-.ql-toolbar{
- text-align: left !important;
- display: flex;
-
+.ql-toolbar {
+  text-align: left !important;
+  display: flex;
 }
 /*
 * Accessibility settings 
@@ -331,4 +330,10 @@ h6 {
 .state-title {
   color: #999;
   text-transform: uppercase;
+}
+
+.ql-editor {
+  & a {
+    pointer-events: none;
+  }
 }

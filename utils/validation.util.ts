@@ -1,3 +1,10 @@
+import {
+  ALLOWED_COLORS_REGEX,
+  ALLOWED_TEXT_SIZES,
+  URL_REGEX,
+} from "@/constants/quill";
+import { TQuillTextSize } from "@/types/app.type";
+
 /**
  * Validates that a string has the specified minimum length.
  * @param filedName - Name of the field being validated.
@@ -46,7 +53,7 @@ const validateExistence = (
   value: unknown
 ): string | null => {
   if (value === null || value === undefined || value === "") {
-    return `${filedName} is required.`;
+    return `שדה חובה ${filedName}.`;
   }
   return null;
 };
@@ -145,6 +152,38 @@ const compareStr = <T>(
   }
   return null;
 };
+const validateUrl = (filedName: string, value?: unknown): string | null => {
+  const isString = _isString(value);
+  if (!isString) return `${filedName} שדה חובה.`;
+  return URL_REGEX.test(value) ? null : `${filedName} לא תקין.`;
+};
+const validateColorHex = (
+  filedName: string,
+  value?: unknown
+): string | null => {
+  const isString = _isString(value);
+  if (!isString) return `${filedName} שדה חובה.`;
+  return ALLOWED_COLORS_REGEX.test(value) ? null : `${filedName} is invalid.`;
+};
+const validateTextSize = (filedName: string, value?: string): string | null => {
+  if (!value) return `${filedName} שדה חובה.`;
+  const fontCheck = ALLOWED_TEXT_SIZES.has(value as TQuillTextSize);
+
+  return fontCheck ? null : `${filedName} גודל טקסט לא חוקי.`;
+};
+const validateBoolean = (filedName: string, value?: unknown): string | null => {
+  if (value === null || value === undefined) {
+    return `${filedName} שדה חובה.`;
+  }
+  if (typeof value !== "boolean") {
+    return `${filedName} חייב להיות בוליאני.`;
+  }
+  return null;
+};
+
+const _isString = (value: unknown): value is string => {
+  return !(value === null || value === undefined || typeof value !== "string");
+};
 
 /**
  * Provides validation utilities for various data types.
@@ -159,4 +198,8 @@ export const validationUtil = {
   validateDate,
   validateDateStr,
   compareStr,
+  validateUrl,
+  validateColorHex,
+  validateTextSize,
+  validateBoolean,
 };
