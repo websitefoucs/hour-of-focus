@@ -76,13 +76,11 @@ export default function Button({
   className,
   ...props
 }: ButtonProps) {
-  const style = className
-    ? className
-    : `flex self-center justify-center items-center transition-colors duration-300 ${
-        STYLES[styleMode].style
-      } ${SIZES[styleSize]} ${
-        props.disabled ? STYLES[styleMode]?.loading : ""
-      }`;
+  const style = `flex self-center justify-center items-center transition-colors duration-300  ${
+    STYLES[styleMode].style
+  } ${className} ${SIZES[styleSize]} ${
+    props.disabled ? STYLES[styleMode]?.loading : ""
+  }`;
   return (
     <button {...props} className={style}>
       {children}
