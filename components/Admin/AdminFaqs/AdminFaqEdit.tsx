@@ -1,13 +1,17 @@
 "use client";
-import Button from "@/components/UI/Button";
-import ErrorLabel from "@/components/UI/ErrorLabel";
-import Input from "@/components/UI/Input";
-import Label from "@/components/UI/Label";
-import TextArea from "@/components/UI/TextArea";
+//React
+import { useActionState, useRef } from "react";
+//Actions
 import { createFaq, updateFaq } from "@/lib/actions/faqs";
+//Quill
+import Quill from "quill";
+//UI
+import Button from "@/components/UI/Button";
+import Input from "@/components/UI/Input";
+//Types
 import { TFormState } from "@/types/app.type";
 import { TFaqDto } from "@/types/faqs";
-import { useActionState } from "react";
+import AdminFaqEditInputs from "./AdminFaqEditInputs";
 
 interface FaqEditProps {
   faqToEdit: TFaqDto;
@@ -16,78 +20,62 @@ const initialState: TFormState<TFaqDto> = {
   errors: null,
   message: "",
   data: {
-    question: "",
-    answer: "",
+    deltaAnswer: [{ insert: "תשובה" }],
+    deltaQuestion: [{ insert: "שאלה" }],
     faqType: "students",
-    createBy: "",
-    updateBy: "",
   },
 };
+/**
+ * AdminFaqEdit client component allows editing or creating a FAQ entry.
+ *
+ * @component
+ * @param {FaqEditProps} props - The properties for the component.
+ * @param {Faq} props.faqToEdit - The FAQ entry to edit. If not provided, a new FAQ entry will be created.
+ *
+ * @returns {JSX.Element} The rendered component.
+ *
+ * @remarks
+ * This component uses `useActionState` hook to manage the state of the FAQ entry being edited or created.
+ * It also uses `useRef` to manage references to the Quill editors for the question and answer fields.
+ *
+ */
 export default function AdminFaqEdit({ faqToEdit }: FaqEditProps) {
   const [state, fromAction, isPending] = useActionState(
     faqToEdit?._id ? updateFaq : createFaq,
     { ...initialState, data: faqToEdit }
   );
 
+  const deltaAnswerRef = useRef<Quill | null>(null);
+  const deltaQuestionRef = useRef<Quill | null>(null);
+
   const isStudents = state?.data?.faqType === "students";
+
+  const handleSubmit = async (e: FormData) => {
+    if (!deltaAnswerRef.current || !deltaQuestionRef.current) return;
+
+    const deltaAnswer = deltaAnswerRef.current.getContents();
+    const deltaQuestion = deltaQuestionRef.current.getContents();
+
+    e.append("deltaAnswer", JSON.stringify(deltaAnswer.ops));
+    e.append("deltaQuestion", JSON.stringify(deltaQuestion.ops));
+
+    fromAction(e);
+  };
 
   return (
     <form
-      action={fromAction}
+      action={handleSubmit}
       className="p-4 border rounded flex flex-col gap-2 h-full bg-mainWhite-50"
     >
       <Input type="hidden" name="_id" defaultValue={state?.data?._id} />
-      <Input
-        type="hidden"
-        name="createBy"
-        defaultValue={state?.data?.createBy}
+
+      <AdminFaqEditInputs
+        isStudents={isStudents}
+        deltaAnswerRef={deltaAnswerRef}
+        deltaQuestionRef={deltaQuestionRef}
+        errors={state.errors}
+        data={state.data}
       />
-      <div className="flex">
-        <Input
-          type="radio"
-          id="students-radio"
-          name="faqType"
-          defaultValue="students"
-          defaultChecked={isStudents}
-          divStyle="flex items-center gap-2 w-full"
-          className="h-full"
-        >
-          <Label htmlFor="students-radio">תלמידים</Label>
-        </Input>
-        <Input
-          type="radio"
-          id="volunteers-radio"
-          name="faqType"
-          defaultValue="volunteers"
-          defaultChecked={!isStudents}
-          divStyle="flex items-center gap-2 w-full"
-          className="h-full"
-        >
-          <Label htmlFor="volunteers-radio">מתנדבים</Label>
-        </Input>
-      </div>
-      <TextArea
-        name="question"
-        placeholder="מה תרצה לשאול"
-        id="question-edit"
-        defaultValue={state?.data?.question}
-        divStyle="flex flex-col gap-2 bg-inherit h-[calc(35%-1rem)]"
-        className="bg-inherit border rounded p-2 h-[calc(100%-2rem)] resize-none overflow-auto scrollbar-hidden"
-      >
-        <Label htmlFor="question-edit">שאלה</Label>
-        <ErrorLabel htmlFor="question-edit" error={state?.errors?.question} />
-      </TextArea>
-      <TextArea
-        name="answer"
-        placeholder="ענה על השאלה"
-        id="answer-edit"
-        defaultValue={state?.data?.answer}
-        divStyle="flex flex-col gap-2 bg-inherit  h-[calc(65%-1rem)]"
-        className="bg-inherit border rounded p-2 h-[calc(100%-2rem)] resize-none overflow-auto scrollbar-hidden"
-      >
-        <Label htmlFor="question-edit">תשובה</Label>
-        <ErrorLabel htmlFor="question-edit" error={state.errors?.answer} />
-      </TextArea>
       <Button
         disabled={isPending}
         type="submit"

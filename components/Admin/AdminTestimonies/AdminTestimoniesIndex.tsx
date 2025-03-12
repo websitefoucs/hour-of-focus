@@ -1,13 +1,26 @@
+//Types
 import { TTestimony } from "@/types/testimonies.type";
+//Components
 import HandleEdit from "../HandleEdit";
-import { TestimoniesServerUtils } from "@/utils/server/testimonies.util";
-import ItemList from "@/components/UI/ItemList";
 import AdminTestimoniesEdit from "./AdminTestimoniesEdit";
 import AdminTestimoniesPreview from "./AdminTestimoniesPreview";
+//Utils
+import { TestimoniesServerUtils } from "@/utils/server/testimonies.util";
+//UI
+import ItemList from "@/components/UI/ItemList";
 
 interface AdminArticlesIndexProps {
   testimonies: TTestimony[];
 }
+/**
+ * AdminTestimoniesIndex server component renders a section containing a list of testimonies with an edit option.
+ *
+ * @component
+ * @param {AdminArticlesIndexProps} props - The props for the component.
+ * @param {Array} props.testimonies - An array of testimonies items to be displayed.
+ *
+ * @returns {JSX.Element} The rendered AdminTestimoniesIndex component.
+ */
 export default function AdminTestimoniesIndex({
   testimonies,
 }: AdminArticlesIndexProps) {

@@ -1,29 +1,21 @@
 import { Document, ObjectId } from "mongodb";
-import { TAuth } from "./auth.type";
+import { TTextBlock } from "./app.type";
 
 export type TFaq = {
   _id?: string;
-  question?: string;
-  answer?: string;
-  createBy?: TAuth;
-  updateBy?: TAuth;
-  createdAt?: string;
+  deltaQuestion?: TTextBlock[];
+  deltaAnswer?: TTextBlock[];
+  createAt?: string;
+  updateAt?: string;
   faqType?: TFaqType;
 };
 
-export type TFaqDto = Omit<TFaq, "createBy" | "updateBy" | "createdAt"> & {
-  _id?: string;
-  createBy?: string;
-  updateBy?: string;
-};
+export type TFaqDto = Omit<TFaq, "createAt"> & {};
 
 export type TFaqDocument = Document &
-  Omit<TFaq, "_id" | "createBy" | "updateBy" | "createdAt"> & {
+  Omit<TFaqDto, "_id" | "updateAt"> & {
     _id?: ObjectId;
-    createBy?: ObjectId;
-    updateBy?: ObjectId;
     updateDate?: Date;
-    faqType?: TFaqType;
   };
 
 export const FAQ_TYPE = ["volunteers", "students"] as const;

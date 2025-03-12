@@ -2,137 +2,96 @@ import { sanitizeUtil } from "./sanitize.util";
 import { validationUtil } from "../validation.util";
 import { AppError } from "./Error.util";
 import { FAQ_TYPE, TFaqDto, TFaqType } from "@/types/faqs";
+import { isValidObjectId } from "@/lib/mongoClient";
 
-const sanitizeFaqDtoCreate = (dto: TFaqDto): TFaqDto => {
-  const answer = sanitizeUtil.SanitizedObjectField(dto?.answer) || "";
-  const question = sanitizeUtil.SanitizedObjectField(dto?.question) || "";
-  const createBy = sanitizeUtil.SanitizedObjectField(dto?.createBy) || "";
-  const faqType = (sanitizeUtil.SanitizedObjectField(dto?.faqType) ||
+const sanitizeFaqDto = (dto: TFaqDto): TFaqDto => {
+  console.log(" dto:", dto);
+  const deltaAnswer = sanitizeUtil.sanitizeDelta(dto?.deltaAnswer) || [];
+  const deltaQuestion = sanitizeUtil.sanitizeDelta(dto?.deltaQuestion) || [];
+  const faqType = (sanitizeUtil.sanitizedObjectField(dto?.faqType) ||
     "students") as TFaqType;
 
   return {
-    answer,
-    question,
-    createBy,
+    deltaAnswer,
+    deltaQuestion,
     faqType,
+    _id: dto?._id,
   };
 };
-const validateFaqDtoCreate = (
-  userDto: TFaqDto
-): Record<keyof TFaqDto, string> => {
+
+const validateFaqDto = (dto: TFaqDto): Record<keyof TFaqDto, string> => {
   const errors: Record<string, string> = {};
 
-  const answerError = validationUtil.validateExistence(
-    "answer",
-    userDto?.answer
-  );
-  if (answerError) errors.answer = answerError;
-  const answerErrorLength = validationUtil.validateStrLength(
-    "answer",
-    2,
-    userDto?.answer
-  );
-  if (answerErrorLength) errors.answer = answerErrorLength;
+  validationUtil.validateDelta(errors, dto.deltaAnswer, "deltaAnswer");
+  validationUtil.validateDelta(errors, dto.deltaQuestion, "deltaQuestion");
 
-  const questionError = validationUtil.validateExistence(
-    "question",
-    userDto?.question
-  );
-  if (questionError) errors.question = questionError;
-  const questionErrorLength = validationUtil.validateStrLength(
-    "question",
-    2,
-    userDto?.question
-  );
-
-  if (questionErrorLength) errors.question = questionErrorLength;
-
-  const createByError = validationUtil.validateExistence(
-    "createBy",
-    userDto?.createBy
-  );
-  if (createByError) errors.createBy = createByError;
+  if (dto?._id) {
+    const isValid = isValidObjectId(dto._id);
+    if (!isValid) errors._id = "Invalid ID";
+  }
 
   const faqTypeError = validationUtil.compareStr<TFaqType>(
     "faqType",
-    userDto?.faqType,
+    dto?.faqType,
     FAQ_TYPE
   );
-
   if (faqTypeError) errors.faqType = faqTypeError;
 
   if (Object.keys(errors).length > 0) {
     throw AppError.create("Validation Error", 400, true, errors);
   }
+
   return errors;
 };
 
-const sanitizeFaqDtoUpdate = (dto: TFaqDto): TFaqDto => {
-  const updateBy = sanitizeUtil.SanitizedObjectField(dto?.updateBy) || "";
-  const _id = sanitizeUtil.SanitizedObjectField(dto?._id) || "";
-
-  return {
-    ...sanitizeFaqDtoCreate(dto),
-
-    updateBy,
-    _id,
-  };
-};
-const validateFaqDtoUpdate = (
-  userDto: TFaqDto
-): Record<keyof TFaqDto, string> => {
-  const errors: Record<string, string> = {};
-
-  validateFaqDtoCreate(userDto);
-
-  const updateByError = validationUtil.validateExistence(
-    "updateBy",
-    userDto?.updateBy
-  );
-
-  if (updateByError) errors.updateBy = updateByError;
-
-  const _idError = validationUtil.validateExistence("_id", userDto?._id);
-
-  if (_idError) errors._id = _idError;
-
-  if (Object.keys(errors).length > 0) {
-    throw AppError.create("Validation Error", 400, true, errors);
-  }
-  return errors;
-};
 const fromDataToDto = (formData: FormData): TFaqDto => {
-  const question = formData.get("question") as string;
-  const answer = formData.get("answer") as string;
+  const deltaQuestionRaw = formData.get("deltaQuestion");
+  let deltaQuestion = [];
+  if (deltaQuestionRaw) {
+    try {
+      deltaQuestion = JSON.parse(deltaQuestionRaw as string);
+    } catch (error) {
+      throw AppError.create(
+        `Unexpected Error parsing Quill Delta -> ${error}`,
+        500,
+        true
+      );
+    }
+  }
+  const deltaAnswerRaw = formData.get("deltaAnswer");
+  let deltaAnswer = [];
+  if (deltaQuestionRaw) {
+    try {
+      deltaAnswer = JSON.parse(deltaAnswerRaw as string);
+    } catch (error) {
+      throw AppError.create(
+        `Unexpected Error parsing Quill Delta -> ${error}`,
+        500,
+        true
+      );
+    }
+  }
   const _id = formData.get("_id") as string;
-  const createBy = formData.get("createBy") as string;
-  const updateBy = formData.get("updateBy") as string;
   const faqType = formData.get("faqType") as TFaqType;
 
   return {
-    question,
-    answer,
+    deltaQuestion,
+    deltaAnswer,
     _id,
     faqType,
-    createBy,
-    updateBy,
   };
 };
 
 const getEmpty = (): TFaqDto => {
   return {
-    question: "",
-    answer: "",
+    deltaAnswer: [{ insert: "תשובה" }],
+    deltaQuestion: [{ insert: "שאלה" }],
     _id: "",
-    createBy: "",
-    updateBy: "",
   };
 };
 export const faqServerUtils = {
-  sanitizeFaqDtoCreate,
-  validateFaqDtoCreate,
-  sanitizeFaqDtoUpdate,
-  validateFaqDtoUpdate,
   fromDataToDto,
   getEmpty,
+  sanitizeFaqDto,
+  validateFaqDto,
 };

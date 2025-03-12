@@ -13,3 +13,5 @@ export const ALLOWED_TEXT_SIZES = new Set(QUILL_TEXT_SIZES);
 export const ALLOWED_COLORS_REGEX = /^#[0-9A-Fa-f]{6}$/;
 export const URL_REGEX =
   /^(https?:\/\/)?(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+$/;
+export const DEV_URL_REGEX =
+  /^(https?:\/\/)?(localhost|\bwww\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})?(:\d{1,5})?(\/[^\s]*)?$/;

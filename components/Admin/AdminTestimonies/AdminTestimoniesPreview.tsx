@@ -1,13 +1,25 @@
+//Components
 import TestimonyItem from "@/components/Home/Testimonies/TestimonyItem";
-import { TTestimony } from "@/types/testimonies.type";
 import HandleEdit from "../HandleEdit";
 import AdminTestimoniesEdit from "./AdminTestimoniesEdit";
+//Types
+import { TTestimony } from "@/types/testimonies.type";
+//UI
 import DeleteBtn from "@/components/UI/DeleteBtn";
+//Actions
 import { deleteTestimony } from "@/lib/actions/testimonies";
-
 interface AdminTestimoniesPreviewProps {
   testimony: TTestimony;
 }
+/**
+ * AdminTestimoniesPreview server component renders a single testimony item with edit and delete options.
+ *
+ * @component
+ * @param {AdminTestimoniesPreviewProps} props - The props for the component.
+ * @param {TTestimony} props.testimony - The testimony item to display.
+ *
+ * @returns {JSX.Element} The rendered AdminTestimoniesPreview component.
+ */
 export default function AdminTestimoniesPreview({
   testimony,
 }: AdminTestimoniesPreviewProps) {

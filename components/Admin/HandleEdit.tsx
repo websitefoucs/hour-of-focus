@@ -1,10 +1,23 @@
+//React
 import React, { ComponentType } from "react";
+//UI
 import Model from "../UI/Model";
 
 interface HandleEditProps<T extends { _id?: string }> {
   item: T;
   EditCmp: ComponentType<{ item: T }>;
 }
+/**
+ * A generic component that handles the editing of an item from thr admin page.
+ *
+ * @template T - The type of the item being edited. Must have an optional `_id` property.
+ *
+ * @param {HandleEditProps<T>} props - The properties for the HandleEdit component.
+ * @param {T} props.item - The item to be edited.
+ * @param {React.ComponentType<{ item: T }>} props.EditCmp - The component used to edit the item.
+ *
+ * @returns {JSX.Element} The rendered HandleEdit component.
+ */
 export default function HandleEdit<T extends { _id?: string }>({
   item,
   EditCmp,

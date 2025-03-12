@@ -30,7 +30,26 @@ const Editor = forwardRef<Quill, EditorProps>(({ delta }, ref) => {
         toolbar: [
           [{ size: [] }],
           ["bold", "italic", "underline"],
-          [{ color: [] }],
+          [
+            {
+              color: [
+                "#e7e7e7",
+                "#888888",
+                "#6d6d6d",
+                "#5d5d5d",
+                "#292929",
+                "#454545",
+                "#fff7ed",
+                "#ffeed5",
+                "#f6f6f6",
+                "#ea5d0c",
+                "#cf4a0d",
+                "#9a3712",
+                "#f3c71c",
+                "#dba80e",
+              ],
+            },
+          ],
           ["link"],
         ],
       },

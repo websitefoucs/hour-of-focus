@@ -1,10 +1,16 @@
 "use client";
+//React
+import { useActionState, useRef } from "react";
+//Actions
 import { createTestimony, updateTestimony } from "@/lib/actions/testimonies";
+//Types
 import { TFormState } from "@/types/app.type";
 import { TTestimonyDto } from "@/types/testimonies.type";
-import { useActionState, useRef } from "react";
+//Components
 import AdminTestimoniesInputs from "./AdminTestimoniesInputs";
+//UI
 import Button from "@/components/UI/Button";
+//Quill
 import Quill from "quill";
 
 interface AdminTestimoniesEditProps {
@@ -18,6 +24,15 @@ const initialState: TFormState<TTestimonyDto> = {
     delta: [],
   },
 };
+/**
+ * AdminTestimoniesEdit client component allows editing or creating a testimony.
+ * It uses a form to capture the testimony details and a Quill editor for rich text input.
+ *
+ * @param {AdminTestimoniesEditProps} props - The properties for the component.
+ * @param {Testimony} props.testimonyToEdit - The testimony data to edit. If not provided, a new testimony will be created.
+ *
+ * @returns {JSX.Element} The rendered AdminTestimoniesEdit component.
+ */
 export default function AdminTestimoniesEdit({
   testimonyToEdit,
 }: AdminTestimoniesEditProps) {
@@ -31,10 +46,9 @@ export default function AdminTestimoniesEdit({
     if (!quillRef.current) return;
 
     const delta = quillRef.current.getContents();
-    // Convert Delta to JSON and append to FormData
     e.append("quillOps", JSON.stringify(delta.ops));
 
-    fromAction(e); // Send updated data to Next.js Action
+    fromAction(e);
   };
 
   return (
@@ -42,8 +56,11 @@ export default function AdminTestimoniesEdit({
       action={handleSubmit}
       className="p-4 border rounded flex flex-col gap-2 h-full bg-mainWhite-50 w-96 edit-form"
     >
-      <AdminTestimoniesInputs quillRef={quillRef} {...state} />
-
+      <AdminTestimoniesInputs
+        quillRef={quillRef}
+        data={state.data}
+        errors={state?.errors}
+      />
       <Button
         disabled={isPending}
         type="submit"

@@ -1,9 +1,11 @@
 import {
+  ALLOWED_ATTRIBUTES,
   ALLOWED_COLORS_REGEX,
   ALLOWED_TEXT_SIZES,
-  URL_REGEX,
+  DEV_URL_REGEX,
+  // URL_REGEX,
 } from "@/constants/quill";
-import { TQuillTextSize } from "@/types/app.type";
+import { TQuillAttributes, TQuillTextSize, TTextBlock } from "@/types/app.type";
 
 /**
  * Validates that a string has the specified minimum length.
@@ -155,7 +157,7 @@ const compareStr = <T>(
 const validateUrl = (filedName: string, value?: unknown): string | null => {
   const isString = _isString(value);
   if (!isString) return `${filedName} שדה חובה.`;
-  return URL_REGEX.test(value) ? null : `${filedName} לא תקין.`;
+  return DEV_URL_REGEX.test(value) ? null : `${filedName} לא תקין.`;
 };
 const validateColorHex = (
   filedName: string,
@@ -180,7 +182,62 @@ const validateBoolean = (filedName: string, value?: unknown): string | null => {
   }
   return null;
 };
+const validateDelta = (
+  errors: Record<string, string>,
+  delta?: TTextBlock[],
+  name?: string
+): void => {
+  if (!delta) return;
 
+  delta.forEach((block) => {
+    const blockErrors: Record<string, string> = {};
+
+    const insertError = validationUtil.validateExistence("טקסט", block.insert);
+    if (insertError) {
+      blockErrors[`${name}`] = insertError;
+    }
+
+    if (block?.attributes) {
+      for (const key in block.attributes) {
+        if (!ALLOWED_ATTRIBUTES.has(key)) {
+          delete (block.attributes as Record<string, unknown>)[key];
+          continue;
+        }
+
+        const value = block.attributes[key as keyof TQuillAttributes];
+
+        switch (key) {
+          case "size":
+            const sizeError = validationUtil.validateTextSize(
+              value as string,
+              value as string
+            );
+            if (sizeError) blockErrors[`${name}`] = sizeError;
+            break;
+
+          case "underline":
+          case "italic":
+          case "bold":
+            const boolError = validationUtil.validateBoolean(key, value);
+            if (boolError) blockErrors[`${name} ${key}`] = boolError;
+            break;
+
+          case "link":
+            const linkError = validationUtil.validateUrl("קישור", value);
+            if (linkError) blockErrors[`${name}`] = linkError;
+            break;
+
+          case "color":
+            const colorError = validationUtil.validateColorHex("Color", value);
+            if (colorError) blockErrors[`${name}`] = colorError;
+            break;
+        }
+      }
+    }
+
+    Object.assign(errors, blockErrors);
+  });
+};
 const _isString = (value: unknown): value is string => {
   return !(value === null || value === undefined || typeof value !== "string");
 };
@@ -202,4 +259,5 @@ export const validationUtil = {
   validateColorHex,
   validateTextSize,
   validateBoolean,
+  validateDelta,
 };

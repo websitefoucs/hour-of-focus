@@ -26,34 +26,27 @@ export async function createFaq(
 ): Promise<TFormState<TFaqDto>> {
   let dto;
   try {
-    const userId = await authServerUtils.verifyAuth();
-    if (!userId) {
-      throw AppError.create("Unauthorized action: User ID is required");
-    }
+    await authServerUtils.verifyAuth();
 
     const data = faqServerUtils.fromDataToDto(formData);
 
-    dto = faqServerUtils.sanitizeFaqDtoCreate({
-      ...data,
-      createBy: userId,
-    });
+    dto = faqServerUtils.sanitizeFaqDto(data);
 
-    faqServerUtils.validateFaqDtoCreate(dto);
-    const { createBy, question, answer, faqType } = dto;
+    faqServerUtils.validateFaqDto(dto);
+    const { deltaAnswer, deltaQuestion, faqType } = dto;
 
     const collection = await getCollection<TFaqDocument>("faqs");
     const { acknowledged, insertedId } = await collection.insertOne({
-      question,
-      answer,
+      deltaAnswer,
+      deltaQuestion,
       faqType,
-      createBy: new ObjectId(createBy),
     });
 
     if (!acknowledged || !insertedId) {
       throw AppError.create("Failed to create FAQ");
     }
 
-    revalidatePath("/admin/@faqs");
+    revalidatePath("/admin/faqs");
     revalidatePath(`/faqs/${faqType}`);
   } catch (error) {
     const err = AppError.handleResponse(error);
@@ -81,27 +74,24 @@ export async function updateFaq(
 ): Promise<TFormState<TFaqDto>> {
   let dto;
   try {
-    const userId = await authServerUtils.verifyAuth();
+    await authServerUtils.verifyAuth();
 
     const data = faqServerUtils.fromDataToDto(formData);
 
-    dto = faqServerUtils.sanitizeFaqDtoUpdate({
-      ...data,
-      updateBy: userId,
-    });
+    dto = faqServerUtils.sanitizeFaqDto(data);
 
-    faqServerUtils.validateFaqDtoUpdate(dto);
+    faqServerUtils.validateFaqDto(dto);
 
-    const { updateBy, _id, faqType } = dto;
+    const { deltaAnswer, deltaQuestion, faqType, _id } = dto;
+
     const collection = await getCollection<TFaqDocument>("faqs");
     const { modifiedCount } = await collection.updateOne(
       { _id: new ObjectId(_id) },
       {
         $set: {
-          ...dto,
-          _id: new ObjectId(_id),
-          updateBy: new ObjectId(updateBy),
-          createBy: new ObjectId(dto.createBy),
+          deltaAnswer,
+          deltaQuestion,
+          faqType,
           updateDate: new Date(),
         },
       }
@@ -149,51 +139,11 @@ export async function getFaqs(filter: TFaqFilter): Promise<TFaq[]> {
 
     if (isFull) {
       pipeline.push({
-        $lookup: {
-          from: "users",
-          localField: "createBy",
-          foreignField: "_id",
-          as: "createBy",
-        },
-      });
-
-      pipeline.push({
-        $unwind: {
-          path: "$createBy",
-          preserveNullAndEmptyArrays: true,
-        },
-      });
-
-      pipeline.push({
-        $lookup: {
-          from: "users",
-          localField: "updatedBy",
-          foreignField: "_id",
-          as: "updatedBy",
-        },
-      });
-
-      pipeline.push({
-        $unwind: {
-          path: "$updatedBy",
-          preserveNullAndEmptyArrays: true,
-        },
-      });
-
-      pipeline.push({
         $project: {
           _id: { $toString: "$_id" },
-          question: 1,
-          answer: 1,
-          createBy: {
-            _id: { $toString: "$createBy._id" },
-            username: 1,
-          },
-          updatedBy: {
-            _id: { $toString: "$createBy._id" },
-            username: 1,
-          },
-          createdAt: {
+          deltaQuestion: 1,
+          deltaAnswer: 1,
+          createAt: {
             $dateToString: {
               date: { $toDate: "$_id" },
               format: "%Y-%m-%d %H:%M:%S",
@@ -207,8 +157,8 @@ export async function getFaqs(filter: TFaqFilter): Promise<TFaq[]> {
       pipeline.push({
         $project: {
           _id: { $toString: "$_id" },
-          question: 1,
-          answer: 1,
+          deltaQuestion: 1,
+          deltaAnswer: 1,
           faqType: 1,
         },
       });
