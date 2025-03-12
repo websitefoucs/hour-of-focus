@@ -25,7 +25,7 @@ export function middleware(req: NextRequest) {
   const isAdminRoute = req.nextUrl.pathname.startsWith("/admin");
   if (!isAdminRoute) return NextResponse.next();
 
-  const token = req.cookies.get("auth_token")?.value;
+  const token = req.cookies.get("session")?.value;
   if (!token)
     return NextResponse.redirect(new URL("/auth/sign-in", req.nextUrl));
 

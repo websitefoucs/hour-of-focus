@@ -145,6 +145,8 @@ export const signOut = async (): Promise<void> => {
   } catch (error) {
     throw AppError.create(`${error}`, 500, false);
   }
+
+  redirect("/");
 };
 /**
  * Retrieves the session user based on the session token stored in cookies.
