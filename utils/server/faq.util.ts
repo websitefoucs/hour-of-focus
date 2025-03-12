@@ -5,7 +5,6 @@ import { FAQ_TYPE, TFaqDto, TFaqType } from "@/types/faqs";
 import { isValidObjectId } from "@/lib/mongoClient";
 
 const sanitizeFaqDto = (dto: TFaqDto): TFaqDto => {
-  console.log(" dto:", dto);
   const deltaAnswer = sanitizeUtil.sanitizeDelta(dto?.deltaAnswer) || [];
   const deltaQuestion = sanitizeUtil.sanitizeDelta(dto?.deltaQuestion) || [];
   const faqType = (sanitizeUtil.sanitizedObjectField(dto?.faqType) ||

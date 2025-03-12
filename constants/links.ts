@@ -15,8 +15,8 @@ export const COORDINATOR_SIGNUP =
 export const EXPLAIN_STUDENTS_PAGE_LINK = "/explain/students";
 export const EXPLAIN_VOLUNTEERS_PAGE_LINK = "/explain/volunteers";
 
-export const FAQ_STUDENTS_PAGE_LINK = "/faq/students";
-export const FAQ_VOLUNTEERS_PAGE_LINK = "/faq/volunteers";
+export const FAQ_STUDENTS_PAGE_LINK = "/faqs/students";
+export const FAQ_VOLUNTEERS_PAGE_LINK = "/faqs/volunteers";
 
 export const ACCESSIBILITY_PAGE_LINK = "/accessibility";
 
