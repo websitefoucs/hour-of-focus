@@ -16,7 +16,7 @@ export default function FaqIndex({ type, faqs }: FaqIndexProps) {
         <FaqSwitch type={type} />
         <ItemList
           items={faqs}
-          listStyle="grid gap-6"
+          listStyle="grid gap-6 w-full max-w-[80vw] mobile:max-w-full"
           renderItem={(faq) => <FaqItem {...faq} />}
         />
       </div>
