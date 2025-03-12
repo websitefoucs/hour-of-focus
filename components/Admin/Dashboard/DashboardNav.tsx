@@ -1,5 +1,6 @@
 "use client";
 import LinkCmp from "@/components/UI/LinkCmp";
+import SignOutButton from "@/components/UI/SignOutButton";
 import {
   ADMIN_ARTICLES_PAGE_LINK,
   ADMIN_FAQS_PAGE_LINK,
@@ -17,7 +18,6 @@ export default function DashboardNav() {
     { href: ADMIN_MATERIALS_PAGE_LINK, label: "חומרי לימוד" },
     { href: ADMIN_ARTICLES_PAGE_LINK, label: "כתבות" },
     { href: ADMIN_TESTIMONIES_PAGE_LINK, label: "המלצות" },
-    { href: "/admin/test", label: "aaa" },
   ];
 
   return (
@@ -34,6 +34,7 @@ export default function DashboardNav() {
           {label}
         </LinkCmp>
       ))}
+      <SignOutButton/>
     </nav>
   );
 }
