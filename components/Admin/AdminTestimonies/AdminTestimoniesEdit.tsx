@@ -6,10 +6,6 @@ import { useActionState, useRef } from "react";
 import AdminTestimoniesInputs from "./AdminTestimoniesInputs";
 import Button from "@/components/UI/Button";
 import Quill from "quill";
-// import dynamic from "next/dynamic";
-// const Editor = dynamic(() => import("@/components/TextEditor/Editor"), {
-//   ssr: false,
-// });
 
 interface AdminTestimoniesEditProps {
   testimonyToEdit: TTestimonyDto;
@@ -19,7 +15,7 @@ const initialState: TFormState<TTestimonyDto> = {
   errors: null,
   message: "",
   data: {
-    text: "",
+    delta: [],
   },
 };
 export default function AdminTestimoniesEdit({
@@ -30,24 +26,23 @@ export default function AdminTestimoniesEdit({
     { ...initialState, data: testimonyToEdit }
   );
   const quillRef = useRef<Quill | null>(null);
-  
+
   const handleSubmit = async (e: FormData) => {
     if (!quillRef.current) return;
 
-    const delta = quillRef.current.getContents(); // Get Quill Delta
-
+    const delta = quillRef.current.getContents();
     // Convert Delta to JSON and append to FormData
-    e.append("quillOps", JSON.stringify(delta.ops)); 
+    e.append("quillOps", JSON.stringify(delta.ops));
 
-     fromAction(e); // Send updated data to Next.js Action
+    fromAction(e); // Send updated data to Next.js Action
   };
 
   return (
     <form
       action={handleSubmit}
-      className="p-4 border rounded flex flex-col gap-2 h-full bg-mainWhite-50 w-96"
+      className="p-4 border rounded flex flex-col gap-2 h-full bg-mainWhite-50 w-96 edit-form"
     >
-       <AdminTestimoniesInputs quillRef={quillRef} {...state} />
+      <AdminTestimoniesInputs quillRef={quillRef} {...state} />
 
       <Button
         disabled={isPending}

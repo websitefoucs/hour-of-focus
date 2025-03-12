@@ -31,32 +31,18 @@ export async function createTestimony(
 ): Promise<TFormState<TTestimonyDto>> {
   let dto;
   try {
-    const quillOps = formData.get("quillOps");
-    let parsedOps = [];
-    if (quillOps) {
-      try {
-        parsedOps = JSON.parse(quillOps as string); // Parse JSON safely
-        console.log(" parsedOps:", parsedOps);
-      } catch (error) {
-        console.error("Error parsing Quill Delta:", error);
-      }
-    }
-    const userId = await authServerUtils.verifyAuth();
+    await authServerUtils.verifyAuth();
 
     const data = TestimoniesServerUtils.fromDataToDto(formData);
 
-    dto = TestimoniesServerUtils.sanitizeTestimonyDtoCreate({
-      ...data,
-      createBy: userId,
-    });
+    dto = TestimoniesServerUtils.sanitizeTestimonyDto(data);
 
-    TestimoniesServerUtils.validateTestimonyDtoCreate(dto);
-    const { createBy, text } = dto;
+    TestimoniesServerUtils.validateTestimonyDto(dto);
+    const { delta } = dto;
 
     const collection = await getCollection<TTestimonyDocument>("testimonies");
     const { acknowledged, insertedId } = await collection.insertOne({
-      text,
-      createBy: new ObjectId(createBy),
+      delta,
     });
 
     if (!acknowledged || !insertedId) {
@@ -67,6 +53,7 @@ export async function createTestimony(
     revalidatePath(`/@testimonies`);
   } catch (error) {
     const err = AppError.handleResponse(error);
+
     return {
       errors: err.errors as Record<keyof TTestimonyDto, string>,
       message: err.message,
@@ -90,28 +77,22 @@ export async function updateTestimony(
 ): Promise<TFormState<TTestimonyDto>> {
   let dto;
   try {
-    const userId = await authServerUtils.verifyAuth();
+    await authServerUtils.verifyAuth();
 
     const data = TestimoniesServerUtils.fromDataToDto(formData);
 
-    dto = TestimoniesServerUtils.sanitizeTestimonyDtoUpdate({
-      ...data,
-      updateBy: userId,
-    });
+    dto = TestimoniesServerUtils.sanitizeTestimonyDto(data);
 
-    TestimoniesServerUtils.validateTestimonyDtoUpdate(dto);
-    const { createBy, text, _id, updateBy } = dto;
+    TestimoniesServerUtils.validateTestimonyDto(dto);
+    const { delta, _id } = dto;
 
     const collection = await getCollection<TTestimonyDocument>("testimonies");
     const { modifiedCount } = await collection.updateOne(
       { _id: new ObjectId(_id) },
       {
         $set: {
-          text,
-
+          delta,
           _id: new ObjectId(_id),
-          updateBy: new ObjectId(updateBy),
-          createBy: new ObjectId(createBy),
           updateDate: new Date(),
         },
       }
@@ -154,49 +135,9 @@ export async function getTestimonies(isFull?: boolean): Promise<TTestimony[]> {
 
     if (isFull) {
       pipeline.push({
-        $lookup: {
-          from: "users",
-          localField: "createBy",
-          foreignField: "_id",
-          as: "createBy",
-        },
-      });
-
-      pipeline.push({
-        $unwind: {
-          path: "$createBy",
-          preserveNullAndEmptyArrays: true,
-        },
-      });
-
-      pipeline.push({
-        $lookup: {
-          from: "users",
-          localField: "updatedBy",
-          foreignField: "_id",
-          as: "updatedBy",
-        },
-      });
-
-      pipeline.push({
-        $unwind: {
-          path: "$updatedBy",
-          preserveNullAndEmptyArrays: true,
-        },
-      });
-
-      pipeline.push({
         $project: {
           _id: { $toString: "$_id" },
-          text: 1,
-          createBy: {
-            _id: { $toString: "$createBy._id" },
-            username: 1,
-          },
-          updatedBy: {
-            _id: { $toString: "$createBy._id" },
-            username: 1,
-          },
+          delta: 1,
           createAt: {
             $dateToString: {
               date: { $toDate: "$_id" },
@@ -215,7 +156,7 @@ export async function getTestimonies(isFull?: boolean): Promise<TTestimony[]> {
       pipeline.push({
         $project: {
           _id: { $toString: "$_id" },
-          text: 1,
+          delta: 1,
         },
       });
     }

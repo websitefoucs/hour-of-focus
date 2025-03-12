@@ -13,7 +13,7 @@ export default function Testimonies({ testimonies }: TestimoniesProps) {
       <h4 className=" pb-2 text-24">מה התלמידים שלנו מספרים?</h4>
       <ItemsScroll
         items={testimonies}
-        renderItem={(testimony) => <TestimonyItem testimony={testimony.text} />}
+        renderItem={(testimony) => <TestimonyItem testimony={testimony} />}
       />
     </div>
   );
