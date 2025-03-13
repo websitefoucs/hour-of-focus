@@ -219,7 +219,9 @@ h6 {
   display: block;
 }
 .explain-mobile:has(.open) {
-  height: 8rem;
+  & svg{
+    rotate: 180deg;
+  }
 }
 
 .menu-model {
@@ -336,4 +338,24 @@ h6 {
   & a {
     pointer-events: none;
   }
+}
+
+
+@keyframes fadeIn {
+  from {
+    /* opacity: 0; */
+    height: 0rem;
+  }
+  to {
+    /* opacity: 1; */
+    height: 5.5rem;
+  }
+}
+
+.fade-in{
+  animation: fadeIn .3s forwards;
+  overflow: hidden;
+
+  
+  @apply bg-mainWhite-0 rounded-base flex flex-col gap-4 pt-4 pr-4 ;
 }

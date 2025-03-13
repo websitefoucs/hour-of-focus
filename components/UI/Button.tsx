@@ -76,7 +76,7 @@ export default function Button({
   className,
   ...props
 }: ButtonProps) {
-  const style = `flex self-center justify-center items-center transition-colors duration-300  ${
+  const style = ` transition-colors duration-300  ${
     STYLES[styleMode].style
   } ${className} ${SIZES[styleSize]} ${
     props.disabled ? STYLES[styleMode]?.loading : ""

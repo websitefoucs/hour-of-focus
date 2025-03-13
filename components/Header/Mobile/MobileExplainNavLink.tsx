@@ -14,13 +14,14 @@ interface NavLinkProps {
 export default function MobileExplainNavLink({ pathname }: NavLinkProps) {
   return (
     <Model
-      containerClassName="hidden mobile:flex transition-all duration-300 ease-in-out h-7 flex-col explain-mobile"
+      containerClassName="hidden mobile:flex transition-all duration-1000 ease-in-out flex-col h-7 has-[.open]:h-[7.25rem] explain-mobile"
       withOverlay={false}
       model={
-        <div className="bg-mainWhite-0 p-4 rounded-base flex flex-col gap-2">
+        <div className="fade-in ">
           <NavLink
             href={EXPLAIN_VOLUNTEERS_PAGE_LINK}
             isHighlighted={pathname === EXPLAIN_VOLUNTEERS_PAGE_LINK}
+          
           >
             מתנדבים
           </NavLink>
@@ -34,7 +35,7 @@ export default function MobileExplainNavLink({ pathname }: NavLinkProps) {
       }
       button={{
         props: {
-          className: "flex items-center gap-1",
+          className: "flex items-center gap-1 leading-7",
         },
         content: (
           <>
@@ -45,7 +46,7 @@ export default function MobileExplainNavLink({ pathname }: NavLinkProps) {
             >
               הסברים
             </p>
-            <DirectionSvg className="w-4 h-4" />
+            <DirectionSvg className="w-4 h-4 transition-all duration-300 ease-in-out " />
           </>
         ),
       }}
