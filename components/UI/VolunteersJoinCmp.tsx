@@ -21,7 +21,7 @@ export default function VolunteersJoinCmp({
   isHome?: boolean;
 }): React.JSX.Element {
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-10 px-sides">
       <article className="flex flex-col gap-4 items-center">
         {isHome ? (
           <>
@@ -39,11 +39,11 @@ export default function VolunteersJoinCmp({
         )}
       </article>
 
-      <nav className="grid grid-cols-1 sm:grid-cols-2 sm:justify-items-center w-full gap-10 ">
+      <nav className="grid grid-cols-1 sm:grid-cols-2 justify-items-center  w-full gap-10 ">
         <LinkCmp
           styleMode="full"
           styleSize="large"
-          className=""
+          className="md:place-self-end"
           href={TEACHERS_SIGNUP}
         >
           הצטרפו כמורים
@@ -51,7 +51,7 @@ export default function VolunteersJoinCmp({
         <LinkCmp
           styleMode="coloredBorder"
           styleSize="large"
-          className="font-bold "
+          className="font-bold md:place-self-start"
           href={LOGISTIC_SIGNUP}
         >
           הצטרפו לצוות הלוגיסטי

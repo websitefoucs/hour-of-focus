@@ -331,7 +331,7 @@ export const ApproveSvg = () => {
     <svg
       viewBox="0 0 32 32"
       fill="none"
-      className="w-8 h-8"
+      className="min-w-8 min-h-8 h-8 w-8"
       aria-label="Approve icon"
     >
       <g clipPath="url(#clip0_181_303)">
