@@ -3,8 +3,8 @@ export default function Numbers() {
     <ul className="flex w-full items-center justify-center gap-36  mobile:grid mobile:grid-cols-2 mobile:gap-0 ">
       {items.map((item, index) => (
         <li key={index}>
-          <h4 className="">
-            <span className="text-mainWhite-0 mobile:text-20">
+          <h4 className="mobile:leading-8">
+            <span className="text-mainWhite-0 mobile:text-20 mobile:leading-3">
               {item.number}
             </span>
             <span className=" text-mainGold-400 mobile:text-20">
