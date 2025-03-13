@@ -7,18 +7,18 @@ import { GINGER_KID_IMAGE } from "@/constants/images";
 
 export default function HomeHero() {
   return (
-    <div className="w-full grid grid-cols-1 grid-rows-1 home-layout-hero relative ">
+    <div className="w-full grid grid-cols-1 grid-rows-1 home-layout-hero relative max-h-[80vh] mobile:max-h-none">
       <ImageOverlay>
         <Image
           width={1080}
-          height={1080}
+          height={512}
           src={GINGER_KID_IMAGE}
           alt="Home main image"
           className="object-cover w-full h-full  "
           priority
         />
       </ImageOverlay>
-      <div className="w-full h-full grid-stack z-10 flex flex-col items-center gap-8 text-mainWhite-0 text-center pt-24 medium:pt-10">
+      <div className="w-full h-full grid-stack z-10 flex flex-col items-center justify-center gap-8 p-8 mobile:p-0 mobile:py-8 text-mainWhite-0 text-center">
         <p className="text-mainWhite-0 text-24 font-semibold leading-28">
           למען המפונים מהדרום והמצפון
         </p>
@@ -32,11 +32,11 @@ export default function HomeHero() {
           מחברים בין תלמידים למתנדבים לשעה שבועית של למידה ממוקדת
         </p>
 
-        <nav className="flex flex-col gap-10 medium:gap-4 items-center py-12 medium:py-4 ">
+        <nav className="flex flex-col gap-10 medium:gap-4 items-center py-12 medium:py-4 mobile-small:w-[90svw] ">
           <LinkCmp styleMode="full" styleSize="large" href={TEACHERS_SIGNUP}>
             הצטרפו כמורים
           </LinkCmp>
-          <div className="flex gap-8 medium:gap-4 mobile:flex-col">
+          <div className="flex gap-8 medium:gap-4 mobile:flex-col mobile:w-full">
             <LinkCmp
               styleMode="whiteBorder"
               styleSize="large"
