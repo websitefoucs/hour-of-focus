@@ -17,11 +17,11 @@ export default function MaterialItem({ material }: MaterialItemProps) {
         alt={subject}
         width={360}
         height={360}
-        className="object-cover h-[calc(55%)]"
+        className="object-cover h-1/2"
       />
       <div className="p-4 flex flex-col h-[calc(45%-.5rem)] justify-between">
         <h5>{text}</h5>
-        <LinkCmp styleMode="arrow" styleSize="long" href={link}>
+        <LinkCmp styleMode="arrow" styleSize="long" className="mobile:justify-between mobile:w-10 mobile-small:w-44" href={link}>
           <p>למאגר חומרי הלימוד</p>
           <ArrowSvg />
         </LinkCmp>
