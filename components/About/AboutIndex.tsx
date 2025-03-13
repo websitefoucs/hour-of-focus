@@ -7,7 +7,7 @@ import AboutTeam from "./AboutTeam";
 
 export default function AboutIndex() {
   return (
-    <div className="flex flex-col gap-32 mobile:gap-16 justify-center items-center pb-32">
+    <div className="flex flex-col gap-gaps md:gap-gaps-md w-full justify-center items-center pb-gaps">
       <AboutHero />
       <AboutOurStory />
       <AboutTeam />
