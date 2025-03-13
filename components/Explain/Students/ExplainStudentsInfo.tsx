@@ -1,10 +1,25 @@
+//Images
 import { GIRL_PAINTING_IMAGE } from "@/constants/images";
+//Next
 import Image from "next/image";
 
+/**
+ * ExplainVolunteersInfo is a server component that renders information
+ * about the "שיטת המעשים הטובים 🌍💙" (Good Deeds Method) as part of the "שעה של פוקוס" (Hour of Focus) project.
+ * 
+ * The component consists of an article section with headings and paragraphs explaining
+ * the importance of good deeds alongside learning, and a recommendation to perform a good deed
+ * for each lesson in the project. It also includes a note emphasizing that participation is optional
+ * but impactful.
+ * 
+ * Additionally, the component displays an image related to the content.
+ * 
+ * @returns {JSX.Element} A JSX element containing the information and image.
+ */
 export default function ExplainVolunteersInfo() {
   return (
-    <div className="sm:px-24 px-4 py-20 items-center grid grid-cols-1 xl:grid-cols-[60%_35%] w-full gap-10">
-      <article className="flex flex-col gap-3 font-normal ">
+    <div className="sm:px-24 px-4 py-20 items-center xl:items-start grid grid-cols-1 xl:grid-cols-[60%_35%] w-full gap-10">
+      <article className="flex flex-col gap-3 xl:gap-6 font-normal ">
         <h5 className="">שיטת המעשים הטובים 🌍💙</h5>
 
         <h6 className="text-mainGray-500 leading-30 text-20 pb-3 font-normal">
