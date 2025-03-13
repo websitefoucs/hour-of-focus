@@ -21,7 +21,7 @@ export default function VolunteersJoinCmp({
   isHome?: boolean;
 }): React.JSX.Element {
   return (
-    <div className="flex flex-col gap-10 lg:gap-20">
+    <div className="flex flex-col gap-10">
       <article className="flex flex-col gap-4 items-center">
         {isHome ? (
           <>
@@ -39,11 +39,11 @@ export default function VolunteersJoinCmp({
         )}
       </article>
 
-      <nav className="grid grid-cols-2 mobile:grid-cols-1 grid-rows-2 mobile:grid-rows-3 gap-5  justify-items-center items-center">
+      <nav className="grid grid-cols-1 sm:grid-cols-2 sm:justify-items-center w-full gap-10 ">
         <LinkCmp
           styleMode="full"
           styleSize="large"
-          className="justify-self-end mobile:justify-self-auto"
+          className=""
           href={TEACHERS_SIGNUP}
         >
           הצטרפו כמורים
@@ -51,7 +51,7 @@ export default function VolunteersJoinCmp({
         <LinkCmp
           styleMode="coloredBorder"
           styleSize="large"
-          className="font-bold justify-self-start mobile:justify-self-auto "
+          className="font-bold "
           href={LOGISTIC_SIGNUP}
         >
           הצטרפו לצוות הלוגיסטי
@@ -60,7 +60,7 @@ export default function VolunteersJoinCmp({
         <LinkCmp
           styleMode="arrow"
           styleSize="long"
-          className="text-mainOrange-700 border-mainOrange-700 hover:text-mainOrange-800 hover:border-mainOrange-800 col-span-2 mobile:col-span-1"
+          className="text-mainOrange-700 border-mainOrange-700 hover:text-mainOrange-800 hover:border-mainOrange-800 sm:col-span-2 col-span-1"
           href={CONTACT_US}
         >
           יש לכם שאלות? דברו איתנו ונשמח לסייע
