@@ -38,8 +38,10 @@ export default {
           60: "rgba(90, 90, 90, 0.6)",
         },
       },
+
       backgroundImage: {
-        'ginger-kid':"url('https://res.cloudinary.com/dyzqa6uuu/image/upload/v1741441120/upuk4ge9uqdfqxhyax83.png')",
+        "ginger-kid":
+          "url('https://res.cloudinary.com/dyzqa6uuu/image/upload/v1741441120/upuk4ge9uqdfqxhyax83.png')",
       },
       fontSize: {
         14: "0.875rem",
@@ -62,8 +64,16 @@ export default {
       },
       padding: {
         base: "7.5rem",
+        gaps: "2.5rem",
+        "gaps-md": "5rem",
+        sides: "1rem",
+        "sides-sm": "6rem",
       },
-
+      gap: {
+        gaps: "2.5rem",
+        "gaps-md": "5rem",
+      
+      },
       lineHeight: {
         21: "1.35rem",
         23: "1.4875rem",

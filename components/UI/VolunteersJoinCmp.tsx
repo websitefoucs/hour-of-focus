@@ -21,7 +21,7 @@ export default function VolunteersJoinCmp({
   isHome?: boolean;
 }): React.JSX.Element {
   return (
-    <div className="flex flex-col gap-20 mobile:gap-10">
+    <div className="flex flex-col gap-10 md:gap-20">
       <article className="flex flex-col gap-4 items-center">
         {isHome ? (
           <>
@@ -39,7 +39,7 @@ export default function VolunteersJoinCmp({
         )}
       </article>
 
-      <nav className="grid grid-cols-2 mobile:grid-cols-1 grid-rows-2 mobile:grid-rows-3 gap-6  justify-items-center items-center">
+      <nav className="grid grid-cols-2 mobile:grid-cols-1 grid-rows-2 mobile:grid-rows-3 gap-5  justify-items-center items-center">
         <LinkCmp
           styleMode="full"
           styleSize="large"

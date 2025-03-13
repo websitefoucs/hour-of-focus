@@ -8,8 +8,8 @@ import {
 
 export default function ExplainIdeas() {
   return (
-    <section className="px-20 mobile:px-4 mb-20">
-      <h5 className="pb-8  ">
+    <section className="sm:px-sides-sm px-sides">
+      <h5 className="pb-8">
         רעיונות פשוטים ומשמעותיים
       </h5>
       <ul className="grid grid-cols-2 mobile:grid-cols-1 gap-y-8 ">

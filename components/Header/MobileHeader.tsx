@@ -20,7 +20,7 @@ export default function MobileHeader() {
         },
       }}
       model={
-        <div className="bg-mainWhite-0 p-4 top-20 h-[calc(100%-5rem)] w-full rounded-l-base absolute right-0 flex flex-col  menu-model z-50">
+        <div className="bg-mainWhite-0 p-4 top-20 h-[calc(100%-5rem)] w-full max-w-96 rounded-l-base absolute right-0 flex flex-col  menu-model z-50">
           <NavLinks />
           <LinkCmp
             styleMode="full"

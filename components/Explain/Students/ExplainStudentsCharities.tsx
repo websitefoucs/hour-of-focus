@@ -5,7 +5,7 @@ import ExplainStudentsCharitiesItem from "./ExplainStudentsCharitiesItem";
 
 export default function ExplainStudentsCharities() {
   return (
-    <div className="px-20 mobile:px-4 flex flex-col gap-4 pb-36 mobile:pb-16 max-w-[80svw] mobile:max-w-full">
+    <div className="sm:px-sides-sm px-sides flex flex-col gap-4 md:py-gaps-md py-gaps max-w-[80svw] mobile:max-w-full">
       <h5>העמותות המומלצות שלנו</h5>
       <p className="text-20 text-mainGray-500">
         ביחד, ניצור שרשרת של מעשים טובים ונעביר את זה הלאה – כי כל מעשה קטן יכול

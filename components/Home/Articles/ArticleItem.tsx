@@ -15,10 +15,9 @@ export default function ArticleItem({
   link,
   isFading,
 }: ArticleProps) {
-
   return (
     <div
-      className={`w-[35rem] mobile:w-64 h-80 mobile:h-[29rem] flex flex-col items-start  border-t-8 border-t-mainGold-500 px-6 pt-12 pb-8 justify-between shadow-[0px_3px_6px_0px_#00000026] rounded-base transition-opacity duration-300
+      className={`sm:w-[35rem] w-full flex gap-12 flex-col items-start border-t-8 border-t-mainGold-500 px-6 pt-12 pb-8 justify-between shadow-[0px_3px_6px_0px_#00000026] rounded-base transition-opacity duration-300
        ${isFading ? "opacity-0" : "opacity-100"}`}
     >
       <p className="text-right text-18 text-mainGray-800 italic">{preview}</p>
