@@ -21,7 +21,7 @@ export default function VolunteersJoinCmp({
   isHome?: boolean;
 }): React.JSX.Element {
   return (
-    <div className="flex flex-col gap-10 md:gap-20">
+    <div className="flex flex-col gap-10 lg:gap-20">
       <article className="flex flex-col gap-4 items-center">
         {isHome ? (
           <>

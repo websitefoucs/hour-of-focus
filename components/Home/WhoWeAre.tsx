@@ -12,7 +12,7 @@ export default function WhoWeAre() {
       className="home-layout-who-we-are"
       info={
         <ItemList<{ header: string; text: string; _id: undefined }>
-          listStyle=" flex flex-col gap-10 w-full"
+          listStyle=" flex flex-col gap-10 w-full order-2 lg:order-1 "
           items={items}
           renderItem={(item) => (
             <WhoWeAreItem header={item.header} text={item.text} />
@@ -25,10 +25,12 @@ export default function WhoWeAre() {
           height={512}
           src={WHO_WE_ARE_IMAGE}
           alt="Who we are"
-          className="object-cover h-full w-full"
+          className="object-fill h-full w-full  "
           priority
         />
       }
+      imgConStyle="order-1 lg:order-2"
+     
     />
   );
 }

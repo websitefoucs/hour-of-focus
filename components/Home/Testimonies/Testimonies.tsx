@@ -13,7 +13,7 @@ interface TestimoniesProps {
 export default function Testimonies({ testimonies }: TestimoniesProps) {
   return (
     <div className="lg:px-sides-sm md:px-sides px-0 text-center home-layout-testimonies w-full">
-      <h4 className=" pb-2 text-36">מה התלמידים שלנו מספרים?</h4>
+      <h4 className=" pb-2 text-24 sm:text-36">מה התלמידים שלנו מספרים?</h4>
       <ItemsScroll
         items={testimonies}
         renderItem={(testimony) => <TestimonyItem testimony={testimony} />}

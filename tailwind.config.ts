@@ -64,15 +64,14 @@ export default {
       },
       padding: {
         base: "7.5rem",
-        gaps: "2.5rem",
+        gaps: "3rem",
         "gaps-md": "5rem",
         sides: "1rem",
         "sides-sm": "6rem",
       },
       gap: {
-        gaps: "2.5rem",
+        gaps: "3rem",
         "gaps-md": "5rem",
-      
       },
       lineHeight: {
         21: "1.35rem",
