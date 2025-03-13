@@ -9,7 +9,7 @@ interface ArticleItemProps{
 
 export default function ArticlesList( {articles}:ArticleItemProps) {
   return (
-    <div className="h-fit lg:px-sides-sm px-sides flex flex-col items-center home-layout-articles">
+    <div className="h-fit w-full lg:px-sides-sm  flex flex-col items-center home-layout-articles">
       <h4 className="pb-8">כתבו עלינו</h4>
       <ItemsScroll<{
         publishPlace: string;
