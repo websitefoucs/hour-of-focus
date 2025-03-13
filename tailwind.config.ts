@@ -38,6 +38,9 @@ export default {
           60: "rgba(90, 90, 90, 0.6)",
         },
       },
+      backgroundImage: {
+        'ginger-kid':"url('https://res.cloudinary.com/dyzqa6uuu/image/upload/v1741441120/upuk4ge9uqdfqxhyax83.png')",
+      },
       fontSize: {
         14: "0.875rem",
         16: "1rem",

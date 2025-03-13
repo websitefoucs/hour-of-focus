@@ -1,23 +1,25 @@
 import LinkCmp from "../../UI/LinkCmp";
 import Numbers from "./Numbers";
 import { LOGISTIC_SIGNUP, TEACHERS_SIGNUP } from "@/constants/links";
-import ImageOverlay from "@/components/UI/ImageOverlay";
-import Image from "next/image";
-import { GINGER_KID_IMAGE } from "@/constants/images";
+// import ImageOverlay from "@/components/UI/ImageOverlay";
+// import Image from "next/image";
+// import { GINGER_KID_IMAGE } from "@/constants/images";
 
 export default function HomeHero() {
   return (
     <div className="w-full grid grid-cols-1 grid-rows-1 home-layout-hero relative max-h-[80vh] mobile:max-h-none">
-      <ImageOverlay>
+      {/* <ImageOverlay>
         <Image
-          width={1080}
-          height={512}
+          fill
           src={GINGER_KID_IMAGE}
           alt="Home main image"
-          className="object-cover w-full h-full  "
+          className="object-cover w-full h-full "
           priority
         />
-      </ImageOverlay>
+      </ImageOverlay> */}
+
+      <div className="bg-cover bg-center grid-stack bg-fixed w-full h-full relative bg-blend-multiply bg-ginger-kid before:backdrop-blur-sm before:inset-0 before:absolute before:bg-imageOverlay-60"></div>
+
       <div className="w-full h-full grid-stack z-10 flex flex-col items-center justify-center gap-8 p-8 mobile:p-0 mobile:py-8 text-mainWhite-0 text-center">
         <p className="text-mainWhite-0 text-24 font-semibold leading-28">
           למען המפונים מהדרום והמצפון
