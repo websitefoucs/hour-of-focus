@@ -25,7 +25,7 @@ export default function VolunteersJoinCmp({
       <article className="flex flex-col gap-4 items-center">
         {isHome ? (
           <>
-            <h3 className="text-center px-36 mobile:px-2">
+            <h3 className="text-center text-24 lg:text-44 px-36 mobile:px-2">
               הצטרפו עכשיו למשפחת המתנדבים שלנו
             </h3>
             <p className="text-mainGray-500 text-20 mobile:text-18 text-center mobile:px-2">
