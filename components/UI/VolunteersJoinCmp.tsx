@@ -59,8 +59,8 @@ export default function VolunteersJoinCmp({
 
         <LinkCmp
           styleMode="arrow"
-          styleSize="large"
-          className="text-mainOrange-700 border-mainOrange-700 hover:text-mainOrange-800 hover:border-mainOrange-800 sm:col-span-2 col-span-1"
+          styleSize="long"
+          className="text-mainOrange-700 border-mainOrange-700 hover:text-mainOrange-800 hover:border-mainOrange-800 text-center xs:text-right sm:col-span-2 col-span-1"
           href={CONTACT_US}
         >
           יש לכם שאלות? דברו איתנו ונשמח לסייע

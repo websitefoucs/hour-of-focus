@@ -25,7 +25,7 @@ export default function WhoWeAre() {
           height={512}
           src={WHO_WE_ARE_IMAGE}
           alt="Who we are"
-          className="object-fill h-full w-full  "
+          className="object-fill h-full w-full "
           priority
         />
       }

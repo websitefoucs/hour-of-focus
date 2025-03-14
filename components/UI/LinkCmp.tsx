@@ -57,6 +57,7 @@ export const SIZES = {
   small: "h-8 w-32",
   medium: "h-12 w-[18.25rem]",
   large: "h-12 md:w-60 w-[min(18rem,100%)]",
+  long: "h-[2.625rem]  leading-21 max-w-[min(18rem,100%)] sm:max-w-[20rem] w-full ",
   none: "",
 } as const;
 
