@@ -34,7 +34,7 @@ const Info = (
   <article className="flex flex-col gap-3 xl:gap-6 font-normal ">
     <h5 className="">שיטת המעשים הטובים 🌍💙</h5>
 
-    <h6 className="text-mainGray-500 leading-30 text-20 pb-3 font-normal">
+    <h6 className="text-mainGray-500 font-medium leading-30 text-20 pb-3 ">
       מעבירים את זה הלאה
     </h6>
     <p className="text-mainGray-800 leading-30 text-16 md:text-18">{`בפרויקט "שעה של פוקוס", אנחנו מאמינים שלא רק הלמידה חשובה, אלא גם מעשים טובים שמייצרים שינוי חיובי. לכן, אנחנו מזמינים אתכם לבחור, אם תרצו, מעשה טוב עבור כל שיעור שתעברו בפרויקט.`}</p>
