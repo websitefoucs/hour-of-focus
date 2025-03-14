@@ -1,15 +1,11 @@
 export default function Numbers() {
   return (
-    <ul className="flex w-full items-center justify-center gap-36  mobile:grid mobile:grid-cols-2 mobile:gap-0 ">
+    <ul className="w-full items-center justify-center grid grid-cols-2 gap-0 md:flex md:gap-gaps-md  ">
       {items.map((item, index) => (
         <li key={index}>
-          <h4 className="mobile:leading-8">
-            <span className="text-mainWhite-0 mobile:text-20 mobile:leading-3">
-              {item.number}
-            </span>
-            <span className=" text-mainGold-400 mobile:text-20">
-              {item.symbol}
-            </span>
+          <h4 className="leading-8 text-20 md:text-36">
+            <span className="text-mainWhite-0">{item.number}</span>
+            <span className=" text-mainGold-400">{item.symbol}</span>
           </h4>
           <p className="text-20 leading-34 font-normal">{item.text}</p>
         </li>

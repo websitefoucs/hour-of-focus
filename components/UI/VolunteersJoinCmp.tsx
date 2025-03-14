@@ -25,7 +25,7 @@ export default function VolunteersJoinCmp({
       <article className="flex flex-col gap-4 items-center">
         {isHome ? (
           <>
-            <h3 className="text-center text-24 lg:text-44 px-36 mobile:px-2">
+            <h3 className="text-center text-24 lg:text-44 leading-10">
               הצטרפו עכשיו למשפחת המתנדבים שלנו
             </h3>
             <p className="text-mainGray-500 text-20 mobile:text-18 text-center mobile:px-2">
@@ -39,7 +39,7 @@ export default function VolunteersJoinCmp({
         )}
       </article>
 
-      <nav className="grid grid-cols-1 sm:grid-cols-2 justify-items-center  w-full gap-10 ">
+      <nav className="grid grid-cols-1 sm:grid-cols-2 justify-items-center  w-full gap-5 ">
         <LinkCmp
           styleMode="full"
           styleSize="large"
@@ -51,7 +51,7 @@ export default function VolunteersJoinCmp({
         <LinkCmp
           styleMode="coloredBorder"
           styleSize="large"
-          className="font-bold md:place-self-start"
+          className="font-bold md:place-self-start "
           href={LOGISTIC_SIGNUP}
         >
           הצטרפו לצוות הלוגיסטי
@@ -59,7 +59,7 @@ export default function VolunteersJoinCmp({
 
         <LinkCmp
           styleMode="arrow"
-          styleSize="long"
+          styleSize="large"
           className="text-mainOrange-700 border-mainOrange-700 hover:text-mainOrange-800 hover:border-mainOrange-800 sm:col-span-2 col-span-1"
           href={CONTACT_US}
         >

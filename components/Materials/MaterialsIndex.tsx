@@ -21,13 +21,13 @@ interface MaterialsIndexProps {
  */
 export default function MaterialsIndex({ materials }: MaterialsIndexProps) {
   return (
-    <section className="flex flex-col gap-16 pb-16 mobile:pb-12 w-full ">
+    <section className="flex flex-col gap-gaps pb-gaps md:pb-gaps-md w-full ">
       <HeroCmp text="מאגר חומרי לימוד למתנדבים" />
       <ItemList
         items={materials}
-        listStyle="flex flex-wrap gap-8 items-center justify-center px-20 mobile:px-4"
+        listStyle="grid grid-flow-row gap-gaps  px-sides lg:px-sides-sm  "
         renderItem={(material) => (
-          <li className="flex flex-col justify-between gap-2 h-80 border-t-8 border-mainGold-500 rounded-base shadow-[0px_4px_8px_#00000026]">
+          <li className="flex flex-col justify-between gap-2 h-auto border-t-8 border-mainGold-500 rounded-base shadow-material">
             <MaterialItem material={material} />
           </li>
         )}

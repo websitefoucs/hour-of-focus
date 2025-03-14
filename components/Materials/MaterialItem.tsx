@@ -30,16 +30,16 @@ export default function MaterialItem({ material }: MaterialItemProps) {
       <Image
         src={imgPath || ""}
         alt={subject}
-        width={360}
-        height={360}
-        className="object-cover h-1/2"
+        width={368}
+        height={208}
+        className="object-cover h-auto"
       />
-      <div className="p-4 flex flex-col h-[calc(45%-.5rem)] justify-between">
+      <div className="p-4 flex flex-col gap-gaps">
         <h5>{text}</h5>
         <LinkCmp
           styleMode="arrow"
           styleSize="long"
-          className="mobile:justify-between mobile:w-10 mobile-small:w-44"
+          className=""
           href={link}
         >
           <p>למאגר חומרי הלימוד</p>
