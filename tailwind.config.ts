@@ -57,7 +57,7 @@ export default {
         medium: { max: "1250px" },
         mobile: { max: "850px" },
         "mobile-small": { max: "400px" },
-        xs: { min: "38rem" },
+        xs: { min: "24rem" },
         
       },
 

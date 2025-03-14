@@ -12,7 +12,7 @@ export default function HighlightsList() {
           <h5 className="text-18 md:text-24 text-mainOrange-700 font-bold">
             {item.title}
           </h5>
-          <p className="leading-30 text-18 md:text-24 sm:text-center">{item.text}</p>
+          <p className="leading-30 text-18 md:text-24 text-wrap sm:text-center">{item.text}</p>
         </li>
       ))}
     </ul>
