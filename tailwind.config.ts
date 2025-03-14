@@ -54,11 +54,7 @@ export default {
         44: "2.75rem",
       },
       screens: {
-        medium: { max: "1250px" },
-        mobile: { max: "850px" },
-        "mobile-small": { max: "400px" },
         xs: { min: "24rem" },
-        
       },
 
       borderRadius: {
@@ -85,6 +81,9 @@ export default {
         42: "2.625rem",
         52: "3.3rem",
       },
+      boxShadow:{
+        material: "0px 4px 8px #00000026"
+      }
     },
   },
   plugins: [
