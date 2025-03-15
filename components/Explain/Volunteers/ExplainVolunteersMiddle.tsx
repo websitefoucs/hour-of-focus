@@ -32,8 +32,8 @@ export default function ExplainVolunteersMiddle() {
           ))}
         </ul>
       </div>
-      <div className="items-center flex flex-col gap-gaps w-full ">
-        <h4 className="text-24 md:text-36 self-start sm:self-center">
+      <div className="items-center justify-center flex flex-col gap-gaps w-full ">
+        <h4 className="text-24 md:text-36 self-center">
           למה כדאי להצטרף אלינו?
         </h4>
         <HighlightsList />

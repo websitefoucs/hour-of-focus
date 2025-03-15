@@ -12,7 +12,7 @@ export default function ExplainVolunteersInfo() {
           height={432}
           src={GIRL_STUDY_TWO_IMAGE}
           alt="people on lawn"
-          className="w-full h-full rounded-none g"
+          className="w-full h-full rounded-none "
         />
       }
     />

@@ -1,6 +1,8 @@
+//Utils
 import { sanitizeUtil } from "./sanitize.util";
 import { validationUtil } from "../validation.util";
 import { AppError } from "./Error.util";
+//Types
 import { TMaterialDto } from "@/types/materials.type";
 
 const sanitizeMaterialsDtoCreate = (dto: TMaterialDto): TMaterialDto => {

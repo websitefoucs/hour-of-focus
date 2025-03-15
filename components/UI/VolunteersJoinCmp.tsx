@@ -28,14 +28,12 @@ export default function VolunteersJoinCmp({
             <h3 className="text-center text-24 lg:text-44 leading-10">
               הצטרפו עכשיו למשפחת המתנדבים שלנו
             </h3>
-            <p className="text-mainGray-500 text-20 mobile:text-18 text-center mobile:px-2">
+            <p className="text-mainGray-500 sm:text-20 text-18 text-center ">
               יחד נוכל לעשות שינוי משמעותי בחיי תלמידים
             </p>
           </>
         ) : (
-          <h3 className="text-center px-36 mobile:px-0 mobile:text-24">
-            רוצים להתנדב?
-          </h3>
+          <h3 className="text-24 md:text-44">רוצים להתנדב?</h3>
         )}
       </article>
 
@@ -51,7 +49,7 @@ export default function VolunteersJoinCmp({
         <LinkCmp
           styleMode="coloredBorder"
           styleSize="large"
-          className="font-bold md:place-self-start "
+          className="font-bold md:place-self-start"
           href={LOGISTIC_SIGNUP}
         >
           הצטרפו לצוות הלוגיסטי

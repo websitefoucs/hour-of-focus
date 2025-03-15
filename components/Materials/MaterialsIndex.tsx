@@ -25,9 +25,9 @@ export default function MaterialsIndex({ materials }: MaterialsIndexProps) {
       <HeroCmp text="מאגר חומרי לימוד למתנדבים" />
       <ItemList
         items={materials}
-        listStyle="grid grid-flow-row gap-gaps  px-sides lg:px-sides-sm  "
+        listStyle="grid  grid-cols-1  sm:sm:grid-cols-[repeat(auto-fill,minmax(17rem,_1fr))]  items-center gap-gaps px-sides lg:px-sides-sm  "
         renderItem={(material) => (
-          <li className="flex flex-col justify-between gap-2 h-auto border-t-8 border-mainGold-500 rounded-base shadow-material">
+          <li className="flex flex-col gap-2 h-full border-t-8 w-full justify-between border-mainGold-500 rounded-base shadow-material">
             <MaterialItem material={material} />
           </li>
         )}

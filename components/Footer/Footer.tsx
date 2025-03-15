@@ -21,7 +21,7 @@ export default function Footer() {
         alt="logo"
         width={160}
         height={160}
-        className=" brightness-0 invert md:order-3 justify-self-end md:justify-self-auto"
+        className=" brightness-0 invert md:order-3 justify-self-end md:justify-self-auto  "
         priority
       />
       <FollowUs />

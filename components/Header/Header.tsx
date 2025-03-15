@@ -26,7 +26,7 @@ export default function Header() {
         width={64}
         height={64}
         priority
-        className="w-16 h-16"
+        className="w-auto h-auto"
       />
 
       <NavLinks />

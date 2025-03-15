@@ -2,14 +2,14 @@ import { ClockSvg, GroupSvg, HeartSvg } from "./icons/Icons";
 
 export default function HighlightsList() {
   return (
-    <ul className="flex flex-col-reverse sm:flex-row justify-around gap-6 w-full">
+    <ul className="flex flex-col-reverse sm:flex-row justify-around gap-6 w-full lg:max-w-[70vw]">
       {items.map((item, index) => (
         <li
           key={index}
           className="grid justify-items-center h-fit  gap-4 text-mainOrange-700"
         >
           {item.icon}
-          <h5 className="text-18 md:text-24 text-mainOrange-700 font-bold">
+          <h5 className="text-18 md:text-24 text-mainOrange-700 font-bold text-center">
             {item.title}
           </h5>
           <p className="leading-30 text-18 md:text-24 text-wrap sm:text-center">{item.text}</p>

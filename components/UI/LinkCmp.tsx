@@ -39,7 +39,7 @@ export const STYLES = {
   },
   arrow: {
     style:
-      "font-bold border-b-2 text-normal leading-21 border-mainGray-800 text-mainGray-800 hover:text-mainGray-700 hover:border-mainGray-700 flex   justify-center items-center gap-1 w-fit",
+      "font-bold border-b-2 text-normal leading-21 border-mainGray-800 text-mainGray-800 hover:text-mainGray-700 hover:border-mainGray-700 flex items-center gap-1 w-fit",
     loading: "border-mainGray-800 text-mainGray-800",
   },
   center: {
@@ -79,9 +79,9 @@ export default function LinkCmp({
   className,
   ...props
 }: Props): JSX.Element {
-  const style = `${className} ${STYLES[styleMode].style} ${SIZES[styleSize]} ${
+  const style = ` ${STYLES[styleMode].style} ${SIZES[styleSize]} ${
     isHighLighted ? "font-bold" : ""
-  } disabled:opacity-50 disabled:cursor-not-allowed hover:cursor-pointer sm:text-18 text-16`;
+  } disabled:opacity-50 disabled:cursor-not-allowed hover:cursor-pointer sm:text-18 text-16 ${className}`;
   return (
     <Link aria-disabled {...props} className={style}>
       {children}

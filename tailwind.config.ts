@@ -43,6 +43,9 @@ export default {
         "ginger-kid":
           "url('https://res.cloudinary.com/dyzqa6uuu/image/upload/v1741441120/upuk4ge9uqdfqxhyax83.png')",
       },
+      gridColumn: {
+        materialsLayout: "repeat(auto-fit,_minmax(minSize,_1fr))",
+      },
       fontSize: {
         14: "0.875rem",
         15: "0.9375rem",
@@ -82,9 +85,9 @@ export default {
         42: "2.625rem",
         52: "3.3rem",
       },
-      boxShadow:{
-        material: "0px 4px 8px #00000026"
-      }
+      boxShadow: {
+        material: "0px 4px 8px #00000026",
+      },
     },
   },
   plugins: [

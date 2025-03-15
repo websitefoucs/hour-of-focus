@@ -30,19 +30,19 @@ export default function MaterialItem({ material }: MaterialItemProps) {
       <Image
         src={imgPath || ""}
         alt={subject}
-        width={368}
-        height={208}
-        className="object-cover h-auto"
+        width={1000}
+        height={1000}
+        className="object-cover h-44 w-full "
       />
-      <div className="p-4 flex flex-col gap-gaps">
+      <div className="px-4 flex flex-col gap-gaps pb-4">
         <h5>{text}</h5>
         <LinkCmp
           styleMode="arrow"
-          styleSize="long"
-          className=""
+          styleSize="none"
+          className="items-start justify-start"
           href={link}
         >
-          <p>למאגר חומרי הלימוד</p>
+          <p className=" truncate">למאגר חומרי הלימוד</p>
           <ArrowSvg />
         </LinkCmp>
       </div>

@@ -32,7 +32,7 @@ export default function ExplainStudentsCharitiesItem({
           className="pb-2 border-b-mainGray-600"
           href={link}
         >
-          <h6>בקרו באתר העמותה</h6>
+      בקרו באתר העמותה
           <ArrowSvg />
         </LinkCmp>
       </div>
