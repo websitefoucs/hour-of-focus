@@ -2,23 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-* For text editor to work properly
-* TODO -- Add a better way to handle this
-*/
-/* body > *,
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-button,
-a {
-  text-align: right !important;
-} */
-
 .ql-editor {
   font-family: "Open sans";
   text-align: right !important;

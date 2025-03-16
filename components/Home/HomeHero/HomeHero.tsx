@@ -28,7 +28,7 @@ import { LOGISTIC_SIGNUP, TEACHERS_SIGNUP } from "@/constants/links";
 export default function HomeHero() {
   return (
     <div className="w-full grid grid-cols-1 grid-rows-1 home-layout-hero relative md:max-h-[80vh] max-h-none">
-      <div className="bg-cover bg-center grid-stack bg-fixed w-full h-full relative bg-blend-multiply bg-ginger-kid before:backdrop-blur-sm before:inset-0 before:absolute before:bg-imageOverlay-60"></div>
+      <div className="bg-cover bg-center grid-stack bg-fixed w-full h-full relative bg-blend-multiply bg-[url('https://res.cloudinary.com/dyzqa6uuu/image/upload/v1742072131/piz0kiogdtnp8u9up22u.webp')] before:backdrop-blur-sm before:inset-0 before:absolute before:bg-imageOverlay-60"></div>
 
       <div className="w-full h-full grid-stack z-10 flex flex-col items-center justify-center gap-8 py-8 px-sides md:px-sides-sm text-mainWhite-0 text-center">
         <p className="text-mainWhite-0 text-20 md:text-24 font-semibold leading-28">

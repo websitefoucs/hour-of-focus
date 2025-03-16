@@ -41,7 +41,7 @@ export default {
 
       backgroundImage: {
         "ginger-kid":
-          "url('https://res.cloudinary.com/dyzqa6uuu/image/upload/v1741441120/upuk4ge9uqdfqxhyax83.png')",
+          "url('/imgs/1.webp')",
       },
       gridColumn: {
         materialsLayout: "repeat(auto-fit,_minmax(minSize,_1fr))",
