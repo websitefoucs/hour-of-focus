@@ -34,7 +34,9 @@ export default function Header() {
         styleMode="full"
         styleSize="large"
         href={CONTACT_US}
-        className="hidden lg:flex "
+        className="hidden lg:flex"
+        target="_blank"
+
       >
         צור קשר
       </LinkCmp>

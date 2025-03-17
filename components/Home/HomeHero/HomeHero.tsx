@@ -23,7 +23,7 @@ import LinkCmp from "../../UI/LinkCmp";
 //Components
 import Numbers from "./Numbers";
 //Links
-import { LOGISTIC_SIGNUP, TEACHERS_SIGNUP } from "@/constants/links";
+import { EXPLAIN_STUDENTS_PAGE_LINK, LOGISTIC_SIGNUP, TEACHERS_SIGNUP } from "@/constants/links";
 
 export default function HomeHero() {
   return (
@@ -45,7 +45,8 @@ export default function HomeHero() {
         </p>
 
         <nav className="flex flex-col lg:gap-10 gap-4 items-center lg:py-12 py-4 w-full ">
-          <LinkCmp styleMode="full" styleSize="large" href={TEACHERS_SIGNUP}>
+          <LinkCmp styleMode="full" styleSize="large" href={TEACHERS_SIGNUP} target="_blank"
+          >
             הצטרפו כמורים
           </LinkCmp>
           <div className="flex md:gap-8 gap-4 flex-col sm:flex-row items-center justify-center w-full">
@@ -54,14 +55,14 @@ export default function HomeHero() {
               styleSize="large"
               href={LOGISTIC_SIGNUP}
               className=""
+              target="_blank"
             >
               הצטרפו לצוות הלוגיסטי
             </LinkCmp>
             <LinkCmp
               styleMode="whiteBorder"
               styleSize="large"
-              href=""
-              className=""
+              href={EXPLAIN_STUDENTS_PAGE_LINK}              className=""
             >
               מידע נוסף לתלמידים
             </LinkCmp>

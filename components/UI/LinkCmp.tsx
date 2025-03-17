@@ -14,6 +14,7 @@ interface Props extends LinkProps {
   isHighLighted?: boolean;
   children?: React.ReactNode;
   className?: string;
+  target?: "_blank";
 }
 
 export const STYLES = {
@@ -75,6 +76,7 @@ export default function LinkCmp({
   styleMode = "none",
   styleSize = "none",
   isHighLighted,
+  target,
   children,
   className,
   ...props
@@ -83,7 +85,7 @@ export default function LinkCmp({
     isHighLighted ? "font-bold" : ""
   } disabled:opacity-50 disabled:cursor-not-allowed hover:cursor-pointer sm:text-18 text-16 ${className}`;
   return (
-    <Link aria-disabled {...props} className={style}>
+    <Link aria-disabled {...props} className={style} target={target} >
       {children}
     </Link>
   );
