@@ -6,8 +6,8 @@ import ExplainStudentsCharitiesItem from "./ExplainStudentsCharitiesItem";
 export default function ExplainStudentsCharities() {
   return (
     <div className="sm:px-sides-sm px-sides flex flex-col gap-4 md:py-gaps-md py-gaps lg:max-w-[80svw] max-w-full">
-      <h5>העמותות המומלצות שלנו</h5>
-      <p className="text-20 text-mainGray-500">
+      <h5 className="text-center sm:text-right">העמותות המומלצות שלנו</h5>
+      <p className="text-20 text-center sm:text-right text-mainGray-500">
         ביחד, ניצור שרשרת של מעשים טובים ונעביר את זה הלאה – כי כל מעשה קטן יכול
         לחולל שינוי גדול
       </p>

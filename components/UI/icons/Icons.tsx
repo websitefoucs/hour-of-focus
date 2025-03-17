@@ -155,8 +155,7 @@ export const EnvelopSvg = ({ className }: { className?: string }) => {
   return (
     <svg
       aria-label="Email icon"
-      width="17"
-      height="16"
+   
       viewBox="0 0 17 16"
       xmlns="http://www.w3.org/2000/svg"
       className={className + " fill-none"}

@@ -43,7 +43,7 @@ export default function Details() {
         צור קשר
       </LinkCmp>
       <span className="flex gap-2 items-center">
-        <EnvelopSvg className="w-[1.125rem] h-[1.125rem]  fill-white" />
+        <EnvelopSvg className="min-w-5 min-h-5  w-5 h-5 fill-white" />
 
         <a className="text-14 leading-23" href={`mailto:${EMAIL}`}>
           {EMAIL}

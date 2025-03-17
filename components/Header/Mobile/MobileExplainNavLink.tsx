@@ -14,7 +14,7 @@ interface NavLinkProps {
 export default function MobileExplainNavLink({ pathname }: NavLinkProps) {
   return (
     <Model
-      containerClassName="flex md:hidden transition-all duration-1000 ease-in-out flex-col h-7 has-[.open]:h-[7.25rem] explain-mobile"
+      containerClassName="flex md:hidden transition-all duration-1000 ease-in-out flex-col h-7 has-[.open]:h-[7.25rem] explain-mobile text-16"
       withOverlay={false}
       model={
         <div className="fade-in ">
