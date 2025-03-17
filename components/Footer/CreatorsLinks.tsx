@@ -29,8 +29,8 @@ export default function CreatorsLinks() {
   return (
     <nav className="text-14 flex flex-col gap-2 items-center self-center col-span-2 md:col-span-1 md:order-5 w-full ">
       <LinkCmp href={BATEL_WEBSITE} className="flex items-center gap-1">
-        <p>{`עוצב ע"י BY.Creations`}</p>
-        <GlobeSvg className="md:w-8 md:h-8 w-4 h-4 fill-mainWhite-0" />
+        <p className="text-14">{`עוצב ע"י BY.Creations`}</p>
+        <GlobeSvg className="md:w-6 md:h-6 w-4 h-4 fill-mainWhite-0" />
       </LinkCmp>
 
       <div className="flex items-center gap-1 justify-center w-full">
@@ -39,7 +39,7 @@ export default function CreatorsLinks() {
           <LinkCmp href={ERAN_GIT}>
             <GitSvg />
           </LinkCmp>
-          <LinkCmp href={ERAN_LINKEDIN} className="md:w-8 md:h-8 w-4 h-4">
+          <LinkCmp href={ERAN_LINKEDIN} className="md:w-6 md:h-6 w-4 h-4">
             <LinkedinSvg />
           </LinkCmp>
         </span>

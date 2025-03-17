@@ -17,13 +17,13 @@ import HighlightsList from "@/components/UI/HighlightsList";
 export default function ExplainVolunteersMiddle() {
   return (
     <div className="bg-mainWhite-50 flex flex-col sm:rounded-b-[160px] pt-gaps gap-gaps lg:gap-gaps-md px-sides sm:px-10 lg:px-sides-sm pb-gaps lg:mx-24">
-      <div className=" flex flex-col gap-gaps w-full md:items-center ">
-        <h4 className="text-24 md:text-36 sm:text-center">
+      <div className=" flex flex-col gap-gaps w-full msm:items-center ">
+        <h4 className="text-24 md:text-36 text-center msm:text-right">
           מה מצופה מהמתנדבים?
         </h4>
-        <ul className="grid grid-cols-1 xs:grid-cols-2 gap-6 sm:gap-1 md:gap-10">
+        <ul className="grid grid-cols-1 msm:grid-cols-2 gap-6 msm:gap-2 md:gap-10">
           {items.map((item, index) => (
-            <li key={index} className="flex items-center gap-2">
+            <li key={index} className="flex gap-2">
               <ApproveSvg />
               <p className=" leading-2 text-16 md:text-18 text-mainGray-800">
                 {item}

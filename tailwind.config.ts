@@ -59,6 +59,7 @@ export default {
       },
       screens: {
         xs: { min: "24rem" },
+        msm: { min: "28rem" },
       },
 
       borderRadius: {
