@@ -37,6 +37,7 @@ export default function FollowUs() {
           <LinkCmp
             key={index}
             href={item.link}
+            target="_blank"
             className="md:w-8 md:h-8 w-6 h-6"
           >
             <item.icon />

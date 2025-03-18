@@ -31,6 +31,7 @@ export default function ExplainStudentsCharitiesItem({
           styleSize="none"
           className="pb-2 border-b-mainGray-600"
           href={link}
+          target="_blank"
         >
       בקרו באתר העמותה
           <ArrowSvg />
