@@ -1,6 +1,6 @@
 export default function Numbers() {
   return (
-    <ul className="w-full items-center justify-center grid grid-cols-2 gap-0 md:flex md:gap-gaps-md  ">
+    <ul className="w-full justify-center grid grid-cols-2 gap-0 md:flex md:gap-gaps-md  ">
       {items.map((item, index) => (
         <li key={index}>
           <p className="leading-8 text-20 md:text-36">
