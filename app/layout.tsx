@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Open_Sans } from "next/font/google";
-import { GINGER_KID_IMAGE } from "@/constants/images";
 
 const open_sans = Open_Sans({
   weight: ["300", "400", "500", "600", "700", "800"],
@@ -28,7 +27,6 @@ export default function RootLayout({
       >
         {children}
       </body>
-      <link rel="preload" href={GINGER_KID_IMAGE} as="image" />
       </html>
   );
 }
