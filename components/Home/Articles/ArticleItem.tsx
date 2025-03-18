@@ -26,7 +26,7 @@ export default function ArticleItem({
         {" "}
         <b>{publishPlace}</b>, {publishDate}
       </p>
-      <LinkCmp href={link} styleMode="arrow" styleSize="none" className="items-start place-items-start  justify-start">
+      <LinkCmp href={link} styleMode="arrow" styleSize="none" className="items-start place-items-start justify-start" target="_blank">
         <h6 className="text-right">לכתבה המלאה</h6>
         <ArrowSvg />
       </LinkCmp>
