@@ -19,7 +19,7 @@ import Image from "next/image";
  */
 export default function Header() {
   return (
-    <header className="flex justify-between items-center h-20 w-full px-sides lg:px-8 xl:px-gaps-md">
+    <header className="flex justify-between items-center h-20 w-full px-sides lg:px-8 xl:px-gaps-md sticky top-0 z-50 bg-mainWhite-0 shadow-sm">
       <Image
         src={LOGO}
         alt="logo"
