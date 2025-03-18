@@ -32,13 +32,14 @@ import LinkCmp from "../UI/LinkCmp";
 
 export default function Details() {
   return (
-    <div className="flex flex-col gap-4 md:order-1 ">
+    <div className="flex flex-col gap-4 md:order-1 self-start ">
       <h6 className="pb-2 "> שעה של פוקוס © </h6>
       <LinkCmp
         styleMode="none"
         styleSize="none"
         href={CONTACT_US}
         className="text-14 leading-23"
+        target="_blank"
       >
         צור קשר
       </LinkCmp>
