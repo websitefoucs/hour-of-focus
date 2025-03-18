@@ -9,9 +9,9 @@ export default function HighlightsList() {
           className="grid justify-items-center h-fit  gap-4 text-mainOrange-700"
         >
           {item.icon}
-          <h5 className="text-18 md:text-24 text-mainOrange-700 font-bold text-center">
+          <p className="text-18 md:text-24 text-mainOrange-700 font-bold text-center">
             {item.title}
-          </h5>
+          </p>
           <p className="leading-30 text-18 md:text-24 text-wrap sm:text-center">{item.text}</p>
         </li>
       ))}

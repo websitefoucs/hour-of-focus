@@ -1,6 +1,6 @@
 export const LOGO = "/imgs/logo.svg";
 export const GINGER_KID_IMAGE =
-  "https://res.cloudinary.com/dyzqa6uuu/image/upload/v1741441120/upuk4ge9uqdfqxhyax83.png";
+  "https://res.cloudinary.com/dyzqa6uuu/image/upload/v1742072131/piz0kiogdtnp8u9up22u.webp";
 export const PEOPLE_ON_LAWN_IMAGE =
   "https://res.cloudinary.com/dyzqa6uuu/image/upload/v1741444113/ydh48zfzq60e6payfzhw.png";
 export const GIRL_PAINTING_IMAGE =
