@@ -5,7 +5,7 @@ export default function Numbers() {
         <li key={index}>
           <p className="leading-8 text-20 md:text-36">
             <span className="text-mainWhite-0 leading-8 text-20 md:text-36 font-bold">{item.number}</span>
-            <span className=" text-mainGold-400 leading-8 text-20 md:text-36">{item.symbol}</span>
+            <span className=" text-mainGold-400 leading-8 text-20 md:text-36 font-bold">{item.symbol}</span>
           </p>
           <p className="text-20 leading-34 font-normal">{item.text}</p>
         </li>
