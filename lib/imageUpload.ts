@@ -1,7 +1,6 @@
 import { AppError } from "@/utils/server/Error.util";
 
 const uploadToCdn = async (file: Blob): Promise<string> => {
-  console.log(" file:", file)
   const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
   const cloudPreset = process.env.CLOUDINARY_UPLOAD_PRESET;
 
@@ -20,7 +19,6 @@ const uploadToCdn = async (file: Blob): Promise<string> => {
   });
 
   const result = await res.json();
-  console.log(" result:", result);
 
   if (!result || !result?.secure_url) {
     throw AppError.create("No return value", 502);

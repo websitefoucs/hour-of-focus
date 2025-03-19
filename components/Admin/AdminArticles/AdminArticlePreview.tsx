@@ -13,7 +13,6 @@ export default function AdminArticlePreview({
 }: AdminArticlePreviewProps) {
   const { publishDate, link, preview, publishPlace, createAt, _id } =
   article;
-  console.log(" article:", article)
 
   return (
     <li className="p-4 border rounded-base">
