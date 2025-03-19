@@ -21,3 +21,5 @@ export const TEAM_TWO_IMAGE =
   "https://res.cloudinary.com/dyzqa6uuu/image/upload/v1741443613/aov3gfvfvektsfyyvjag.png";
 export const I_SCHOOL_IMAGE =
   "https://res.cloudinary.com/dyzqa6uuu/image/upload/v1741629312/osy6ipeqip77u4hymaqc.png";
+export const DEFAULT_IMAGE =
+  "https://res.cloudinary.com/dyzqa6uuu/image/upload/v1742384690/hof/yeq1yyvb1tdfyuwuxfga.avif";

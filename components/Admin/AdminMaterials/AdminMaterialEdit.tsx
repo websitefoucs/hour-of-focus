@@ -44,7 +44,7 @@ export default function AdminMaterialEdit({
         defaultValue={state?.data?.createBy}
       />
       <Input
-        type="text"
+        type="file"
         name="imgPath"
         id={`imgPath-${state?.data?._id}`}
         defaultValue={state?.data?.imgPath}

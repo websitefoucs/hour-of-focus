@@ -93,8 +93,10 @@ const validateMaterialsDtoUpdate = (
   return errors;
 };
 
-const fromDataToDto = (formData: FormData): TMaterialDto => {
-  const imgPath = formData.get("imgPath") as string;
+const fromDataToDto = (
+  formData: FormData
+): { data: TMaterialDto; imgFile: File } => {
+  const imgFile = formData.get("imgFile") as File;
   const link = formData.get("link") as string;
   const _id = formData.get("_id") as string;
   const createBy = formData.get("createBy") as string;
@@ -102,12 +104,14 @@ const fromDataToDto = (formData: FormData): TMaterialDto => {
   const subject = formData.get("subject") as string;
 
   return {
-    imgPath,
-    link,
-    _id,
-    subject,
-    createBy,
-    updateBy,
+    data: {
+      link,
+      _id,
+      subject,
+      createBy,
+      updateBy,
+    },
+    imgFile,
   };
 };
 

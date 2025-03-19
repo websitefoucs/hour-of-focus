@@ -17,6 +17,7 @@ import {
 import { materialsServerUtils } from "@/utils/server/materials.util";
 import { AppError } from "@/utils/server/Error.util";
 import { authServerUtils } from "@/utils/server/auth.util";
+import { imageUpload } from "../imageUpload";
 /**
  * Creates a new material and updates the state with the result.
  *
@@ -33,30 +34,33 @@ export async function createMaterial(
   try {
     const userId = await authServerUtils.verifyAuth();
 
-    const data = materialsServerUtils.fromDataToDto(formData);
+    const { data, imgFile } = materialsServerUtils.fromDataToDto(formData);
+    console.log(" data:", data);
+    const imgPath = await imageUpload.uploadToCdn(imgFile);
+    console.log(" imgPath:", imgPath)
 
-    dto = materialsServerUtils.sanitizeMaterialsDtoCreate({
-      ...data,
-      createBy: userId,
-    });
+    // dto = materialsServerUtils.sanitizeMaterialsDtoCreate({
+    //   ...data,
+    //   createBy: userId,
+    // });
 
-    materialsServerUtils.validateMaterialsDtoCreate(dto);
-    const { createBy, imgPath, link, subject } = dto;
+    // materialsServerUtils.validateMaterialsDtoCreate(dto);
+    // const { createBy, imgPath, link, subject } = dto;
 
-    const collection = await getCollection<TMaterialDocument>("materials");
-    const { acknowledged, insertedId } = await collection.insertOne({
-      subject,
-      link,
-      imgPath,
-      createBy: new ObjectId(createBy),
-    });
+    // const collection = await getCollection<TMaterialDocument>("materials");
+    // const { acknowledged, insertedId } = await collection.insertOne({
+    //   subject,
+    //   link,
+    //   imgPath,
+    //   createBy: new ObjectId(createBy),
+    // });
 
-    if (!acknowledged || !insertedId) {
-      throw AppError.create("Failed to create Material");
-    }
+    // if (!acknowledged || !insertedId) {
+    //   throw AppError.create("Failed to create Material");
+    // }
 
-    revalidatePath("/admin/materials");
-    revalidatePath(`/materials`);
+    // revalidatePath("/admin/materials");
+    // revalidatePath(`/materials`);
   } catch (error) {
     const err = AppError.handleResponse(error);
     return {
@@ -66,7 +70,7 @@ export async function createMaterial(
     };
   }
 
-  redirect("/admin/materials");
+  // redirect("/admin/materials");
 }
 /**
  * Updates a material document in the database.
