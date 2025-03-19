@@ -35,32 +35,31 @@ export async function createMaterial(
     const userId = await authServerUtils.verifyAuth();
 
     const { data, imgFile } = materialsServerUtils.fromDataToDto(formData);
-    console.log(" data:", data);
+
+    
+    dto = materialsServerUtils.sanitizeMaterialsDtoCreate({
+      ...data,
+      createBy: userId,
+    });
+    
+    materialsServerUtils.validateMaterialsDtoCreate(dto);
+    const { createBy, link, subject } = dto;
+    
     const imgPath = await imageUpload.uploadToCdn(imgFile);
-    console.log(" imgPath:", imgPath)
+    const collection = await getCollection<TMaterialDocument>("materials");
+    const { acknowledged, insertedId } = await collection.insertOne({
+      subject,
+      link,
+      imgPath,
+      createBy: new ObjectId(createBy),
+    });
 
-    // dto = materialsServerUtils.sanitizeMaterialsDtoCreate({
-    //   ...data,
-    //   createBy: userId,
-    // });
+    if (!acknowledged || !insertedId) {
+      throw AppError.create("Failed to create Material");
+    }
 
-    // materialsServerUtils.validateMaterialsDtoCreate(dto);
-    // const { createBy, imgPath, link, subject } = dto;
-
-    // const collection = await getCollection<TMaterialDocument>("materials");
-    // const { acknowledged, insertedId } = await collection.insertOne({
-    //   subject,
-    //   link,
-    //   imgPath,
-    //   createBy: new ObjectId(createBy),
-    // });
-
-    // if (!acknowledged || !insertedId) {
-    //   throw AppError.create("Failed to create Material");
-    // }
-
-    // revalidatePath("/admin/materials");
-    // revalidatePath(`/materials`);
+    revalidatePath("/admin/materials");
+    revalidatePath(`/materials`);
   } catch (error) {
     const err = AppError.handleResponse(error);
     return {
@@ -70,7 +69,7 @@ export async function createMaterial(
     };
   }
 
-  // redirect("/admin/materials");
+  redirect("/admin/materials");
 }
 /**
  * Updates a material document in the database.

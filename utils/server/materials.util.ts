@@ -6,13 +6,11 @@ import { AppError } from "./Error.util";
 import { TMaterialDto } from "@/types/materials.type";
 
 const sanitizeMaterialsDtoCreate = (dto: TMaterialDto): TMaterialDto => {
-  const imgPath = sanitizeUtil.sanitizedObjectField(dto?.imgPath) || "";
   const link = sanitizeUtil.sanitizedObjectField(dto?.link) || "";
   const subject = sanitizeUtil.sanitizedObjectField(dto?.subject) || "";
   const createBy = sanitizeUtil.sanitizedObjectField(dto?.createBy) || "";
 
   return {
-    imgPath,
     link,
     subject,
     createBy,
@@ -23,8 +21,7 @@ const validateMaterialsDtoCreate = (
 ): Record<keyof TMaterialDto, string> => {
   const errors: Record<string, string> = {};
 
-  const imgPath = validationUtil.validateExistence("imgPath", dto?.imgPath);
-  if (imgPath) errors.imgPath = imgPath;
+
 
   const linkErrorLength = validationUtil.validateStrLength(
     "link",

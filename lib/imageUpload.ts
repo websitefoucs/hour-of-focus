@@ -1,13 +1,14 @@
 import { AppError } from "@/utils/server/Error.util";
 
 const uploadToCdn = async (file: Blob): Promise<string> => {
+  console.log(" file:", file)
   const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
   const cloudPreset = process.env.CLOUDINARY_UPLOAD_PRESET;
 
   if (!cloudName || !cloudPreset) {
     throw AppError.create("No cloudinary credentials", 502);
   }
-  const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${process.env.cloudName}/image/upload`;
+  const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
 
   const formData = new FormData();
   formData.append("upload_preset", cloudPreset);
@@ -21,11 +22,11 @@ const uploadToCdn = async (file: Blob): Promise<string> => {
   const result = await res.json();
   console.log(" result:", result);
 
-  if (!result || !result?.url) {
+  if (!result || !result?.secure_url) {
     throw AppError.create("No return value", 502);
   }
 
-  return result.url;
+  return result.secure_url;
 };
 
 const removeFromCdn = async (assetId: string): Promise<void> => {

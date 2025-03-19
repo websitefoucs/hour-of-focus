@@ -1,6 +1,7 @@
 "use client";
 import Button from "@/components/UI/Button";
 import ErrorLabel from "@/components/UI/ErrorLabel";
+import ImageUploadInput from "@/components/UI/ImageUpload/ImageUploadInput";
 import Input from "@/components/UI/Input";
 import Label from "@/components/UI/Label";
 import { createMaterial, updateMaterial } from "@/lib/actions/materials";
@@ -43,19 +44,10 @@ export default function AdminMaterialEdit({
         name="createBy"
         defaultValue={state?.data?.createBy}
       />
-      <Input
-        type="file"
-        name="imgPath"
-        id={`imgPath-${state?.data?._id}`}
-        defaultValue={state?.data?.imgPath}
-        placeholder="הכנס כתובת תמונה"
-      >
-        <Label htmlFor={`subject-${state?.data?._id}`}>תמונה</Label>
-        <ErrorLabel
-          htmlFor={`subject-${state?.data?._id}`}
-          error={state?.errors?.imgPath}
-        />
-      </Input>
+      <ImageUploadInput
+        imgPath={state.data?.imgPath}
+        itemId={state.data?._id}
+      />
       <Input
         type="text"
         name="link"
