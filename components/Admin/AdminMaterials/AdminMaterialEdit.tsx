@@ -21,8 +21,6 @@ const initialState: TFormState<TMaterialDto> = {
     link: "",
     _id: "",
     subject: "",
-    createBy: "",
-    updateBy: "",
   },
 };
 export default function AdminMaterialEdit({
@@ -39,11 +37,7 @@ export default function AdminMaterialEdit({
       className="p-4 border rounded flex flex-col gap-2 h-full bg-mainWhite-50"
     >
       <Input type="hidden" name="_id" defaultValue={state?.data?._id} />
-      <Input
-        type="hidden"
-        name="createBy"
-        defaultValue={state?.data?.createBy}
-      />
+
       <ImageUploadInput
         imgPath={state.data?.imgPath}
         itemId={state.data?._id}

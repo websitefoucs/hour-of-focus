@@ -8,12 +8,10 @@ import { TMaterialDto } from "@/types/materials.type";
 const sanitizeMaterialsDtoCreate = (dto: TMaterialDto): TMaterialDto => {
   const link = sanitizeUtil.sanitizedObjectField(dto?.link) || "";
   const subject = sanitizeUtil.sanitizedObjectField(dto?.subject) || "";
-  const createBy = sanitizeUtil.sanitizedObjectField(dto?.createBy) || "";
 
   return {
     link,
     subject,
-    createBy,
   };
 };
 const validateMaterialsDtoCreate = (
@@ -43,11 +41,7 @@ const validateMaterialsDtoCreate = (
 
   if (subjectErrorLength) errors.subject = subjectErrorLength;
 
-  const createByError = validationUtil.validateExistence(
-    "createBy",
-    dto?.createBy
-  );
-  if (createByError) errors.createBy = createByError;
+ 
 
   if (Object.keys(errors).length > 0) {
     throw AppError.create("Validation Error", 400, true, errors);
@@ -56,12 +50,10 @@ const validateMaterialsDtoCreate = (
 };
 
 const sanitizeMaterialsDtoUpdate = (dto: TMaterialDto): TMaterialDto => {
-  const updateBy = sanitizeUtil.sanitizedObjectField(dto?.updateBy) || "";
   const _id = sanitizeUtil.sanitizedObjectField(dto?._id) || "";
 
   return {
     ...sanitizeMaterialsDtoCreate(dto),
-    updateBy,
     _id,
   };
 };
@@ -73,12 +65,7 @@ const validateMaterialsDtoUpdate = (
 
   validateMaterialsDtoCreate(dto);
 
-  const updateByError = validationUtil.validateExistence(
-    "updateBy",
-    dto?.updateBy
-  );
-
-  if (updateByError) errors.updateBy = updateByError;
+ 
 
   const _idError = validationUtil.validateExistence("_id", dto?._id);
 
@@ -96,8 +83,6 @@ const fromDataToDto = (
   const imgFile = formData.get("imgFile") as File;
   const link = formData.get("link") as string;
   const _id = formData.get("_id") as string;
-  const createBy = formData.get("createBy") as string;
-  const updateBy = formData.get("updateBy") as string;
   const subject = formData.get("subject") as string;
 
   return {
@@ -105,8 +90,6 @@ const fromDataToDto = (
       link,
       _id,
       subject,
-      createBy,
-      updateBy,
     },
     imgFile,
   };
@@ -118,8 +101,6 @@ const getEmpty = (): TMaterialDto => {
     link: "",
     _id: "",
     subject: "",
-    createBy: "",
-    updateBy: "",
   };
 };
 export const materialsServerUtils = {
