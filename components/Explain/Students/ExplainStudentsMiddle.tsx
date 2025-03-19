@@ -26,6 +26,7 @@ export default function ExplainStudentsMiddle() {
           styleMode="full"
           styleSize="large"
           className=""
+          target="_blank"
         >
           טופס רישום לרכזי חינוך
         </LinkCmp>

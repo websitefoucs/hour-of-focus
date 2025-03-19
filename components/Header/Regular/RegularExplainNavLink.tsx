@@ -14,7 +14,7 @@ interface NavLinkProps {
 export default function RegularExplainNavLink({ pathname }: NavLinkProps) {
   return (
     <Model
-      containerClassName="mobile:hidden"
+      containerClassName="hidden md:block"
       withOverlay={false}
       model={
         <div className="absolute right-3/4 top-6 bg-mainWhite-0 p-4 rounded-base flex flex-col gap-2 z-50 shadow-sm border">

@@ -27,7 +27,6 @@ export default function RootLayout({
       >
         {children}
       </body>
-      <link rel="preload" as="image" href="/imgs/1.webp" />
-    </html>
+      </html>
   );
 }

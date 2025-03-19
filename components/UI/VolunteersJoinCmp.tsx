@@ -43,6 +43,8 @@ export default function VolunteersJoinCmp({
           styleSize="large"
           className="md:place-self-end"
           href={TEACHERS_SIGNUP}
+          target="_blank"
+
         >
           הצטרפו כמורים
         </LinkCmp>
@@ -51,6 +53,8 @@ export default function VolunteersJoinCmp({
           styleSize="large"
           className="font-bold md:place-self-start"
           href={LOGISTIC_SIGNUP}
+          target="_blank"
+
         >
           הצטרפו לצוות הלוגיסטי
         </LinkCmp>
@@ -60,6 +64,9 @@ export default function VolunteersJoinCmp({
           styleSize="long"
           className="text-mainOrange-700 border-mainOrange-700 hover:text-mainOrange-800 hover:border-mainOrange-800 text-center xs:text-right sm:col-span-2 col-span-1"
           href={CONTACT_US}
+          target="_blank"
+
+
         >
           יש לכם שאלות? דברו איתנו ונשמח לסייע
         </LinkCmp>

@@ -41,6 +41,7 @@ export default function MaterialItem({ material }: MaterialItemProps) {
           styleSize="none"
           className="items-start justify-start"
           href={link}
+          target="_blank"
         >
           <p className=" truncate">למאגר חומרי הלימוד</p>
           <ArrowSvg />

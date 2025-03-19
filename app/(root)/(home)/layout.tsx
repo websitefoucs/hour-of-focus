@@ -1,3 +1,4 @@
+import { GINGER_KID_IMAGE } from "@/constants/images";
 import React from "react";
 
 interface HomeLayoutProps {
@@ -19,6 +20,8 @@ export default function HomeLayout({
       {video}
       {testimonies}
       {articles}
+      <link rel="preload" href={GINGER_KID_IMAGE} as="image" />
+
     </section>
   );
 }

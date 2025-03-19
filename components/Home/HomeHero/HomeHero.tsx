@@ -23,14 +23,14 @@ import LinkCmp from "../../UI/LinkCmp";
 //Components
 import Numbers from "./Numbers";
 //Links
-import { LOGISTIC_SIGNUP, TEACHERS_SIGNUP } from "@/constants/links";
+import { EXPLAIN_STUDENTS_PAGE_LINK, LOGISTIC_SIGNUP, TEACHERS_SIGNUP } from "@/constants/links";
 
 export default function HomeHero() {
   return (
     <div className="w-full grid grid-cols-1 grid-rows-1 home-layout-hero relative md:max-h-[80vh] max-h-none">
       <div className="bg-cover bg-center grid-stack bg-fixed w-full h-full relative bg-blend-multiply bg-[url('https://res.cloudinary.com/dyzqa6uuu/image/upload/v1742072131/piz0kiogdtnp8u9up22u.webp')] before:backdrop-blur-sm before:inset-0 before:absolute before:bg-imageOverlay-60"></div>
 
-      <div className="w-full h-full grid-stack z-10 flex flex-col items-center justify-center gap-8 py-8 px-sides md:px-sides-sm text-mainWhite-0 text-center">
+      <div className="w-full h-full grid-stack pb-gaps z-10 flex flex-col items-center justify-center gap-8 py-8 px-sides md:px-sides-sm text-mainWhite-0 text-center">
         <p className="text-mainWhite-0 text-20 md:text-24 font-semibold leading-28">
           למען המפונים מהדרום והמצפון
         </p>
@@ -45,7 +45,8 @@ export default function HomeHero() {
         </p>
 
         <nav className="flex flex-col lg:gap-10 gap-4 items-center lg:py-12 py-4 w-full ">
-          <LinkCmp styleMode="full" styleSize="large" href={TEACHERS_SIGNUP}>
+          <LinkCmp styleMode="full" styleSize="large" href={TEACHERS_SIGNUP} target="_blank"
+          >
             הצטרפו כמורים
           </LinkCmp>
           <div className="flex md:gap-8 gap-4 flex-col sm:flex-row items-center justify-center w-full">
@@ -54,14 +55,14 @@ export default function HomeHero() {
               styleSize="large"
               href={LOGISTIC_SIGNUP}
               className=""
+              target="_blank"
             >
               הצטרפו לצוות הלוגיסטי
             </LinkCmp>
             <LinkCmp
               styleMode="whiteBorder"
               styleSize="large"
-              href=""
-              className=""
+              href={EXPLAIN_STUDENTS_PAGE_LINK}              className=""
             >
               מידע נוסף לתלמידים
             </LinkCmp>

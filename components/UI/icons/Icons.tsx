@@ -59,22 +59,11 @@ export const ZoomInSvg = () => {
 
 export const GrayScaleSvg = () => {
   return (
-    <svg
-      aria-label="gray-scale icon"
-      xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="16"
-      viewBox="0 0 18 19"
-      className="w-4 h-4 fill-none stroke-mainGray-800"
-    >
-      <path strokeLinejoin="round" />
-      <path
-        d="M14.8333 11.375C14.8333 11.375 17.2083 13.7445 17.2083 15.2439C17.2083 16.5541 16.1436 17.6189 14.8333 17.6189C13.5231 17.6189 12.4678 16.5541 12.4583 15.2439C12.4663 13.7437 14.8333 11.375 14.8333 11.375Z"
-        strokeMiterlimit="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+  <svg       aria-label="gray-scale icon"
+   viewBox="0 0 18 19" className="fill-none w-4 h-4">
+<path d="M6.68474 2.55069L1.08687 8.14857C0.79004 8.44549 0.623291 8.84814 0.623291 9.26798C0.623291 9.68783 0.79004 10.0905 1.08687 10.3874L5.56454 14.8659C5.71158 15.0131 5.88621 15.1299 6.07842 15.2095C6.27064 15.2892 6.47667 15.3302 6.68474 15.3302C6.89282 15.3302 7.09885 15.2892 7.29107 15.2095C7.48328 15.1299 7.6579 15.0131 7.80495 14.8659L13.402 9.26798L6.68474 2.55069ZM6.68474 2.55069L5.56533 1.43127" stroke="#454545" strokeLinecap="round" strokeLinejoin="round"/>
+<path d="M14.8333 11.875C14.8333 11.875 17.2083 14.2445 17.2083 15.7439C17.2083 17.0541 16.1435 18.1189 14.8333 18.1189C13.523 18.1189 12.4678 17.0541 12.4583 15.7439C12.4662 14.2437 14.8333 11.875 14.8333 11.875Z" stroke="#454545" strokeMiterlimit="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+</svg>
   );
 };
 
@@ -155,8 +144,7 @@ export const EnvelopSvg = ({ className }: { className?: string }) => {
   return (
     <svg
       aria-label="Email icon"
-      width="17"
-      height="16"
+   
       viewBox="0 0 17 16"
       xmlns="http://www.w3.org/2000/svg"
       className={className + " fill-none"}
@@ -361,7 +349,7 @@ export const ApproveSvg = () => {
 export const GitSvg = () => {
   return (
     <svg
-      className="md:w-8 md:h-8 invert w-4 h-4"
+      className="md:w-6 md:h-6 invert w-4 h-4"
       viewBox="0 0 48 48"
       aria-label="Git-Hub icon"
     >

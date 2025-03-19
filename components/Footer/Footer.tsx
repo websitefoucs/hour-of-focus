@@ -14,14 +14,14 @@ import { LOGO } from "@/constants/images";
  */
 export default function Footer() {
   return (
-    <footer className="w-full bg-mainOrange-700 px-sides py-10 text-mainWhite-0 grid grid-cols-[65%_35%] md:grid-cols-[35%_35%_30%] md:justify-items-center gap-y-10 gap-x-2 sm:gap-x-0">
+    <footer className="w-full bg-mainOrange-700 py-10 px-sides sm:px-sides-sm text-mainWhite-0 grid grid-cols-[calc(65%-.5rem)_calc(35%-.5rem)] sm:grid-cols-[calc(65%)_calc(35%)] md:grid-cols-[35%_35%_30%] gap-y-10 gap-x-4 sm:gap-x-0 ">
       <Details />
       <Image
         src={LOGO}
         alt="logo"
-        width={160}
-        height={160}
-        className=" brightness-0 invert md:order-3 justify-self-end md:justify-self-auto  "
+        width={100}
+        height={100}
+        className=" brightness-0 invert md:order-3 justify-self-end "
         priority
       />
       <FollowUs />

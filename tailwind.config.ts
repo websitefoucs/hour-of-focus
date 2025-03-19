@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { GINGER_KID_IMAGE } from "./constants/images";
 
 export default {
   content: [
@@ -41,7 +42,7 @@ export default {
 
       backgroundImage: {
         "ginger-kid":
-          "url('/imgs/1.webp')",
+          `url('${GINGER_KID_IMAGE}')`,
       },
       gridColumn: {
         materialsLayout: "repeat(auto-fit,_minmax(minSize,_1fr))",
@@ -59,6 +60,7 @@ export default {
       },
       screens: {
         xs: { min: "24rem" },
+        msm: { min: "28rem" },
       },
 
       borderRadius: {

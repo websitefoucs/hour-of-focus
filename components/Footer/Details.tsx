@@ -32,18 +32,19 @@ import LinkCmp from "../UI/LinkCmp";
 
 export default function Details() {
   return (
-    <div className="flex flex-col gap-4 md:order-1 ">
+    <div className="flex flex-col gap-4 md:order-1 self-start ">
       <h6 className="pb-2 "> שעה של פוקוס © </h6>
       <LinkCmp
         styleMode="none"
         styleSize="none"
         href={CONTACT_US}
         className="text-14 leading-23"
+        target="_blank"
       >
         צור קשר
       </LinkCmp>
       <span className="flex gap-2 items-center">
-        <EnvelopSvg className="w-[1.125rem] h-[1.125rem]  fill-white" />
+        <EnvelopSvg className="min-w-5 min-h-5  w-5 h-5 fill-white" />
 
         <a className="text-14 leading-23" href={`mailto:${EMAIL}`}>
           {EMAIL}

@@ -30,13 +30,14 @@ import React from "react";
  */
 export default function FollowUs() {
   return (
-    <div className="col-span-2 md:col-span-1 md:order-2">
-      <h6 className="pb-6">עקבו אחרינו</h6>
+    <div className="col-span-2 md:col-span-1 md:order-2 md:justify-items-center">
+      <h6 className="pb-6 md:text-center text-right">עקבו אחרינו</h6>
       <nav className="flex items-center gap-4 ">
         {items.map((item, index) => (
           <LinkCmp
             key={index}
             href={item.link}
+            target="_blank"
             className="md:w-8 md:h-8 w-6 h-6"
           >
             <item.icon />
