@@ -16,7 +16,7 @@ interface Props {
   containerClassName?: string;
 }
 /**
- * Model component that renders a button and a model (modal) with optional overlay.
+ * Model client component that renders a button and a model (modal) with optional overlay.
  *
  * @param {Object} props - The properties object.
  * @param {Object} props.button - The button properties and content.

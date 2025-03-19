@@ -1,30 +1,5 @@
 "use client";
-//React
-import { useActionState, useRef } from "react";
-//Actions
-import { createFaq, updateFaq } from "@/lib/actions/faqs";
-//Quill
-import Quill from "quill";
-//UI
-import Button from "@/components/UI/Button";
-import Input from "@/components/UI/Input";
-//Types
-import { TFormState } from "@/types/app.type";
-import { TFaqDto } from "@/types/faqs";
-import AdminFaqEditInputs from "./AdminFaqEditInputs";
 
-interface FaqEditProps {
-  faqToEdit: TFaqDto;
-}
-const initialState: TFormState<TFaqDto> = {
-  errors: null,
-  message: "",
-  data: {
-    deltaAnswer: [{ insert: "תשובה" }],
-    deltaQuestion: [{ insert: "שאלה" }],
-    faqType: "students",
-  },
-};
 /**
  * AdminFaqEdit client component allows editing or creating a FAQ entry.
  *
@@ -39,6 +14,34 @@ const initialState: TFormState<TFaqDto> = {
  * It also uses `useRef` to manage references to the Quill editors for the question and answer fields.
  *
  */
+
+//React
+import { useActionState, useRef } from "react";
+//Actions
+import { createFaq, updateFaq } from "@/lib/actions/faqs";
+//Quill
+import Quill from "quill";
+//UI
+import Input from "@/components/UI/Input";
+import FormSubmitButton from "@/components/UI/FormSubmitButton";
+//Components
+import AdminFaqEditInputs from "./AdminFaqEditInputs";
+//Types
+import { TFormState } from "@/types/app.type";
+import { TFaqDto } from "@/types/faqs";
+
+interface FaqEditProps {
+  faqToEdit: TFaqDto;
+}
+const initialState: TFormState<TFaqDto> = {
+  errors: null,
+  message: "",
+  data: {
+    deltaAnswer: [{ insert: "תשובה" }],
+    deltaQuestion: [{ insert: "שאלה" }],
+    faqType: "students",
+  },
+};
 export default function AdminFaqEdit({ faqToEdit }: FaqEditProps) {
   const [state, fromAction, isPending] = useActionState(
     faqToEdit?._id ? updateFaq : createFaq,
@@ -76,14 +79,7 @@ export default function AdminFaqEdit({ faqToEdit }: FaqEditProps) {
         errors={state.errors}
         data={state.data}
       />
-      <Button
-        disabled={isPending}
-        type="submit"
-        styleMode="full"
-        styleSize="large"
-      >
-        שמור
-      </Button>
+      <FormSubmitButton isPending={isPending} />
     </form>
   );
 }

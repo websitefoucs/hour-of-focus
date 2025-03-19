@@ -10,7 +10,6 @@ import { TFormState } from "@/types/app.type";
 import Input from "../UI/Input";
 import Label from "../UI/Label";
 import Button from "../UI/Button";
-import Loader from "../UI/Loader";
 import ErrorLabel from "../UI/ErrorLabel";
 
 const initialState: TFormState<TAuthDto> = {
@@ -57,6 +56,7 @@ export default function EmailForm() {
           </Input>
         ))}
 
+
         <Button
           styleMode="full"
           styleSize="large"
@@ -64,7 +64,13 @@ export default function EmailForm() {
           disabled={isPending}
           className="self-center"
         >
-          {isPending ? <Loader /> : "שלח"}
+          {isPending ? (
+            <>
+              <p className="pl-2 animate-bounce">טוען</p>
+            </>
+          ) : (
+            "שלח"
+          )}
         </Button>
       </form>
     </fieldset>
