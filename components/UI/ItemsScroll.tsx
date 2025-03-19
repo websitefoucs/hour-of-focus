@@ -50,7 +50,7 @@ export default function ItemsScroll<T>({
       </Button>
 
       <div
-        className={`transition-opacity duration-300 ${
+        className={`transition-opacity duration-300 w-full justify-center flex ' ${
           isFading ? "opacity-0" : "opacity-100"
         }`}
       >

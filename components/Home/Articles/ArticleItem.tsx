@@ -17,16 +17,24 @@ export default function ArticleItem({
 }: ArticleProps) {
   return (
     <div
-      className={`max-w-[49rem] w-full flex gap-12 flex-col items-start border-t-8 border-t-mainGold-500 px-6 pt-12 pb-8 justify-between shadow-[0px_3px_6px_0px_#00000026] rounded-base transition-opacity duration-300
+      className={`max-w-[49rem] h-72 w-full flex  gap-12 flex-col items-start border-t-8 border-t-mainGold-500 px-6 pt-12 pb-8 justify-between shadow-[0px_3px_6px_0px_#00000026] rounded-base transition-opacity duration-300
        ${isFading ? "opacity-0" : "opacity-100"}`}
     >
-      <p className="text-right text-18 text-mainGray-800 italic">{preview}</p>
+      <p className="text-right text-18 pr-1 text-mainGray-800 italic line-clamp-2">
+        {preview}
+      </p>
 
       <p className="text-mainGray-500 text-18 text-right">
         {" "}
         <b>{publishPlace}</b>, {publishDate}
       </p>
-      <LinkCmp href={link} styleMode="arrow" styleSize="none" className="items-start place-items-start justify-start" target="_blank">
+      <LinkCmp
+        href={link}
+        styleMode="arrow"
+        styleSize="none"
+        className="items-start place-items-start justify-start"
+        target="_blank"
+      >
         <h6 className="text-right">לכתבה המלאה</h6>
         <ArrowSvg />
       </LinkCmp>
