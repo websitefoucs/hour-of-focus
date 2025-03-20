@@ -21,14 +21,18 @@
  */
 //UI
 import LinkCmp from "../UI/LinkCmp";
-import { GitSvg, GlobeSvg, LinkedinSvg } from "../UI/icons/Icons";
+import { GitSvg, GlobeSvg, LinkedinSvg } from "../UI/Icons";
 //Links
 import { BATEL_WEBSITE, ERAN_GIT, ERAN_LINKEDIN } from "@/constants/links";
 
 export default function CreatorsLinks() {
   return (
     <nav className="text-14 flex flex-col gap-2 items-center self-center col-span-2 md:col-span-1 md:order-5 w-full ">
-      <LinkCmp href={BATEL_WEBSITE} className="flex items-center gap-1" target="_blank">
+      <LinkCmp
+        href={BATEL_WEBSITE}
+        className="flex items-center gap-1"
+        target="_blank"
+      >
         <p className="text-14">{`עוצב ע"י BY.Creations`}</p>
         <GlobeSvg className="md:w-6 md:h-6 w-4 h-4 fill-mainWhite-0" />
       </LinkCmp>
@@ -39,7 +43,11 @@ export default function CreatorsLinks() {
           <LinkCmp href={ERAN_GIT} target="_blank">
             <GitSvg />
           </LinkCmp>
-          <LinkCmp href={ERAN_LINKEDIN} className="md:w-6 md:h-6 w-4 h-4 " target="_blank">
+          <LinkCmp
+            href={ERAN_LINKEDIN}
+            className="md:w-6 md:h-6 w-4 h-4 "
+            target="_blank"
+          >
             <LinkedinSvg />
           </LinkCmp>
         </span>

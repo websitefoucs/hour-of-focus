@@ -41,8 +41,7 @@ export default {
       },
 
       backgroundImage: {
-        "ginger-kid":
-          `url('${GINGER_KID_IMAGE}')`,
+        "ginger-kid": `url('${GINGER_KID_IMAGE}')`,
       },
       gridColumn: {
         materialsLayout: "repeat(auto-fit,_minmax(minSize,_1fr))",
@@ -61,6 +60,19 @@ export default {
       screens: {
         xs: { min: "24rem" },
         msm: { min: "28rem" },
+      },
+      keyframes: {
+        "grow-y": {
+          from: {
+            height: "0rem",
+          },
+          to: {
+            height: "5.5rem",
+          },
+        },
+      },
+      animation: {
+        "grow-y": "grow-y 0.3s forwards",
       },
 
       borderRadius: {

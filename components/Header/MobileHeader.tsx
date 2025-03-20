@@ -3,7 +3,7 @@ import { CONTACT_US } from "@/constants/links";
 import NavLinks from "./NavLinks";
 import LinkCmp from "../UI/LinkCmp";
 import Model from "../UI/Model";
-import { HamburgerSvg } from "../UI/icons/Icons";
+import { HamburgerSvg } from "../UI/Icons";
 
 export default function MobileHeader() {
   return (

@@ -4,7 +4,7 @@ import { TMaterial } from "@/types/materials.type";
 import Image from "next/image";
 //UI
 import LinkCmp from "../UI/LinkCmp";
-import { ArrowSvg } from "../UI/icons/Icons";
+import { ArrowSvg } from "../UI/Icons";
 
 interface MaterialItemProps {
   material: TMaterial;

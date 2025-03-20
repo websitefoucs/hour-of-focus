@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+* Quill editor styles
+ */
 .ql-editor {
   font-family: "Open sans";
   text-align: right !important;
@@ -10,6 +13,11 @@
 .ql-toolbar {
   text-align: left !important;
   display: flex;
+}
+.ql-editor {
+  & a {
+    pointer-events: none;
+  }
 }
 /*
 * Accessibility settings 
@@ -75,7 +83,7 @@ body:has(.invert-contrast:checked) {
   }
 }
 /*
-* Global styles
+ * Global styles
  */
 h1 {
   @apply text-44 font-bold;
@@ -90,67 +98,38 @@ h5 {
   @apply text-24 text-mainGray-600 font-semibold leading-28;
 }
 h6 {
-  @apply text-18 font-bold ;
+  @apply text-18 font-bold;
 }
-
-/*
-* Global utility classes
+ /*
+ * Global utility classes
  */
 .grid-stack {
   grid-area: 1/1/-1/-1;
 }
-
+/*
+* Reuse in multiple components
+ */
 .image-border {
-  position: relative;
-  display: block;
-  @apply h-full;
-
-  &:before {
-    content: "";
-    position: absolute;
-    top: 0.5rem;
-    left: -0.5rem;
-
-    width: 0.5rem;
-    height: 100%;
-    display: block;
-    border-bottom-left-radius: 100vh;
-  }
-  &:after {
-    content: "";
-    position: absolute;
-    bottom: -0.5rem;
-    left: -0.5rem;
-    border-bottom-left-radius: 100vh;
-
-    width: 100%;
-    height: 0.5rem;
-    display: block;
-  }
+  @apply h-full relative block before:absolute before:top-2 before:-left-2 before:w-2 before:h-full before:block before:rounded-bl-full after:absolute after:-bottom-2 after:-left-2 after:w-full after:h-2 after:block after:rounded-bl-full;
 }
-
 /* 
  * FAQ section styling
  */
 
-
 /* Styling for the plus/minus toggle icons in FAQs */
 .plus,
 .minus {
-  grid-area: 1/2/-1/-1; 
+  grid-area: 1/2/-1/-1;
   @apply stroke-mainGray-800 fill-mainGray-800 w-6 h-6 opacity-100 z-[1] transition-all duration-300;
 }
-
 /* Hide plus icon when FAQ item is expanded (radio checked) */
 .faq-radio:checked + .faq-label .plus {
   @apply opacity-0 z-[-1];
 }
-
 /* Hide minus icon when FAQ item is collapsed (radio not checked) */
 .faq-radio:not(:checked) + .faq-label .minus {
   @apply opacity-0 z-[-1];
 }
-
 /* When FAQ item is selected, expand the answer area */
 .faq-radio:checked + .faq-label {
   height: auto;
@@ -158,15 +137,12 @@ h6 {
     grid-template-rows: 1fr;
   }
 }
-
-
 .hamburger {
   & .line {
     transition: y 300ms ease-in 300ms, rotate 300ms ease-in, opacity 0ms 300ms;
     transform-origin: center;
   }
 }
-
 .open:has(.hamburger) {
   & .line {
     transition: y 300ms ease-in, rotate 300ms ease-in 300ms, opacity 0ms 300ms;
@@ -174,161 +150,38 @@ h6 {
   & :is(.top, .bottom) {
     y: 45;
   }
-
   & .top {
     rotate: 45deg;
   }
-
   & .middle {
     opacity: 0;
   }
-
   & .bottom {
     rotate: -45deg;
   }
 }
-
-.open:has(.nav-links, .content-us) {
+/*
+* Explain navigation model
+ */
+ .open:has(.nav-links, .content-us) {
   display: block;
 }
 .explain-mobile:has(.open) {
-  & svg{
+  & svg {
     rotate: 180deg;
   }
 }
-
+/*
+use to override style in nav-menu
+*/
 .menu-model {
   & nav {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-bottom: 1rem;
-  }
-}
-
-.footer-grid {
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  justify-items: center;
-  row-gap: 1rem;
-}
-.footer-grid-one {
-  grid-area: 1/1/2/2;
-}
-.footer-grid-two {
-  grid-area: 1/2/2/-1;
-}
-.footer-grid-three {
-  grid-area: 2/1/-1/-1;
-}
-
-.ideas-layout {
-  @apply grid gap-x-4 gap-y-2;
-  grid-template-columns: 3.5rem 1fr;
-  grid-template-rows: auto auto;
-  & svg {
-    grid-area: 1/1/-1/2;
+    @apply flex flex-col items-start pb-4;
   }
 }
 
 .accessibility-container:has(.open) {
   .open {
-    /* transition: all 0.2s; */
-    /* left: 14rem; */
-    box-shadow: none;
-    z-index: 0;
+    @apply shadow-none z-0;
   }
-}
-
-.home-layout {
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(auto-fill, minmax(0, 1fr));
-}
-
-.home-layout-hero {
-  grid-area: 1/1/2/-1;
-}
-.home-layout-who-we-are {
-  grid-area: 2/1/3/-1;
-}
-.home-layout-video {
-  grid-area: 3/1/4/-1;
-}
-.home-layout-call-top-action {
-  grid-area: 4/1/5/-1;
-}
-.home-layout-testimonies {
-  grid-area: 5/1/6/-1;
-}
-.home-layout-articles {
-  grid-area: 6/1/7/-1;
-}
-
-.image-left {
-  float: left;
-  margin-right: 15px;
-}
-
-@media (max-width: 850px) {
-  .about-info {
-    display: none;
-  }
-  .about-info-mobile {
-    @apply grid gap-8 w-[90svw];
-  }
-}
-
-.about-info {
-  grid-template-columns: 50% 50%;
-}
-
-.slide-in-class {
-  width: 14rem;
-  height: 100vh;
-}
-.controls {
-  display: flex;
-  border: 1px solid #ccc;
-  border-top: 0;
-  padding: 10px;
-}
-
-.controls-right {
-  margin-left: auto;
-}
-
-.state {
-  margin: 10px 0;
-  font-family: monospace;
-}
-
-.state-title {
-  color: #999;
-  text-transform: uppercase;
-}
-
-.ql-editor {
-  & a {
-    pointer-events: none;
-  }
-}
-
-
-@keyframes fadeIn {
-  from {
-    /* opacity: 0; */
-    height: 0rem;
-  }
-  to {
-    /* opacity: 1; */
-    height: 5.5rem;
-  }
-}
-
-.fade-in{
-  animation: fadeIn .3s forwards;
-  overflow: hidden;
-
-  
-  @apply bg-mainWhite-0 rounded-base flex flex-col gap-4 pt-4 pr-4 ;
 }

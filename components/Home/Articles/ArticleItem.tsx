@@ -1,4 +1,4 @@
-import { ArrowSvg } from "@/components/UI/icons/Icons";
+import { ArrowSvg } from "@/components/UI/Icons";
 import LinkCmp from "@/components/UI/LinkCmp";
 
 interface ArticleProps {

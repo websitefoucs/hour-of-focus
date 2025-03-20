@@ -8,7 +8,7 @@ import AboutInfoText from "./AboutInfoText";
 
 export default function AboutInfoMobile() {
   return (
-    <ul className="about-info-mobile hidden">{items.map((item) => item)}</ul>
+    <ul className="grid gap-8 md:hidden">{items.map((item) => item)}</ul>
   );
 }
 

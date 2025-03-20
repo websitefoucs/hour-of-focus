@@ -5,7 +5,7 @@ import {
   EXPLAIN_STUDENTS_PAGE_LINK,
   EXPLAIN_VOLUNTEERS_PAGE_LINK,
 } from "@/constants/links";
-import { DirectionSvg } from "@/components/UI/icons/Icons";
+import { DirectionSvg } from "@/components/UI/Icons";
 
 interface NavLinkProps {
   pathname: string;

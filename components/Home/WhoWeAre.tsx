@@ -9,7 +9,7 @@ import { WHO_WE_ARE_IMAGE } from "@/constants/images";
 export default function WhoWeAre() {
   return (
     <GenericInfoCmp
-      className="home-layout-who-we-are"
+      className="order-2"
       info={
         <ItemList<{ header: string; text: string; _id: undefined }>
           listStyle=" flex flex-col gap-10 w-full order-2 lg:order-1 "

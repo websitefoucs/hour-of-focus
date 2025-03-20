@@ -13,8 +13,8 @@ import { ChangeEvent, useState } from "react";
 //Next
 import Image from "next/image";
 //UI
-import Input from "../Input";
-import Label from "../Label";
+import Input from "./Input";
+import Label from "./Label";
 //Images
 import { DEFAULT_IMAGE } from "@/constants/images";
 

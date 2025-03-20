@@ -4,7 +4,7 @@ import {
   DonateSvg,
   PenAndPaperSvg,
   GroupSvg,
-} from "@/components/UI/icons/Icons";
+} from "@/components/UI/Icons";
 
 export default function ExplainIdeas() {
   return (
@@ -12,10 +12,7 @@ export default function ExplainIdeas() {
       <h5 className="pb-8">רעיונות פשוטים ומשמעותיים</h5>
       <ul className="grid grid-cols-1 md:grid-cols-2 gap-gaps items-center">
         {items.map(({ icon, header, text }, index) => (
-          <li
-            key={index}
-            className="flex h-fit items-center gap-y-1 gap-x-4 "
-          >
+          <li key={index} className="flex h-fit items-center gap-y-1 gap-x-4 ">
             {icon}
             <div>
               <h6 className="text-mainGray-600 text-16 md:text-18">{header}</h6>

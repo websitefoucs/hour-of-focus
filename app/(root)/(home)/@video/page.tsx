@@ -7,7 +7,7 @@ export default function HomeVideoPage() {
       muted
       playsInline
       loop
-      className="w-full max-w-[53rem] h-[30rem] object-fill rounded-base"
+      className="w-full max-w-[53rem] h-[30rem] object-fill rounded-base order-3"
     >
       <source
         src={HOME_VIDEO_SRC}

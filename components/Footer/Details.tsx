@@ -27,7 +27,7 @@
 import { EMAIL } from "@/constants/app";
 import { ACCESSIBILITY_PAGE_LINK, CONTACT_US } from "@/constants/links";
 //UI
-import { EnvelopSvg } from "../UI/icons/Icons";
+import { EnvelopSvg } from "../UI/Icons";
 import LinkCmp from "../UI/LinkCmp";
 
 export default function Details() {

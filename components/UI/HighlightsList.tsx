@@ -1,4 +1,4 @@
-import { ClockSvg, GroupSvg, HeartSvg } from "./icons/Icons";
+import { ClockSvg, GroupSvg, HeartSvg } from "./Icons";
 
 export default function HighlightsList() {
   return (
@@ -12,7 +12,9 @@ export default function HighlightsList() {
           <p className="text-18 xl:text-24 text-mainOrange-700 font-bold text-center">
             {item.title}
           </p>
-          <p className="leading-30 text-18  text-wrap sm:text-center">{item.text}</p>
+          <p className="leading-30 text-18  text-wrap sm:text-center">
+            {item.text}
+          </p>
         </li>
       ))}
     </ul>

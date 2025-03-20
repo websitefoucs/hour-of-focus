@@ -4,7 +4,7 @@
 import { useState } from "react";
 //UI
 import Button from "./Button";
-import { DirectionSvg } from "./icons/Icons";
+import { DirectionSvg } from "./Icons";
 
 interface ItemsScrollProps<T> {
   items: T[];

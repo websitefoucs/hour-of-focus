@@ -1,4 +1,4 @@
-import { HamburgerSvg } from "@/components/UI/icons/Icons";
+import { HamburgerSvg } from "@/components/UI/Icons";
 import Input from "@/components/UI/Input";
 import Label from "@/components/UI/Label";
 import React from "react";

@@ -1,5 +1,5 @@
 //UI
-import { ApproveSvg } from "@/components/UI/icons/Icons";
+import { ApproveSvg } from "@/components/UI/Icons";
 import HighlightsList from "@/components/UI/HighlightsList";
 /**
  * ExplainVolunteersMiddle is a server component that renders a section

@@ -1,4 +1,4 @@
-import { ApproveSvg } from "@/components/UI/icons/Icons";
+import { ApproveSvg } from "@/components/UI/Icons";
 import LinkCmp from "@/components/UI/LinkCmp";
 import { COORDINATOR_SIGNUP } from "@/constants/links";
 

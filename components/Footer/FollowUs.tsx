@@ -5,7 +5,7 @@ import {
   LINKEDIN_LINK,
 } from "@/constants/links";
 //UI
-import { FacebookSvg, InstagramSvg, LinkedinSvg } from "../UI/icons/Icons";
+import { FacebookSvg, InstagramSvg, LinkedinSvg } from "../UI/Icons";
 import LinkCmp from "../UI/LinkCmp";
 import React from "react";
 

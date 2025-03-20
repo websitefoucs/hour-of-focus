@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="he" dir="rtl">
+    <html lang="he" dir="rtl" >
       <head></head>
       <body
         className={`${open_sans.className} max-w-[100svw]  antialiased  text-normal relative`}

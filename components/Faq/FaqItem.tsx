@@ -3,7 +3,7 @@ import { TTextBlock } from "@/types/app.type";
 //UI
 import Input from "../UI/Input";
 import Label from "../UI/Label";
-import { MinusSvg, PlusSvg } from "../UI/icons/Icons";
+import { MinusSvg, PlusSvg } from "../UI/Icons";
 import { RichTextRender } from "../UI/RichTextRender";
 
 interface FaqItemProps {

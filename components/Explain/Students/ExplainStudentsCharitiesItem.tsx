@@ -1,4 +1,4 @@
-import { ArrowSvg } from "@/components/UI/icons/Icons";
+import { ArrowSvg } from "@/components/UI/Icons";
 import LinkCmp from "@/components/UI/LinkCmp";
 import Image from "next/image";
 
@@ -33,7 +33,7 @@ export default function ExplainStudentsCharitiesItem({
           href={link}
           target="_blank"
         >
-      בקרו באתר העמותה
+          בקרו באתר העמותה
           <ArrowSvg />
         </LinkCmp>
       </div>

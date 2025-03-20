@@ -15,13 +15,12 @@ export default function HomeLayout({
   video,
 }: Readonly<HomeLayoutProps>) {
   return (
-    <section className="justify-items-center grid md:gap-gaps-md gap-gaps md:pb-gaps-md pb-gaps home-layout">
+    <section className="justify-items-center grid md:gap-gaps-md gap-gaps md:pb-gaps-md pb-gaps grid-cols-1 grid-rows-[repeat(auto-fill, minmax(0, 1fr))]">
       {children}
       {video}
       {testimonies}
       {articles}
       <link rel="preload" href={GINGER_KID_IMAGE} as="image" />
-
     </section>
   );
 }

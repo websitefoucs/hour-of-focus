@@ -1,7 +1,7 @@
 "use client";
 import Button from "@/components/UI/Button";
 import ErrorLabel from "@/components/UI/ErrorLabel";
-import ImageUploadInput from "@/components/UI/ImageUpload/ImageUploadInput";
+import ImageUploadInput from "@/components/UI/ImageUploadInput";
 import Input from "@/components/UI/Input";
 import Label from "@/components/UI/Label";
 import { createMaterial, updateMaterial } from "@/lib/actions/materials";

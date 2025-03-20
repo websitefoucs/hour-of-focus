@@ -1,6 +1,6 @@
 import { memo, FC } from "react";
 import Button from "../UI/Button";
-import { ZoomInSvg, ZoomOutSvg } from "../UI/icons/Icons";
+import { ZoomInSvg, ZoomOutSvg } from "../UI/Icons";
 
 interface FontSizeControlProps {
   onZoomChange: (zoom: number) => void;
