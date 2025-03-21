@@ -9,8 +9,8 @@ import { TFormState } from "@/types/app.type";
 //UI
 import Input from "../UI/Input";
 import Label from "../UI/Label";
-import Button from "../UI/Button";
 import ErrorLabel from "../UI/ErrorLabel";
+import FormSubmitButton from "../UI/FormSubmitButton";
 
 const initialState: TFormState<TAuthDto> = {
   errors: null,
@@ -32,13 +32,15 @@ export default function EmailForm() {
       <legend className="sr-only">{"טופס הרשמה"}</legend>
       <form
         action={formAction}
-        className="flex flex-col gap-2"
+        className="flex flex-col gap-4"
         aria-label={"טופס הרשמה"}
       >
         {inputs.map((input) => (
           <Input
             key={input.name}
-            {...input}
+            type={input.name}
+            name={input.name}
+            autoComplete={input.autoComplete}
             id={input.name}
             defaultValue={data?.[input.name as keyof TAuthDto] || ""}
           >
@@ -56,35 +58,18 @@ export default function EmailForm() {
           </Input>
         ))}
 
-
-        <Button
-          styleMode="full"
-          styleSize="large"
-          type="submit"
-          disabled={isPending}
-          className="self-center mt-2"
-        >
-          {isPending ? (
-            <>
-              <p className="pl-2 animate-bounce">טוען</p>
-            </>
-          ) : (
-            "שלח"
-          )}
-        </Button>
+        <FormSubmitButton isPending={isPending} />
       </form>
     </fieldset>
   );
 }
 const LOGIN_INPUTS = [
   {
-    type: "email",
     placeholder: "אימייל",
     name: "email",
     autoComplete: "email",
   },
   {
-    type: "password",
     placeholder: "סיסמה",
     name: "password",
     autoComplete: "current-password",
