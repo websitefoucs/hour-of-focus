@@ -42,8 +42,8 @@ export const signIn = async (
 
     if (!user || !user?.passwordHash || !user?._id || !password || !email) {
       throw AppError.create("User not found", 404, true, {
-        email: "Invalid credentials",
-        password: "Invalid credentials",
+        email: "פרטים שגויים",
+        password: "פרטים שגויים",
       });
     }
 

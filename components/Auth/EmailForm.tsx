@@ -62,7 +62,7 @@ export default function EmailForm() {
           styleSize="large"
           type="submit"
           disabled={isPending}
-          className="self-center"
+          className="self-center mt-2"
         >
           {isPending ? (
             <>

@@ -28,16 +28,7 @@ if (process.env.NODE_ENV === "development") {
   mongoClient = new MongoClient(uri, options);
 }
 
-// Export a module-scoped MongoClient. By doing this in a
-// separate module, the client can be shared across functions.
 
-export const connectDB = async () => {
-  await mongoClient.connect();
-};
-
-export const closeDB = async () => {
-  await mongoClient.close();
-};
 //Objectid validation is here because validation util my be used in the front
 export const isValidObjectId = (id: string): boolean => {
   return ObjectId.isValid(id);
