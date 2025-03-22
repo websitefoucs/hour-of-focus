@@ -17,15 +17,15 @@
 //Actions
 import { signOut } from "@/lib/actions/auth";
 //UI
-import Button from "./Button";
+import Button from "../../UI/Button";
 
 export default function SignOutButton() {
   return (
-    <form action={signOut}>
+    <form action={signOut} className="order-5">
       <Button
         styleSize="small"
         styleMode="coloredBorder"
-        className="border-mainGray-600 hover:border-mainGray-800 text-mainGray-600 hover:font-bold "
+        className="border-mainGray-600 hover:border-mainGray-800 text-mainGray-600 hover:font-bold"
         type="submit"
       >
         התנתק

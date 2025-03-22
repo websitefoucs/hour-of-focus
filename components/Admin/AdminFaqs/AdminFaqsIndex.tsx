@@ -23,16 +23,16 @@ interface FaqIndexProps {
  */
 export default function AdminFaqsIndex({ faqs }: FaqIndexProps) {
   return (
-    <section className="border p-2 rounded min-w-full ">
-      <div className="flex justify-between items-center pb-8">
-        <h3 className="">שאלות ותשובות</h3>
+    <section className="px-sides md:pl-8 w-full pb-gaps">
+      <header className="flex justify-between items-center pb-8">
+        <h3 className="text-24 sm:text-36">שאלות ותשובות</h3>
         <HandleEdit
           item={faqServerUtils.getEmpty()}
           EditCmp={({ item }) => <FaqEdit faqToEdit={item} />}
         />
-      </div>
+      </header>
       <ItemList
-        listStyle=" grid gap-4 overflow-auto max-h-full"
+        listStyle=" grid gap-4  max-h-full w-full"
         items={faqs}
         renderItem={(faq) => <AdminFaqPreview faq={faq} />}
       />

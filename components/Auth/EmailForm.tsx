@@ -32,7 +32,7 @@ export default function EmailForm() {
       <legend className="sr-only">{"טופס הרשמה"}</legend>
       <form
         action={formAction}
-        className="flex flex-col gap-4"
+        className="flex flex-col gap-2"
         aria-label={"טופס הרשמה"}
       >
         {inputs.map((input) => (
@@ -45,7 +45,7 @@ export default function EmailForm() {
             defaultValue={data?.[input.name as keyof TAuthDto] || ""}
           >
             <Label
-              className=" block font-semibold text-sm "
+              className=" block font-semibold text-sm py-2"
               htmlFor={input.name}
             >
               {input.placeholder}

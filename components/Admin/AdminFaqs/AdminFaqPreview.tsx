@@ -25,14 +25,14 @@ export default function AdminFaqPreview({ faq }: FaqPreviewProps) {
   const { deltaQuestion, deltaAnswer, _id, createAt } = faq;
 
   return (
-    <li className="flex gap-2">
+    <li className="flex flex-col md:flex-row gap-2 ">
       <FaqItem
         deltaAnswer={deltaAnswer!}
         deltaQuestion={deltaQuestion!}
         _id={_id!}
       />
 
-      <div className="flex flex-col gap-2">
+      <div className="flex md:flex-col gap-2">
         <span className="border rounded-base w-20 text-center py-1">
           <p className="text-sm">{new Date(createAt!).toLocaleDateString()}</p>
         </span>

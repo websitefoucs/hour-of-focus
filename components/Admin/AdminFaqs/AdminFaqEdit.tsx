@@ -37,8 +37,8 @@ const initialState: TFormState<TFaqDto> = {
   errors: null,
   message: "",
   data: {
-    deltaAnswer: [{ insert: "תשובה" }],
-    deltaQuestion: [{ insert: "שאלה" }],
+    deltaAnswer: [{ insert: "" }],
+    deltaQuestion: [{ insert: "" }],
     faqType: "students",
   },
 };
