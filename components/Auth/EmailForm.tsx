@@ -23,9 +23,22 @@ const initialState: TFormState<TAuthDto> = {
 
 export default function EmailForm() {
   const [state, formAction, isPending] = useActionState(signIn, initialState);
+  console.log(" state:", state);
 
-  const inputs = LOGIN_INPUTS;
   const { data } = state;
+
+  const inputs = [
+    {
+      placeholder: "אימייל",
+      name: "email",
+      autoComplete: "email",
+    },
+    {
+      placeholder: "סיסמה",
+      name: "password",
+      autoComplete: "current-password",
+    },
+  ];
 
   return (
     <fieldset disabled={isPending}>
@@ -53,25 +66,13 @@ export default function EmailForm() {
             <ErrorLabel
               className="ps-1.5 block font-semibold text-xs text-red-500"
               htmlFor={input.name}
-              error={state.errors?.[input.name as keyof TAuthDto]}
+              error={state.errors?.[input.name as keyof TAuthDto] || ""}
             />
           </Input>
         ))}
-
+        <ErrorLabel className="block" error={state.message}/>
         <FormSubmitButton isPending={isPending} />
       </form>
     </fieldset>
   );
 }
-const LOGIN_INPUTS = [
-  {
-    placeholder: "אימייל",
-    name: "email",
-    autoComplete: "email",
-  },
-  {
-    placeholder: "סיסמה",
-    name: "password",
-    autoComplete: "current-password",
-  },
-];

@@ -30,6 +30,7 @@ export const signIn = async (
   let authDto;
 
   try {
+    throw new Error
     const { dto } = authServerUtils.formDataToDto(formData);
     authDto = authServerUtils.sanitizeAuthDto(dto);
     authServerUtils.validateAuthSignInDto(authDto);
