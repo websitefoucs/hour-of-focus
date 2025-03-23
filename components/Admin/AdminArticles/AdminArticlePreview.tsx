@@ -11,19 +11,18 @@ interface AdminArticlePreviewProps {
 export default function AdminArticlePreview({
   article,
 }: AdminArticlePreviewProps) {
-  const { publishDate, link, preview, publishPlace, createAt, _id } =
-  article;
+  const { publishDate, link, preview, publishPlace, createAt, _id } = article;
 
   return (
-    <li className="p-4 border rounded-base">
-      <ul>
+    <li className="w-full">
+      <ul className="w-full grid md:grid-cols-[1fr_5rem] xl:grid-cols-[49rem_5rem] gap-4  ">
         <ArticleItem
           publishDate={publishDate}
           link={link}
           preview={preview}
           publishPlace={publishPlace}
         />
-        <li className="flex  gap-2 items-center p-4">
+        <li className="flex md:flex-col gap-2 items-center md:justify-start  ">
           <span className="border rounded-base  text-center py-1 px-2 gap-2 flex">
             <p className="text-sm">
               {new Date(createAt!).toLocaleDateString()}

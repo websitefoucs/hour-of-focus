@@ -17,7 +17,7 @@ export default function ArticleItem({
 }: ArticleProps) {
   return (
     <div
-      className={`max-w-[49rem] h-72 w-full flex  flex-col items-start border-t-8 border-t-mainGold-500 px-2 xs:px-6 pt-6 xs:pt-12 pb-8 justify-between shadow-[0px_3px_6px_0px_#00000026] rounded-base transition-opacity duration-300
+      className={`max-w-[49rem] h-72 w-full flex flex-col items-start border-t-8 border-t-mainGold-500 px-2 xs:px-6 pt-6 xs:pt-12 pb-8 justify-between shadow-[0px_3px_6px_0px_#00000026] rounded-base transition-opacity duration-300
        ${isFading ? "opacity-0" : "opacity-100"}`}
     >
       <p className="text-right text-18 pr-1 text-mainGray-800 italic line-clamp-3">
