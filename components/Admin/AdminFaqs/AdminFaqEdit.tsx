@@ -29,6 +29,7 @@ import AdminFaqEditInputs from "./AdminFaqEditInputs";
 //Types
 import { TFormState } from "@/types/app.type";
 import { TFaqDto } from "@/types/faqs";
+import ErrorLabel from "@/components/UI/ErrorLabel";
 
 interface FaqEditProps {
   faqToEdit: TFaqDto;
@@ -65,20 +66,28 @@ export default function AdminFaqEdit({ faqToEdit }: FaqEditProps) {
     fromAction(e);
   };
 
+  const { data, message, errors } = state;
+
   return (
     <form
       action={handleSubmit}
-      className="p-4 border rounded flex flex-col gap-2 h-full bg-mainWhite-50"
+      className="p-4 min-w-64  border rounded flex flex-col gap-2 h-fit backdrop-sepia shadow-[0px_0px_40000px_1000px_rgba(0,0,0,0.5)] bg-mainWhite-50 fixed z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-auto"
     >
-      <Input type="hidden" name="_id" defaultValue={state?.data?._id} />
+      <Input type="hidden" name="_id" defaultValue={data?._id} />
 
       <AdminFaqEditInputs
         isStudents={isStudents}
         deltaAnswerRef={deltaAnswerRef}
         deltaQuestionRef={deltaQuestionRef}
-        errors={state.errors}
-        data={state.data}
+        errors={errors}
+        data={data}
       />
+      {message ? (
+        <ErrorLabel
+          className="block m-4 p-2 rounded-base border"
+          error={message}
+        />
+      ) : null}
       <FormSubmitButton isPending={isPending} />
     </form>
   );

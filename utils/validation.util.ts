@@ -34,7 +34,7 @@ const validateExistence = (
   filedName: string,
   value: unknown
 ): string | null => {
-  if (value === null || value === undefined || value === "") {
+  if (value === null || value === undefined || value === ""||value === "\n") {
     return `שדה חובה ${filedName}.`;
   }
   return null;

@@ -19,6 +19,7 @@ import Label from "@/components/UI/Label";
 //Types
 import { TValidationError } from "@/types/app.type";
 import { TFaq } from "@/types/faqs";
+import ItemList from "@/components/UI/ItemList";
 
 interface AdminFaqEditInputsProps {
   isStudents: boolean;
@@ -47,32 +48,33 @@ export default function AdminFaqEditInputs({
   deltaQuestionRef,
   data,
 }: AdminFaqEditInputsProps): JSX.Element {
+  const radios = [
+    {
+      _id: "students-radio",
+      input: {
+        name: "faqType",
+        defaultValue: "students",
+        defaultChecked: isStudents,
+      },
+      label: "תלמידים",
+    },
+    {
+      _id: "volunteers-radio",
+      input: {
+        name: "faqType",
+        defaultValue: "volunteers",
+        defaultChecked: !isStudents,
+      },
+      label: "מתנדבים",
+    },
+  ];
   return (
     <>
-      <div className="flex">
-        <Input
-          type="radio"
-          id="students-radio"
-          name="faqType"
-          defaultValue="students"
-          defaultChecked={isStudents}
-          divStyle="flex items-center gap-2 w-full"
-          className="h-full"
-        >
-          <Label htmlFor="students-radio">תלמידים</Label>
-        </Input>
-        <Input
-          type="radio"
-          id="volunteers-radio"
-          name="faqType"
-          defaultValue="volunteers"
-          defaultChecked={!isStudents}
-          divStyle="flex items-center gap-2 w-full"
-          className="h-full"
-        >
-          <Label htmlFor="volunteers-radio">מתנדבים</Label>
-        </Input>
-      </div>
+      <ItemList
+        items={radios}
+        listStyle="flex gap-2 items-center justify-center w-fit self-center" 
+        renderItem={(item) => <RadioBtn item={item} />}
+      />
       <div>
         <Label className="text-18" htmlFor="deltaAnswer">
           שאלה
@@ -94,3 +96,39 @@ export default function AdminFaqEditInputs({
     </>
   );
 }
+
+const RadioBtn = ({
+  item,
+}: {
+  item: {
+    _id: string;
+    label: string;
+    input: {
+      name: string;
+      defaultValue: string;
+      defaultChecked: boolean;
+    };
+  };
+}) => {
+  const { label, input, _id } = item;
+  console.log(" item:", item)
+  return (
+    <Input
+      {...input}
+      id={_id}
+      type="radio"
+      name="faqType"
+      divStyle="flex items-center gap-2 w-full"
+      className="h-full peer"
+      onChange={() => console.log("changed")}
+      hidden
+    >
+      <Label
+        htmlFor={_id}
+        className=" border-2 border-mainWhite-50 peer-checked:border-mainOrange-700 peer-checked:bg-mainWhite-100 p-1 rounded-base"
+      >
+        {label}
+      </Label>
+    </Input>
+  );
+};

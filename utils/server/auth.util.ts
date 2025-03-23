@@ -8,7 +8,6 @@ import { AppError } from "./Error.util";
 import { isValidObjectId } from "@/lib/mongoClient";
 //Types
 import { TAuthDto, TJWTPayload } from "@/types/auth.type";
-import { redirect } from "next/navigation";
 /**
  * Converts FormData to an authentication DTO.
  *
@@ -112,27 +111,23 @@ const createCookie = async (token: string): Promise<void> => {
 const verifyAuth = async (): Promise<string> => {
   const token = (await cookies()).get("session")?.value;
   if (!token) {
-    AppError.create("Unauthorized", 401, true, {
-      message: "Unauthorized",
+    throw AppError.create("שגיאת גישה", 401, true, {
+      message: "שגיאת גישה",
     });
-
-    redirect("/auth/sign-in");
   }
   const decodedToken = await decodeToken(token);
   const userId = decodedToken?.userId;
   if (!userId) {
-    AppError.create("Unauthorized", 401, true, {
-      message: "Unauthorized",
+    throw AppError.create("שגיאת גישה", 401, true, {
+      message: "שגיאת גישה",
     });
-    redirect("/auth/sign-in");
   }
 
   const validObjectId = isValidObjectId(userId);
   if (!validObjectId) {
-    AppError.create("Unauthorized", 401, true, {
-      message: "Unauthorized",
+    throw AppError.create("שגיאת גישה", 401, true, {
+      message: "שגיאת גישה",
     });
-    redirect("/auth/sign-in");
   }
 
   return userId;

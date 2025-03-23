@@ -11,7 +11,7 @@ interface Props {
 
 export default function RichTextEditor({ quillRef, delta }: Props) {
   return (
-    <div className="p-4">
+    <div className="p-4 h-full">
       <Editor ref={quillRef} delta={delta} />
     </div>
   );

@@ -25,23 +25,24 @@ const validateFaqDto = (dto: TFaqDto): Record<keyof TFaqDto, string> => {
 
   validationUtil.validateDelta(errors, dto.deltaAnswer, "deltaAnswer");
   validationUtil.validateDelta(errors, dto.deltaQuestion, "deltaQuestion");
-
+  
   if (dto?._id) {
     const isValid = isValidObjectId(dto._id);
     if (!isValid) errors._id = "Invalid ID";
   }
-
+  
   const faqTypeError = validationUtil.compareStr<TFaqType>(
     "faqType",
     dto?.faqType,
     FAQ_TYPE
   );
   if (faqTypeError) errors.faqType = faqTypeError;
-
+  
   if (Object.keys(errors).length > 0) {
-    throw AppError.create("Validation Error", 400, true, errors);
+    throw AppError.create("", 400, true, errors);
   }
-
+  
+  console.log(" errors:", errors)
   return errors;
 };
 
@@ -85,8 +86,8 @@ const fromDataToDto = (formData: FormData): TFaqDto => {
 
 const getEmpty = (): TFaqDto => {
   return {
-    deltaAnswer: [{ insert: "תשובה" }],
-    deltaQuestion: [{ insert: "שאלה" }],
+    deltaAnswer: [{ insert: "" }],
+    deltaQuestion: [{ insert: "" }],
     _id: "",
   };
 };

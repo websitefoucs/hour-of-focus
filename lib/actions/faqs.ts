@@ -34,6 +34,7 @@ export async function createFaq(
 
     faqServerUtils.validateFaqDto(dto);
     const { deltaAnswer, deltaQuestion, faqType } = dto;
+    
 
     const collection = await getCollection<TFaqDocument>("faqs");
     const { acknowledged, insertedId } = await collection.insertOne({
@@ -43,7 +44,7 @@ export async function createFaq(
     });
 
     if (!acknowledged || !insertedId) {
-      throw AppError.create("Failed to create FAQ");
+      throw AppError.create("תקלת מערכת ביצירת שאלה");
     }
 
     revalidatePath("/admin/faqs");

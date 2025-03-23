@@ -115,7 +115,7 @@ const Editor = forwardRef<Quill, EditorProps>(({ delta }, ref) => {
     };
   }, [ref]);
 
-  return <div className="text-16" ref={containerRef}></div>;
+  return <div className="text-16 " ref={containerRef}></div>;
 });
 
 Editor.displayName = "Editor";

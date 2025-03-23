@@ -27,7 +27,7 @@ export default function HandleEdit<T extends { _id?: string }>({
   const btnText = _id ? "ערוך" : "הוסף";
   return (
     <Model
-      withOverlay
+      withOverlay={false}
       button={{
         props: {
           className:

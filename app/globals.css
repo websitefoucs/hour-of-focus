@@ -13,6 +13,11 @@
 .ql-toolbar {
   text-align: left !important;
   display: flex;
+  flex-wrap: wrap;
+  & .ql-formats{
+    margin-right: 0 !important;
+  }
+  
 }
 .ql-editor {
   & a {

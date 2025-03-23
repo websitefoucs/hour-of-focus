@@ -54,7 +54,7 @@ export class AppError extends Error {
       returnError.validationErrors = error.validationErrors;
       returnError.message = error.message;
     } else {
-      const err = AppError.create(`Unexpected Error -> ${error}`, 500, false);
+      const err = AppError.create(`שגיאת מערכת ${error}`, 500, false);
       returnError.status = err.status;
       returnError.message = err.message;
     }
