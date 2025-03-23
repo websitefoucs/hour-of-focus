@@ -14,7 +14,7 @@ export default function AdminMaterialPreview({
   const { imgPath, subject, link,  createdAt, _id } = material;
 
   return (
-    <li className="flex flex-col  gap-2 border-t-8 border-mainGold-500 rounded-base shadow-[0px_4px_8px_#00000026]">
+    <li className="flex flex-col h-full justify-between  gap-2 border-t-8 border-mainGold-500 rounded-base shadow-[0px_4px_8px_#00000026]">
       <MaterialItem material={{ imgPath, subject, link }} />
 
       <div className="flex  gap-2 items-center p-4">

@@ -21,20 +21,20 @@ const validateMaterialsDtoCreate = (
 
 
 
-  const linkErrorLength = validationUtil.validateStrLength(
-    "link",
-    2,
+  const linkErrorLength = validationUtil.validateUrl(
+    "קישור",
+   
     dto?.link
   );
   if (linkErrorLength) errors.link = linkErrorLength;
 
   const subjectError = validationUtil.validateExistence(
-    "subject",
+    "נושא",
     dto?.subject
   );
   if (subjectError) errors.subject = subjectError;
   const subjectErrorLength = validationUtil.validateStrLength(
-    "subject",
+    "נושא",
     2,
     dto?.subject
   );
@@ -44,7 +44,7 @@ const validateMaterialsDtoCreate = (
  
 
   if (Object.keys(errors).length > 0) {
-    throw AppError.create("Validation Error", 400, true, errors);
+    throw AppError.create("", 400, true, errors);
   }
   return errors;
 };
@@ -64,9 +64,6 @@ const validateMaterialsDtoUpdate = (
   const errors: Record<string, string> = {};
 
   validateMaterialsDtoCreate(dto);
-
- 
-
   const _idError = validationUtil.validateExistence("_id", dto?._id);
 
   if (_idError) errors._id = _idError;

@@ -17,6 +17,7 @@ import Input from "./Input";
 import Label from "./Label";
 //Images
 import { DEFAULT_IMAGE } from "@/constants/images";
+import ErrorLabel from "./ErrorLabel";
 
 interface ImageUploadInputProps {
   imgPath?: string;
@@ -30,16 +31,33 @@ export default function ImageUploadInput({
     imgPath || DEFAULT_IMAGE
   );
 
+  const [error, setError] = useState<string | null>(null);
+
   const handleImagePreview = (ev: ChangeEvent<HTMLInputElement>) => {
     if (!ev.target.files || !ev.target.files[0]) return;
     const file = ev.target.files[0];
+    const fileSize = file.size / 1024 / 1024;
+
+    if (fileSize > 1) {
+        ev.target.value = ''
+      setError("גודל התמונה חייב להיות עד 1MB");
+      return;
+    }
+    setError(null);
+
     const imgUrl = URL.createObjectURL(file);
     setImgPreview(imgUrl);
   };
   return (
     <div>
       <Label htmlFor={`imgPath-${itemId}`}>
-        <Image src={imgPreview} width={200} height={200} alt="ברירת מחדל" />
+        <Image
+          className="w-full h-auto"
+          src={imgPreview}
+          width={200}
+          height={100}
+          alt="ברירת מחדל"
+        />
       </Label>
       <Input
         type="file"
@@ -48,6 +66,7 @@ export default function ImageUploadInput({
         onChange={handleImagePreview}
         placeholder="הכנס כתובת תמונה"
       ></Input>
+      {error ? <ErrorLabel error={error} /> : null}
     </div>
   );
 }

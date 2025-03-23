@@ -2,7 +2,7 @@ import {
   ALLOWED_ATTRIBUTES,
   ALLOWED_COLORS_REGEX,
   ALLOWED_TEXT_SIZES,
-  DEV_URL_REGEX,
+  URL_REGEX,
   // URL_REGEX,
 } from "@/constants/quill";
 import { TQuillAttributes, TQuillTextSize, TTextBlock } from "@/types/app.type";
@@ -20,7 +20,7 @@ const validateStrLength = (
   str?: string
 ): string | null => {
   if (!str || str.trim().length < length) {
-    return `${filedName} must be at least ${length} characters long.`;
+    return ` ${filedName} חייב להיות לפחות ${length} תווים.`;
   }
   return null;
 };
@@ -34,7 +34,7 @@ const validateExistence = (
   filedName: string,
   value: unknown
 ): string | null => {
-  if (value === null || value === undefined || value === ""||value === "\n") {
+  if (value === null || value === undefined || value === "" || value === "\n") {
     return `שדה חובה ${filedName}.`;
   }
   return null;
@@ -67,7 +67,7 @@ const compareStr = <T>(
 const validateUrl = (filedName: string, value?: unknown): string | null => {
   const isString = _isString(value);
   if (!isString) return `${filedName} שדה חובה.`;
-  return DEV_URL_REGEX.test(value) ? null : `${filedName} לא תקין.`;
+  return URL_REGEX.test(value) ? null : `${filedName} לא תקין.`;
 };
 /**
  * Validates that a string is a valid hex color code.

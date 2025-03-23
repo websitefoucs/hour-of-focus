@@ -71,7 +71,7 @@ export default function AdminFaqEdit({ faqToEdit }: FaqEditProps) {
   return (
     <form
       action={handleSubmit}
-      className="p-4 min-w-64  border rounded flex flex-col gap-2 h-fit backdrop-sepia shadow-[0px_0px_40000px_1000px_rgba(0,0,0,0.5)] bg-mainWhite-50 fixed z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-auto"
+      className="p-4 min-w-64 border rounded flex flex-col gap-2 h-fit backdrop-sepia shadow-[0px_0px_40000px_1000px_rgba(0,0,0,0.5)] bg-mainWhite-50 fixed z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-auto"
     >
       <Input type="hidden" name="_id" defaultValue={data?._id} />
 

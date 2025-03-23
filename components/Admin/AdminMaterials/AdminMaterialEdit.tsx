@@ -1,6 +1,6 @@
 "use client";
-import Button from "@/components/UI/Button";
 import ErrorLabel from "@/components/UI/ErrorLabel";
+import FormSubmitButton from "@/components/UI/FormSubmitButton";
 import ImageUploadInput from "@/components/UI/ImageUploadInput";
 import Input from "@/components/UI/Input";
 import Label from "@/components/UI/Label";
@@ -31,52 +31,55 @@ export default function AdminMaterialEdit({
     { ...initialState, data: materialToEdit }
   );
 
+  const { data, message, errors } = state;
+  console.log(" data:", data)
+  console.log(" state:", state)
+
   return (
     <form
       action={fromAction}
-      className="p-4 border rounded flex flex-col gap-2 h-full bg-mainWhite-50"
+      className="p-4 min-w-72  border rounded flex flex-col gap-2 h-fit backdrop-sepia shadow-[0px_0px_40000px_1000px_rgba(0,0,0,0.5)] bg-mainWhite-50 fixed z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-auto"
     >
-      <Input type="hidden" name="_id" defaultValue={state?.data?._id} />
+      <Input type="hidden" name="_id" defaultValue={data?._id} />
 
       <ImageUploadInput
-        imgPath={state.data?.imgPath}
-        itemId={state.data?._id}
+        imgPath={data?.imgPath}
+        itemId={data?._id}
       />
       <Input
         type="text"
         name="link"
-        id={`link-${state?.data?._id}`}
-        defaultValue={state?.data?.link}
+        id={`link-${data?._id}`}
+        defaultValue={data?.link}
         placeholder="קישור לתיקיית גוגל"
       >
-        <Label htmlFor={`link-${state?.data?._id}`}>קישור</Label>
+        <Label htmlFor={`link-${data?._id}`}>קישור</Label>
         <ErrorLabel
-          htmlFor={`link-${state?.data?._id}`}
-          error={state?.errors?.link}
+          htmlFor={`link-${data?._id}`}
+          error={errors?.link}
         />
       </Input>
       <Input
         type="text"
         name="subject"
-        id={`subject-${state?.data?._id}`}
-        defaultValue={state?.data?.subject}
+        id={`subject-${data?._id}`}
+        defaultValue={data?.subject}
         placeholder="מתמטיקה, פיזיקה וכו..."
       >
-        <Label htmlFor={`subject-${state?.data?._id}`}>נושא</Label>
+        <Label htmlFor={`subject-${data?._id}`}>נושא</Label>
         <ErrorLabel
-          htmlFor={`subject-${state?.data?._id}`}
-          error={state?.errors?.subject}
+          htmlFor={`subject-${data?._id}`}
+          error={errors?.subject}
         />
       </Input>
 
-      <Button
-        disabled={isPending}
-        type="submit"
-        styleMode="full"
-        styleSize="large"
-      >
-        שמור
-      </Button>
+         {message ? (
+            <ErrorLabel
+              className="block my-2 p-2 rounded-base border"
+              error={message}
+            />
+          ) : null}
+          <FormSubmitButton isPending={isPending} />
     </form>
   );
 }

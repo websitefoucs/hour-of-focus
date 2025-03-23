@@ -11,7 +11,7 @@ export default function AdminMaterialsList({
   return (
     <div className="h-full w-full ">
       <ItemList
-        listStyle=" flex flex-wrap justify-around gap-6 w-full"
+        listStyle="grid  grid-cols-1  sm:sm:grid-cols-[repeat(auto-fill,minmax(17rem,_1fr))]  items-center gap-gaps px-sides  "
         items={materials}
         renderItem={(item) => <AdminMaterialPreview material={item} />}
       />
