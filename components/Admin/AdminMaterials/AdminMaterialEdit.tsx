@@ -32,13 +32,12 @@ export default function AdminMaterialEdit({
   );
 
   const { data, message, errors } = state;
-  console.log(" data:", data)
-  console.log(" state:", state)
+
 
   return (
     <form
       action={fromAction}
-      className="p-4 min-w-72  border rounded flex flex-col gap-2 h-fit backdrop-sepia shadow-[0px_0px_40000px_1000px_rgba(0,0,0,0.5)] bg-mainWhite-50 fixed z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-auto"
+      className="p-4 min-w-72 max-w-96  border rounded flex flex-col gap-2 h-fit backdrop-sepia shadow-[0px_0px_40000px_1000px_rgba(0,0,0,0.5)] bg-mainWhite-50 fixed z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-auto"
     >
       <Input type="hidden" name="_id" defaultValue={data?._id} />
 
@@ -75,8 +74,9 @@ export default function AdminMaterialEdit({
 
          {message ? (
             <ErrorLabel
-              className="block my-2 p-2 rounded-base border"
+              className="block my-2 p-2 rounded-base border break-words"
               error={message}
+
             />
           ) : null}
           <FormSubmitButton isPending={isPending} />

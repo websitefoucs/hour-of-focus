@@ -27,17 +27,14 @@ export async function createArticle(
 ): Promise<TFormState<TArticleDto>> {
   let dto;
   try {
-    const userId = await authServerUtils.verifyAuth();
+    await authServerUtils.verifyAuth();
 
     const data = ArticlesServerUtils.fromDataToDto(formData);
 
-    dto = ArticlesServerUtils.sanitizeArticleDtoCreate({
-      ...data,
-      createBy: userId,
-    });
+    dto = ArticlesServerUtils.sanitizeArticleDto(data);
 
-    ArticlesServerUtils.validateArticleDtoCreate(dto);
-    const { createBy, publishDate, link, preview, publishPlace } = dto;
+    ArticlesServerUtils.validateArticleDto(dto);
+    const { publishDate, link, preview, publishPlace } = dto;
 
     const collection = await getCollection<TArticleDocument>("articles");
     const { acknowledged, insertedId } = await collection.insertOne({
@@ -45,11 +42,10 @@ export async function createArticle(
       link,
       publishPlace,
       publishDate,
-      createBy: new ObjectId(createBy),
     });
 
     if (!acknowledged || !insertedId) {
-      throw AppError.create("Failed to create Article");
+      throw AppError.create("שגיאה ביצירת המאמר");
     }
 
     revalidatePath("/admin/articles");
@@ -89,25 +85,14 @@ export async function updateArticle(
 ): Promise<TFormState<TArticleDto>> {
   let dto;
   try {
-    const userId = await authServerUtils.verifyAuth();
+    await authServerUtils.verifyAuth();
 
     const data = ArticlesServerUtils.fromDataToDto(formData);
 
-    dto = ArticlesServerUtils.sanitizeArticleDtoUpdate({
-      ...data,
-      updateBy: userId,
-    });
+    dto = ArticlesServerUtils.sanitizeArticleDto(data);
 
-    ArticlesServerUtils.validateArticleDtoUpdate(dto);
-    const {
-      createBy,
-      publishDate,
-      link,
-      preview,
-      publishPlace,
-      _id,
-      updateBy,
-    } = dto;
+    ArticlesServerUtils.validateArticleDto(dto);
+    const { publishDate, link, preview, publishPlace, _id } = dto;
 
     const collection = await getCollection<TArticleDocument>("articles");
     const { modifiedCount } = await collection.updateOne(
@@ -118,16 +103,13 @@ export async function updateArticle(
           link,
           publishPlace,
           publishDate,
-          _id: new ObjectId(_id),
-          updateBy: new ObjectId(updateBy),
-          createBy: new ObjectId(createBy),
           updateDate: new Date(),
         },
       }
     );
 
     if (!modifiedCount) {
-      throw AppError.create("Failed to update Article");
+      throw AppError.create("שגיאה בעדכון הכתבה");
     }
 
     revalidatePath("/admin/articles");

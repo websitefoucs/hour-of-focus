@@ -1,5 +1,4 @@
 import { Document, ObjectId } from "mongodb";
-import { TAuth } from "./auth.type";
 
 export type TArticle = {
   _id?: string;
@@ -7,27 +6,14 @@ export type TArticle = {
   preview: string;
   publishDate: string;
   publishPlace: string;
-  createBy?: TAuth;
-  updateBy?: TAuth;
   updateAt?: string;
   createAt?: string;
 };
 
-export type TArticleDto = Omit<
-  TArticle,
-  "createBy" | "updateBy" | "createdAt"
-> & {
-  createBy?: string;
-  updateBy?: string;
-};
+export type TArticleDto = Omit<TArticle, "createdAt"> & {};
 
 export type TArticleDocument = Document &
-  Omit<
-    TArticle,
-    "_id" | "createBy" | "updateBy" | "createdAt" 
-  > & {
+  Omit<TArticle, "_id" | "createAt"> & {
     _id?: ObjectId;
-    createBy?: ObjectId;
-    updateBy?: ObjectId;
     updateAt?: Date;
   };

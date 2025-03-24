@@ -36,11 +36,11 @@ export async function createMaterial(
 
     const { data, imgFile } = materialsServerUtils.fromDataToDto(formData);
 
-    dto = materialsServerUtils.sanitizeMaterialsDtoCreate({
+    dto = materialsServerUtils.sanitizeMaterialsDto({
       ...data,
     });
 
-    materialsServerUtils.validateMaterialsDtoCreate(dto);
+    materialsServerUtils.validateMaterialsDto(dto);
     const { link, subject } = dto;
 
     const imgPath = await imageUpload.uploadToCdn(imgFile);
@@ -89,9 +89,9 @@ export async function updateMaterial(
     const { data, imgFile } = materialsServerUtils.fromDataToDto(formData);
 
     console.log(" imgFile:", imgFile)
-    dto = materialsServerUtils.sanitizeMaterialsDtoUpdate(data);
+    dto = materialsServerUtils.sanitizeMaterialsDto(data);
 
-    materialsServerUtils.validateMaterialsDtoUpdate(dto);
+    materialsServerUtils.validateMaterialsDto(dto);
 
     if (imgFile) {
       const imgPath = await imageUpload.uploadToCdn(imgFile);

@@ -13,7 +13,7 @@ export default function AdminArticlesIndex({
   articles,
 }: AdminArticlesIndexProps) {
   return (
-    <section className=" p-2 rounded w-fit  h-fit pb-24">
+    <section className=" p-2 rounded w-fit h-fit pb-24">
       <div className="flex justify-between items-center pb-8">
         <h3 className="text-24 sm:text-36">כתבות</h3>
         <HandleEdit

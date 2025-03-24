@@ -4,34 +4,32 @@ import { validationUtil } from "../validation.util";
 import { AppError } from "./Error.util";
 //Types
 import { TMaterialDto } from "@/types/materials.type";
+import { isValidObjectId } from "@/lib/mongoClient";
 
-const sanitizeMaterialsDtoCreate = (dto: TMaterialDto): TMaterialDto => {
+const sanitizeMaterialsDto = (dto: TMaterialDto): TMaterialDto => {
   const link = sanitizeUtil.sanitizedObjectField(dto?.link) || "";
   const subject = sanitizeUtil.sanitizedObjectField(dto?.subject) || "";
+  const _id = sanitizeUtil.sanitizedObjectField(dto?._id) || "";
 
   return {
     link,
     subject,
+    _id,
   };
 };
-const validateMaterialsDtoCreate = (
+const validateMaterialsDto = (
   dto: TMaterialDto
 ): Record<keyof TMaterialDto, string> => {
   const errors: Record<string, string> = {};
 
-
-
   const linkErrorLength = validationUtil.validateUrl(
     "קישור",
-   
+
     dto?.link
   );
   if (linkErrorLength) errors.link = linkErrorLength;
 
-  const subjectError = validationUtil.validateExistence(
-    "נושא",
-    dto?.subject
-  );
+  const subjectError = validationUtil.validateExistence("נושא", dto?.subject);
   if (subjectError) errors.subject = subjectError;
   const subjectErrorLength = validationUtil.validateStrLength(
     "נושא",
@@ -41,35 +39,12 @@ const validateMaterialsDtoCreate = (
 
   if (subjectErrorLength) errors.subject = subjectErrorLength;
 
- 
-
+  if (dto?._id) {
+    const isValid = isValidObjectId(dto._id);
+    if (!isValid) errors._id = " מזהה לא חוקי";
+  }
   if (Object.keys(errors).length > 0) {
     throw AppError.create("", 400, true, errors);
-  }
-  return errors;
-};
-
-const sanitizeMaterialsDtoUpdate = (dto: TMaterialDto): TMaterialDto => {
-  const _id = sanitizeUtil.sanitizedObjectField(dto?._id) || "";
-
-  return {
-    ...sanitizeMaterialsDtoCreate(dto),
-    _id,
-  };
-};
-
-const validateMaterialsDtoUpdate = (
-  dto: TMaterialDto
-): Record<keyof TMaterialDto, string> => {
-  const errors: Record<string, string> = {};
-
-  validateMaterialsDtoCreate(dto);
-  const _idError = validationUtil.validateExistence("_id", dto?._id);
-
-  if (_idError) errors._id = _idError;
-
-  if (Object.keys(errors).length > 0) {
-    throw AppError.create("Validation Error", 400, true, errors);
   }
   return errors;
 };
@@ -101,10 +76,8 @@ const getEmpty = (): TMaterialDto => {
   };
 };
 export const materialsServerUtils = {
-  sanitizeMaterialsDtoCreate,
-  validateMaterialsDtoCreate,
-  sanitizeMaterialsDtoUpdate,
-  validateMaterialsDtoUpdate,
+  sanitizeMaterialsDto,
+  validateMaterialsDto,
   fromDataToDto,
   getEmpty,
 };
