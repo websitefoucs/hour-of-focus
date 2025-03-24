@@ -1,5 +1,24 @@
+/**
+ * Component for rendering a preview of an article in the admin panel.
+ *
+ * @component
+ * @param {AdminArticlePreviewProps} props - The props for the component.
+ * @param {TArticle} props.article - The article data to display in the preview.
+ *
+ * @returns {JSX.Element} A list item containing the article preview, edit, and delete controls.
+ *
+ * @remarks
+ * - This component uses the `ArticleItem` component to display the article details.
+ * - Includes an edit button (`HandleEdit`) and a delete button (`DeleteBtn`) for managing the article.
+ * - The `AdminArticleEdit` component is used for editing the article.
+ * - The `deleteArticle` function is used to handle article deletion.
+ */
+
+//Components
 import HandleEdit from "../HandleEdit";
+//UI
 import DeleteBtn from "@/components/UI/DeleteBtn";
+//Types
 import { TArticle } from "@/types/articles.type";
 import ArticleItem from "@/components/Home/Articles/ArticleItem";
 import AdminArticleEdit from "./AdminArticleEdit";
@@ -30,15 +49,7 @@ export default function AdminArticlePreview({
           </span>
           <HandleEdit
             item={article}
-            EditCmp={({ item }) => (
-              <AdminArticleEdit
-                articleToEdit={{
-                  ...item,
-                  createBy: item?.createBy?._id,
-                  updateBy: item?.updateBy?._id,
-                }}
-              />
-            )}
+            EditCmp={({ item }) => <AdminArticleEdit articleToEdit={item} />}
           />
           <DeleteBtn id={_id || ""} deleteAction={deleteArticle} />
         </li>

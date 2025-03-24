@@ -25,9 +25,9 @@ export default function AdminTestimoniesIndex({
   testimonies,
 }: AdminArticlesIndexProps) {
   return (
-    <section className="p-2 rounded min-w-full h-fit pb-24">
-      <div className="flex justify-between items-center pb-8">
-        <h3 className="">המלצות</h3>
+    <section className=" p-2 rounded w-fit h-fit pb-24 min-w-72">
+      <div className="flex justify-between items-center pb-8 pl-4">
+        <h3 className="text-24 sm:text-36">המלצות</h3>
         <HandleEdit
           item={TestimoniesServerUtils.getEmpty()}
           EditCmp={({ item }) => (
@@ -36,7 +36,7 @@ export default function AdminTestimoniesIndex({
         />
       </div>
       <ItemList
-        listStyle=" flex flex-wrap justify-around gap-6 w-full"
+        listStyle="grid gap-6 w-fit"
         items={testimonies}
         renderItem={(item) => <AdminTestimoniesPreview testimony={item} />}
       />

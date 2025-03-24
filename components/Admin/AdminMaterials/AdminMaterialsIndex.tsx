@@ -11,7 +11,7 @@ export default function AdminMaterialsIndex({
   materials,
 }: AdminMaterialsIndexProps) {
   return (
-    <section className=" p-2 rounded w-full h-fit pb-24">
+    <section className=" p-2 rounded w-full h-fit pb-gaps">
       <div className="flex justify-between items-center pb-8">
         <h3 className="text-24 sm:text-36">חומרי לימוד למתנדבים</h3>
         <HandleEdit

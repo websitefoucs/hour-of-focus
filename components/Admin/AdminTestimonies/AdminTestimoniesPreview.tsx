@@ -25,10 +25,10 @@ export default function AdminTestimoniesPreview({
 }: AdminTestimoniesPreviewProps) {
   const { createAt, _id } = testimony;
   return (
-    <li className="p-4 border rounded-base w-full">
-      <ul>
+    <li className="p-4 w-full">
+      <ul className="w-full grid md:grid-cols-[1fr_5rem] xl:grid-cols-[49rem_5rem] gap-4  ">
         <TestimonyItem testimony={testimony} />
-        <li className="flex  gap-2 items-center p-4">
+        <li className="flex md:flex-col gap-2 items-center md:justify-start  ">
           <span className="border rounded-base  text-center py-1 px-2 gap-2 flex">
             <p className="text-sm">
               {new Date(createAt!).toLocaleDateString()}
