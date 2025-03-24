@@ -1,6 +1,9 @@
 import { AppError } from "@/utils/server/Error.util";
+import crypto from "crypto";
 
-const uploadToCdn = async (file: Blob): Promise<string> => {
+const uploadToCdn = async (
+  file: Blob
+): Promise<{ imgPath: string; public_id: string }> => {
   const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
   const cloudPreset = process.env.CLOUDINARY_UPLOAD_PRESET;
 
@@ -24,24 +27,37 @@ const uploadToCdn = async (file: Blob): Promise<string> => {
     throw AppError.create("No return value", 502);
   }
 
-  return result.secure_url;
+  return {
+    imgPath: result.secure_url,
+    public_id: result.public_id,
+  };
 };
 
-const removeFromCdn = async (assetId: string): Promise<void> => {
+const removeFromCdn = async (public_id: string): Promise<void> => {
   const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
   const cloudApiKey = process.env.CLOUDINARY_API_KEY;
+  const cloudApiSecret = process.env.CLOUDINARY_API_SECRET;
 
-  if (!cloudName || !cloudApiKey) {
+  if (!cloudName || !cloudApiKey || !cloudApiSecret) {
     throw AppError.create("No cloudinary credentials", 502);
   }
-  const DELETE_URL = `https://api.cloudinary.com/v1_1/${cloudName}/video/destroy`;
+  const DELETE_URL = `https://api.cloudinary.com/v1_1/${cloudName}/image/destroy`;
 
-  const res = await fetch(`${DELETE_URL}/${assetId}`, {
+  const timestamp = Date.now();
+  const signatureString = `public_id=${public_id}&timestamp=${timestamp}${cloudApiSecret}`;
+  const signature = crypto
+    .createHash("sha1")
+    .update(signatureString)
+    .digest("hex");
+
+  const formData = new FormData();
+  formData.append("public_id", public_id);
+  formData.append("timestamp", timestamp.toString());
+  formData.append("api_key", cloudApiKey);
+  formData.append("signature", signature);
+  const res = await fetch(DELETE_URL, {
     method: "POST",
-    body: JSON.stringify({
-      assetId,
-      api_key: cloudApiKey,
-    }),
+    body: formData,
   });
 
   const result = await res.json();

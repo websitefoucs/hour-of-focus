@@ -1,13 +1,47 @@
 "use client";
+/**
+ * AdminMaterialEdit Component
+ *
+ * This component is used to edit or create a material in the admin panel.
+ * It provides a form with fields for uploading an image, entering a link, and specifying a subject.
+ * The form dynamically handles both creation and update actions based on the presence of a material ID.
+ *
+ * @component
+ * @param {AdminMaterialsEditProps} props - The props for the component.
+ * @param {TMaterialDto} props.materialToEdit - The material data to edit. If not provided, the form will be used to create a new material.
+ *
+ * @returns {JSX.Element} A form for editing or creating a material.
+ *
+ * @typedef {Object} AdminMaterialsEditProps
+ * @property {TMaterialDto} materialToEdit - The material data to edit.
+ *
+ * @typedef {Object} TFormState
+ * @property {TMaterialDto} data - The form data for the material.
+ * @property {string} message - A message indicating the result of the form submission.
+ * @property {Record<string, string> | null} errors - Validation errors for the form fields.
+ *
+ * @remarks
+ * - The form uses the `useActionState` hook to manage state and handle form submission.
+ * - The `ImageUploadInput` component is used for uploading an image.
+ * - The `Input` component is used for entering the link and subject fields.
+ * - The `FormSubmitButton` component handles the submission button with a pending state.
+ * - Error messages are displayed using the `ErrorLabel` component.
+ *
+ */
+
+//React
+import { useActionState } from "react";
+//UI
 import ErrorLabel from "@/components/UI/ErrorLabel";
 import FormSubmitButton from "@/components/UI/FormSubmitButton";
 import ImageUploadInput from "@/components/UI/ImageUploadInput";
 import Input from "@/components/UI/Input";
 import Label from "@/components/UI/Label";
+//Actions
 import { createMaterial, updateMaterial } from "@/lib/actions/materials";
+//Types
 import { TFormState } from "@/types/app.type";
 import { TMaterialDto } from "@/types/materials.type";
-import { useActionState } from "react";
 
 interface AdminMaterialsEditProps {
   materialToEdit: TMaterialDto;
@@ -19,6 +53,7 @@ const initialState: TFormState<TMaterialDto> = {
   data: {
     imgPath: "",
     link: "",
+    public_id: "",
     _id: "",
     subject: "",
   },
@@ -33,7 +68,6 @@ export default function AdminMaterialEdit({
 
   const { data, message, errors } = state;
 
-
   return (
     <form
       action={fromAction}
@@ -43,7 +77,9 @@ export default function AdminMaterialEdit({
 
       <ImageUploadInput
         imgPath={data?.imgPath}
+        public_id={data?.public_id}
         itemId={data?._id}
+        serverError={errors?.imgPath}
       />
       <Input
         type="text"
@@ -53,10 +89,7 @@ export default function AdminMaterialEdit({
         placeholder="קישור לתיקיית גוגל"
       >
         <Label htmlFor={`link-${data?._id}`}>קישור</Label>
-        <ErrorLabel
-          htmlFor={`link-${data?._id}`}
-          error={errors?.link}
-        />
+        <ErrorLabel htmlFor={`link-${data?._id}`} error={errors?.link} />
       </Input>
       <Input
         type="text"
@@ -66,20 +99,16 @@ export default function AdminMaterialEdit({
         placeholder="מתמטיקה, פיזיקה וכו..."
       >
         <Label htmlFor={`subject-${data?._id}`}>נושא</Label>
-        <ErrorLabel
-          htmlFor={`subject-${data?._id}`}
-          error={errors?.subject}
-        />
+        <ErrorLabel htmlFor={`subject-${data?._id}`} error={errors?.subject} />
       </Input>
 
-         {message ? (
-            <ErrorLabel
-              className="block my-2 p-2 rounded-base border break-words"
-              error={message}
-
-            />
-          ) : null}
-          <FormSubmitButton isPending={isPending} />
+      {message ? (
+        <ErrorLabel
+          className="block my-2 p-2 rounded-base border break-words"
+          error={message}
+        />
+      ) : null}
+      <FormSubmitButton isPending={isPending} />
     </form>
   );
 }

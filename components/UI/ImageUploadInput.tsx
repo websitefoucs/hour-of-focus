@@ -22,10 +22,14 @@ import ErrorLabel from "./ErrorLabel";
 interface ImageUploadInputProps {
   imgPath?: string;
   itemId?: string;
+  serverError?: string | null;
+  public_id?: string;
 }
 export default function ImageUploadInput({
   imgPath,
   itemId,
+  serverError,
+  public_id,
 }: ImageUploadInputProps) {
   const [imgPreview, setImgPreview] = useState<string>(
     imgPath || DEFAULT_IMAGE
@@ -39,7 +43,7 @@ export default function ImageUploadInput({
     const fileSize = file.size / 1024 / 1024;
 
     if (fileSize > 1) {
-        ev.target.value = ''
+      ev.target.value = "";
       setError("גודל התמונה חייב להיות עד 1MB");
       return;
     }
@@ -66,7 +70,20 @@ export default function ImageUploadInput({
         onChange={handleImagePreview}
         placeholder="הכנס כתובת תמונה"
       ></Input>
+      <Input
+        type="hidden"
+        className="hidden"
+        name="imgPath"
+        defaultValue={imgPath}
+      />
+      <Input
+        type="hidden"
+        className="hidden"
+        name="public_id"
+        defaultValue={public_id}
+      />
       {error ? <ErrorLabel error={error} /> : null}
+      {serverError ? <ErrorLabel error={serverError} /> : null}
     </div>
   );
 }

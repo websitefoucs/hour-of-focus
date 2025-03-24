@@ -18,11 +18,15 @@ const sanitizeMaterialsDto = (dto: TMaterialDto): TMaterialDto => {
   const link = sanitizeUtil.sanitizedObjectField(dto?.link) || "";
   const subject = sanitizeUtil.sanitizedObjectField(dto?.subject) || "";
   const _id = sanitizeUtil.sanitizedObjectField(dto?._id) || "";
+  const imgPath = sanitizeUtil.sanitizedObjectField(dto?.imgPath) || "";
+  const public_id = sanitizeUtil.sanitizedObjectField(dto?.public_id) || "";
 
   return {
     link,
     subject,
     _id,
+    imgPath,
+    public_id,
   };
 };
 /**
@@ -58,6 +62,7 @@ const validateMaterialsDto = (
     const isValid = isValidObjectId(dto._id);
     if (!isValid) errors._id = " מזהה לא חוקי";
   }
+
   if (Object.keys(errors).length > 0) {
     throw AppError.create("", 400, true, errors);
   }
@@ -77,12 +82,16 @@ const fromDataToDto = (
   const link = formData.get("link") as string;
   const _id = formData.get("_id") as string;
   const subject = formData.get("subject") as string;
+  const imgPath = formData.get("imgPath") as string;
+  const public_id = formData.get("public_id") as string;
 
   return {
     data: {
       link,
       _id,
       subject,
+      imgPath,
+      public_id,
     },
     imgFile,
   };

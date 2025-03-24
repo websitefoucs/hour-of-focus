@@ -17,7 +17,7 @@ import {
 import { materialsServerUtils } from "@/utils/server/materials.util";
 import { AppError } from "@/utils/server/Error.util";
 import { authServerUtils } from "@/utils/server/auth.util";
-import { imageUpload } from "../imageUpload";
+import { imageUpload } from "../cloudinary";
 /**
  * Creates a new material and updates the state with the result.
  *
@@ -41,15 +41,19 @@ export async function createMaterial(
     });
 
     materialsServerUtils.validateMaterialsDto(dto);
+    if (!imgFile.size) {
+      throw AppError.create("", 400, true, { imgPath: "לא נבחרה תמונה" });
+    }
     const { link, subject } = dto;
 
-    const imgPath = await imageUpload.uploadToCdn(imgFile);
+    const { imgPath, public_id } = await imageUpload.uploadToCdn(imgFile);
 
     const collection = await getCollection<TMaterialDocument>("materials");
     const { acknowledged, insertedId } = await collection.insertOne({
       subject,
       link,
       imgPath,
+      public_id,
     });
 
     if (!acknowledged || !insertedId) {
@@ -92,12 +96,16 @@ export async function updateMaterial(
 
     materialsServerUtils.validateMaterialsDto(dto);
 
-    if (imgFile) {
-      const imgPath = await imageUpload.uploadToCdn(imgFile);
+    if (imgFile?.size) {
+      if (dto?.public_id) {
+        await imageUpload.removeFromCdn(dto.public_id);
+      }
+      const { imgPath, public_id } = await imageUpload.uploadToCdn(imgFile);
       dto.imgPath = imgPath;
+      dto.public_id = public_id;
     }
 
-    const { imgPath, link, subject, _id } = dto;
+    const { imgPath, link, subject, _id, public_id } = dto;
 
     const collection = await getCollection<TMaterialDocument>("materials");
     const { modifiedCount } = await collection.updateOne(
@@ -107,6 +115,7 @@ export async function updateMaterial(
           subject,
           link,
           imgPath,
+          public_id,
           updateDate: new Date(),
         },
       }
@@ -154,6 +163,8 @@ export async function getMaterials(
         $project: {
           _id: { $toString: "$_id" },
           imgPath: 1,
+          asset_id: 1,
+          public_id: 1,
           link: 1,
           subject: 1,
 
@@ -208,6 +219,8 @@ export async function getMaterialToEdit(id: string): Promise<TMaterialDto> {
         imgPath: 1,
         link: 1,
         subject: 1,
+        asset_id: 1,
+        public_id: 1,
         createBy: {
           _id: { $toString: "$createBy._id" },
           username: 1,
@@ -252,6 +265,13 @@ export async function deleteMaterial(id: string): Promise<void> {
   try {
     await authServerUtils.verifyAuth();
     const collection = await getCollection<TMaterialDocument>("materials");
+
+    const { public_id } = await getMaterialToEdit(id);
+
+    if (public_id) {
+      await imageUpload.removeFromCdn(public_id);
+    }
+
     const { acknowledged } = await collection.deleteOne({
       _id: new ObjectId(id),
     });
