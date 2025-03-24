@@ -1,7 +1,6 @@
 import { HOME_VIDEO_SRC } from "@/constants/videos";
 
 export default function HomeVideoPage() {
-  console.log(" HOME_VIDEO_SRC:", HOME_VIDEO_SRC)
   return (
     <video
       autoPlay
