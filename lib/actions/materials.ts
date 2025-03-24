@@ -151,52 +151,13 @@ export async function getMaterials(
 
     if (isFull) {
       pipeline.push({
-        $lookup: {
-          from: "users",
-          localField: "createBy",
-          foreignField: "_id",
-          as: "createBy",
-        },
-      });
-
-      pipeline.push({
-        $unwind: {
-          path: "$createBy",
-          preserveNullAndEmptyArrays: true,
-        },
-      });
-
-      pipeline.push({
-        $lookup: {
-          from: "users",
-          localField: "updatedBy",
-          foreignField: "_id",
-          as: "updatedBy",
-        },
-      });
-
-      pipeline.push({
-        $unwind: {
-          path: "$updatedBy",
-          preserveNullAndEmptyArrays: true,
-        },
-      });
-
-      pipeline.push({
         $project: {
           _id: { $toString: "$_id" },
           imgPath: 1,
           link: 1,
           subject: 1,
-          createBy: {
-            _id: { $toString: "$createBy._id" },
-            username: 1,
-          },
-          updatedBy: {
-            _id: { $toString: "$createBy._id" },
-            username: 1,
-          },
-          createdAt: {
+
+          createAt: {
             $dateToString: {
               date: { $toDate: "$_id" },
               format: "%Y-%m-%d %H:%M:%S",
