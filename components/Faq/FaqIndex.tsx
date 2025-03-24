@@ -13,7 +13,7 @@ interface FaqIndexProps {
 }
 export default function FaqIndex({ type, faqs }: FaqIndexProps) {
   return (
-    <section className="grid w-full items-center justify-items-center pb-gaps gap-gaps h-fit">
+    <section className="grid w-full items-center justify-items-center pb-gaps gap-gaps h-fit min-h-[35rem]">
       <HeroCmp text="שאלות ותשובות" />
 
       <div className="grid w-full items-center gap-gaps justify-items-center px-sides sm:px-sides-sm ">

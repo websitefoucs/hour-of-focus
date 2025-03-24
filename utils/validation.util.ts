@@ -3,10 +3,8 @@ import {
   ALLOWED_COLORS_REGEX,
   ALLOWED_TEXT_SIZES,
   URL_REGEX,
-  // URL_REGEX,
 } from "@/constants/quill";
 import { TQuillAttributes, TQuillTextSize, TTextBlock } from "@/types/app.type";
-
 /**
  * Validates that a string has the specified minimum length.
  * @param filedName - Name of the field being validated.
@@ -24,22 +22,6 @@ const validateStrLength = (
   }
   return null;
 };
-/**
- * Validates that a value is neither null nor undefined.
- * @param filedName - Name of the field being validated.
- * @param value - Value to validate.
- * @returns An error message or null if valid.
- */
-const validateExistence = (
-  filedName: string,
-  value: unknown
-): string | null => {
-  if (value === null || value === undefined || value === "" || value === "\n") {
-    return `שדה חובה ${filedName}.`;
-  }
-  return null;
-};
-
 /**
  * Validates that a string matches one of the values in an array.
  * @param filedName - Name of the field being validated.
@@ -126,7 +108,11 @@ const validateDelta = (
   delta.forEach((block) => {
     const blockErrors: Record<string, string> = {};
 
-    const insertError = validationUtil.validateExistence("טקסט", block.insert);
+    const insertError = validationUtil.validateStrLength(
+      "טקסט",
+      1,
+      block.insert
+    );
     if (insertError) {
       blockErrors[`${name}`] = insertError;
     }
@@ -181,13 +167,11 @@ const validateDelta = (
 const _isString = (value: unknown): value is string => {
   return !(value === null || value === undefined || typeof value !== "string");
 };
-
 /**
  * Provides validation utilities for various data types.
  */
 export const validationUtil = {
   validateStrLength,
-  validateExistence,
   compareStr,
   validateUrl,
   validateColorHex,

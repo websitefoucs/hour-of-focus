@@ -1,6 +1,7 @@
 import { HOME_VIDEO_SRC } from "@/constants/videos";
 
 export default function HomeVideoPage() {
+  console.log(" HOME_VIDEO_SRC:", HOME_VIDEO_SRC)
   return (
     <video
       autoPlay
@@ -9,10 +10,7 @@ export default function HomeVideoPage() {
       loop
       className="w-full max-w-[53rem] h-[30rem] object-fill rounded-base order-3"
     >
-      <source
-        src={HOME_VIDEO_SRC}
-        type="video/mp4"
-      />
+      <source src={HOME_VIDEO_SRC} type="video/mp4" />
       <track kind="captions" src="סרטון תדמית על הארגון שעה של פוקוס" />
     </video>
   );

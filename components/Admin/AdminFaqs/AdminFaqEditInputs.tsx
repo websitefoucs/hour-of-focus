@@ -111,7 +111,6 @@ const RadioBtn = ({
   };
 }) => {
   const { label, input, _id } = item;
-  console.log(" item:", item)
   return (
     <Input
       {...input}
@@ -120,7 +119,6 @@ const RadioBtn = ({
       name="faqType"
       divStyle="flex items-center gap-2 w-full"
       className="h-full peer"
-      onChange={() => console.log("changed")}
       hidden
     >
       <Label

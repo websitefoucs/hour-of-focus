@@ -11,7 +11,7 @@ interface AdminMaterialsPreviewProps {
 export default function AdminMaterialPreview({
   material,
 }: AdminMaterialsPreviewProps) {
-  const { imgPath, subject, link,  createdAt, _id } = material;
+  const { imgPath, subject, link,  createAt, _id } = material;
 
   return (
     <li className="flex flex-col h-full justify-between  gap-2 border-t-8 border-mainGold-500 rounded-base shadow-[0px_4px_8px_#00000026]">
@@ -19,7 +19,7 @@ export default function AdminMaterialPreview({
 
       <div className="flex  gap-2 items-center p-4">
         <span className="border rounded-base  text-center py-1 px-2 gap-2 flex">
-          <p className="text-sm">{new Date(createdAt!).toLocaleDateString()}</p>
+          <p className="text-sm">{new Date(createAt!).toLocaleDateString()}</p>
         </span>
         <HandleEdit
           item={material}

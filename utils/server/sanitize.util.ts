@@ -5,15 +5,7 @@ import sanitizeHtml from "sanitize-html";
 import { TQuillAttributes, TQuillTextSize, TTextBlock } from "@/types/app.type";
 //Constants
 import { ALLOWED_ATTRIBUTES } from "@/constants/quill";
-/**
- * Sanitizes a field from FormData.
- * @param formData The FormData object.
- * @param fieldName The name of the form field to sanitize.
- * @returns The sanitized string.
- */
-const sanitizedFormField = (formData: FormData, fieldName: string): string => {
-  return sanitizeHtml(formData.get(fieldName)?.toString() || "");
-};
+
 /**
  * Sanitizes an object field.
  * @param value The value to sanitize.
@@ -81,7 +73,6 @@ const sanitizeDelta = (delta?: TTextBlock[]): TTextBlock[] => {
 };
 
 export const sanitizeUtil = {
-  sanitizedFormField,
   sanitizedObjectField,
   sanitizedBoolean,
   sanitizeDelta,

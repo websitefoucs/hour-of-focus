@@ -88,14 +88,12 @@ export async function updateMaterial(
 
     const { data, imgFile } = materialsServerUtils.fromDataToDto(formData);
 
-    console.log(" imgFile:", imgFile)
     dto = materialsServerUtils.sanitizeMaterialsDto(data);
 
     materialsServerUtils.validateMaterialsDto(dto);
 
     if (imgFile) {
       const imgPath = await imageUpload.uploadToCdn(imgFile);
-      console.log(" imgPath:", imgPath)
       dto.imgPath = imgPath;
     }
 

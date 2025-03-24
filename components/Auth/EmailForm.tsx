@@ -23,7 +23,6 @@ const initialState: TFormState<TAuthDto> = {
 
 export default function EmailForm() {
   const [state, formAction, isPending] = useActionState(signIn, initialState);
-  console.log(" state:", state);
 
   const { data } = state;
 

@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="he" dir="rtl" >
       <head></head>
       <body
-        className={`${open_sans.className} max-w-[100svw]  antialiased  text-normal relative`}
+        className={`${open_sans.className} max-w-[100svw] antialiased text-normal relative`}
       >
         {children}
       </body>

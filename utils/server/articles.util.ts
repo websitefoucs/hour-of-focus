@@ -2,11 +2,17 @@
 import { sanitizeUtil } from "./sanitize.util";
 import { validationUtil } from "../validation.util";
 import { AppError } from "./Error.util";
+import { isValidObjectId } from "@/lib/mongoClient";
 //Types
 import { TArticleDto } from "@/types/articles.type";
-import { isValidObjectId } from "@/lib/mongoClient";
-
-const sanitizeArticleDto = (dto: TArticleDto): TArticleDto => {
+/**
+ * Sanitizes the properties of a TArticleDto object by ensuring that each field
+ * is processed through a sanitization utility and defaults to an empty string
+ * if the field is undefined or null.
+ *
+ * @param dto - The TArticleDto object to sanitize.
+ * @returns A sanitized TArticleDto object with sanitized `link`, `preview`, `publishDate`, `publishPlace`, and `_id` fields.
+ */ const sanitizeArticleDto = (dto: TArticleDto): TArticleDto => {
   const preview = sanitizeUtil.sanitizedObjectField(dto?.preview) || "";
   const link = sanitizeUtil.sanitizedObjectField(dto?.link) || "";
   const publishDate = sanitizeUtil.sanitizedObjectField(dto?.publishDate) || "";
@@ -22,6 +28,15 @@ const sanitizeArticleDto = (dto: TArticleDto): TArticleDto => {
     _id,
   };
 };
+/**
+ * Validates the properties of a TArticleDto object by ensuring that each field
+ * is processed through a validation utility and throws an AppError if any of the
+ * fields are invalid.
+ *
+ * @param dto - The TArticleDto object to validate.
+ * @returns An object containing the validation errors for the `link`, `preview`, `publishDate`, `publishPlace`, and `_id` fields.
+ * @throws AppError if any of the fields are invalid.
+ */
 const validateArticleDto = (
   dto: TArticleDto
 ): Record<keyof TArticleDto, string> => {
@@ -66,7 +81,13 @@ const validateArticleDto = (
   }
   return errors;
 };
-
+/**
+ * Converts a FormData object into a TArticleDto object by extracting the `link`, `preview`, `publishDate`, `publishPlace`, and `_id` fields
+ * from the FormData object and returning a new object with those fields.
+ *
+ * @param formData - The FormData object to convert.
+ * @returns An object containing the `link`, `preview`, `publishDate`, `publishPlace`, and `_id` fields from the FormData object.
+ */
 const fromDataToDto = (formData: FormData): TArticleDto => {
   const publishDate = formData.get("publishDate") as string;
   const link = formData.get("link") as string;
@@ -82,6 +103,11 @@ const fromDataToDto = (formData: FormData): TArticleDto => {
     publishPlace,
   };
 };
+/**
+ * Returns an empty TArticleDto object with all fields set to empty strings.
+ *
+ * @returns An empty TArticleDto object with all fields set to empty strings.
+ */
 const getEmpty = (): TArticleDto => {
   return {
     publishPlace: "",

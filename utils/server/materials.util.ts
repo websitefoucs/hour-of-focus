@@ -2,10 +2,18 @@
 import { sanitizeUtil } from "./sanitize.util";
 import { validationUtil } from "../validation.util";
 import { AppError } from "./Error.util";
+import { isValidObjectId } from "@/lib/mongoClient";
 //Types
 import { TMaterialDto } from "@/types/materials.type";
-import { isValidObjectId } from "@/lib/mongoClient";
 
+/**
+ * Sanitizes the properties of a TMaterialDto object by ensuring that each field
+ * is processed through a sanitization utility and defaults to an empty string
+ * if the field is undefined or null.
+ *
+ * @param dto - The TMaterialDto object to sanitize.
+ * @returns A sanitized TMaterialDto object with sanitized `link`, `subject`, and `_id` fields.
+ */
 const sanitizeMaterialsDto = (dto: TMaterialDto): TMaterialDto => {
   const link = sanitizeUtil.sanitizedObjectField(dto?.link) || "";
   const subject = sanitizeUtil.sanitizedObjectField(dto?.subject) || "";
@@ -17,6 +25,15 @@ const sanitizeMaterialsDto = (dto: TMaterialDto): TMaterialDto => {
     _id,
   };
 };
+/**
+ * Validates the properties of a TMaterialDto object by ensuring that each field
+ * is processed through a validation utility and throws an AppError if any of the
+ * fields are invalid.
+ *
+ * @param dto - The TMaterialDto object to validate.
+ * @returns An object containing the validation errors for the `link`, `subject`, and `_id` fields.
+ * @throws AppError if any of the fields are invalid.
+ */
 const validateMaterialsDto = (
   dto: TMaterialDto
 ): Record<keyof TMaterialDto, string> => {
@@ -29,8 +46,6 @@ const validateMaterialsDto = (
   );
   if (linkErrorLength) errors.link = linkErrorLength;
 
-  const subjectError = validationUtil.validateExistence("נושא", dto?.subject);
-  if (subjectError) errors.subject = subjectError;
   const subjectErrorLength = validationUtil.validateStrLength(
     "נושא",
     2,
@@ -48,7 +63,13 @@ const validateMaterialsDto = (
   }
   return errors;
 };
-
+/**
+ * Converts a FormData object into a TMaterialDto object by extracting the `link`, `subject`, and `_id` fields
+ * from the FormData object and returning a new object with those fields.
+ *
+ * @param formData - The FormData object to convert.
+ * @returns An object containing the `link`, `subject`, and `_id` fields from the FormData object.
+ */
 const fromDataToDto = (
   formData: FormData
 ): { data: TMaterialDto; imgFile: File } => {
@@ -66,7 +87,11 @@ const fromDataToDto = (
     imgFile,
   };
 };
-
+/**
+ * Returns an empty TMaterialDto object with all fields set to empty strings.
+ *
+ * @returns An empty TMaterialDto object with all fields set to empty strings.
+ */
 const getEmpty = (): TMaterialDto => {
   return {
     imgPath: "",

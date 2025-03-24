@@ -8,10 +8,10 @@ export type TTestimony = {
   createAt?: string;
 };
 
-export type TTestimonyDto = Omit<TTestimony, "createAt">;
+export type TTestimonyDto = Omit<TTestimony, "createAt" | "updateAt">;
 
 export type TTestimonyDocument = Document &
-  Omit<TTestimony, "_id" | "createdAt"> & {
+  Omit<TTestimony, "_id" | "createAt"> & {
     _id?: ObjectId;
     updateAt?: Date;
   };

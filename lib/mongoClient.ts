@@ -12,8 +12,6 @@ const options = { appName: "hour-of-focus" };
 let mongoClient: MongoClient;
 
 if (process.env.NODE_ENV === "development") {
-  // In development mode, use a global variable so that the value
-  // is preserved across module reloads caused by HMR (Hot Module Replacement).
   // eslint-disable-next-line prefer-const
   let globalWithMongo = global as typeof globalThis & {
     _mongoClient?: MongoClient;
@@ -27,7 +25,6 @@ if (process.env.NODE_ENV === "development") {
   // In production mode, it's best to not use a global variable.
   mongoClient = new MongoClient(uri, options);
 }
-
 
 //Objectid validation is here because validation util my be used in the front
 export const isValidObjectId = (id: string): boolean => {

@@ -5,21 +5,16 @@ export type TMaterial = {
   imgPath?: string;
   link: string;
   subject: string;
-  updatedAt?: string;
-  createdAt?: string;
+  updateAt?: string;
+  createAt?: string;
 };
 
-export type TMaterialDto = Omit<
-  TMaterial,
-  "createBy" | "updateBy" | "createdAt"
-> & {
-
-};
+export type TMaterialDto = Omit<TMaterial, "updateAt" | "createAt">;
 
 export type TMaterialDocument = Document &
-  Omit<TMaterial, "_id" | "createBy" | "updateBy" | "createdAt"> & {
+  Omit<TMaterial, "_id" | "updateAt" | "createAt"> & {
     _id?: ObjectId;
-    updatedAt?: Date;
+    updateAt?: Date;
   };
 
 export type TMaterialFilter = {

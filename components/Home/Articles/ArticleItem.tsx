@@ -21,14 +21,14 @@ export default function ArticleItem({
        ${isFading ? "opacity-0" : "opacity-100"}`}
     >
       <p className="text-right text-18 pr-1 text-mainGray-800 italic line-clamp-3">
-        {preview}
+        {preview||""}
       </p>
 
       <p className="text-mainGray-500 xs:text-18 text-16 text-right">
-        <b>{publishPlace}</b>, {publishDate}
+        <b>{publishPlace||""}</b>, {publishDate||""}
       </p>
       <LinkCmp
-        href={link}
+        href={link||""}
         styleMode="arrow"
         styleSize="none"
         className="items-start place-items-start justify-start"

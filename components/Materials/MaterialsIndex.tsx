@@ -21,7 +21,7 @@ interface MaterialsIndexProps {
  */
 export default function MaterialsIndex({ materials }: MaterialsIndexProps) {
   return (
-    <section className="flex flex-col gap-gaps pb-gaps md:pb-gaps-md w-full ">
+    <section className="flex flex-col gap-gaps pb-gaps md:pb-gaps-md w-full min-h-[35rem] ">
       <HeroCmp text="מאגר חומרי לימוד למתנדבים" />
       <ItemList
         items={materials}

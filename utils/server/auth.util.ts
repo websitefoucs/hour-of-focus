@@ -23,6 +23,12 @@ const formDataToDto = (
 
   return { dto: { email, password }, passwordConfirm };
 };
+/**
+ * Sanitizes the authentication DTO by ensuring that each field is processed through a sanitization utility.
+ *
+ * @param dto - The authentication DTO to sanitize.
+ * @returns A sanitized authentication DTO with sanitized `password` and `email` fields.
+ */
 const sanitizeAuthDto = (dto: TAuthDto): TAuthDto => {
   const password = sanitizeUtil.sanitizedObjectField(dto?.password) || "";
   const email = sanitizeUtil.sanitizedObjectField(dto?.email) || "";

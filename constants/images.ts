@@ -1,5 +1,4 @@
 export const LOGO = "/imgs/logo.svg";
-
 export const GINGER_KID_IMAGE =
   "https://res.cloudinary.com/dyzqa6uuu/image/upload/v1742072131/hof/piz0kiogdtnp8u9up22u.webp";
 export const PEOPLE_ON_LAWN_IMAGE =

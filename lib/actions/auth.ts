@@ -71,6 +71,7 @@ export const signIn = async (
 
   redirect("/admin");
 };
+//KEEP TILL PROJECT COMPLETE
 // export const signUp = async (
 //   state: TFormState<TAuthDto>,
 //   formData: FormData
@@ -120,7 +121,6 @@ export const signIn = async (
 //     };
 //   }
 
-//   redirect("/admin");
 // };
 /**
  * Signs the user out by clearing the session cookie.
