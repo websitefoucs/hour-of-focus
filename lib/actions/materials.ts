@@ -125,7 +125,7 @@ export async function updateMaterial(
       throw AppError.create("Failed to update Materials");
     }
 
-    revalidatePath("/admin/@materials");
+    revalidatePath("/admin/materials");
     revalidatePath(`/materials`);
   } catch (error) {
     const err = AppError.handleResponse(error);
