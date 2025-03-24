@@ -282,6 +282,6 @@ export async function deleteMaterial(id: string): Promise<void> {
     throw AppError.create(`Failed to delete Materials -> ${error}`);
   }
 
-  revalidatePath("/admin/@materials");
+  revalidatePath("/admin/materials");
   revalidatePath(`/materials`);
 }
