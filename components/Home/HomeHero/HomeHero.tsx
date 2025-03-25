@@ -32,7 +32,7 @@ import {
 export default function HomeHero() {
   return (
     <div className="w-full grid grid-cols-1 grid-rows-1 relative max-h-none order-1">
-      <div className="bg-cover bg-center grid-stack bg-fixed w-full h-full relative bg-blend-multiply bg-ginger-kid before:backdrop-blur-sm before:inset-0 before:absolute before:bg-imageOverlay-60"></div>
+      <div className="bg-cover bg-center grid-stack bg-scroll w-full h-full relative bg-blend-multiply bg-ginger-kid before:backdrop-blur-sm before:inset-0 before:absolute before:bg-imageOverlay-60"></div>
 
       <div className="w-full h-full grid-stack pb-gaps z-10 flex flex-col items-center justify-center gap-8 py-8 px-sides md:px-sides-sm text-mainWhite-0 text-center">
         <p className="text-mainWhite-0 text-20 md:text-24 font-semibold leading-28">
