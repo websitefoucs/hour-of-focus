@@ -36,7 +36,12 @@ const parseQuillDelta = (delta?: TTextBlock[]) => {
       }
       if (block.attributes.link)
         content = (
-          <LinkCmp className="sm:text-16 underline hover:text-mainOrange-700 transition-all duration-200" key={index} href={block.attributes.link}>
+          <LinkCmp
+            target="_blank"
+            className="sm:text-16 underline hover:text-mainOrange-700 transition-all duration-200"
+            key={index}
+            href={block.attributes.link}
+          >
             {content}
           </LinkCmp>
         );
