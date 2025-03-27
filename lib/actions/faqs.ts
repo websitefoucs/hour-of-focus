@@ -34,7 +34,6 @@ export async function createFaq(
 
     faqServerUtils.validateFaqDto(dto);
     const { deltaAnswer, deltaQuestion, faqType } = dto;
-    
 
     const collection = await getCollection<TFaqDocument>("faqs");
     const { acknowledged, insertedId } = await collection.insertOne({
@@ -44,7 +43,7 @@ export async function createFaq(
     });
 
     if (!acknowledged || !insertedId) {
-      throw AppError.create("תקלת מערכת ביצירת שאלה");
+      throw AppError.create("תקלת מערכת ביצרת שאלה חדשה צור קשר עם תמיכה");
     }
 
     revalidatePath("/admin/faqs");
@@ -99,7 +98,7 @@ export async function updateFaq(
     );
 
     if (!modifiedCount) {
-      throw AppError.create("Failed to update FAQ");
+      throw AppError.create("תקלת מערכת בעדכון שאלה, צור קשר עם התמיכה");
     }
 
     revalidatePath("/admin/faqs");
@@ -167,7 +166,7 @@ export async function getFaqs(filter: TFaqFilter): Promise<TFaq[]> {
     const collection = await getCollection<TFaqDocument>("faqs");
     return (await collection.aggregate(pipeline).toArray()) || [];
   } catch (error) {
-    AppError.create(`Failed to get FAQs -> ${error}`);
+    AppError.create(`תקלת מערכת בקבלת שאלות, צור קשר עם התמיכה -> ${error}`);
     return [];
   }
 }

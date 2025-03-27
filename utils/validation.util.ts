@@ -13,12 +13,19 @@ import { TQuillAttributes, TQuillTextSize, TTextBlock } from "@/types/app.type";
  * @returns An error message or null if valid.
  */
 const validateStrLength = (
-  filedName: string,
+  fieldName: string,
   length: number,
   str?: string
 ): string | null => {
-  if (!str || str.trim().length < length) {
-    return ` ${filedName} חייב להיות לפחות ${length} תווים.`;
+  if (!str) return ` ${fieldName} חייב להיות לפחות ${length} תווים.`;
+
+  // Count characters including escaped sequence for Quill editor
+  const actualLength = str
+    .replace(/\n/g, "x") // Replace escape sequences with a single char
+    .trim().length;
+
+  if (actualLength < length) {
+    return ` ${fieldName} חייב להיות לפחות ${length} תווים.`;
   }
   return null;
 };
@@ -105,15 +112,33 @@ const validateDelta = (
 ): void => {
   if (!delta) return;
 
-  delta.forEach((block) => {
+  let newDelta: TTextBlock[] = delta;
+
+  for (let i = 0; i < delta.length; i++) {
+    if (delta[i].insert === "\n") {
+      newDelta = delta.toSpliced(i, 1);
+      break;
+    }
+  }
+
+  if (!newDelta.length) {
+    Object.assign(errors, { [`${name}`]: "שדה חובה" });
+    return;
+  }
+
+  newDelta.forEach((block) => {
     const blockErrors: Record<string, string> = {};
 
     const insertError = validationUtil.validateStrLength(
       "טקסט",
-      1,
+      2,
       block.insert
     );
-    if (insertError) {
+    if (
+      insertError &&
+      block?.attributes &&
+      Object.keys(block?.attributes)?.length === 0
+    ) {
       blockErrors[`${name}`] = insertError;
     }
 

@@ -76,10 +76,10 @@ export default function AdminFaqEditInputs({
         renderItem={(item) => <RadioBtn item={item} />}
       />
       <div>
-        <Label className="text-18" htmlFor="deltaAnswer">
+        <Label className="text-18" htmlFor="deltaQuestion">
           שאלה
         </Label>
-        <ErrorLabel htmlFor="deltaAnswer" error={errors?.deltaAnswer} />
+        <ErrorLabel htmlFor="deltaQuestion" error={errors?.deltaQuestion} />
 
         <RichTextEditor
           quillRef={deltaQuestionRef}
@@ -90,7 +90,7 @@ export default function AdminFaqEditInputs({
         <Label className="text-18" htmlFor="deltaAnswer">
           תשובה
         </Label>
-        <ErrorLabel htmlFor="deltaAnswer" error={errors?.deltaQuestion} />
+        <ErrorLabel htmlFor="deltaAnswer" error={errors?.deltaAnswer} />
         <RichTextEditor quillRef={deltaAnswerRef} delta={data?.deltaAnswer} />
       </div>
     </>
