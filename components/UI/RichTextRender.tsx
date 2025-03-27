@@ -2,6 +2,7 @@
 import React, { JSX } from "react";
 //Types
 import { TTextBlock } from "@/types/app.type";
+import LinkCmp from "./LinkCmp";
 
 /**
  * Parses a Quill Delta object into React components.
@@ -35,9 +36,9 @@ const parseQuillDelta = (delta?: TTextBlock[]) => {
       }
       if (block.attributes.link)
         content = (
-          <a key={index} href={block.attributes.link}>
+          <LinkCmp className="sm:text-16 underline hover:text-mainOrange-700 transition-all duration-200" key={index} href={block.attributes.link}>
             {content}
-          </a>
+          </LinkCmp>
         );
     }
 
