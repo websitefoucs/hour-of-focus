@@ -31,7 +31,7 @@ export default function ExplainVolunteersInfo() {
 }
 
 const Info = (
-  <article className="flex flex-col gap-3 xl:gap-6 font-normal ">
+  <article id="good" className="flex flex-col gap-3 xl:gap-6 font-normal scroll-m-40 ">
     <h5 className="">שיטת המעשים הטובים 🌍💙</h5>
 
     <h6 className="text-mainGray-500 font-medium leading-30 text-20 pb-3 ">
