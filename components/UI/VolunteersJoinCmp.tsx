@@ -21,7 +21,7 @@ export default function VolunteersJoinCmp({
   isHome?: boolean;
 }): React.JSX.Element {
   return (
-    <div className="flex flex-col gap-10 px-sides">
+    <div id="join" className="flex flex-col gap-10 px-sides scroll-m-24">
       <Article isHome={isHome} />
       <Nav />
     </div>
