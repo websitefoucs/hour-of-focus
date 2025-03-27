@@ -11,11 +11,11 @@ export default function TestimonyItem({
 }: TestimonyItemProps) {
   return (
     <article
-      className={`w-full text-16 sm:text-24 font-normal text-mainGray-800 italic  h-52 leading-8 md:leading-40 flex justify-center items-center transition-opacity duration-300 truncate ${
+      className={`w-full text-16 sm:text-24 font-normal text-mainGray-800 italic   leading-8 md:leading-40 flex justify-center items-center transition-all duration-300  ${
         isFading ? "opacity-0" : "opacity-100"
       }`}
     >
-      <div className="truncate text-wrap w-full px-2">
+      <div className=" text-wrap w-full px-2">
         {testimony?.delta ? <RichTextRender delta={testimony?.delta} /> : ""}
       </div>
     </article>
