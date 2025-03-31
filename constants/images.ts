@@ -1,4 +1,8 @@
+//Images locally stored
 export const LOGO = "/imgs/logo.svg";
+export const NOT_FOUND_IMAGE = "/images/imgs.svg";
+
+//Image URLs from Cloudinary
 export const GINGER_KID_IMAGE =
   "https://res.cloudinary.com/dyzqa6uuu/image/upload/v1742072131/hof/piz0kiogdtnp8u9up22u.webp";
 export const PEOPLE_ON_LAWN_IMAGE =
@@ -23,4 +27,3 @@ export const I_SCHOOL_IMAGE =
   "https://res.cloudinary.com/dyzqa6uuu/image/upload/v1741629312/hof/osy6ipeqip77u4hymaqc.png";
 export const DEFAULT_IMAGE =
   "https://res.cloudinary.com/dyzqa6uuu/image/upload/v1742384690/hof/yeq1yyvb1tdfyuwuxfga.avif";
-export const NOT_FOUND_IMAGE = "/images/imgs.svg";

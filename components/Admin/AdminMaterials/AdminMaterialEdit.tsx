@@ -80,6 +80,7 @@ export default function AdminMaterialEdit({
         public_id={data?.public_id}
         itemId={data?._id}
         serverError={errors?.imgPath}
+        serverErrorFlag={Object.keys(errors || {}).length > 0}
       />
       <Input
         type="text"
