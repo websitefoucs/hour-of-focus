@@ -23,7 +23,7 @@ interface FaqIndexProps {
  */
 export default function AdminFaqsIndex({ faqs }: FaqIndexProps) {
   return (
-    <section className="px-sides md:pl-8 w-full pb-gaps">
+    <section className="w-full">
       <header className="flex justify-between items-center pb-8">
         <h3 className="text-24 sm:text-36">שאלות ותשובות</h3>
         <HandleEdit

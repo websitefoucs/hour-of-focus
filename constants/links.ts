@@ -25,10 +25,13 @@ export const MATERIALS_PAGE_LINK = "/materials";
 export const HOME_PAGE_LINK = "/";
 
 //Admin navigation links
-export const ADMIN_FAQS_PAGE_LINK = "/admin/faqs";
+export const ADMIN_FAQS_PAGE_LINK = "/admin/faqs/students";
 export const ADMIN_MATERIALS_PAGE_LINK = "/admin/materials";
 export const ADMIN_ARTICLES_PAGE_LINK = "/admin/articles";
 export const ADMIN_TESTIMONIES_PAGE_LINK = "/admin/testimonies";
+
+export const ADMIN_FAQS_STUDENTS_PAGE_LINK = "/admin/faqs/students";
+export const ADMIN_FAQS_VOLUNTEERS_PAGE_LINK = "/admin/faqs/volunteers";
 
 //Social media links
 export const FACEBOOK_LINK = "https://www.facebook.com/0focushour0";

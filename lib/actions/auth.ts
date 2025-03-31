@@ -13,7 +13,6 @@ import { authServerUtils } from "@/utils/server/auth.util";
 import { AppError } from "@/utils/server/Error.util";
 //Packages
 import bcrypt from "bcrypt";
-
 /**
  * Signs in a user with the provided form data.
  *
@@ -71,57 +70,6 @@ export const signIn = async (
 
   redirect("/admin");
 };
-//KEEP TILL PROJECT COMPLETE
-// export const signUp = async (
-//   state: TFormState<TAuthDto>,
-//   formData: FormData
-// ): Promise<TFormState<TAuthDto>> => {
-//   let authDto;
-//   try {
-//     const { dto, passwordConfirm } = authServerUtils.formDataToDto(formData);
-//     authDto = authServerUtils.sanitizeAuthDto(dto);
-//     authServerUtils.validateAuthSignUpDto(authDto, passwordConfirm);
-
-//     const { username, password, email } = authDto;
-//     if (!email || !password) {
-//       throw AppError.create("missing credentials", 400);
-//     }
-//     const userCollection = await getCollection<TUserDocument>("users");
-
-//     const existingUser = await userCollection.findOne({ email });
-
-//     if (existingUser) {
-//       throw AppError.create("username taken", 400);
-//     }
-
-//     const saltRounds = 10;
-//     const passwordHash = await bcrypt.hash(password, saltRounds);
-
-//     const user = await userCollection.insertOne({
-//       username,
-//       passwordHash,
-//       email,
-//     });
-
-//     if (!user.acknowledged) {
-//       throw AppError.create("Error creating user");
-//     }
-
-//     const _id = user.insertedId.toString();
-
-//     const token = await authServerUtils.createJWT(_id);
-
-//     await authServerUtils.createCookie(token);
-//   } catch (error) {
-//     const err = AppError.handleResponse(error);
-//     return {
-//       errors: err.errors as Record<keyof TAuthDto, string>,
-//       message: err.message,
-//       data: authDto,
-//     };
-//   }
-
-// };
 /**
  * Signs the user out by clearing the session cookie.
  *
