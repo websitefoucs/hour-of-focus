@@ -2,7 +2,8 @@
  * Custom hook to manage accessibility settings.
  *
  * @returns {Object} An object containing the current accessibility settings,
- * a function to change the zoom level, and a function to toggle accessibility options.
+ * a function to change the zoom level, a function to toggle accessibility options,
+ * and a function to reset accessibility settings to their default values.
  *
  * @property {Object} accessibility - The current accessibility settings.
  * @property {number} accessibility.zoom - The current zoom level (default is 1).
@@ -15,22 +16,25 @@
  * @param {number} dir - The direction to change the zoom level (positive to increase, negative to decrease).
  * @property {function} onChangeAccessibility - Function to toggle an accessibility option.
  * @param {keyof TAcccibility} name - The name of the accessibility option to toggle.
+ * @property {function} restAccessibility - Function to reset all accessibility settings to their default values.
  */
 import { TAcccibility } from "@/types/app.type";
 import { useState } from "react";
+
+const EMPTY_ACCESSIBILITY = {
+  zoom: 1,
+  grayscale: false,
+  "invert-contrast": false,
+  "highlight-links": false,
+  "highlight-headers": false,
+  "stop-animations": false,
+};
 
 export const useAccessibility = () => {
   const MIN_ZOOM = 1;
   const MAX_ZOOM = 3;
 
-  const [accessibility, setAccessibility] = useState({
-    zoom: 1,
-    grayscale: false,
-    "invert-contrast": false,
-    "highlight-links": false,
-    "highlight-headers": false,
-    "stop-animations": false,
-  });
+  const [accessibility, setAccessibility] = useState(EMPTY_ACCESSIBILITY);
 
   const onZoomChange = (dir: number) => {
     setAccessibility((prev) => {
@@ -48,5 +52,14 @@ export const useAccessibility = () => {
     });
   };
 
-  return { accessibility, onZoomChange, onChangeAccessibility };
+  const restAccessibility = () => {
+    setAccessibility({ ...EMPTY_ACCESSIBILITY });
+  };
+
+  return {
+    accessibility,
+    onZoomChange,
+    onChangeAccessibility,
+    restAccessibility,
+  };
 };

@@ -59,11 +59,25 @@ export const ZoomInSvg = () => {
 
 export const GrayScaleSvg = () => {
   return (
-  <svg       aria-label="gray-scale icon"
-   viewBox="0 0 18 19" className="fill-none w-4 h-4">
-<path d="M6.68474 2.55069L1.08687 8.14857C0.79004 8.44549 0.623291 8.84814 0.623291 9.26798C0.623291 9.68783 0.79004 10.0905 1.08687 10.3874L5.56454 14.8659C5.71158 15.0131 5.88621 15.1299 6.07842 15.2095C6.27064 15.2892 6.47667 15.3302 6.68474 15.3302C6.89282 15.3302 7.09885 15.2892 7.29107 15.2095C7.48328 15.1299 7.6579 15.0131 7.80495 14.8659L13.402 9.26798L6.68474 2.55069ZM6.68474 2.55069L5.56533 1.43127" stroke="#454545" strokeLinecap="round" strokeLinejoin="round"/>
-<path d="M14.8333 11.875C14.8333 11.875 17.2083 14.2445 17.2083 15.7439C17.2083 17.0541 16.1435 18.1189 14.8333 18.1189C13.523 18.1189 12.4678 17.0541 12.4583 15.7439C12.4662 14.2437 14.8333 11.875 14.8333 11.875Z" stroke="#454545" strokeMiterlimit="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-</svg>
+    <svg
+      aria-label="gray-scale icon"
+      viewBox="0 0 18 19"
+      className="fill-none w-4 h-4"
+    >
+      <path
+        d="M6.68474 2.55069L1.08687 8.14857C0.79004 8.44549 0.623291 8.84814 0.623291 9.26798C0.623291 9.68783 0.79004 10.0905 1.08687 10.3874L5.56454 14.8659C5.71158 15.0131 5.88621 15.1299 6.07842 15.2095C6.27064 15.2892 6.47667 15.3302 6.68474 15.3302C6.89282 15.3302 7.09885 15.2892 7.29107 15.2095C7.48328 15.1299 7.6579 15.0131 7.80495 14.8659L13.402 9.26798L6.68474 2.55069ZM6.68474 2.55069L5.56533 1.43127"
+        stroke="#454545"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M14.8333 11.875C14.8333 11.875 17.2083 14.2445 17.2083 15.7439C17.2083 17.0541 16.1435 18.1189 14.8333 18.1189C13.523 18.1189 12.4678 17.0541 12.4583 15.7439C12.4662 14.2437 14.8333 11.875 14.8333 11.875Z"
+        stroke="#454545"
+        strokeMiterlimit="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 };
 
@@ -144,7 +158,6 @@ export const EnvelopSvg = ({ className }: { className?: string }) => {
   return (
     <svg
       aria-label="Email icon"
-   
       viewBox="0 0 17 16"
       xmlns="http://www.w3.org/2000/svg"
       className={className + " fill-none"}
@@ -504,6 +517,17 @@ export const HamburgerSvg = () => {
         y="65"
         rx="5"
       ></rect>
+    </svg>
+  );
+};
+
+export const RestSvg = ({ className }: { className?: string }) => {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-label="Rest icon">
+      <g id="SVGRepo_iconCarrier">
+        <path d="M22.719 12A10.719 10.719 0 0 1 1.28 12h.838a9.916 9.916 0 1 0 1.373-5H8v1H2V2h1v4.2A10.71 10.71 0 0 1 22.719 12z"></path>
+        <path fill="none" d="M0 0h24v24H0z"></path>
+      </g>
     </svg>
   );
 };
