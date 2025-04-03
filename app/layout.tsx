@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Open_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 
 const open_sans = Open_Sans({
   weight: ["300", "400", "500", "600", "700", "800"],
@@ -20,13 +21,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="he" dir="rtl" >
+    <html lang="he" dir="rtl">
       <head></head>
       <body
         className={`${open_sans.className} max-w-[100svw] antialiased text-normal relative`}
       >
         {children}
+        <Analytics />
       </body>
-      </html>
+    </html>
   );
 }
