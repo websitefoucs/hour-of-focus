@@ -48,9 +48,9 @@ export const signIn = async (
 
     const match = await bcrypt.compare(password, user.passwordHash);
     if (!match) {
-      throw AppError.create("Invalid credentials", 401, true, {
-        email: "Invalid credentials",
-        password: "Invalid credentials",
+      throw AppError.create("", 401, true, {
+        email: "פרטים שגויים",
+        password: "פרטים שגויים",
       });
     }
 
