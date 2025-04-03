@@ -8,6 +8,7 @@ export type TFaq = {
   createAt?: string;
   updateAt?: string;
   faqType?: TFaqType;
+  position?: number;
 };
 
 export type TFaqDto = Omit<TFaq, "createAt"> & {};

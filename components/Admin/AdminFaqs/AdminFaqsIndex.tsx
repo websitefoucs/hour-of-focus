@@ -32,7 +32,7 @@ export default function AdminFaqsIndex({ faqs }: FaqIndexProps) {
         />
       </header>
       <ItemList
-        listStyle=" grid gap-4  max-h-full w-full"
+        listStyle=" grid gap-4 max-h-full w-full"
         items={faqs}
         renderItem={(faq) => <AdminFaqPreview faq={faq} />}
       />

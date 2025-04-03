@@ -3,10 +3,16 @@
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 //DB
-import { ObjectId } from "mongodb";
+import { Collection, ObjectId } from "mongodb";
 import { getCollection, isValidObjectId } from "@/lib/mongoClient";
 //Types
-import { TFaq, TFaqDocument, TFaqDto, TFaqFilter } from "@/types/faqs";
+import {
+  TFaq,
+  TFaqDocument,
+  TFaqDto,
+  TFaqFilter,
+  TFaqType,
+} from "@/types/faqs";
 import { TFormState } from "@/types/app.type";
 //Utils
 import { AppError } from "@/utils/server/Error.util";
@@ -25,6 +31,7 @@ export async function createFaq(
   formData: FormData
 ): Promise<TFormState<TFaqDto>> {
   let dto;
+  let faqTypeRedirect: string | undefined;
   try {
     await authServerUtils.verifyAuth();
 
@@ -34,19 +41,23 @@ export async function createFaq(
 
     faqServerUtils.validateFaqDto(dto);
     const { deltaAnswer, deltaQuestion, faqType } = dto;
+    faqTypeRedirect = dto.faqType || "students";
 
     const collection = await getCollection<TFaqDocument>("faqs");
+    const position = await getLastPosition(collection, faqType);
+
     const { acknowledged, insertedId } = await collection.insertOne({
       deltaAnswer,
       deltaQuestion,
       faqType,
+      position,
     });
 
     if (!acknowledged || !insertedId) {
       throw AppError.create("תקלת מערכת ביצרת שאלה חדשה צור קשר עם תמיכה");
     }
 
-    revalidatePath("/admin/faqs");
+    revalidatePath(`/admin/faqs/${faqType}`);
     revalidatePath(`/faqs/${faqType}`);
   } catch (error) {
     const err = AppError.handleResponse(error);
@@ -57,7 +68,7 @@ export async function createFaq(
     };
   }
 
-  redirect("/admin/faqs");
+  redirect(`/admin/faqs/${faqTypeRedirect}`);
 }
 /**
  * Updates an FAQ entry in the database.
@@ -73,18 +84,30 @@ export async function updateFaq(
   formData: FormData
 ): Promise<TFormState<TFaqDto>> {
   let dto;
+  let faqTypeRedirect: string | undefined;
   try {
     await authServerUtils.verifyAuth();
 
     const data = faqServerUtils.fromDataToDto(formData);
 
     dto = faqServerUtils.sanitizeFaqDto(data);
+    faqTypeRedirect = dto.faqType || "students";
 
     faqServerUtils.validateFaqDto(dto);
 
-    const { deltaAnswer, deltaQuestion, faqType, _id } = dto;
+    const { deltaAnswer, deltaQuestion, faqType, _id, position } = dto;
 
     const collection = await getCollection<TFaqDocument>("faqs");
+    if (position !== prevState.data?.position) {
+      await _updatePositions(
+        faqType,
+        position!,
+        prevState.data!.position!,
+        collection,
+        _id!
+      );
+    }
+
     const { modifiedCount } = await collection.updateOne(
       { _id: new ObjectId(_id) },
       {
@@ -101,7 +124,7 @@ export async function updateFaq(
       throw AppError.create("תקלת מערכת בעדכון שאלה, צור קשר עם התמיכה");
     }
 
-    revalidatePath("/admin/faqs");
+    revalidatePath(`/admin/faqs/${faqType}`);
     revalidatePath(`/faqs/${faqType}`);
   } catch (error) {
     const err = AppError.handleResponse(error);
@@ -111,7 +134,7 @@ export async function updateFaq(
       data: dto,
     };
   }
-  redirect("/admin/faqs");
+  redirect(`/admin/faqs/${faqTypeRedirect}`);
 }
 /**
  * Retrieves FAQs based on the provided filter criteria.
@@ -143,6 +166,7 @@ export async function getFaqs(filter: TFaqFilter): Promise<TFaq[]> {
           _id: { $toString: "$_id" },
           deltaQuestion: 1,
           deltaAnswer: 1,
+          position: 1,
           createAt: {
             $dateToString: {
               date: { $toDate: "$_id" },
@@ -160,9 +184,12 @@ export async function getFaqs(filter: TFaqFilter): Promise<TFaq[]> {
           deltaQuestion: 1,
           deltaAnswer: 1,
           faqType: 1,
+          position: 1,
         },
       });
     }
+
+    pipeline.push({ $sort: { position: 1 } });
     const collection = await getCollection<TFaqDocument>("faqs");
     return (await collection.aggregate(pipeline).toArray()) || [];
   } catch (error) {
@@ -223,7 +250,7 @@ export async function getFaqToEdit(id: string): Promise<TFaqDto> {
  * @throws {AppError} If the FAQ deletion fails or if authentication fails.
  * @returns {Promise<void>} A promise that resolves when the FAQ is deleted and paths are revalidated.
  */
-export async function deleteFaq(id: string, type?: string): Promise<void> {
+export async function deleteFaq(id: string, faqType?: string): Promise<void> {
   try {
     await authServerUtils.verifyAuth();
 
@@ -237,6 +264,77 @@ export async function deleteFaq(id: string, type?: string): Promise<void> {
   } catch (error) {
     throw AppError.create(`Failed to delete FAQ -> ${error}`);
   }
-  revalidatePath("/admin/faqs");
-  revalidatePath(`/faqs/${type}`);
+  revalidatePath(`/admin/faqs/${faqType}`);
+  revalidatePath(`/faqs/${faqType}`);
+}
+
+/**
+ * Updates the positions of FAQ entries in the database.
+ * This is a simplified approach that works efficiently for small collections
+ * (typically 10-20 FAQs maximum).
+ *
+ * @param {TFaqType | undefined} faqType - The type of FAQ to filter by.
+ * @param {number} position - The new position for the FAQ entry.
+ * @param {number} oldPosition - The old position of the FAQ entry.
+ * @param {Collection} collection - The MongoDB collection to update.
+ * @param {string} updateItemId - The ID of the FAQ entry being updated.
+ * @returns {Promise<void>} A promise that resolves when the positions are updated.
+ */
+async function _updatePositions(
+  faqType: TFaqType | undefined,
+  position: number,
+  oldPosition: number,
+  collection: Collection,
+  updateItemId: string
+): Promise<void> {
+  const faqs = await getFaqs({ faqType, isFull: true });
+
+  const idx = faqs.findIndex((faq) => faq._id === updateItemId);
+  if (idx === -1) {
+    throw AppError.create("שגיאה במערכת");
+  }
+
+  const dir = position > oldPosition ? 0.5 : -0.5;
+  faqs[idx].position = position + dir;
+
+  const bulkOps = faqs
+    .sort((a, b) => {
+      return a.position! < b.position! ? -1 : 1;
+    })
+    .map((faq, index) => {
+      return { ...faq, position: index + 1 };
+    })
+    .map((faq) => {
+      return {
+        updateOne: {
+          filter: { _id: new ObjectId(faq._id) },
+          update: { $set: { position: faq.position } },
+        },
+      };
+    });
+
+  await collection.bulkWrite(bulkOps);
+}
+/**
+ * Retrieves the last position of a FAQ entry in the database.
+ *
+ * @param {Collection} collection - The MongoDB collection to query.
+ * @param {string} [faqType] - The type of FAQ to filter by.
+ * @returns {Promise<number>} A promise that resolves to the last position number.
+ */
+async function getLastPosition(
+  collection: Collection,
+  faqType?: string
+): Promise<number> {
+  const pipeline = [
+    ...(faqType ? [{ $match: { faqType } }] : []),
+    { $sort: { position: -1 } },
+    { $limit: 1 },
+    { $project: { position: 1 } },
+  ];
+
+  const result = await collection.aggregate(pipeline).toArray();
+
+  const lastPosition = result[0]?.position || 0;
+  return lastPosition + 1;
 }

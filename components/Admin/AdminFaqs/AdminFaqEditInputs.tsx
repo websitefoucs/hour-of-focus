@@ -1,4 +1,17 @@
 "use client";
+/**
+ * AdminFaqEditInputs client component renders the input fields for editing a FAQ entry.
+ *
+ * @component
+ * @param {AdminFaqEditInputsProps} props - The props for the component.
+ * @param {boolean} props.isStudents - A boolean value indicating whether the FAQ entry is for students.
+ * @param {RefObject} props.deltaAnswerRef - A reference to the Quill editor for the answer field.
+ * @param {RefObject} props.deltaQuestionRef - A reference to the Quill editor for the question field.
+ * @param {TValidationError} props.errors - An object containing validation errors for the FAQ entry.
+ * @param {TFaq} props.data - The FAQ entry to edit.
+ *
+ * @returns {JSX.Element} The rendered AdminFaqEditInputs component.
+ */
 //React
 import React, { JSX, RefObject } from "react";
 //Next
@@ -17,9 +30,9 @@ import ErrorLabel from "@/components/UI/ErrorLabel";
 import Input from "@/components/UI/Input";
 import Label from "@/components/UI/Label";
 //Types
+import ItemList from "@/components/UI/ItemList";
 import { TValidationError } from "@/types/app.type";
 import { TFaq } from "@/types/faqs";
-import ItemList from "@/components/UI/ItemList";
 
 interface AdminFaqEditInputsProps {
   isStudents: boolean;
@@ -28,19 +41,6 @@ interface AdminFaqEditInputsProps {
   errors?: TValidationError<Omit<TFaq, "createAt">> | null;
   data?: Omit<TFaq, "createAt"> | undefined;
 }
-/**
- * AdminFaqEditInputs client component renders the input fields for editing a FAQ entry.
- *
- * @component
- * @param {AdminFaqEditInputsProps} props - The props for the component.
- * @param {boolean} props.isStudents - A boolean value indicating whether the FAQ entry is for students.
- * @param {RefObject} props.deltaAnswerRef - A reference to the Quill editor for the answer field.
- * @param {RefObject} props.deltaQuestionRef - A reference to the Quill editor for the question field.
- * @param {TValidationError} props.errors - An object containing validation errors for the FAQ entry.
- * @param {TFaq} props.data - The FAQ entry to edit.
- *
- * @returns {JSX.Element} The rendered AdminFaqEditInputs component.
- */
 export default function AdminFaqEditInputs({
   isStudents,
   errors,
@@ -72,10 +72,24 @@ export default function AdminFaqEditInputs({
     <>
       <ItemList
         items={radios}
-        listStyle="flex gap-2 items-center justify-center w-fit self-center" 
+        listStyle="flex gap-2 items-center justify-center w-fit self-center"
         renderItem={(item) => <RadioBtn item={item} />}
       />
-      <div>
+      {data?._id ? (
+        <Input
+          type="number"
+          name="position"
+          divStyle="w-full flex gap-2 items-center  pl-4"
+          className="w-12 border-mainGray-400 border bg-inherit rounded-base"
+          defaultValue={data?.position}
+        >
+          <Label className="text-18" htmlFor="deltaQuestion">
+            סדר (קטן הוא ראשון)
+          </Label>
+          <ErrorLabel htmlFor="deltaQuestion" error={errors?.deltaQuestion} />
+        </Input>
+      ) : null}
+      <div className="overflow-auto">
         <Label className="text-18" htmlFor="deltaQuestion">
           שאלה
         </Label>
@@ -86,7 +100,7 @@ export default function AdminFaqEditInputs({
           delta={data?.deltaQuestion}
         />
       </div>
-      <div>
+      <div className="overflow-auto max-h-[40%]">
         <Label className="text-18" htmlFor="deltaAnswer">
           תשובה
         </Label>

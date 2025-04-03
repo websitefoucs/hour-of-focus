@@ -11,7 +11,7 @@ import { FAQ_TYPE, TFaqDto, TFaqType } from "@/types/faqs";
  * if the field is undefined or null.
  *
  * @param dto - The TFaqDto object to sanitize.
- * @returns A sanitized TFaqDto object with sanitized `deltaAnswer`, `deltaQuestion`, `faqType`, and `_id` fields.
+ * @returns A sanitized TFaqDto object with sanitized `deltaAnswer`, `deltaQuestion`, `faqType`, and `_id` , `position` fields.
  */
 const sanitizeFaqDto = (dto: TFaqDto): TFaqDto => {
   const deltaAnswer = sanitizeUtil.sanitizeDelta(dto?.deltaAnswer) || [];
@@ -19,12 +19,14 @@ const sanitizeFaqDto = (dto: TFaqDto): TFaqDto => {
   const faqType = (sanitizeUtil.sanitizedObjectField(dto?.faqType) ||
     "students") as TFaqType;
   const _id = sanitizeUtil.sanitizedObjectField(dto?._id) || "";
+  const position = +sanitizeUtil.sanitizedObjectField(dto?.position) || 1;
 
   return {
     deltaAnswer,
     deltaQuestion,
     faqType,
     _id,
+    position,
   };
 };
 /**
@@ -88,12 +90,14 @@ const fromDataToDto = (formData: FormData): TFaqDto => {
   }
   const _id = formData.get("_id") as string;
   const faqType = formData.get("faqType") as TFaqType;
+  const position = +(formData.get("position") as string);
 
   return {
     deltaQuestion,
     deltaAnswer,
     _id,
     faqType,
+    position,
   };
 };
 /**
