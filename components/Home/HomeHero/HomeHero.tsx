@@ -37,7 +37,7 @@ export default function HomeHero() {
 
       <div className="w-full h-full grid-stack pb-gaps z-10 flex flex-col items-center justify-center gap-8 py-8 px-sides md:px-sides-sm text-mainWhite-0 text-center">
         <p className="text-mainWhite-0 text-20 md:text-24 font-semibold leading-28">
-          למען המפונים מהדרום והמצפון
+          למען המפונים מהדרום והצפון
         </p>
 
         <h1 className="text-36 md:text-[4rem]">
