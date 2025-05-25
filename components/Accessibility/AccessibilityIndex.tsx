@@ -49,9 +49,9 @@ export default function AccessibilityIndex() {
       withOverlay={true}
       model={
         <div className="bg-mainWhite-0 w-56 fixed top-0 left-0 h-screen justify-center flex flex-col p-8 rounded-base z-50 gap-2  transition-all duration-300">
-          <h1 className="text-16 leading-28 pb-4 text-mainGray-800">
+          <h2 className="text-16 leading-28 pb-4 text-mainGray-800">
             כלי נגישות
-          </h1>
+          </h2>
           <SizeControl zoom={zoom} onZoomChange={onZoomChange} />
           <ItemList
             listStyle="flex flex-col gap-2"
