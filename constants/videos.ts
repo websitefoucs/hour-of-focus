@@ -1,2 +1,2 @@
 export const HOME_VIDEO_SRC =
-  "https://res.cloudinary.com/dyzqa6uuu/video/upload/v1742826007/hof/bnmnnuaxtahpdqvohoug.mp4";
+  "https://res.cloudinary.com/dtqaakbyl/video/upload/v1753278357/bnmnnuaxtahpdqvohoug_vgzorv.mp4";

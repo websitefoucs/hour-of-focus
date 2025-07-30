@@ -218,6 +218,7 @@ export async function getArticles(isFull?: boolean): Promise<TArticle[]> {
 
     const collection = await getCollection<TArticleDocument>("articles");
     const articles = await collection.aggregate<TArticle>(pipeline).toArray();
+    console.log("🚀 ~ getArticles ~ articles:", articles)
     return articles || [];
   } catch (error) {
     AppError.create(`Failed to get Articles -> ${error}`);
