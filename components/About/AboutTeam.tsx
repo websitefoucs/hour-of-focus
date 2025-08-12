@@ -1,12 +1,21 @@
-import { TEAM_ONE_IMAGE, TEAM_TWO_IMAGE } from "@/constants/images";
+import {
+  ALON_IMAGE,
+  AMIT_IMAGE,
+  NOA_IMAGE,
+  OHAD_IMAGE,
+  ROTEM_IMAGE,
+  SHALEV_IMAGE,
+  SHIRA_IMAGE,
+  YOAV_IMAGE,
+} from "@/constants/images";
 import Image from "next/image";
 import React from "react";
 
 export default function AboutTeam() {
   return (
-    <div className="bg-mainWhite-50 grid justify-items-center py-12 gap-10 w-full">
+    <div className="bg-mainWhite-50 grid justify-items-center py-12 gap-10 w-full px-sides">
       <h4>{`צוות 'שעה של פוקוס'`}</h4>
-      <ul className="flex gap-gaps">
+      <ul className="flex flex-wrap items-center justify-center gap-gaps">
         {items.map((item) => (
           <li
             key={item.name}
@@ -17,9 +26,9 @@ export default function AboutTeam() {
               height={136}
               src={item.src}
               alt="avatar"
-              className="rounded-full"
+              className="rounded-full aspect-square object-fill"
             />
-            <p className="text-18 text-mainGray-800 leading-30">{item.name}</p>
+            <p className="text-18  text-mainGray-800 leading-30">{item.name}</p>
           </li>
         ))}
       </ul>
@@ -29,11 +38,35 @@ export default function AboutTeam() {
 
 const items = [
   {
-    src: TEAM_TWO_IMAGE,
+    src: SHALEV_IMAGE,
     name: "שלו שריקי",
   },
   {
-    src: TEAM_ONE_IMAGE,
+    src: OHAD_IMAGE,
     name: "אהד תשובה",
+  },
+  {
+    src: NOA_IMAGE,
+    name: "נועה וקסלר",
+  },
+  {
+    src: SHIRA_IMAGE,
+    name: "שירה רוט",
+  },
+  {
+    src: AMIT_IMAGE,
+    name: "עמית שטרנברג",
+  },
+  {
+    src: ROTEM_IMAGE,
+    name: "רותם עמר",
+  },
+  {
+    src: YOAV_IMAGE,
+    name: "יואב וינוב",
+  },
+  {
+    src: ALON_IMAGE,
+    name: "אלון שור",
   },
 ];

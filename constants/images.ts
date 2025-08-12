@@ -19,12 +19,23 @@ export const HANDS_IMAGE =
   "https://res.cloudinary.com/dtqaakbyl/image/upload/v1753278357/iopehe2tflo4b7tvqptw_vbtakd.webp";
 export const WHO_WE_ARE_IMAGE =
   "https://res.cloudinary.com/dtqaakbyl/image/upload/v1753278357/sqjc1vrkawtykwjwqug9_kcyl5g.webp";
-export const TEAM_ONE_IMAGE =
+export const OHAD_IMAGE =
   "https://res.cloudinary.com/dtqaakbyl/image/upload/v1753278357/ue8ilvhx1xpchqlcflot_b7g0q9.webp";
-export const TEAM_TWO_IMAGE =
+export const SHALEV_IMAGE =
   "https://res.cloudinary.com/dtqaakbyl/image/upload/v1753278356/blq6dcqhsu0ea4gbhltc_loycap.webp";
+export const NOA_IMAGE =
+  "https://res.cloudinary.com/dtqaakbyl/image/upload/v1754982814/Elmo_rijtf9.gif";
+export const SHIRA_IMAGE =
+  "https://res.cloudinary.com/dtqaakbyl/image/upload/v1754982813/Kermit_f7r4fc.webp";
+export const AMIT_IMAGE =
+  "https://res.cloudinary.com/dtqaakbyl/image/upload/v1754982813/avatar.jpg_hud5efc2599b42b3bb4d0f8e4f4e07d48a_10834_270x270_fill_q75_lanczos_center_rlrtn5.jpg";
+export const ROTEM_IMAGE =
+  "https://res.cloudinary.com/dtqaakbyl/image/upload/v1754982813/animal_eupmb6.jpg";
+export const YOAV_IMAGE =
+  "https://res.cloudinary.com/dtqaakbyl/image/upload/v1754980972/attachment_1_ijtrsr.webp";
+export const ALON_IMAGE =
+  "https://res.cloudinary.com/dtqaakbyl/image/upload/v1754981031/attachment_2_g5iewv.avif";
 export const DEFAULT_IMAGE =
   "https://res.cloudinary.com/dtqaakbyl/image/upload/v1753278358/yeq1yyvb1tdfyuwuxfga_lw7e62.avif";
-  export const I_SCHOOL_IMAGE =
-    "https://res.cloudinary.com/dtqaakbyl/image/upload/v1753278357/osy6ipeqip77u4hymaqc_wywmhe.png";
-
+export const I_SCHOOL_IMAGE =
+  "https://res.cloudinary.com/dtqaakbyl/image/upload/v1753278357/osy6ipeqip77u4hymaqc_wywmhe.png";

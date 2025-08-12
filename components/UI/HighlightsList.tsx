@@ -39,6 +39,6 @@ const items = [
       <HeartSvg className="md:w-14 md:h-14 w-12 h-12 stroke-mainOrange-700 fill-none" />
     ),
     title: "השפעה אמיתית",
-    text: "תרומה משמעותית למפונים",
+    text: "סיוע למפונים וילדי מילואימניקים",
   },
 ];
