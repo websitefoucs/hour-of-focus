@@ -6,17 +6,17 @@ import Label from "../UI/Label";
 import Input from "../UI/Input";
 import ErrorLabel from "../UI/ErrorLabel";
 import TextArea from "../UI/TextArea";
-import LinkCmp from "../UI/LinkCmp";
+// import LinkCmp from "../UI/LinkCmp";
 import FormSubmitButton from "../UI/FormSubmitButton";
-import { EnvelopSvg } from "../UI/Icons";
+// import { EnvelopSvg } from "../UI/Icons";
 //Actions
 import { contactAction } from "@/lib/actions/contact";
 //Types
 import { TFormState } from "@/types/app.type";
 import { TContactForm } from "@/types/contact.type";
 //Constants
-import { EMAIL } from "@/constants/app";
-import { SOCIAL_LINKS } from "@/constants/links";
+// import { EMAIL } from "@/constants/app";
+// import { SOCIAL_LINKS } from "@/constants/links";
 
 const initialFormState: TFormState<TContactForm> = {
   errors: null,
