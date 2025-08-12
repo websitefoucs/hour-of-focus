@@ -72,8 +72,17 @@ const sanitizeDelta = (delta?: TTextBlock[]): TTextBlock[] => {
   });
 };
 
+const sanitizeString = (value?: string | null): string => {
+  if (!value) return "";
+  return sanitizeHtml(value.toString(), {
+    allowedTags: [],
+    allowedAttributes: {},
+  });
+};
+
 export const sanitizeUtil = {
   sanitizedObjectField,
   sanitizedBoolean,
   sanitizeDelta,
+  sanitizeString
 };

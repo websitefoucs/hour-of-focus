@@ -25,7 +25,7 @@
  */
 //Constants
 import { EMAIL } from "@/constants/app";
-import { ACCESSIBILITY_PAGE_LINK, CONTACT_US } from "@/constants/links";
+import { ACCESSIBILITY_PAGE_LINK, CONTACT_US_PAGE_LINK } from "@/constants/links";
 //UI
 import { EnvelopSvg } from "../UI/Icons";
 import LinkCmp from "../UI/LinkCmp";
@@ -37,7 +37,7 @@ export default function Details() {
       <LinkCmp
         styleMode="none"
         styleSize="none"
-        href={CONTACT_US}
+        href={CONTACT_US_PAGE_LINK}
         className="text-14 leading-23"
         target="_blank"
       >

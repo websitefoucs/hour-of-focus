@@ -1,0 +1,117 @@
+"use client";
+//React
+import { useActionState } from "react";
+//UI
+import Label from "../UI/Label";
+import Input from "../UI/Input";
+import ErrorLabel from "../UI/ErrorLabel";
+import TextArea from "../UI/TextArea";
+import LinkCmp from "../UI/LinkCmp";
+import FormSubmitButton from "../UI/FormSubmitButton";
+import { EnvelopSvg } from "../UI/Icons";
+//Actions
+import { contactAction } from "@/lib/actions/contact";
+//Types
+import { TFormState } from "@/types/app.type";
+import { TContactForm } from "@/types/contact.type";
+//Constants
+import { EMAIL } from "@/constants/app";
+import { SOCIAL_LINKS } from "@/constants/links";
+
+const initialFormState: TFormState<TContactForm> = {
+  errors: null,
+  message: "",
+  data: { senderName: "", from: "", subject: "", message: "" },
+};
+export default function ContactUsIndex() {
+  const [state, fromAction, isPending] = useActionState(
+    contactAction,
+    initialFormState
+  );
+
+  const { data, message, errors } = state;
+
+  return (
+    <div
+      className="grid grid-cols-2 justify-items-center grid-rows-[auto_1fr] gap-gaps md:gap-gaps-md 
+pb-gaps"
+    >
+      <h2 className="col-span-2 text-24">צור קשר</h2>
+      <form action={fromAction}>
+        <Input
+          type="text"
+          name="senderName"
+          id="contact-senderName"
+          placeholder="שם מלא"
+          defaultValue={data?.from ?? ""}
+        >
+          <Label htmlFor="contact-senderName">שם מלא</Label>
+          <ErrorLabel htmlFor="contact-senderName" error={errors?.from} />
+        </Input>
+        <Input
+          type="email"
+          autoComplete="email"
+          name="from"
+          id="contact-from"
+          placeholder="שם"
+          defaultValue={data?.from ?? ""}
+        >
+          <Label htmlFor="contact-from">מייל לחזרה</Label>
+          <ErrorLabel htmlFor="contact-from" error={errors?.from} />
+        </Input>
+        <Input
+          type="text"
+          name="subject"
+          id="contact-subject"
+          placeholder="נושא"
+          defaultValue={data?.subject ?? ""}
+        >
+          <Label htmlFor="contact-subject">נושא</Label>
+          <ErrorLabel htmlFor="contact-subject" error={errors?.subject} />
+        </Input>
+        <TextArea
+          divStyle="flex flex-col gap-2 bg-inherit h-48"
+          className="bg-inherit border rounded p-2 h-[calc(100%-2rem)] resize-none overflow-auto scrollbar-hidden"
+          name="message"
+          id="contact-message"
+          defaultValue={data?.message ?? ""}
+          placeholder="הודעה"
+        >
+          <Label htmlFor="contact-message">הודעה</Label>
+          <ErrorLabel htmlFor="contact-message" error={errors?.message} />
+        </TextArea>
+        {message ? (
+          <ErrorLabel
+            className="block p-2 rounded-base border"
+            error={message}
+          />
+        ) : null}
+        <FormSubmitButton isPending={isPending} />
+      </form>
+      <div>
+        <h6 className="pb-2 "> שעה של פוקוס © </h6>
+
+        <span className="flex gap-2 items-center">
+          <EnvelopSvg className="min-w-5 min-h-5  w-5 h-5 fill-white" />
+
+          <a className="text-14 leading-23" href={`mailto:${EMAIL}`}>
+            {EMAIL}
+          </a>
+        </span>
+        <ul>
+          {SOCIAL_LINKS.map((item, index) => (
+            <li key={index}>
+              <LinkCmp
+                href={item.link}
+                target="_blank"
+                className="md:w-8 md:h-8 w-6 h-6"
+              >
+                <item.icon className="w-4 aspect-square" />
+              </LinkCmp>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}

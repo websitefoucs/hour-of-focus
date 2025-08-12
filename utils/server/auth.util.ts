@@ -52,7 +52,7 @@ const validateAuthSignInDto = (
   const passwordError = _validatePassword(userDto?.password);
   if (passwordError) errors.password = passwordError;
 
-  const emailError = _validateEmail(userDto?.email);
+  const emailError = validateEmail(userDto?.email);
   if (emailError) errors.email = emailError;
 
   if (Object.keys(errors).length > 0) {
@@ -181,14 +181,13 @@ const _validatePassword = (password?: string): string | null => {
 };
 /**
  * Validates an email address based on a regular expression pattern.
- * PRIVATE FUNCTION
  * @param {string} [email] - The email address to validate.
  * @returns {string | null} - Returns an error message if the email is invalid, otherwise returns null.
  *
  * Error message:
  * - "אימייל לא תקין." if the email address is not provided or does not match the pattern.
  */
-const _validateEmail = (email?: string): string | null => {
+export const validateEmail = (email?: string|null): string | null => {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!email || !emailPattern.test(email)) {
     return "אימייל לא תקין.";
@@ -204,4 +203,5 @@ export const authServerUtils = {
   sanitizeAuthDto,
   verifyAuth,
   formDataToDto,
+  validateEmail,
 };

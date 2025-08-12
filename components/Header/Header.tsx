@@ -1,5 +1,5 @@
 //Constants
-import { CONTACT_US } from "@/constants/links";
+import { CONTACT_US_PAGE_LINK } from "@/constants/links";
 import { LOGO } from "@/constants/images";
 //UI
 import LinkCmp from "../UI/LinkCmp";
@@ -33,7 +33,7 @@ export default function Header() {
       <LinkCmp
         styleMode="full"
         styleSize="large"
-        href={CONTACT_US}
+        href={CONTACT_US_PAGE_LINK}
         className="hidden lg:flex"
         target="_blank"
 

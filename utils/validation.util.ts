@@ -15,7 +15,7 @@ import { TQuillAttributes, TQuillTextSize, TTextBlock } from "@/types/app.type";
 const validateStrLength = (
   fieldName: string,
   length: number,
-  str?: string
+  str?: string | null
 ): string | null => {
   if (!str) return ` ${fieldName} חייב להיות לפחות ${length} תווים.`;
 

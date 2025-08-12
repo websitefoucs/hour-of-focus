@@ -19,7 +19,7 @@ export default function FormSubmitButton({
           <p className="pl-2 animate-bounce">טוען</p>
         </>
       ) : (
-        "שלח"
+        <p>שלח</p>
       )}
     </Button>
   );

@@ -1,11 +1,6 @@
 //Links
-import {
-  FACEBOOK_LINK,
-  INSTAGRAM_LINK,
-  LINKEDIN_LINK,
-} from "@/constants/links";
+import { SOCIAL_LINKS } from "@/constants/links";
 //UI
-import { FacebookSvg, InstagramSvg, LinkedinSvg } from "../UI/Icons";
 import LinkCmp from "../UI/LinkCmp";
 import React from "react";
 
@@ -33,7 +28,7 @@ export default function FollowUs() {
     <div className="col-span-2 md:col-span-1 md:order-2 md:w-fit md:justify-self-center">
       <h6 className="pb-6  text-right">עקבו אחרינו</h6>
       <nav className="flex gap-4 ">
-        {items.map((item, index) => (
+        {SOCIAL_LINKS.map((item, index) => (
           <LinkCmp
             key={index}
             href={item.link}
@@ -47,18 +42,3 @@ export default function FollowUs() {
     </div>
   );
 }
-
-const items = [
-  {
-    link: LINKEDIN_LINK,
-    icon: LinkedinSvg,
-  },
-  {
-    link: FACEBOOK_LINK,
-    icon: FacebookSvg,
-  },
-  {
-    link: INSTAGRAM_LINK,
-    icon: InstagramSvg,
-  },
-];

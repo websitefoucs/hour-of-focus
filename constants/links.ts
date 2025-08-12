@@ -1,6 +1,6 @@
+import { FacebookSvg, InstagramSvg, LinkedinSvg } from "@/components/UI/Icons";
+
 //Google forms links
-export const CONTACT_US =
-  "https://docs.google.com/forms/d/e/1FAIpQLSf5bbkDHT4Cqpu25HmCzGGaUQo9R9WJvWCAygpF8I2PtCTO7A/viewform";
 
 export const TEACHERS_SIGNUP =
   "https://docs.google.com/forms/d/e/1FAIpQLSexgmdnYK-j88r7RfvfBzYo4veDGzwLMSc7sV5fclp3zJvNJg/viewform";
@@ -24,6 +24,8 @@ export const ABOUT_PAGE_LINK = "/about";
 export const MATERIALS_PAGE_LINK = "/materials";
 export const HOME_PAGE_LINK = "/";
 
+export const CONTACT_US_PAGE_LINK = "/contact-us";
+
 //Admin navigation links
 export const ADMIN_FAQS_PAGE_LINK = "/admin/faqs/students";
 export const ADMIN_MATERIALS_PAGE_LINK = "/admin/materials";
@@ -44,3 +46,18 @@ export const LINKEDIN_LINK =
 export const BATEL_WEBSITE = "https://batelyr224.wixsite.com/batelyuster";
 export const ERAN_GIT = "https://github.com/P4t4m8n";
 export const ERAN_LINKEDIN = "https://www.linkedin.com/in/michaelieran/";
+
+export const SOCIAL_LINKS = [
+  {
+    link: LINKEDIN_LINK,
+    icon: LinkedinSvg,
+  },
+  {
+    link: FACEBOOK_LINK,
+    icon: FacebookSvg,
+  },
+  {
+    link: INSTAGRAM_LINK,
+    icon: InstagramSvg,
+  },
+];

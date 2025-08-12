@@ -1,5 +1,5 @@
 "use client";
-import { CONTACT_US } from "@/constants/links";
+import { CONTACT_US_PAGE_LINK } from "@/constants/links";
 import NavLinks from "./NavLinks";
 import LinkCmp from "../UI/LinkCmp";
 import Model from "../UI/Model";
@@ -24,7 +24,7 @@ export default function MobileHeader() {
           <LinkCmp
             styleMode="full"
             styleSize="small"
-            href={CONTACT_US}
+            href={CONTACT_US_PAGE_LINK}
             className="content-us"
           >
             צור קשר
