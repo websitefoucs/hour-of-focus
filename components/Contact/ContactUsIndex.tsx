@@ -6,17 +6,13 @@ import Label from "../UI/Label";
 import Input from "../UI/Input";
 import ErrorLabel from "../UI/ErrorLabel";
 import TextArea from "../UI/TextArea";
-// import LinkCmp from "../UI/LinkCmp";
 import FormSubmitButton from "../UI/FormSubmitButton";
-// import { EnvelopSvg } from "../UI/Icons";
 //Actions
 import { contactAction } from "@/lib/actions/contact";
 //Types
 import { TFormState } from "@/types/app.type";
 import { TContactForm } from "@/types/contact.type";
-//Constants
-// import { EMAIL } from "@/constants/app";
-// import { SOCIAL_LINKS } from "@/constants/links";
+
 
 const initialFormState: TFormState<TContactForm> = {
   errors: null,
@@ -88,30 +84,7 @@ pb-gaps"
         ) : null}
         <FormSubmitButton isPending={isPending} />
       </form>
-      {/* <div>
-        <h6 className="pb-2 "> שעה של פוקוס © </h6>
-
-        <span className="flex gap-2 items-center">
-          <EnvelopSvg className="min-w-5 min-h-5  w-5 h-5 fill-white" />
-
-          <a className="text-14 leading-23" href={`mailto:${EMAIL}`}>
-            {EMAIL}
-          </a>
-        </span>
-        <ul>
-          {SOCIAL_LINKS.map((item, index) => (
-            <li key={index}>
-              <LinkCmp
-                href={item.link}
-                target="_blank"
-                className="md:w-8 md:h-8 w-6 h-6"
-              >
-                <item.icon className="w-4 aspect-square" />
-              </LinkCmp>
-            </li>
-          ))}
-        </ul>
-      </div> */}
+ 
     </div>
   );
 }
