@@ -33,11 +33,11 @@ export default function ContactUsIndex() {
 
   return (
     <div
-      className="grid grid-cols-2 justify-items-center grid-rows-[auto_1fr] gap-gaps md:gap-gaps-md 
+      className="flex flex-col justify-items-center grid-rows-[auto_1fr] gap-gaps md:gap-gaps-md px-gaps 
 pb-gaps"
     >
       <h2 className="col-span-2 text-24">צור קשר</h2>
-      <form action={fromAction}>
+      <form className="grid gap-4" action={fromAction}>
         <Input
           type="text"
           name="senderName"
@@ -88,7 +88,7 @@ pb-gaps"
         ) : null}
         <FormSubmitButton isPending={isPending} />
       </form>
-      <div>
+      {/* <div>
         <h6 className="pb-2 "> שעה של פוקוס © </h6>
 
         <span className="flex gap-2 items-center">
@@ -111,7 +111,7 @@ pb-gaps"
             </li>
           ))}
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 }
