@@ -1,0 +1,48 @@
+[{
+  "_id": {
+    "$oid": "67e587e9a7d0d81e12a2f02f"
+  },
+  "preview": "\"כך הפכה יוזמה צנועה של סטודנטית צעירה להנדסת חשמל ושל חייל מילואים משוחרר לפרויקט חינוכי-התנדבותי בן 350 מדריכים.\"",
+  "link": "https://alhazafonplus.co.il/%D7%A9%D7%A2%D7%94-%D7%A9%D7%9C-%D7%94%D7%95%D7%A7%D7%95%D7%A1-%D7%A4%D7%95%D7%A7%D7%95%D7%A1/",
+  "publishPlace": "על הצפון פלוס",
+  "publishDate": "אוקטובר 2024"
+},
+{
+  "_id": {
+    "$oid": "67e58810a7d0d81e12a2f030"
+  },
+  "preview": "\"פרויקט \"שעה של פוקוס\" המציע שיעורים פרטיים דרך זום – בחינם לתלמידי שלומי\"",
+  "link": "https://www.shelomi.org.il/news/671/",
+  "publishPlace": "שלומי",
+  "publishDate": "ינואר 2025",
+  "updateDate": {
+    "$date": "2025-03-27T17:26:28.318Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686b9d278dd390ab66175772"
+  },
+  "preview": "\"מיזם \"שעה של פוקוס\" מספק שיעורים חינם למאות תלמידים מפונים\"",
+  "link": "https://haipo.co.il/item/577162",
+  "publishPlace": "חי פה - תאגיד החדשות המקצועי והמקיף בחיפה והסביבה ",
+  "publishDate": "יוני 2025"
+},
+{
+  "_id": {
+    "$oid": "686b9dc05ff3d5b63afd799c"
+  },
+  "preview": "מהטכניון באהבה: סטודנטים מלווים תלמידים שפונו מבתיהם",
+  "link": "https://haifa.mynet.co.il/food/article/hjaaztrngx",
+  "publishPlace": "mynet חיפה",
+  "publishDate": "יוני 2025"
+},
+{
+  "_id": {
+    "$oid": "686b9e1b5ff3d5b63afd799d"
+  },
+  "preview": "פוקוס על הדור הבא\r\nסטודנטים מהטכניון מעניקים שיעורי זום חינם למאות תלמידי תיכון שפונו מביתם",
+  "link": "https://www.technion.ac.il/blog/article/%D7%A4%D7%95%D7%A7%D7%95%D7%A1-%D7%A2%D7%9C-%D7%94%D7%93%D7%95%D7%A8-%D7%94%D7%91%D7%90/",
+  "publishPlace": "אתר הטכניון",
+  "publishDate": "יוני 2025"
+}]

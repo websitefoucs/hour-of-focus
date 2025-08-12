@@ -1,0 +1,356 @@
+[{
+  "_id": {
+    "$oid": "67e5824eb73e8da13fde68db"
+  },
+  "deltaAnswer": [
+    {
+      "insert": "המתנדבים בפרויקט כוללים סטודנטים רבים מכל רחבי הארץ, וכן מתנדבים שאינם סטודנטים, בהם מורים ואנשי חינוך נוספים.\n",
+      "attributes": {}
+    }
+  ],
+  "deltaQuestion": [
+    {
+      "insert": "מי מעביר את השיעורים?",
+      "attributes": {
+        "bold": true
+      }
+    },
+    {
+      "insert": "\n",
+      "attributes": {}
+    }
+  ],
+  "faqType": "students",
+  "position": 2
+},
+{
+  "_id": {
+    "$oid": "67e582616798aaeee442c1d9"
+  },
+  "deltaAnswer": [
+    {
+      "insert": "ההרשמה מתבצעת דרך צוות החינוך של היישובים המפונים ובתי הספר. אם הפרויקט לא הגיע אליכם באחת המסגרות, מוזמנים לעדכן את המורה או המנהל שייצור איתנו קשר.\n",
+      "attributes": {}
+    }
+  ],
+  "deltaQuestion": [
+    {
+      "insert": "איך נרשמים לשיעורים?",
+      "attributes": {
+        "bold": true
+      }
+    },
+    {
+      "insert": "\n",
+      "attributes": {}
+    }
+  ],
+  "faqType": "students",
+  "updateDate": {
+    "$date": "2025-03-27T16:52:55.307Z"
+  },
+  "position": 3
+},
+{
+  "_id": {
+    "$oid": "67e5827a6798aaeee442c1da"
+  },
+  "deltaAnswer": [
+    {
+      "insert": "גם המתנדבים וגם התלמידים ממלאים טופס הרשמה ובו מציינים את העדפותיהם. אנחנו מקבלים את הנתונים והבקשות ומבצעים שיבוץ בהתאם.\n",
+      "attributes": {}
+    }
+  ],
+  "deltaQuestion": [
+    {
+      "insert": "איך מבצעים את השיבוץ למורה?",
+      "attributes": {
+        "bold": true
+      }
+    },
+    {
+      "insert": "\n",
+      "attributes": {}
+    }
+  ],
+  "faqType": "students",
+  "position": 4
+},
+{
+  "_id": {
+    "$oid": "67e5828db73e8da13fde68dc"
+  },
+  "deltaAnswer": [
+    {
+      "insert": "כל תלמיד זכאי לשיעור שבועי אחד למשך שעה.\n",
+      "attributes": {}
+    }
+  ],
+  "deltaQuestion": [
+    {
+      "insert": "כמה שיעורים אפשר לקבל?",
+      "attributes": {
+        "bold": true
+      }
+    },
+    {
+      "insert": "\n",
+      "attributes": {}
+    }
+  ],
+  "faqType": "students",
+  "position": 5
+},
+{
+  "_id": {
+    "$oid": "67e5829db73e8da13fde68dd"
+  },
+  "deltaAnswer": [
+    {
+      "insert": "ניתן לקבל עזרה במתמטיקה, אנגלית, פיזיקה, ומקצועות נוספים בהתאם לביקוש. עקרונית, כל תלמיד בוחר מקצוע אחד.\n",
+      "attributes": {}
+    }
+  ],
+  "deltaQuestion": [
+    {
+      "insert": "באילו מקצועות ניתן לקבל עזרה?",
+      "attributes": {
+        "bold": true
+      }
+    },
+    {
+      "insert": "\n",
+      "attributes": {}
+    }
+  ],
+  "faqType": "students",
+  "position": 6
+},
+{
+  "_id": {
+    "$oid": "67e5839b6798aaeee442c1db"
+  },
+  "deltaAnswer": [
+    {
+      "insert": "השיעורים אינם בתשלום, אך אנחנו מאמינים בשיטת ",
+      "attributes": {}
+    },
+    {
+      "insert": "המעשים הטובים",
+      "attributes": {
+        "link": "https://hour-of-focus.vercel.app/explain/students#good"
+      }
+    },
+    {
+      "insert": "\n",
+      "attributes": {}
+    }
+  ],
+  "deltaQuestion": [
+    {
+      "insert": "האם הפרויקט כרוך בתשלום?",
+      "attributes": {
+        "bold": true
+      }
+    },
+    {
+      "insert": "\n",
+      "attributes": {}
+    }
+  ],
+  "faqType": "students",
+  "updateDate": {
+    "$date": "2025-03-27T16:58:24.017Z"
+  },
+  "position": 7
+},
+{
+  "_id": {
+    "$oid": "67ea9b83960a320d7f997275"
+  },
+  "deltaAnswer": [
+    {
+      "insert": "הפרויקט מיועד לתלמידים שפונו מבתיהם עקב המצב הביטחוני, וכן לילדי חיילי מילואים הנמצאים בשירות ממושך – וזקוקים לסיוע לימודי. אנו מציעים שיעורים פרטיים חינם בזום במגוון מקצועות.\n",
+      "attributes": {}
+    }
+  ],
+  "deltaQuestion": [
+    {
+      "insert": "למי מיועד הפרויקט?",
+      "attributes": {
+        "bold": true
+      }
+    },
+    {
+      "insert": "\n",
+      "attributes": {}
+    }
+  ],
+  "faqType": "students",
+  "position": 1,
+  "updateDate": {
+    "$date": "2025-07-17T09:05:19.845Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67ee7afd68a2533833195f27"
+  },
+  "deltaAnswer": [
+    {
+      "insert": "סטודנטים ומתנדבים המעוניינים להצטרף יכולים להירשם דרך טופס ההצטרפות באתר שלנו. לאחר ההרשמה, ניצור קשר לתיאום והתאמה.\n",
+      "attributes": {}
+    }
+  ],
+  "deltaQuestion": [
+    {
+      "insert": "איך אפשר להצטרף כמתנדב?",
+      "attributes": {
+        "bold": true
+      }
+    },
+    {
+      "insert": "\n",
+      "attributes": {}
+    }
+  ],
+  "faqType": "volunteers",
+  "position": 4,
+  "updateDate": {
+    "$date": "2025-04-03T13:34:07.429Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67ee7b3368a2533833195f28"
+  },
+  "deltaAnswer": [
+    {
+      "insert": "לא חובה ניסיון קודם, אך חשוב לדעת להסביר בצורה ברורה ולהיות בעלי שליטה טובה בחומר הנלמד.\n",
+      "attributes": {}
+    }
+  ],
+  "deltaQuestion": [
+    {
+      "insert": "האם צריך ניסיון בהוראה כדי להתנדב?",
+      "attributes": {
+        "bold": true
+      }
+    },
+    {
+      "insert": "\n",
+      "attributes": {}
+    }
+  ],
+  "faqType": "volunteers",
+  "position": 1,
+  "updateDate": {
+    "$date": "2025-04-03T13:13:29.087Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67ee7b4a68a2533833195f29"
+  },
+  "deltaAnswer": [
+    {
+      "insert": "לסטודנטים מהטכניון יש זום מורחב המאפשר שימוש בלתי מוגבל. למי שאין זום מורחב, אנחנו ממליצים להשתמש ב-Google Meets.\n",
+      "attributes": {}
+    }
+  ],
+  "deltaQuestion": [
+    {
+      "insert": "אין לי זום מורחב. מה אני עושה?",
+      "attributes": {
+        "bold": true
+      }
+    },
+    {
+      "insert": "\n",
+      "attributes": {}
+    }
+  ],
+  "faqType": "volunteers",
+  "position": 3,
+  "updateDate": {
+    "$date": "2025-04-03T13:21:14.429Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67ee7da368a2533833195f2a"
+  },
+  "deltaAnswer": [
+    {
+      "insert": "אתר GOOL מציע שימוש חינם בחוברות מצוינות, והוא מתאים במיוחד ללימודי מתמטיקה ואנגלית לתלמידי חטיבת ביניים ותיכון.\n",
+      "attributes": {}
+    }
+  ],
+  "deltaQuestion": [
+    {
+      "insert": "מאיפה אני יכול לגשת לחומר לימודי?",
+      "attributes": {
+        "bold": true
+      }
+    },
+    {
+      "insert": "\n",
+      "attributes": {}
+    }
+  ],
+  "faqType": "volunteers",
+  "position": 2,
+  "updateDate": {
+    "$date": "2025-04-03T13:15:53.223Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67ee8fcb68a2533833195f2b"
+  },
+  "deltaAnswer": [
+    {
+      "insert": "לא. התלמיד אחראי באופן בלעדי על המיקוד של החומר הלימודי. אם יש בעיות נוספות, נשמח לשמוע ולעזור.\n",
+      "attributes": {}
+    }
+  ],
+  "deltaQuestion": [
+    {
+      "insert": "אני אמור לספק את החומר הלימודי?",
+      "attributes": {
+        "bold": true
+      }
+    },
+    {
+      "insert": "\n",
+      "attributes": {}
+    }
+  ],
+  "faqType": "volunteers",
+  "position": 5
+},
+{
+  "_id": {
+    "$oid": "67ee8fdd68a2533833195f2c"
+  },
+  "deltaAnswer": [
+    {
+      "insert": "לכל מתנדב יש רכז שמלווה אותו בתהליך ומתעניין איך הולך לו. אם עולות בעיות, נשמח לשמוע ולטפל בהן. אם עדיין אין לכם רכז, פנו למי שיצר איתכם קשר מטעם הפרויקט.\n",
+      "attributes": {}
+    }
+  ],
+  "deltaQuestion": [
+    {
+      "insert": "למי פונים אם עולות בעיות תוך כדי?",
+      "attributes": {
+        "bold": true
+      }
+    },
+    {
+      "insert": "\n",
+      "attributes": {}
+    }
+  ],
+  "faqType": "volunteers",
+  "position": 6
+}]
