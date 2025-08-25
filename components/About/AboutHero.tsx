@@ -10,7 +10,7 @@ export default function AboutHero() {
         <article className="text-center md:text-18 text-16 font-normal leading-30">
           שעה של פוקוס הוא מיזם התנדבותי שנולד מתוך הרצון לסייע לתלמידים מפונים.
           המיזם מחבר בין מתנדבים מדהימים לבין תלמידים הזקוקים לעזרה בלימודים,
-          ומעניק שיעורים פרטיים שבועיים בחינם דרך הזום.
+          ומעניק שיעורים פרטיים שבועיים דרך הזום.
         </article>
       </div>
       <ImageOverlay className="blur-lg">

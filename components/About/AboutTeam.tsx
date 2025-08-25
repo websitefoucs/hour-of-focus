@@ -6,6 +6,7 @@ import {
   ROTEM_IMAGE,
   SHALEV_IMAGE,
   SHIRA_IMAGE,
+  VICTORIA_IMAGE,
   YOAV_IMAGE,
 } from "@/constants/images";
 import Image from "next/image";
@@ -68,5 +69,9 @@ const items = [
   {
     src: ALON_IMAGE,
     name: "אלון שור",
+  },
+  {
+    src: VICTORIA_IMAGE,
+    name: "ויקטוריה",
   },
 ];
