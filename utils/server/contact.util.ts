@@ -35,6 +35,13 @@ const validateContactDto = (
 ): Partial<Record<keyof TContactForm, string>> => {
   const errors: Partial<Record<keyof TContactForm, string>> = {};
 
+  const sanderNameError = validationUtil.validateStrLength(
+    "שם השולח",
+    1,
+    dto?.senderName
+  );
+  if (sanderNameError) errors.senderName = sanderNameError;
+
   const fromEmailError = authServerUtils.validateEmail(dto?.from);
   if (fromEmailError) errors.from = fromEmailError;
 

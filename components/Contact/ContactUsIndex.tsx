@@ -13,7 +13,6 @@ import { contactAction } from "@/lib/actions/contact";
 import { TFormState } from "@/types/app.type";
 import { TContactForm } from "@/types/contact.type";
 
-
 const initialFormState: TFormState<TContactForm> = {
   errors: null,
   message: "",
@@ -29,8 +28,8 @@ export default function ContactUsIndex() {
 
   return (
     <div
-      className="flex flex-col justify-items-center grid-rows-[auto_1fr] gap-gaps md:gap-gaps-md px-gaps 
-pb-gaps"
+      className="flex flex-col justify-items-center grid-rows-[auto_1fr]
+       gap-gaps md:gap-gaps-md px-gaps pb-gaps max-w-[60rem] w-full lg:place-self-center"
     >
       <h2 className="col-span-2 text-24">צור קשר</h2>
       <form className="grid gap-4" action={fromAction}>
@@ -42,7 +41,7 @@ pb-gaps"
           defaultValue={data?.from ?? ""}
         >
           <Label htmlFor="contact-senderName">שם מלא</Label>
-          <ErrorLabel htmlFor="contact-senderName" error={errors?.from} />
+          <ErrorLabel htmlFor="contact-senderName" error={errors?.senderName} />
         </Input>
         <Input
           type="email"
@@ -84,7 +83,6 @@ pb-gaps"
         ) : null}
         <FormSubmitButton isPending={isPending} />
       </form>
- 
     </div>
   );
 }
