@@ -37,6 +37,9 @@ export default function ExplainVolunteersMiddle() {
           למה כדאי להצטרף אלינו?
         </h4>
         <HighlightsList />
+         <span className="text-mainGray-800 text-sm flex items-center gap-1">
+          <p className="leading-0 text-center  ">{`ההתנדבות עשויה להעניק גם נ"ז אקדמיים בכפוף לאישור ולמדיניות המוסד האקדמי של הסטודנט`}</p>
+        </span>
       </div>
     </div>
   );
