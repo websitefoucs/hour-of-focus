@@ -24,12 +24,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "yearly",
       priority: 1,
     },
-    {
-      url: baseUrl + "/materials",
-      lastModified: new Date().toISOString(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
+
     {
       url: baseUrl + "/explain/volunteers",
       lastModified: new Date().toISOString(),

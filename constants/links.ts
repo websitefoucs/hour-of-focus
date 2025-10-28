@@ -21,14 +21,12 @@ export const FAQ_VOLUNTEERS_PAGE_LINK = "/faqs/volunteers";
 export const ACCESSIBILITY_PAGE_LINK = "/accessibility";
 
 export const ABOUT_PAGE_LINK = "/about";
-export const MATERIALS_PAGE_LINK = "/materials";
 export const HOME_PAGE_LINK = "/";
 
 export const CONTACT_US_PAGE_LINK = "/contact-us";
 
 //Admin navigation links
 export const ADMIN_FAQS_PAGE_LINK = "/admin/faqs/students";
-export const ADMIN_MATERIALS_PAGE_LINK = "/admin/materials";
 export const ADMIN_ARTICLES_PAGE_LINK = "/admin/articles";
 export const ADMIN_TESTIMONIES_PAGE_LINK = "/admin/testimonies";
 

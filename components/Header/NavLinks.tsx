@@ -38,7 +38,6 @@ import {
   FAQ_STUDENTS_PAGE_LINK,
   FAQ_VOLUNTEERS_PAGE_LINK,
   HOME_PAGE_LINK,
-  MATERIALS_PAGE_LINK,
 } from "@/constants/links";
 
 export default function NavLinks() {
@@ -61,12 +60,7 @@ export default function NavLinks() {
 
       <RegularExplainNavLink pathname={pathname} />
       <MobileExplainNavLink pathname={pathname} />
-      <NavLinkItem
-        href={MATERIALS_PAGE_LINK}
-        isHighlighted={pathname === MATERIALS_PAGE_LINK}
-      >
-        חומרי לימוד למתנדבים
-      </NavLinkItem>
+
       <NavLinkItem
         href={FAQ_STUDENTS_PAGE_LINK}
         isHighlighted={

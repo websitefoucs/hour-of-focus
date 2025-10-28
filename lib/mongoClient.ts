@@ -32,7 +32,7 @@ export const isValidObjectId = (id: string): boolean => {
 };
 
 export const getCollection = async <T extends Document>(
-  collectionName: "faqs" | "users" | "materials" | "articles" | "testimonies"
+  collectionName: "faqs" | "users" | "articles" | "testimonies"
 ) => {
   await mongoClient.connect();
   const db = mongoClient.db(options.appName);

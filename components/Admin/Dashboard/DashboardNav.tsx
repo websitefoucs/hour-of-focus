@@ -4,7 +4,6 @@ import SignOutButton from "@/components/Admin/Dashboard/SignOutButton";
 import {
   ADMIN_ARTICLES_PAGE_LINK,
   ADMIN_FAQS_PAGE_LINK,
-  ADMIN_MATERIALS_PAGE_LINK,
   ADMIN_TESTIMONIES_PAGE_LINK,
 } from "@/constants/links";
 import { usePathname } from "next/navigation";
@@ -19,11 +18,7 @@ export default function DashboardNav() {
       label: "שאלות ותשובות",
       isActive: pathname === ADMIN_FAQS_PAGE_LINK,
     },
-    {
-      href: ADMIN_MATERIALS_PAGE_LINK,
-      label: "חומרי לימוד",
-      isActive: pathname === ADMIN_MATERIALS_PAGE_LINK,
-    },
+
     {
       href: ADMIN_ARTICLES_PAGE_LINK,
       label: "כתבות",
