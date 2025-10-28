@@ -8,9 +8,6 @@ export const TEACHERS_SIGNUP =
 export const LOGISTIC_SIGNUP =
   "https://docs.google.com/forms/d/e/1FAIpQLSfYfgh6vICvK5pabQrRHfogT1yV5ZEMRkfkcjexFh7gSDglEw/viewform";
 
-export const COORDINATOR_SIGNUP =
-  "https://docs.google.com/forms/d/e/1FAIpQLSfLJ_VRzRS7tyoA_u2GtG-n5zFAOz44MPU0NRwhd7Lzl-AUdQ/viewform";
-
 //App navigation links
 export const EXPLAIN_STUDENTS_PAGE_LINK = "/explain/students";
 export const EXPLAIN_VOLUNTEERS_PAGE_LINK = "/explain/volunteers";

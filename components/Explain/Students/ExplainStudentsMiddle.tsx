@@ -1,6 +1,4 @@
 import { ApproveSvg } from "@/components/UI/Icons";
-import LinkCmp from "@/components/UI/LinkCmp";
-import { COORDINATOR_SIGNUP } from "@/constants/links";
 
 export default function ExplainStudentsMiddle() {
   return (
@@ -21,15 +19,7 @@ export default function ExplainStudentsMiddle() {
             </li>
           ))}
         </ul>
-        <LinkCmp
-          href={COORDINATOR_SIGNUP}
-          styleMode="full"
-          styleSize="large"
-          className=""
-          target="_blank"
-        >
-          טופס רישום לרכזי חינוך
-        </LinkCmp>
+       
       </div>
     </div>
   );
