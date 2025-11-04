@@ -4,8 +4,12 @@ export default function Numbers() {
       {items.map((item, index) => (
         <li key={index}>
           <p className="leading-8 text-20 md:text-36">
-            <span className="text-mainWhite-0 leading-8 text-20 md:text-36 font-bold">{item.number}</span>
-            <span className=" text-mainGold-400 leading-8 text-20 md:text-36 font-bold">{item.symbol}</span>
+            <span className="text-mainWhite-0 leading-8 text-20 md:text-36 font-bold">
+              {item.number}
+            </span>
+            <span className=" text-mainGold-400 leading-8 text-20 md:text-36 font-bold">
+              {item.symbol}
+            </span>
           </p>
           <p className="text-20 leading-34 font-normal">{item.text}</p>
         </li>
@@ -15,11 +19,6 @@ export default function Numbers() {
 }
 
 const items = [
-  {
-    number: 200,
-    symbol: "+",
-    text: "שיעורים שבועיים",
-  },
   {
     number: 350,
     symbol: "+",
@@ -31,8 +30,13 @@ const items = [
     text: "תלמידים",
   },
   {
+    number: 200,
+    symbol: "+",
+    text: "שיעורים שבועיים",
+  },
+  {
     number: 100,
     symbol: "%",
-    text: "סיוע למפונים ולילדי מילואימניקים",
+    text: "תרומה אמיתית",
   },
 ];

@@ -8,9 +8,10 @@ export default function AboutHero() {
       <div className="grid-stack z-20 text-mainWhite-0 grid items-center justify-center justify-items-center max-w-[38rem] md:gap-8 gap-4 p-4">
         <h4 className="text-mainWhite-0 text-24 md:text-36">{`על הפרויקט 'שעה של פוקוס'`}</h4>
         <article className="text-center md:text-18 text-16 font-normal leading-30">
-          שעה של פוקוס הוא מיזם התנדבותי שנולד מתוך הרצון לסייע לתלמידים מפונים.
-          המיזם מחבר בין מתנדבים מדהימים לבין תלמידים הזקוקים לעזרה בלימודים,
-          ומעניק שיעורים פרטיים שבועיים דרך הזום.
+          לא רק בשטח – גם בעורף: שעה של פוקוס הוא תוצאה של ערבות הדדית שנולדה
+          בלחימה והמשיכה לחולל שינוי כאן בבית. המיזם מחבר בין מתנדבים מדהימים
+          לבין תלמידים הזקוקים לעזרה בלימודים, ומעניק שיעורים פרטיים שבועיים דרך
+          הזום.
         </article>
       </div>
       <ImageOverlay className="blur-lg">
