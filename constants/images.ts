@@ -26,20 +26,20 @@ export const I_SCHOOL_IMAGE =
 
 //Team images
 export const OHAD_IMAGE =
-  "https://res.cloudinary.com/dtqaakbyl/image/upload/v1753278357/ue8ilvhx1xpchqlcflot_b7g0q9.webp";
+  "https://res.cloudinary.com/dy4a7uolr/image/upload/t_webp/ohed_emjptp";
 export const SHALEV_IMAGE =
   "https://res.cloudinary.com/dtqaakbyl/image/upload/v1753278356/blq6dcqhsu0ea4gbhltc_loycap.webp";
 export const NOA_IMAGE =
-  "https://res.cloudinary.com/dtqaakbyl/image/upload/v1754982814/Elmo_rijtf9.gif";
+  "https://res.cloudinary.com/dy4a7uolr/image/upload/t_webp/WhatsApp_Image_2025-08-26_at_09.05.23_38b6e6db_fvuyei";
 export const SHIRA_IMAGE =
-  "https://res.cloudinary.com/dtqaakbyl/image/upload/v1754982813/Kermit_f7r4fc.webp";
+  "https://res.cloudinary.com/dy4a7uolr/image/upload/t_webp/shira_r2tjqd";
 export const AMIT_IMAGE =
   "https://res.cloudinary.com/dtqaakbyl/image/upload/v1754982813/avatar.jpg_hud5efc2599b42b3bb4d0f8e4f4e07d48a_10834_270x270_fill_q75_lanczos_center_rlrtn5.jpg";
 export const ROTEM_IMAGE =
   "https://res.cloudinary.com/dtqaakbyl/image/upload/v1754982813/animal_eupmb6.jpg";
 export const YOAV_IMAGE =
-  "https://res.cloudinary.com/dtqaakbyl/image/upload/v1754980972/attachment_1_ijtrsr.webp";
+  "https://res.cloudinary.com/dy4a7uolr/image/upload/t_webp/yoav_abll2w";
 export const ALON_IMAGE =
-  "https://res.cloudinary.com/dtqaakbyl/image/upload/v1754981031/attachment_2_g5iewv.avif";
+  "https://res.cloudinary.com/dy4a7uolr/image/upload/t_webp/alon_shor_wyaotu";
 export const VICTORIA_IMAGE =
-  "https://res.cloudinary.com/dy4a7uolr/image/upload/v1756129335/Queen_Victoria_by_Bassano_roudb1.jpg";
+  "https://res.cloudinary.com/dy4a7uolr/image/upload/t_webp/WhatsApp_Image_2025-08-26_at_11.17.37_b016ac8d_rhpfqe";
