@@ -1,9 +1,7 @@
 import {
   ALON_IMAGE,
-  AMIT_IMAGE,
   NOA_IMAGE,
   OHAD_IMAGE,
-  ROTEM_IMAGE,
   SHALEV_IMAGE,
   SHIRA_IMAGE,
   VICTORIA_IMAGE,
@@ -63,14 +61,6 @@ const items = [
     name: "שירה רוט",
   },
   {
-    src: AMIT_IMAGE,
-    name: "עמית שטרנברג",
-  },
-  {
-    src: ROTEM_IMAGE,
-    name: "רותם עמר",
-  },
-  {
     src: YOAV_IMAGE,
     name: "יואב וינוב",
   },
@@ -85,9 +75,8 @@ const items = [
 ];
 
 const rows = [
-  [items[0]], // 1 item
-  [items[1], items[2]], // 2 items
-  [items[3], items[4], items[5]], // 3 items
-  [items[6], items[7]], // 2 items
-  [items[8]], // 1 item
+  [items[0], items[1]], // 2 items
+  [items[2], items[3], items[4]], // 3 items
+  [items[5], items[6]], // 2 items
+  
 ];
