@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
+    "@vercel/speed-insights": "^1.2.0",
     "bcrypt": "^5.1.1",
     "jose": "^5.9.6",
     "mongodb": "^6.13.0",
