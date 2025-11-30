@@ -18,40 +18,6 @@ The Hour of Focus website is a static SSR application built with Next.js, featur
 - **MongoDB**
 - **Tailwind** 
 
-## Installation
-
-1. **Clone the Repository**
-
-    ```bash
-    git clone https://your-repo-url.git
-    cd hour-of-focus
-    ```
-
-2. **Install Dependencies**
-
-    ```bash
-    npm install
-    ```
-
-3. **Run the Development Server**
-
-    ```bash
-    npm run dev
-    ```
-
-    Open [http://localhost:3000](http://localhost:3000) to view the application in the browser.
-
-## Deployment
-
-Build and start the production server:
-
-```bash
-npm run build
-npm start
-```
-
-This will generate a production build of your static site with SSR enabled.
-
 ## Accessibility
 
 Ensuring accessibility is a key focus:
@@ -67,4 +33,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For more information, reach out to the maintainers at [michaelieran@gmail.com](mailto:michaelieran@gmail.com).
+For more information, reach out to the maintainers at [michaelieran@gmail.com](mailto:michaelieran@gmail.com) or [websitefoucs@gmail.com](mailto:websitefoucs@gmail.com).
