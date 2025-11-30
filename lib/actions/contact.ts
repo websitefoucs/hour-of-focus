@@ -1,12 +1,24 @@
 "use server";
+//Packages
 import nodemailer from "nodemailer";
-import { TFormState } from "@/types/app.type";
-import { TContactForm } from "@/types/contact.type";
+//Utils
 import { contactUtil } from "@/utils/server/contact.util";
 import { AppError } from "@/utils/server/Error.util";
+//Types
+import { TFormState } from "@/types/app.type";
+import { TContactForm } from "@/types/contact.type";
 
+/**
+ * Sends a contact email with the provided form data.
+ *
+ * @param state - The current form state.
+ * @param formData - The form data containing user credentials.
+ * @returns A promise that resolves to the updated form state.
+ *
+ * @throws Will throw an error if sending the contact email fails.
+ */
 export async function contactAction(
-  prevState: TFormState<TContactForm>,
+  _: TFormState<TContactForm>,
   formData: FormData
 ): Promise<TFormState<TContactForm>> {
   let dto;
@@ -36,10 +48,10 @@ export async function contactAction(
     const { from, subject, message, senderName } = dto;
 
     const html = `<article>
-    <h3>New message from ${senderName}</h3>
-    <h4><strong>Subject:</strong> ${subject}</h4>
-    <p><strong>Message:</strong> ${message}</p>
-  </article>`;
+                    <h4>New message from ${senderName}</h4>
+                    <h3><strong>Subject:</strong> ${subject}</h3>
+                    <p><strong>Message:</strong> ${message}</p>
+                  </article>`;
 
     await transporter.sendMail({
       from: email,
