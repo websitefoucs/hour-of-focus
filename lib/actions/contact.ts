@@ -48,7 +48,7 @@ export async function contactAction(
     const { from, subject, message, senderName } = dto;
 
     const html = `<article>
-                    <h4>New message from ${senderName}</h4>
+                    <h4> הודעה חדשה מ${senderName}</h4>
                     <h3><strong>Subject:</strong> ${subject}</h3>
                     <p><strong>Message:</strong> ${message}</p>
                   </article>`;
@@ -57,7 +57,7 @@ export async function contactAction(
       from: email,
       to: email,
       replyTo: from ?? "",
-      subject: `New message from ${senderName}`,
+      subject: `הודעה חדשה מ${senderName}`,
       html,
     });
     return {
